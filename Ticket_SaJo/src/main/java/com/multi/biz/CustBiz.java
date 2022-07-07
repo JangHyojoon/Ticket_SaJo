@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.frame.Biz;
-import com.multi.mapper.UsersMapper;
-import com.multi.vo.UserVO;
+import com.multi.mapper.CustMapper;
+import com.multi.vo.CustVO;
 
-@Service("usersbiz")
-public class UsersBiz implements Biz<String,UserVO> {
+@Service("custbiz")
+public class CustBiz implements Biz<String,CustVO> {
 
 	@Autowired
-	UsersMapper dao;
+	CustMapper dao;
 	
 	@Override
-	public void register(UserVO v) throws Exception {
+	public void register(CustVO v) throws Exception {
 		dao.insert(v);
 	}
 
 	@Override
-	public void modify(UserVO v) throws Exception {
+	public void modify(CustVO v) throws Exception {
 		dao.update(v);
 	}
 
@@ -31,12 +31,12 @@ public class UsersBiz implements Biz<String,UserVO> {
 	}
 
 	@Override
-	public UserVO get(String k) throws Exception {
+	public CustVO get(String k) throws Exception {
 		return dao.select(k);
 	}
 
 	@Override
-	public List<UserVO> get() throws Exception {
+	public List<CustVO> get() throws Exception {
 		return dao.selectall();
 	}
 
