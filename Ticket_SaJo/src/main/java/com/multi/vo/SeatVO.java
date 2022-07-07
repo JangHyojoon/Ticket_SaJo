@@ -1,7 +1,5 @@
 package com.multi.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +10,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserVO {
+public class SeatVO {
 	private String id;
-	private String pwd;
-	private String name;
-	private Date birth;
-	private int point;
-	private String sex;
+	private String r;
+	private int c;
 
-	
 }
