@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReservationMapper">
+	
+	<select id="select" parameterType="int" resultType="reservationVO">
+		SELECT * FROM reservation WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="reservationVO">
+		SELECT * FROM reservation
+	</select>
+	<insert id="insert" parameterType="reservationVO">
+		INSERT INTO reservation VALUES (NULL,#{rid},#{uid},#{pcnt},#{price},#{totalprice})
+	</insert>
+	<update id="update" parameterType="reservationVO">
+		UPDATE reservation SET rid=#{rid},uid=#{uid}, pcnt=#{pcnt}, price=#{price}, totalprice=#{totalprice} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="reservationVO">
+		DELETE FROM reservation WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
