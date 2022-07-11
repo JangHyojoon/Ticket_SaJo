@@ -1,4 +1,4 @@
-package com.multi.cust;
+package com.multi.pointlist;
 
 import java.util.List;
 
@@ -6,16 +6,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
+import com.multi.biz.PointlistBiz;
+import com.multi.vo.PointlistVO;
 
 @SpringBootTest
 class SelectAllTest {
+	
 	@Autowired
-	CustBiz biz;
+	PointlistBiz biz;
+	
 	@Test
 	void contextLoads() {
-		List<CustVO> list = null;
+		List<PointlistVO> list = null;
 		try {
 			list= biz.get();
 			
@@ -23,9 +25,8 @@ class SelectAllTest {
 			
 			e.printStackTrace();
 		}
-		for (CustVO uv : list) {
-			System.out.println(uv);
+		for (PointlistVO pl : list) {
+			System.out.println(pl);
 		}
 	}
-
 }

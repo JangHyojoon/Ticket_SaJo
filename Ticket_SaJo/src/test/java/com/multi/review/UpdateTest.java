@@ -1,20 +1,23 @@
-package com.multi.cust;
+package com.multi.review;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.CustBiz;
+import com.multi.biz.ReviewBiz;
+import com.multi.vo.ReviewVO;
 
 @SpringBootTest
-class DeleteTest {
+class UpdateTest {
+	
 	@Autowired
-	CustBiz biz;
+	ReviewBiz biz;
+	
 	@Test
-	void contextLoads() {
-		
+	void contextLoads()  {
+		ReviewVO r = new ReviewVO(6005, "jck", 1005, 1, "슬프다", "2022-05-29");
 		try {
-			biz.remove("ljm");
+			biz.modify(r);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
