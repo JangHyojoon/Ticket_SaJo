@@ -13,7 +13,6 @@ public interface CustMapper {
 	public void insert(CustVO users) throws Exception;
 	public void delete(String id) throws Exception;
 	public void update(CustVO users) throws Exception;
-	
 	public CustVO select(String id) throws Exception;
 	public List<CustVO> selectall() throws Exception;
 

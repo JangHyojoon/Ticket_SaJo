@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReviewMapper">
+	
+	<select id="select" parameterType="int" resultType="reviewVO">
+		SELECT * FROM reviews WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="reviewVO">
+		SELECT * FROM reviews
+	</select>
+	<insert id="insert" parameterType="reviewVO">
+		INSERT INTO reviews VALUES (#{id},#{uid},#{mid},#{star},#{text},#{regdate})
+	</insert>
+	<update id="update" parameterType="reviewVO">
+		UPDATE reviews SET uid=#{uid},mid=#{mid},star=#{star},text=#{text},regdate=#{regdate} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="reviewVO">
+		DELETE FROM reviews WHERE id=#{id}
+	</delete>
+</mapper>

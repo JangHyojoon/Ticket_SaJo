@@ -1,31 +1,24 @@
-package com.multi.cust;
-
-import java.util.List;
+package com.multi.pointlist;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
+import com.multi.biz.PointlistBiz;
 
 @SpringBootTest
-class SelectAllTest {
+class DeleteTest {
+	
 	@Autowired
-	CustBiz biz;
+	PointlistBiz biz;
+	
 	@Test
 	void contextLoads() {
-		List<CustVO> list = null;
+		
 		try {
-			list= biz.get();
-			
+			biz.remove(3004);
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}
-		for (CustVO uv : list) {
-			System.out.println(uv);
-		}
 	}
-
 }

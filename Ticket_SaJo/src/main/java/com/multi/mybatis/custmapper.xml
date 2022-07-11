@@ -14,15 +14,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex})
 	</insert>
 	<update id="update" parameterType="custVO">
-		UPDATE cust SET pwd=#{pwd},name=#{name}, birth=#{birth}, point=#{point},sex=#{sex} WHERE id=#{id}
+		UPDATE cust SET pwd=#{pwd},name=#{name},birth=#{birth},point=#{point},sex=#{sex} WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="custVO">
 		DELETE FROM cust WHERE id=#{id}
 	</delete>
 </mapper>
-
-
-
-
-
-
