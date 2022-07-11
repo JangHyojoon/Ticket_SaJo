@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.SchedulesMapper">
+	
+	<select id="select" parameterType="int" resultType="schedulesVO">
+		SELECT * FROM schedules WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="schedulesVO">
+		SELECT * FROM schedules
+	</select>
+	<insert id="insert" parameterType="schedulesVO">
+		INSERT INTO schedules VALUES (NULL,#{tid},#{mid},#{sdate})
+	</insert>
+	<update id="update" parameterType="schedulesVO">
+		UPDATE schedules SET tid=#{tid},mid=#{mid},sdate=#{sdate} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="schedulesVO">
+		DELETE FROM schedules WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
