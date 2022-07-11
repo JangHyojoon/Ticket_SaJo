@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.MovieMapper">
+	
+	<select id="select" parameterType="Integer" resultType="movieVO">
+		SELECT * FROM movie WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="movieVO">
+		SELECT * FROM movie
+	</select>
+	<insert id="insert" parameterType="movieVO">
+		INSERT INTO movie VALUES (#{id},#{gid},#{title},#{director},#{mainactor},#{releasedate},#{posterimg1},#{posterimg2},#{country},#{runningtime},#{text})
+	</insert>
+	<update id="update" parameterType="movieVO">
+		UPDATE movie SET gid=#{gid},title=#{title}, director=#{director}, mainactor=#{mainactor},releasedate=#{releasedate},posterimg1=#{posterimg1},posterimg2=#{posterimg2},country=#{country},runningtime=#{runningtime},text=#{text} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="movieVO">
+		DELETE FROM movie WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+

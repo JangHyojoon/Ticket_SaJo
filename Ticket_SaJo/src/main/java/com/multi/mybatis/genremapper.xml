@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.GenreMapper">
+	
+	<select id="select" parameterType="Integer" resultType="genreVO">
+		SELECT * FROM genre WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="genreVO">
+		SELECT * FROM genre
+	</select>
+	<insert id="insert" parameterType="genreVO">
+		<if test="tid != 0">
+			INSERT INTO genre VALUES (#{id},#{name},#{tid})
+		</if>
+		<if test="tid == 0">
+			INSERT INTO genre VALUES (#{id},#{name},null)
+		</if>
+	</insert>
+	<update id="update" parameterType="genreVO">
+		<if test="tid != 0">
+			UPDATE genre SET name=#{name},tid=#{tid} WHERE id=#{id}
+		</if>
+		<if test="tid ==0">
+			UPDATE genre SET name=#{name} WHERE id=#{id}
+		</if>
+	</update>
+	<delete id="delete" parameterType="genreVO">
+		DELETE FROM genre WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
