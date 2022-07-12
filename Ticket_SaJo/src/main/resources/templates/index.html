@@ -60,8 +60,7 @@
 		
 		<!-- Footer End -->
     </div>
-
-    <!-- open/close -->
+<!-- open/close -->
         <div class="overlay overlay-hugeinc">
             
             <section class="container">
@@ -80,7 +79,7 @@
                         <p class="login__tracker">or</p>
                         
                         <div class="field-wrap">
-                        <input type='email' placeholder='Email' name='user-email' class="login__input">
+                        <input type='text' placeholder='Id' name='user-id' class="login__input">
                         <input type='password' placeholder='Password' name='user-password' class="login__input">
 
                         <input type='checkbox' id='#informed' class='login__check styled'>
@@ -88,7 +87,7 @@
                          </div>
                         
                         <div class="login__control">
-                            <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
+                            <button id="signinbtn" class="btn btn-md btn--warning btn--wider">sign in</button>
                             <a href="#" class="login__tracker form__tracker">Forgot password?</a>
                         </div>
                     </form>
@@ -96,6 +95,7 @@
 
             </section>
         </div>
+
 
 	<!-- JavaScript-->
         <!-- jQuery 3.1.1--> 
@@ -143,7 +143,7 @@
               $(document).ready(function() {
                 init_Home();
               });
-		    </script>
+	  </script>
 
 </body>
 </html>
