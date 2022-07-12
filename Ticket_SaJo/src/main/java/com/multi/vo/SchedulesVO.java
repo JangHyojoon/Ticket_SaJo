@@ -18,9 +18,21 @@ public class SchedulesVO {
 	private int mid;
 	private Date sdate;
 	
+	private String title;
+	private String posterimg1;
+	private String posterimg2;
+	private String runningtime;
 	
 	public SchedulesVO(int tid, int mid, Date sdate) {
 		super();
+		this.tid = tid;
+		this.mid = mid;
+		this.sdate = sdate;
+	}
+
+	public SchedulesVO(int id, int tid, int mid, Date sdate) {
+		super();
+		this.id = id;
 		this.tid = tid;
 		this.mid = mid;
 		this.sdate = sdate;
