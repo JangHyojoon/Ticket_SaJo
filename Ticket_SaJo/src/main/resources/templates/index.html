@@ -1,145 +1,171 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<!-- Basic Page Needs -->
-        <meta charset="utf-8">
-        <title>AMovie</title>
-        <meta name="description" content="A Template by Gozha.net">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Gozha.net">
-    
-    <!-- Mobile Specific Metas-->
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="telephone=no" name="format-detection">
-    
-    <!-- Fonts -->
-        <!-- Font awesome - icon font -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Roboto -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
-        <!-- Open Sans -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
-    
-    <!-- Stylesheets -->
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>Ticket Sa Jo </title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
 
-        <!-- Mobile menu -->
-        <link href="/css/gozha-nav.css" rel="stylesheet" />
-        <!-- Select -->
-        <link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
 
-        <!-- Slider Revolution CSS Files -->
-        <link rel="stylesheet" type="text/css" href="/revolution/css/settings.css">
-        <link rel="stylesheet" type="text/css" href="/revolution/css/layers.css">
-        <link rel="stylesheet" type="text/css" href="/revolution/css/navigation.css">
-    
-        <!-- Custom -->
-        <link href="/css/style.css?v=1" rel="stylesheet" />
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700'
+	rel='stylesheet' type='text/css'>
+<!-- Open Sans -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic'
+	rel='stylesheet' type='text/css'>
+
+<!-- Stylesheets -->
+
+<!-- Mobile menu -->
+<link href="/css/gozha-nav.css" rel="stylesheet" />
+<!-- Select -->
+<link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
+
+<!-- Slider Revolution CSS Files -->
+<link rel="stylesheet" type="text/css"
+	href="/revolution/css/settings.css">
+<link rel="stylesheet" type="text/css" href="/revolution/css/layers.css">
+<link rel="stylesheet" type="text/css"
+	href="/revolution/css/navigation.css">
+
+<!-- Custom -->
+<link href="/css/style.css?v=1" rel="stylesheet" />
 
 
-        <!-- Modernizr --> 
-        <script src="/js/external/modernizr.custom.js"></script>
-    
-    
+<!-- Modernizr -->
+<script src="/js/external/modernizr.custom.js"></script>
+
+
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- Header start -->
-			<div th:insert="${header} ? ${header} : header"></div>
-		
+	<div class="wrapper">
+		<!-- Header start -->
+		<div th:insert="${header} ? ${header} : header"></div>
+
 		<!-- Header End -->
 
-        <!-- Center start -->
-			<div th:insert="${center} ? ${center} : center"></div>
-		
+		<!-- Center start -->
+		<div th:insert="${center} ? ${center} : center"></div>
+
 		<!-- Center End -->
-        
-        <div class="clearfix"></div>
+
+		<div class="clearfix"></div>
 		<!-- Footer start -->
-			<div th:insert="${footer} ? ${footer} : footer"></div>
-		
+		<div th:insert="${footer} ? ${footer} : footer"></div>
+
 		<!-- Footer End -->
-    </div>
+	</div>
 
-    <!-- open/close -->
-        <div class="overlay overlay-hugeinc">
-            
-            <section class="container">
+	<!-- open/close -->
+	<div class="overlay overlay-hugeinc">
 
-                <div class="col-sm-4 col-sm-offset-4">
-                    <button type="button" class="overlay-close">Close</button>
-                    <form id="login-form" class="login" method='get' novalidate=''>
-                        <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
+		<section class="container">
 
-                        <div class="social social--colored">
-                                <a href='#' class="social__variant fa fa-facebook"></a>
-                                <a href='#' class="social__variant fa fa-twitter"></a>
-                                <a href='#' class="social__variant fa fa-tumblr"></a>
-                        </div>
+			<div class="col-sm-4 col-sm-offset-4">
+				<button type="button" class="overlay-close">Close</button>
+				<form id="login-form" class="login" method='get' novalidate=''>
+					<p class="login__title">
+						sign in <br>
+						<span class="login-edition">welcome to A.Movie</span>
+					</p>
 
-                        <p class="login__tracker">or</p>
-                        
-                        <div class="field-wrap">
-                        <input type='email' placeholder='Email' name='user-email' class="login__input">
-                        <input type='password' placeholder='Password' name='user-password' class="login__input">
+					<div class="social social--colored">
+						<a href='#' class="social__variant fa fa-facebook"></a> <a
+							href='#' class="social__variant fa fa-twitter"></a> <a href='#'
+							class="social__variant fa fa-tumblr"></a>
+					</div>
 
-                        <input type='checkbox' id='#informed' class='login__check styled'>
-                        <label for='#informed' class='login__check-info'>remember me</label>
-                         </div>
-                        
-                        <div class="login__control">
-                            <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
-                            <a href="#" class="login__tracker form__tracker">Forgot password?</a>
-                        </div>
-                    </form>
-                </div>
+					<p class="login__tracker">or</p>
 
-            </section>
-        </div>
+					<div class="field-wrap">
+						<input type='email' placeholder='Email' name='user-email'
+							class="login__input"> <input type='password'
+							placeholder='Password' name='user-password' class="login__input">
+
+						<input type='checkbox' id='#informed' class='login__check styled'>
+						<label for='#informed' class='login__check-info'>remember
+							me</label>
+					</div>
+
+					<div class="login__control">
+						<button type='submit' class="btn btn-md btn--warning btn--wider">sign
+							in</button>
+						<a href="#" class="login__tracker form__tracker">Forgot
+							password?</a>
+					</div>
+				</form>
+			</div>
+
+		</section>
+	</div>
 
 	<!-- JavaScript-->
-        <!-- jQuery 3.1.1--> 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
-        <!-- Migrate --> 
-        <script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
-        <!-- Bootstrap 3--> 
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
+	<!-- Migrate -->
+	<script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
+	<!-- Bootstrap 3-->
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-        <!-- Slider Revolution core JavaScript files -->
-        <script type="text/javascript" src="/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<!-- Slider Revolution core JavaScript files -->
+	<script type="text/javascript"
+		src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-        <!-- Slider Revolution extension scripts. --> 
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script type="text/javascript" src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- Slider Revolution extension scripts. -->
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
-        <!-- Mobile menu -->
-        <script src="/js/jquery.mobile.menu.js"></script>
-         <!-- Select -->
-        <script src="/js/external/jquery.selectbox-0.2.min.js"></script>
-        <!-- Stars rate -->
-        <script src="/js/external/jquery.raty.js"></script>
-        
-        <!-- Form element -->
-        <script src="/js/external/form-element.js"></script>
-        <!-- Form validation -->
-        <script src="/js/form.js"></script>
+	<!-- Mobile menu -->
+	<script src="/js/jquery.mobile.menu.js"></script>
+	<!-- Select -->
+	<script src="/js/external/jquery.selectbox-0.2.min.js"></script>
+	<!-- Stars rate -->
+	<script src="/js/external/jquery.raty.js"></script>
 
-        <!-- Twitter feed -->
-        <script src="/js/external/twitterfeed.js"></script>
+	<!-- Form element -->
+	<script src="/js/external/form-element.js"></script>
+	<!-- Form validation -->
+	<script src="/js/form.js"></script>
 
-        <!-- Custom -->
-        <script src="/js/custom.js"></script>
-		
-	      <script type="text/javascript">
+	<!-- Twitter feed -->
+	<script src="/js/external/twitterfeed.js"></script>
+
+	<!-- Custom -->
+	<script src="/js/custom.js"></script>
+
+	<script type="text/javascript">
               $(document).ready(function() {
                 init_Home();
               });
