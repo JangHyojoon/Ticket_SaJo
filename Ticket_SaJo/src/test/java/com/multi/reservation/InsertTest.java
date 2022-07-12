@@ -16,7 +16,7 @@ class InsertTest {
 	@Test
 	void contextLoads() {
 		
-		ReservationVO v = new ReservationVO(4001,"kms",1,10000,9000);
+		ReservationVO v = new ReservationVO("jhj",1,10000,9000);
 		try {
 			biz.register(v);
 			System.out.println("insert ok... ");

@@ -1,19 +1,19 @@
-package com.multi.detail_reservation;
+package com.multi.ticket;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.Detail_reservationBiz;
-import com.multi.vo.Detail_reservationVO;
+import com.multi.biz.TicketBiz;
+import com.multi.vo.TicketVO;
 
 @SpringBootTest
 class SelectTest {
 	@Autowired
-	Detail_reservationBiz biz;
+	TicketBiz biz;
 	@Test
 	void contextLoads() {
-		Detail_reservationVO v = null;
+		TicketVO v = null;
 		try {
 			v = biz.get(4005);
 			System.out.println(v);
