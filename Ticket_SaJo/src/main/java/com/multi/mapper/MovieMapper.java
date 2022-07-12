@@ -15,5 +15,6 @@ public interface MovieMapper {
 	public void update(MovieVO movie) throws Exception;
 	public MovieVO select(int id) throws Exception;
 	public List<MovieVO	> selectall() throws Exception;
-
+	//김민식 추가
+	public List<MovieVO> selectstar() throws Exception;
 }

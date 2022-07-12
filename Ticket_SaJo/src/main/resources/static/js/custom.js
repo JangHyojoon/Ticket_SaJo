@@ -359,8 +359,9 @@ function init_BookingOne() {
     //3. Swiper slider
     //init employee sliders
                 var mySwiper = new Swiper('.swiper-container',{
-                    slidesPerView:10,
-                    loop:true
+                    slidesPerView:5,
+                    loop:false
+             
                   });
 
                 $('.swiper-slide-active').css({'marginLeft':'-2px'});

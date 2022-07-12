@@ -5,16 +5,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.Detail_SchedulesMapper">
 	
 	<select id="selectone" parameterType="int" resultType="detail_schedulesVO">
-		SELECT * FROM detail_schedules WHERE sid=#{sid} AND mcnt=#{mcnt}
+		select ds.sid, ds.mcnt, ds.starttime, ds.endtime, s.tid, s.mid, s.sdate from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		WHERE sid=#{sid} AND mcnt=#{mcnt}
 	</select>
 	<select id="selectall" resultType="detail_schedulesVO">
-		SELECT * FROM detail_schedules
+		select ds.sid, ds.mcnt, ds.starttime, ds.endtime, s.tid, s.mid, s.sdate from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
 	</select>
 	<select id="selectsid" resultType="detail_schedulesVO">
-		SELECT * FROM detail_schedules WHERE sid=#{sid}
+		select ds.sid, ds.mcnt, ds.starttime, ds.endtime, s.tid, s.mid, s.sdate from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id		
+		WHERE sid=#{sid}
 	</select>
 	<select id="selectmcnt" resultType="detail_schedulesVO">
-		SELECT * FROM detail_schedules WHERE mcnt=#{mcnt}
+		select ds.sid, ds.mcnt, ds.starttime, ds.endtime, s.tid, s.mid, s.sdate from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		WHERE mcnt=#{mcnt}
 	</select>
 	<insert id="insert" parameterType="detail_schedulesVO">
 		INSERT INTO detail_schedules VALUES (#{sid},#{mcnt},#{starttime},#{endtime})

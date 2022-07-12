@@ -16,7 +16,7 @@ class UpdateTest {
 	@Test
 	void contextLoads()  {
 		
-	PointlistVO pl = new PointlistVO(3005, "hms", 4000, "2021-02-04", "쿠폰6");
+	PointlistVO pl = new PointlistVO(3005, "hms", 4000, "2021-03-04", "쿠폰6");
 		try {
 			biz.modify(pl);
 		} catch (Exception e) {
