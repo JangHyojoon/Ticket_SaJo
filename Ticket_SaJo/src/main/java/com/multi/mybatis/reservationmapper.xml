@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM reservation
 	</select>
 	<insert id="insert" parameterType="reservationVO">
-		INSERT INTO reservation VALUES (NULL,#{rid},#{uid},#{pcnt},#{price},#{totalprice})
+		INSERT INTO reservation VALUES (NULL,#{uid},#{pcnt},#{price},#{totalprice})
 	</insert>
 	<update id="update" parameterType="reservationVO">
-		UPDATE reservation SET rid=#{rid},uid=#{uid}, pcnt=#{pcnt}, price=#{price}, totalprice=#{totalprice} WHERE id=#{id}
+		UPDATE reservation SET uid=#{uid}, pcnt=#{pcnt}, price=#{price}, totalprice=#{totalprice} WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="reservationVO">
 		DELETE FROM reservation WHERE id=#{id}

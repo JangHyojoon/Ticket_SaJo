@@ -1,4 +1,4 @@
-package com.multi.detail_reservation;
+package com.multi.ticket;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.Detail_reservationBiz;
-import com.multi.vo.Detail_reservationVO;
+import com.multi.biz.TicketBiz;
+import com.multi.vo.TicketVO;
 
 @SpringBootTest
 class SelectAllTest {
 	@Autowired
-	Detail_reservationBiz biz;
+	TicketBiz biz;
 	@Test
 	void contextLoads() {
-		List<Detail_reservationVO> list = null;
+		List<TicketVO> list = null;
 		try {
 			list= biz.get();
 			
@@ -23,7 +23,7 @@ class SelectAllTest {
 			
 			e.printStackTrace();
 		}
-		for (Detail_reservationVO uv : list) {
+		for (TicketVO uv : list) {
 			System.out.println(uv);
 		}
 	}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.TicketMapper">
+	
+	<select id="select" parameterType="Integer" resultType="ticketVO">
+		SELECT * FROM ticket WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="ticketVO">
+		SELECT * FROM ticket
+	</select>
+	<insert id="insert" parameterType="ticketVO">
+		INSERT INTO ticket VALUES (#{id},#{sid},#{rid},sysdate(),#{mcnt},#{seatid})
+	</insert>
+	<update id="update" parameterType="ticketVO">
+		UPDATE ticket SET sid=#{sid},rid=#{rid}, mcnt=#{mcnt}, seatid=#{seatid} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="ticketVO">
+		DELETE FROM ticket WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+

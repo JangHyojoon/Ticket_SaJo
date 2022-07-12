@@ -13,7 +13,7 @@ class UpdateTest {
 	ReservationBiz biz;
 	@Test
 	void contextLoads()  {
-	ReservationVO v = new ReservationVO(6006,4001,"kms",2,20000,19000);
+	ReservationVO v = new ReservationVO(6005,"kms",2,20000,19000);
 		try {
 			biz.modify(v);
 			System.out.println("update success... ");

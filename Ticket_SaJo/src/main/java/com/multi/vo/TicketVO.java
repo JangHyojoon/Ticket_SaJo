@@ -12,23 +12,38 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Detail_reservationVO {
+public class TicketVO {
 	private int id;
 	private int sid;
+	private int rid;
 	private Date purchasedate;
 	private int mcnt;
 	private String seatid;
-	public Detail_reservationVO(int sid, int mcnt, String seatid) {
+	public TicketVO(int sid, int rid, Date purchasedate, int mcnt, String seatid) {
+		super();
 		this.sid = sid;
+		this.rid = rid;
+		this.purchasedate = purchasedate;
 		this.mcnt = mcnt;
 		this.seatid = seatid;
 	}
-	public Detail_reservationVO(int id, int sid, int mcnt, String seatid) {
+	public TicketVO(int id, int sid, int rid, int mcnt, String seatid) {
+		super();
 		this.id = id;
 		this.sid = sid;
+		this.rid = rid;
 		this.mcnt = mcnt;
 		this.seatid = seatid;
 	}
+	public TicketVO(int sid, int rid, int mcnt, String seatid) {
+		super();
+		this.sid = sid;
+		this.rid = rid;
+		this.mcnt = mcnt;
+		this.seatid = seatid;
+	}
+
+	
 	
 	
 }

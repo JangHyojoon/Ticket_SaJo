@@ -123,25 +123,11 @@ CREATE TABLE detail_schedules(
 ALTER TABLE detail_schedules ADD CONSTRAINT FOREIGN KEY(sid) REFERENCES schedules(id);
 ALTER TABLE detail_schedules ADD CONSTRAINT PRIMARY KEY(sid,mcnt);
 
- -- detail_reservation
-CREATE TABLE detail_reservation(
-	id INT,
-    sid INT,
-    purchasedate DATE,
-    mcnt INT,
-    seatid VARCHAR(10)
-);
-ALTER TABLE detail_reservation ADD CONSTRAINT PRIMARY KEY(id);
-
-ALTER TABLE detail_reservation MODIFY id INT AUTO_INCREMENT;
-ALTER TABLE detail_reservation AUTO_INCREMENT = 4000;
-ALTER TABLE detail_reservation ADD CONSTRAINT FOREIGN KEY (sid) REFERENCES schedules (id);
-
 
 -- reservation 
 CREATE TABLE reservation(
     id INT, -- 결제번호
-    rid INT, -- 예약번호
+
     uid VARCHAR(100), -- 아이디 
     pcnt INT, -- 인원수
     price INT, -- 예매금액
@@ -151,7 +137,25 @@ ALTER TABLE reservation ADD CONSTRAINT PRIMARY KEY(id);
 ALTER TABLE reservation MODIFY id INT AUTO_INCREMENT;
 ALTER TABLE reservation AUTO_INCREMENT = 6000;
 ALTER TABLE reservation ADD CONSTRAINT FOREIGN KEY (uid) REFERENCES cust(id);
-ALTER TABLE reservation ADD CONSTRAINT FOREIGN KEY (rid) REFERENCES detail_reservation(id);
+
+
+ -- Ticket
+CREATE TABLE ticket(
+	id INT,
+    sid INT,
+    rid INT,
+    purchasedate DATE,
+    mcnt INT,
+    seatid VARCHAR(10)
+);
+ALTER TABLE ticket ADD CONSTRAINT PRIMARY KEY(id);
+
+ALTER TABLE ticket MODIFY id INT AUTO_INCREMENT;
+ALTER TABLE ticket AUTO_INCREMENT = 4000;
+ALTER TABLE ticket ADD CONSTRAINT FOREIGN KEY (sid) REFERENCES schedules (id);
+ALTER TABLE ticket ADD CONSTRAINT FOREIGN KEY (rid) REFERENCES reservation (id);
+
+
 
 -- coupon
 CREATE TABLE coupon(
@@ -175,5 +179,3 @@ ALTER TABLE mycoupon AUTO_INCREMENT = 7000;
 ALTER TABLE mycoupon ADD CONSTRAINT FOREIGN KEY (uid) REFERENCES cust (id);
 ALTER TABLE mycoupon ADD CONSTRAINT FOREIGN KEY (cid) REFERENCES coupon (id);
 
-
-    
