@@ -24,9 +24,11 @@ public class MovieVO {
 	private String country;
 	private String runningtime;
 	private String text;
-	//김민식 추가
+
 	private String gname;
 	private double star;
+	private int hgid;
+
 	
 	public MovieVO(int gid, String title, String director, String mainactor, Date releasedate, String posterimg1,
 			String posterimg2, String country, String runningtime, String text) {
@@ -41,7 +43,30 @@ public class MovieVO {
 		this.runningtime = runningtime;
 		this.text = text;
 	}
-	//김민식 추가
+
+
+//	// 0712 안원영 추가 - 생성자 14개 -> 필드 더 추가될 경우 사용 
+//	public MovieVO(int id, int gid, String title, String director, String mainactor, Date releasedate,
+//			String posterimg1, String posterimg2, String country, String runningtime, String text, String gname,
+//			int hgid, double star) {
+//		super();
+//		this.id = id;
+//		this.gid = gid;
+//		this.title = title;
+//		this.director = director;
+//		this.mainactor = mainactor;
+//		this.releasedate = releasedate;
+//		this.posterimg1 = posterimg1;
+//		this.posterimg2 = posterimg2;
+//		this.country = country;
+//		this.runningtime = runningtime;
+//		this.text = text;
+//		this.gname = gname;
+//		this.hgid = hgid;
+//		this.star = star;
+//	}
+
+
 	public MovieVO(int id, int gid, String title, String director, String mainactor, Date releasedate,
 			String posterimg1, String posterimg2, String country, String runningtime, String text) {
 		this.id = id;
@@ -56,5 +81,6 @@ public class MovieVO {
 		this.runningtime = runningtime;
 		this.text = text;
 	}
+
 	
 }

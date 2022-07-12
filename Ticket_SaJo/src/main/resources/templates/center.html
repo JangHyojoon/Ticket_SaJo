@@ -1,21 +1,38 @@
-<!-- Slider -->
-        <div class="bannercontainer rev_slider_wrapper">
- 
-            <!-- the ID here will be used in the JavaScript below to initialize the slider -->
-            <div id="rev_slider_1" class="banner rev_slider" style="display:none">
- 
-                <!-- BEGIN SLIDES LIST -->
-                <ul>
-                    <!-- SLIDE 1 -->
-                    <li data-transition="fade" class="slide" data-title='Rush.'>
- 
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="/images/slides/first-slide.jpg">
+<meta charset="UTF-8">
+<script>
+function filter(e,c){
+	var input = $('#search-input').val();
+	//alert(input)
+	e.href = "search" + c + '?' + input //127.0.0.1//search... 로 보냄 
 
-                        <div class="tp-caption slide__name margin-slider" 
-                             data-x="right" 
-                             data-y="80"
-                             data-frames='[{
+}
+
+$(document).ready(function(){
+	
+
+});
+
+
+</script>
+
+
+
+<!-- Slider -->
+<div class="bannercontainer rev_slider_wrapper">
+
+	<!-- the ID here will be used in the JavaScript below to initialize the slider -->
+	<div id="rev_slider_1" class="banner rev_slider" style="display: none">
+
+		<!-- BEGIN SLIDES LIST -->
+		<ul>
+			<!-- SLIDE 1 -->
+			<li data-transition="fade" class="slide" data-title='Rush.'>
+				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+				alt='' src="/images/slides/windimg1.jpg">
+
+				<div class="tp-caption slide__name margin-slider" data-x="right"
+					data-y="80"
+					data-frames='[{
                                "delay":300,
                                "split":"chars",
                                "splitdelay":0.1,
@@ -32,14 +49,13 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            Jeong
-                        </div>
+           					Gone <span class="highlight">With</span> The <span
+						class="highlight">Wind.</span>
+					   </div>
 
-                        <div class="tp-caption n slide__time margin-slider" 
-                            data-x="right" 
-                            data-hoffset='250' 
-                            data-y="186" 
-                            data-frames='[{
+				<div class="tp-caption n slide__time margin-slider" data-x="right"
+					data-hoffset='100' data-y="186"
+					data-frames='[{
                                "delay":1200,
                                "speed":300,
                                "frame":"0",
@@ -53,14 +69,11 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            From
-                        </div>
+					Come Out</div>
 
-                        <div class="tp-caption  slide__date margin-slider" 
-                             data-x="right" 
-                             data-hoffset='149' 
-                             data-y="186" 
-                             data-frames='[{
+				<div class="tp-caption  slide__date margin-slider" data-x="right"
+					data-hoffset='40' data-y="186"
+					data-frames='[{
                                "delay":1700,
                                "speed":500,
                                "frame":"0",
@@ -74,13 +87,9 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             October 18
-                        </div>
-                        <div class="tp-caption slide__time margin-slider" 
-                             data-x="right" 
-                             data-hoffset='120' 
-                             data-y="186" 
-                             data-frames='[{
+					1939</div> <!-- 				<div class="tp-caption slide__time margin-slider" data-x="right"
+					data-hoffset='120' data-y="186"
+					data-frames='[{
                                "delay":1200,
                                "speed":300,
                                "frame":"0",
@@ -94,12 +103,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             till
-                        </div>
-                        <div class="tp-caption slide__date margin-slider" 
-                             data-x="right" 
-                             data-y="186" 
-                             data-frames='[{
+					till</div>
+				<div class="tp-caption slide__date margin-slider" data-x="right"
+					data-y="186"
+					data-frames='[{
                                "delay":1700,
                                "speed":500,
                                "frame":"0",
@@ -113,12 +120,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             November 01
-                        </div>
-                        <div class="tp-caption slide__text margin-slider text-right" 
-                             data-x="right" 
-                             data-y="250"
-                             data-frames='[{
+					November 01</div> -->
+				<div class="tp-caption slide__text margin-slider text-right"
+					data-x="right" data-y="250"
+					data-frames='[{
                                "delay":2300,
                                "speed":400,
                                "frame":"0",
@@ -132,12 +137,12 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             Two-time Academy Award winner Ron Howard, teams once again with fellow two-time Academy<br> Award nominee, writer Peter Morgan , on Rush, a spectacular big-screen re-creation of the merciless<br> 1970s rivalry between James Hunt and Niki Lauda
-                        </div>
-                        <div class="tp-caption margin-slider" 
-                             data-x="right" 
-                             data-y="324"
-                             data-frames='[{
+
+					남북전쟁 발발. 삶의 모든 것을 뜨겁게 사랑했던 여자 스칼렛<br> 그런 그녀를 운명처럼 사랑했던 남자 레트<br>
+					생애 가장 가슴 벅찬 클래식 로맨스가 찾아온다!<br>
+				</div>
+				<div class="tp-caption margin-slider" data-x="right" data-y="324"
+					data-frames='[{
                                "delay":2600,
                                "speed":400,
                                "frame":"0",
@@ -151,41 +156,26 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             <a href="#" class="slide__link">check out cinemas &amp; time</a>
-                        </div>
- 
-                    </li>
- 
-                    <!-- SLIDE 2 -->
-                    <li data-transition="fade" class="slide" data-title='Travel worldwide. Create trip film.'>
- 
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="/images/bg-video.jpg">
-                        <div class="rs-background-video-layer" 
-                             data-forcerewind="on" 
-                             data-volume="mute" 
-                             data-videowidth="100%" 
-                             data-videoheight="100%" 
-                             data-videomp4="video/TravelIs.mp4" 
-                             data-videopreload="auto" 
-                             data-videoloop="loop" 
-                             data-forceCover="1" 
-                             data-aspectratio="16:9" 
-                             data-autoplay="true" 
-                             data-autoplayonlyfirsttime="false" 
-                        ></div>
-                        <div class="tp-caption slide__name slide__name--smaller" 
-                             data-x="center" 
-                             data-y="160" 
+					<a href="#" class="slide__link">check out cinemas &amp; time</a>
+				</div>
 
-                             data-splitin="chars"
-                             data-elementdelay="0.1"
+			</li>
 
-                             data-speed="700" 
-                             data-start="1400" 
-                             data-easing="easeOutBack"
-
-                             data-frames='[{
+			<!-- SLIDE 2 -->
+			<li data-transition="fade" class="slide"
+				data-title='Travel worldwide. Create trip film.'>
+				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+				alt='' src="/images/bg-video.jpg">
+				<div class="rs-background-video-layer" data-forcerewind="on"
+					data-volume="mute" data-videowidth="100%" data-videoheight="100%"
+					data-videomp4="video/The Wizard of Oz.mp4" data-videopreload="auto"
+					data-videoloop="loop" data-forceCover="1" data-aspectratio="16:9"
+					data-autoplay="true" data-autoplayonlyfirsttime="false"></div>
+				<div class="tp-caption slide__name slide__name--smaller"
+					data-x="center" data-y="160" data-splitin="chars"
+					data-elementdelay="0.1" data-speed="700" data-start="1400"
+					data-easing="easeOutBack"
+					data-frames='[{
                                "delay":1400,
                                "speed":700,
                                "split":"chars",
@@ -201,13 +191,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            Travel, Admire, Remember.
-                        </div>
-                        <div class="tp-caption slide__time" 
-                             data-x="center"
-                             data-hoffset='-115' 
-                             data-y="242" 
-                             data-frames='[{
+					The Wizard of Oz.</div>
+				<div class="tp-caption slide__time" data-x="center"
+					data-hoffset='-30' data-y="242"
+					data-frames='[{
                                "delay":1800,
                                "speed":300,
                                "frame":"0",
@@ -221,13 +208,11 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             From
-                        </div>
-                        <div class="tp-caption slide__date position-center postion-place--two lfb ltb" 
-                             data-x="center"                              
-                             data-hoffset='-50'                                       
-                             data-y="242" 
-                             data-frames='[{
+					Come Out</div>
+				<div
+					class="tp-caption slide__date position-center postion-place--two lfb ltb"
+					data-x="center" data-hoffset='50' data-y="242"
+					data-frames='[{
                                "delay":2200,
                                "speed":500,
                                "frame":"0",
@@ -241,13 +226,9 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             April 18 
-                        </div>
-                        <div class="tp-caption slide__time" 
-                             data-x="center" 
-                             data-hoffset='5' 
-                             data-y="242" 
-                             data-frames='[{
+					1939</div> <!-- 				<div class="tp-caption slide__time" data-x="center" data-hoffset='5'
+					data-y="242"
+					data-frames='[{
                                "delay":1800,
                                "speed":300,
                                "frame":"0",
@@ -261,13 +242,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             - till
-                        </div>
-                        <div class="tp-caption slide__date" 
-                             data-x="center"                              
-                             data-hoffset='60'
-                             data-y="242" 
-                             data-frames='[{
+					- till</div>
+				<div class="tp-caption slide__date" data-x="center"
+					data-hoffset='60' data-y="242"
+					data-frames='[{
                                "delay":2200,
                                "speed":500,
                                "frame":"0",
@@ -281,13 +259,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             May 01
-                        </div>
+					May 01</div> -->
 
-                        <div class="tp-caption slider-wrap-btn" 
-                             data-x="center"
-                             data-y="310" 
-                             data-frames='[{
+				<div class="tp-caption slider-wrap-btn" data-x="center" data-y="310"
+					data-frames='[{
                                "delay":2800,
                                "speed":400,
                                "frame":"0",
@@ -301,19 +276,20 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                             <a href="#" class="btn btn-md btn--danger btn--wide slider--btn">learn more</a>
-                        </div>
-                    </li>
+					<a href="#" class="btn btn-md btn--danger btn--wide slider--btn">learn
+						more</a>
+				</div>
+			</li>
 
-                    <!-- SLIDE 3 -->
-                    <li data-transition="fade" class="slide" data-title='Stop wishing. Start doing.'>
- 
-                        <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
-                        <img class="rev-slidebg" alt='' src="/images/slides/next-slide.jpg">
-                        <div class="tp-caption slide__name slide__name--smaller slide__name--specific" 
-                          data-x="center" 
-                          data-y="160" 
-                          data-frames='[{
+			<!-- SLIDE 3 -->
+			<li data-transition="fade" class="slide"
+				data-title='Stop wishing. Start doing.'>
+				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+				alt='' src="/images/slides/사이코.jpg">
+				<div
+					class="tp-caption slide__name slide__name--smaller slide__name--specific"
+					data-x="center" data-y="160"
+					data-frames='[{
                                "delay":1400,
                                "speed":700,
                                "frame":"0",
@@ -328,13 +304,11 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            Stop <span class="highlight">wishing.</span> Start <span class="highlight">doing.</span> 
-                        </div>
+					사이코
+				</div>
 
-                        <div class="tp-caption slide__descript" 
-                            data-x="center" 
-                            data-y="240"
-                            data-frames='[{
+				<div class="tp-caption slide__descript" data-x="center" data-y="240"
+					data-frames='[{
                                "delay":2000,
                                "speed":500,
                                "frame":"0",
@@ -349,13 +323,10 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            find your best match movie with A.MOVIE
-                        </div>
+					Come Out 1960</div>
 
-                        <div class="tp-caption slider-wrap-btn" 
-                            data-x="center" 
-                            data-y="310" 
-                            data-frames='[{
+				<div class="tp-caption slider-wrap-btn" data-x="center" data-y="310"
+					data-frames='[{
                                "delay":2500,
                                "speed":500,
                                "frame":"0",
@@ -370,505 +341,574 @@
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-                            <a href="#" class="btn btn-md btn--danger slider--btn">check out movies</a>
-                        </div>
-                    </li>
-
- 
-                </ul><!-- END SLIDES LIST -->
- 
-            </div><!-- END SLIDER CONTAINER -->
- 
-        </div><!-- END SLIDER CONTAINER WRAPPER -->
-        <!--end slider -->
-        
-        
-        <!-- Main content -->
-        <section class="container">
-            <div class="movie-best">
-                 <div class="col-sm-10 col-sm-offset-1 movie-best__rating">Today Best choice</div>
-                 <div class="col-sm-12 change--col">
-                     <div class="movie-beta__item ">
-                        <img alt='' src="/images/movie/movie-sample1.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item second--item">
-                         <img alt='' src="/images/movie/movie-sample2.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item third--item">
-                         <img alt='' src="/images/movie/movie-sample3.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs">
-                         <img alt='' src="/images/movie/movie-sample4.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs hidden-sm">
-                         <img alt='' src="/images/movie/movie-sample5.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                     <div class="movie-beta__item hidden-xs hidden-sm">
-                         <img alt='' src="/images/movie/movie-sample6.jpg">
-                         <span class="best-rate">5.0</span>
-
-                         <ul class="movie-beta__info">
-                             <li><span class="best-voted">71 people voted today</span></li>
-                             <li>
-                                <p class="movie__time">169 min</p>
-                                <p>Adventure | Drama | Fantasy </p>
-                                <p>38 comments</p>
-                             </li>
-                             <li class="last-block">
-                                 <a href="movie-page-left.html" class="slide__link">more</a>
-                             </li>
-                         </ul>
-                     </div>
-                 </div>
-                <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
-            </div>
-
-            <div class="col-sm-12">
-                <div class="mega-select-present mega-select-top mega-select--full">
-                    <div class="mega-select-marker">
-                        <div class="marker-indecator location">
-                            <p class="select-marker"><span>movie to watch now</span> <br>in your city</p>
-                        </div>
-
-                        <div class="marker-indecator cinema">
-                            <p class="select-marker"><span>find your </span> <br>cinema</p>
-                        </div>
-
-                        <div class="marker-indecator film-category">
-                            <p class="select-marker"><span>find movie due to </span> <br> your mood</p>
-                        </div>
-
-                        <div class="marker-indecator actors">
-                            <p class="select-marker"><span> like particular stars</span> <br>find them</p>
-                        </div>
-
-                        <div class="marker-indecator director">
-                            <p class="select-marker"><span>admire personalities - find </span> <br>by director</p>
-                        </div>
-
-                        <div class="marker-indecator country">
-                            <p class="select-marker"><span>search for movie from certain </span> <br>country?</p>
-                        </div>
-                    </div>
-
-                      <div class="mega-select pull-right">
-                          <span class="mega-select__point">Search by</span>
-                          <ul class="mega-select__sort">
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter filter--active" data-filter='location'>Location</a></li>
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter" data-filter='cinema'>Cinema</a></li>
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter" data-filter='film-category'>Category</a></li>
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter" data-filter='actors'>Actors</a></li>
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter" data-filter='director'>Director</a></li>
-                              <li class="filter-wrap"><a href="#" class="mega-select__filter" data-filter='country'>Country</a></li>
-                          </ul>
-
-                          <input name="search-input" type='text' class="select__field">
-                          
-                          <div class="select__btn">
-                            <a href="#" class="btn btn-md btn--danger location">find <span class="hidden-exrtasm">your city</span></a>
-                            <a href="#" class="btn btn-md btn--danger cinema">find <span class="hidden-exrtasm">suitable cimema</span></a>
-                            <a href="#" class="btn btn-md btn--danger film-category">find <span class="hidden-exrtasm">best category</span></a>
-                            <a href="#" class="btn btn-md btn--danger actors">find <span class="hidden-exrtasm">talented actors</span></a>
-                            <a href="#" class="btn btn-md btn--danger director">find <span class="hidden-exrtasm">favorite director</span></a>
-                            <a href="#" class="btn btn-md btn--danger country">find <span class="hidden-exrtasm">produced country</span></a>
-                          </div>
-
-                          <div class="select__dropdowns">
-                              <ul class="select__group location">
-                                <li class="select__variant" data-value='London'>London</li>
-                                <li class="select__variant" data-value='New York'>New York</li>
-                                <li class="select__variant" data-value='Paris'>Paris</li>
-                                <li class="select__variant" data-value='Berlin'>Berlin</li>
-                                <li class="select__variant" data-value='Moscow'>Moscow</li>
-                                <li class="select__variant" data-value='Minsk'>Minsk</li>
-                                <li class="select__variant" data-value='Warsawa'>Warsawa</li>
-                              </ul>
-
-                              <ul class="select__group cinema">
-                                <li class="select__variant" data-value='Cineworld'>Cineworld</li>
-                                <li class="select__variant" data-value='Empire'>Empire</li>
-                                <li class="select__variant" data-value='Everyman'>Everyman</li>
-                                <li class="select__variant" data-value='Odeon'>Odeon</li>
-                                <li class="select__variant" data-value='Picturehouse'>Picturehouse</li>
-                              </ul>
-
-                              <ul class="select__group film-category">
-                                <li class="select__variant" data-value="Children's">Children's</li>
-                                <li class="select__variant" data-value='Comedy'>Comedy</li>
-                                <li class="select__variant" data-value='Drama'>Drama</li>
-                                <li class="select__variant" data-value='Fantasy'>Fantasy</li>
-                                <li class="select__variant" data-value='Horror'>Horror</li>
-                                <li class="select__variant" data-value='Thriller'>Thriller</li>
-                              </ul>
-
-                              <ul class="select__group actors">
-                                <li class="select__variant" data-value='Leonardo DiCaprio'>Leonardo DiCaprio</li>
-                                <li class="select__variant" data-value='Johnny Depp'>Johnny Depp</li>
-                                <li class="select__variant" data-value='Jack Nicholson'>Jack Nicholson</li>
-                                <li class="select__variant" data-value='Robert De Niro'>Robert De Niro</li>
-                                <li class="select__variant" data-value='Morgan Freeman'>Morgan Freeman</li>
-                                <li class="select__variant" data-value='Jim Carrey'>Jim Carrey</li>
-                                <li class="select__variant" data-value='Adam Sandler'>Adam Sandler</li>
-                                <li class="select__variant" data-value='Ben Stiller'>Ben Stiller</li>
-                              </ul>
-
-                              <ul class="select__group director">
-                                <li class="select__variant" data-value='Steven Spielberg'>Steven Spielberg</li>
-                                <li class="select__variant" data-value='Martin Scorsese'>Martin Scorsese</li>
-                                <li class="select__variant" data-value='Guy Ritchie'>Guy Ritchie</li>
-                                <li class="select__variant" data-value='Christopher Nolan'>Christopher Nolan</li>
-                                <li class="select__variant" data-value='Tim Burton'>Tim Burton</li>
-                              </ul>
-
-                              <ul class="select__group country">
-                                <li class="select__variant" data-value='USA'>USA</li>
-                                <li class="select__variant" data-value='Germany'>Germany</li>
-                                <li class="select__variant" data-value='Australia'>Australia</li>
-                                <li class="select__variant" data-value='UK'>UK</li>
-                                <li class="select__variant" data-value='Japan'>Japan</li>
-                                <li class="select__variant" data-value='Serbia'>Serbia</li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-            </div>
-            
-            <div class="clearfix"></div>
-
-            <h2 id='target' class="page-heading heading--outcontainer">Now in the cinema</h2>
-
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                        <img alt='' src="/images/movie/movie-time8.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Gravity (2013)  </a>
-
-                                    <p class="movie__time">91 min</p>
-
-                                    <p class="movie__option"><a href="#">Sci-Fi</a> | <a href="#">Thriller</a> | <a href="#">Drama</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.1</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time1.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Hobbit: The Desolation of Smaug (2013)  </a>
-
-                                    <p class="movie__time">169 min</p>
-
-                                    <p class="movie__option"><a href="#">Adventure</a> | <a href="#">Fantasy</a> | <a href="#">Drama</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time9.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Hunger Games: Catching Fire (2013)   </a>
-
-                                    <p class="movie__time">146 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Sci-Fi</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.9</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time10.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Thor: The Dark World (2013) </a>
-
-                                    <p class="movie__time">112 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Fantasy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time11.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">World War Z (2013)  </a>
-
-                                    <p class="movie__time">116 min</p>
-
-                                    <p class="movie__option"><a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Horror</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.1</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--left">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time12.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">Prisoners (2013) </a>
-
-                                    <p class="movie__time">153 min</p>
-
-                                    <p class="movie__option"><a href="#">Crime</a> | <a href="#">Thriller</a> | <a href="#">Drama</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--light movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time13.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">This Is the End (2013)   </a>
-
-                                    <p class="movie__time">107 min</p>
-
-                                    <p class="movie__option"><a href="#">Comedy</a> | <a href="#">Fantasy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">4.9</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
-
-                         <!-- Movie variant with time -->
-                            <div class="movie movie--test movie--test--dark movie--test--right">
-                                <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
-                                    <img alt='' src="/images/movie/movie-time14.jpg">
-                                    </a>
-                                </div>
-
-                                <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">The Internship (2013)  </a>
-
-                                    <p class="movie__time">112 min</p>
-
-                                    <p class="movie__option"><a href="#">Comedy</a></p>
-                                    
-                                    <div class="movie__rate">
-                                        <div class="score"></div>
-                                        <span class="movie__rating">5.0</span>
-                                    </div>               
-                                </div>
-                            </div>
-                         <!-- Movie variant with time -->
+					<a href="#" class="btn btn-md btn--danger slider--btn">check
+						out movies</a>
+				</div>
+			</li>
 
 
-                        <div class="row">
-                            <div class="social-group">
-                              <div class="col-sm-6 col-md-4 col-sm-push-6 col-md-push-4">
-                                    <div class="social-group__head">Join <br>our social groups</div>
-                                    <div class="social-group__content">A lot of fun, discussions, queezes and contests among members. <br class="hidden-xs"><br>Always be first to know about best offers from cinemas and our partners</div>
-                                </div>
+		</ul>
+		<!-- END SLIDES LIST -->
 
-                                <div class="col-sm-6 col-md-4 col-sm-pull-6 col-md-pull-4">
-                                     <div class="facebook-group">
+	</div>
+	<!-- END SLIDER CONTAINER -->
 
-                                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fenvato&tabs=timeline&width=240px&height=330px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=353861661473733" width="240px" height="330px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-                                    </div>
-                                </div>
-                                
-                                <div class="clearfix visible-sm"></div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="twitter-group">
-                                        <div id="twitter-feed"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+</div>
+<!-- END SLIDER CONTAINER WRAPPER -->
+<!--end slider -->
 
-                    
-                </div>
-            </div>
 
-            <div class="col-sm-12">
-                <h2 class="page-heading">Latest news</h2>
+<!-- Main content -->
+<section class="container">
+	<div class="movie-best">
+		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">
+			Best choice</div>
+		<div class="col-sm-12 change--col">
+			<div class="movie-beta__item ">
+				<img alt='' src="/images/movie/movie-sample1.jpg"> <span
+					class="best-rate">5.0</span>
 
-                <div class="col-sm-4 similar-wrap col--remove">
-                    <div class="post post--preview post--preview--wide">
-                        <div class="post__image">
-                            <img alt='' src="/images/client-photo/post-thor.jpg">
-                            <div class="social social--position social--hide">
-                                <span class="social__name">Share:</span>
-                                <a href='#' class="social__variant social--first fa fa-facebook"></a>
-                                <a href='#' class="social__variant social--second fa fa-twitter"></a>
-                                <a href='#' class="social__variant social--third fa fa-vk"></a>
-                            </div>
-                        </div>
-                        <p class="post__date">22 October 2013 </p>
-                        <a href="single-page-left.html" class="post__title">"Thor: The Dark World" - World Premiere</a>
-                        <a href="single-page-left.html" class="btn read-more post--btn">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-4 similar-wrap col--remove">
-                    <div class="post post--preview post--preview--wide">
-                        <div class="post__image">
-                            <img alt='' src="/images/client-photo/post-annual.jpg">
-                            <div class="social social--position social--hide">
-                                <span class="social__name">Share:</span>
-                                <a href='#' class="social__variant social--first fa fa-facebook"></a>
-                                <a href='#' class="social__variant social--second fa fa-twitter"></a>
-                                <a href='#' class="social__variant social--third fa fa-vk"></a>
-                            </div>
-                        </div>
-                        <p class="post__date">22 October 2013 </p>
-                        <a href="single-page-left.html" class="post__title">30th Annual Night Of Stars Presented By The Fashion Group International</a>
-                        <a href="single-page-left.html" class="btn read-more post--btn">read more</a>
-                    </div>
-                </div>
-                <div class="col-sm-4 similar-wrap col--remove">
-                    <div class="post post--preview post--preview--wide">
-                        <div class="post__image">
-                            <img alt='' src="/images/client-photo/post-awards.jpg">
-                            <div class="social social--position social--hide">
-                                <span class="social__name">Share:</span>
-                                <a href='#' class="social__variant social--first fa fa-facebook"></a>
-                                <a href='#' class="social__variant social--second fa fa-twitter"></a>
-                                <a href='#' class="social__variant social--third fa fa-vk"></a>
-                            </div>
-                        </div>
-                        <p class="post__date">22 October 2013 </p>
-                        <a href="single-page-left.html" class="post__title">Hollywood Film Awards 2013</a>
-                        <a href="single-page-left.html" class="btn read-more post--btn">read more</a>
-                    </div>
-                </div>
-            </div>
-                
-        </section>
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item second--item">
+				<img alt='' src="/images/movie/movie-sample2.jpg"> <span
+					class="best-rate">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item third--item">
+				<img alt='' src="/images/movie/movie-sample3.jpg"> <span
+					class="best-rate">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item hidden-xs">
+				<img alt='' src="/images/movie/movie-sample4.jpg"> <span
+					class="best-rate">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item hidden-xs hidden-sm">
+				<img alt='' src="/images/movie/movie-sample5.jpg"> <span
+					class="best-rate">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item hidden-xs hidden-sm">
+				<img alt='' src="/images/movie/movie-sample6.jpg"> <span
+					class="best-rate">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted">71 people voted today</span></li>
+					<li>
+						<p class="movie__time">169 min</p>
+						<p>Adventure | Drama | Fantasy</p>
+						<p>38 comments</p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
+			all movies now playing</div>
+	</div>
+
+	<div class="col-sm-12">
+		<div class="mega-select-present mega-select-top mega-select--full">
+			<div class="mega-select-marker">
+<!-- 				<div class="marker-indecator location">
+					<p class="select-marker">
+						<span>movie to watch now</span> <br> Contry
+					</p>
+				</div> -->
+
+<!-- 				<div class="marker-indecator cinema">
+					<p class="select-marker">
+						<span>find your </span> <br>cinema
+					</p>
+				</div>
+ -->
+				<div class="marker-indecator film-category">
+					<p class="select-marker">
+						<span>find movie due to </span> <br> your mood
+					</p>
+				</div>
+
+				<div class="marker-indecator actors">
+					<p class="select-marker">
+						<span> like particular stars</span> <br>find them
+					</p>
+				</div>
+
+				<div class="marker-indecator director">
+					<p class="select-marker">
+						<span>admire personalities - find </span> <br>by director
+					</p>
+				</div>
+
+				<div class="marker-indecator country">
+					<p class="select-marker">
+						<span>search for movie from certain </span> <br>country?
+					</p>
+				</div>
+			</div>
+
+			<div class="mega-select pull-right">
+				<span class="mega-select__point">Search by</span>
+				<!-- search 메뉴  -->
+				<ul class="mega-select__sort">
+<!-- 					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter filter--active" data-filter='location'>Location</a></li>
+					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter" data-filter='cinema'>Cinema</a></li>-->
+					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter" data-filter='film-category'>Category</a></li>  
+					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter filter--active" data-filter='actors'>Actors</a></li>
+					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter" data-filter='director'>Director</a></li>
+					<li class="filter-wrap"><a href="#"
+						class="mega-select__filter" data-filter='country'>Country</a></li>
+				</ul>
+
+				<input name="search-input" type='text' class="select__field" value="111" id="search-input">
+
+				<div class="select__btn">
+<!-- 					<a href="#" class="btn btn-md btn--danger ">find <span class="hidden-exrtasm">your city</span></a>
+					<a href="#"	class="btn btn-md btn--danger cinema">find <span class="hidden-exrtasm">suitable cimema</span></a>--> 
+ 					<a href="#"	class="btn btn-md btn--danger film-category" onclick="filter(this,'category')">find </a> 
+					<a href="#"	class="btn btn-md btn--danger actors" onclick="filter(this,'actors')">find </a> 
+					<a href="#"	class="btn btn-md btn--danger director" onclick="filter(this,'director')">find </a>
+					<a href="#" class="btn btn-md btn--danger country" onclick="filter(this,'country')">find </a> 
+
+				</div>
+
+				<div class="select__dropdowns">
+<!-- 				<ul class="select__group location">
+						<li class="select__variant" data-value='London'>London</li>
+						<li class="select__variant" data-value='New York'>New York</li>
+						<li class="select__variant" data-value='Paris'>Paris</li>
+						<li class="select__variant" data-value='Berlin'>Berlin</li>
+						<li class="select__variant" data-value='Moscow'>Moscow</li>
+						<li class="select__variant" data-value='Minsk'>Minsk</li>
+						<li class="select__variant" data-value='Warsawa'>Warsawa</li>
+					</ul>
+
+					<ul class="select__group cinema">
+						<li class="select__variant" data-value='Cineworld'>Cineworld</li>
+						<li class="select__variant" data-value='Empire'>Empire</li>
+						<li class="select__variant" data-value='Everyman'>Everyman</li>
+						<li class="select__variant" data-value='Odeon'>Odeon</li>
+						<li class="select__variant" data-value='Picturehouse'>Picturehouse</li>
+					</ul>
+ -->
+					<ul class="select__group film-category">
+						<li class="select__variant" data-value="Children's">Children's</li>
+						<li class="select__variant" data-value='Comedy'>Comedy</li>
+						<li class="select__variant" data-value='Drama'>Drama</li>
+						<li class="select__variant" data-value='Fantasy'>Fantasy</li>
+						<li class="select__variant" data-value='Horror'>Horror</li>
+						<li class="select__variant" data-value='Thriller'>Thriller</li>
+					</ul>
+
+					<ul class="select__group actors">
+						<li class="select__variant" data-value='Leonardo DiCaprio'>Leonardo
+							DiCaprio</li>
+						<li class="select__variant" data-value='Johnny Depp'>Johnny
+							Depp</li>
+						<li class="select__variant" data-value='Jack Nicholson'>Jack
+							Nicholson</li>
+						<li class="select__variant" data-value='Robert De Niro'>Robert
+							De Niro</li>
+						<li class="select__variant" data-value='Morgan Freeman'>Morgan
+							Freeman</li>
+						<li class="select__variant" data-value='Jim Carrey'>Jim
+							Carrey</li>
+						<li class="select__variant" data-value='Adam Sandler'>Adam
+							Sandler</li>
+						<li class="select__variant" data-value='Ben Stiller'>Ben
+							Stiller</li>
+					</ul>
+
+					<ul class="select__group director">
+						<li class="select__variant" data-value='Steven Spielberg'>Steven
+							Spielberg</li>
+						<li class="select__variant" data-value='Martin Scorsese'>Martin
+							Scorsese</li>
+						<li class="select__variant" data-value='Guy Ritchie'>Guy
+							Ritchie</li>
+						<li class="select__variant" data-value='Christopher Nolan'>Christopher
+							Nolan</li>
+						<li class="select__variant" data-value='Tim Burton'>Tim
+							Burton</li>
+					</ul>
+
+					<ul class="select__group country">
+						<li class="select__variant" data-value='미국'>미국</li>
+						<li class="select__variant" data-value='일본'>일본</li>
+						<li class="select__variant" data-value='한국'>한국</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<h2 id='target' class="page-heading heading--outcontainer">Now in
+		the cinema</h2>
+
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--dark movie--test--left">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time8.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">Gravity
+							(2013) </a>
+
+						<p class="movie__time">91 min</p>
+
+						<p class="movie__option">
+							<a href="#">Sci-Fi</a> | <a href="#">Thriller</a> | <a href="#">Drama</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">4.1</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--light movie--test--left">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time1.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">The
+							Hobbit: The Desolation of Smaug (2013) </a>
+
+						<p class="movie__time">169 min</p>
+
+						<p class="movie__option">
+							<a href="#">Adventure</a> | <a href="#">Fantasy</a> | <a href="#">Drama</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">5.0</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--light movie--test--right">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time9.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">The Hunger
+							Games: Catching Fire (2013) </a>
+
+						<p class="movie__time">146 min</p>
+
+						<p class="movie__option">
+							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Sci-Fi</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">4.9</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--dark movie--test--right">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time10.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">Thor: The
+							Dark World (2013) </a>
+
+						<p class="movie__time">112 min</p>
+
+						<p class="movie__option">
+							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Fantasy</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">5.0</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--dark movie--test--left">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time11.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">World War
+							Z (2013) </a>
+
+						<p class="movie__time">116 min</p>
+
+						<p class="movie__option">
+							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Horror</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">4.1</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--light movie--test--left">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time12.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">Prisoners
+							(2013) </a>
+
+						<p class="movie__time">153 min</p>
+
+						<p class="movie__option">
+							<a href="#">Crime</a> | <a href="#">Thriller</a> | <a href="#">Drama</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">5.0</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--light movie--test--right">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time13.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">This Is
+							the End (2013) </a>
+
+						<p class="movie__time">107 min</p>
+
+						<p class="movie__option">
+							<a href="#">Comedy</a> | <a href="#">Fantasy</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">4.9</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+				<!-- Movie variant with time -->
+				<div class="movie movie--test movie--test--dark movie--test--right">
+					<div class="movie__images">
+						<a href="movie-page-left.html" class="movie-beta__link"> <img
+							alt='' src="/images/movie/movie-time14.jpg">
+						</a>
+					</div>
+
+					<div class="movie__info">
+						<a href='movie-page-left.html' class="movie__title">The
+							Internship (2013) </a>
+
+						<p class="movie__time">112 min</p>
+
+						<p class="movie__option">
+							<a href="#">Comedy</a>
+						</p>
+
+						<div class="movie__rate">
+							<div class="score"></div>
+							<span class="movie__rating">5.0</span>
+						</div>
+					</div>
+				</div>
+				<!-- Movie variant with time -->
+
+
+				<div class="row">
+					<div class="social-group">
+						<div class="col-sm-6 col-md-4 col-sm-push-6 col-md-push-4">
+							<div class="social-group__head">
+								Join <br>our social groups
+							</div>
+							<div class="social-group__content">
+								A lot of fun, discussions, queezes and contests among members. <br
+									class="hidden-xs"> <br>Always be first to know about
+								best offers from cinemas and our partners
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4 col-sm-pull-6 col-md-pull-4">
+							<div class="facebook-group">
+
+								<iframe
+									src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fenvato&tabs=timeline&width=240px&height=330px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=353861661473733"
+									width="240px" height="330px"
+									style="border: none; overflow: hidden" scrolling="no"
+									frameborder="0" allowTransparency="true"></iframe>
+							</div>
+						</div>
+
+						<div class="clearfix visible-sm"></div>
+						<div class="col-sm-6 col-md-4">
+							<div class="twitter-group">
+								<div id="twitter-feed"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<div class="col-sm-12">
+		<h2 class="page-heading">Latest news</h2>
+
+		<div class="col-sm-4 similar-wrap col--remove">
+			<div class="post post--preview post--preview--wide">
+				<div class="post__image">
+					<img alt='' src="/images/client-photo/post-thor.jpg">
+					<div class="social social--position social--hide">
+						<span class="social__name">Share:</span> <a href='#'
+							class="social__variant social--first fa fa-facebook"></a> <a
+							href='#' class="social__variant social--second fa fa-twitter"></a>
+						<a href='#' class="social__variant social--third fa fa-vk"></a>
+					</div>
+				</div>
+				<p class="post__date">22 October 2013</p>
+				<a href="single-page-left.html" class="post__title">"Thor: The
+					Dark World" - World Premiere</a> <a href="single-page-left.html"
+					class="btn read-more post--btn">read more</a>
+			</div>
+		</div>
+		<div class="col-sm-4 similar-wrap col--remove">
+			<div class="post post--preview post--preview--wide">
+				<div class="post__image">
+					<img alt='' src="/images/client-photo/post-annual.jpg">
+					<div class="social social--position social--hide">
+						<span class="social__name">Share:</span> <a href='#'
+							class="social__variant social--first fa fa-facebook"></a> <a
+							href='#' class="social__variant social--second fa fa-twitter"></a>
+						<a href='#' class="social__variant social--third fa fa-vk"></a>
+					</div>
+				</div>
+				<p class="post__date">22 October 2013</p>
+				<a href="single-page-left.html" class="post__title">30th Annual
+					Night Of Stars Presented By The Fashion Group International</a> <a
+					href="single-page-left.html" class="btn read-more post--btn">read
+					more</a>
+			</div>
+		</div>
+		<div class="col-sm-4 similar-wrap col--remove">
+			<div class="post post--preview post--preview--wide">
+				<div class="post__image">
+					<img alt='' src="/images/client-photo/post-awards.jpg">
+					<div class="social social--position social--hide">
+						<span class="social__name">Share:</span> <a href='#'
+							class="social__variant social--first fa fa-facebook"></a> <a
+							href='#' class="social__variant social--second fa fa-twitter"></a>
+						<a href='#' class="social__variant social--third fa fa-vk"></a>
+					</div>
+				</div>
+				<p class="post__date">22 October 2013</p>
+				<a href="single-page-left.html" class="post__title">Hollywood
+					Film Awards 2013</a> <a href="single-page-left.html"
+					class="btn read-more post--btn">read more</a>
+			</div>
+		</div>
+	</div>
+
+</section>
