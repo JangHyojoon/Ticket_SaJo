@@ -8,7 +8,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM movie WHERE id=#{id}
 	</select>
 	<select id="selectall" resultType="movieVO">
-		SELECT * FROM movie
+		SELECT m.id as id,g.name as gname, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg1, m.country as country,
+		m.runningtime as runningtime, m.text as text, ROUND(AVG(star),1) as star FROM movie m
+		INNER JOIN genre g ON g.id = m.gid
+		INNER JOIN reviews r ON r.mid=m.id
+		GROUP BY id
 	</select>
 	<insert id="insert" parameterType="movieVO">
 		INSERT INTO movie VALUES (#{id},#{gid},#{title},#{director},#{mainactor},#{releasedate},#{posterimg1},#{posterimg2},#{country},#{runningtime},#{text})

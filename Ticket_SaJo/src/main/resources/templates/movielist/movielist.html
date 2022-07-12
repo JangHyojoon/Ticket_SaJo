@@ -1,0 +1,216 @@
+<head>
+<meta charset="utf-8">
+       <title>AMovie - Movie list</title>
+       <meta name="description" content="A Template by Gozha.net">
+       <meta name="keywords" content="HTML, CSS, JavaScript">
+       <meta name="author" content="Gozha.net">
+       <!-- jQuery 3.1.1--> 
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    	<script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
+	<!-- jQuery UI -->
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+  	<script>
+  	$(document).ready(function() {
+  	//toggle timetable show
+        $('.movie__show-btn').click(function (ev) {
+            ev.preventDefault();
+            $(this).parents('.movie--preview').find('.time-select').slideToggle(500);
+        });
+  		$('.time-select__item').click(function (){
+            $('.time-select__item').removeClass('active');
+            $(this).addClass('active');
+        });
+  		$('.score').raty({
+  	        width:130, 
+  	        score: 5,
+  	        path: '/images/rate/',
+  	        starOff : 'star-off.svg',
+  	        starOn  : 'star-on.svg' 
+  	    });
+    });
+    </script>
+</head>
+<body>
+        <!-- Main content -->
+        <section class="container">
+            <div class="col-sm-12">
+                <h2 class="page-heading">Movies</h2>
+
+                 <div class="tags-area">
+                    <div class="tags tags--unmarked">
+                        <span class="tags__label">Sorted by:</span>
+                            <ul>
+                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>all</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>release date</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='popularity'>popularity</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='comments'>comments</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='ending'>ending soon</a></li>
+                            </ul>
+                    </div>
+                </div>
+                
+                <!-- Movie preview item -->
+                <div th:each="m:${movie}"class="movie movie--preview movie--full release">
+                     <div class="col-sm-3 col-md-2 col-lg-2">
+                            <div class="movie__images">
+                                <img alt='' th:src="'images/movie/'+${m.posterimg1}">
+                            </div>
+                            <div class="movie__feature">
+                                <a href="#" class="movie__feature-item movie__feature--comment">123</a>
+                                <a href="#" class="movie__feature-item movie__feature--video">7</a>
+                                <a href="#" class="movie__feature-item movie__feature--photo">352</a>
+                            </div>
+                    </div>
+
+                    <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
+                            <a href='movie-page-full.html' class="movie__title link--huge" th:text="${m.title}">Last Vegas (2013)</a>
+
+                            <p class="movie__time">105 min</p>
+
+                            <p class="movie__option"><strong>Country: </strong><a href="#" th:text="${m.country}">USA</a></p>
+                            <p class="movie__option"><strong>Category: </strong><a href="#" th:text="${m.gname}">Comady</a></p>
+                            <p class="movie__option"><strong>Release date: </strong><a th:text="${#dates.format(m.releasedate,'yyyy-MM-dd')}">November 1, 2013</a></p>
+                            <p class="movie__option"><strong>Director: </strong><a href="#" th:text="${m.director}">Jon Turteltaub</a></p>
+                            <p class="movie__option"><strong>Actors: </strong><a href="#" th:text="${m.mainactor}">Robert De Niro</a></p>
+                            <p class="movie__option"><strong>Running time: </strong><a href="#" th:text="${m.runningtime}">13</a></p>
+
+                            <div class="movie__btns">
+                                <a href="#" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></a>
+                                <a href="#" class="watchlist">Add to watchlist</a>
+                            </div>
+
+                            <div class="preview-footer">
+                                <div class="movie__rate"><div class="score"><img th:alt="${m.star}" src="/images/rate/star-off.svg"></div><span class="movie__rate-number">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span></div>
+                                
+
+                                <a class="movie__show-btn">Showtime</a>
+                            </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    
+                    <!-- Time table (choose film start time)-->
+                    <div class="time-select">
+                        <div class="time-select__group group--first">
+                            <div class="col-sm-4">
+                                <p class="time-select__place">Cineworld</p>
+                            </div>
+                            <ul class="col-sm-8 items-wrap">
+                                <li class="time-select__item" data-time='09:40'>09:40</li>
+                                <li class="time-select__item" data-time='13:45'>13:45</li>
+                                <li class="time-select__item active" data-time='15:45'>15:45</li>
+                                <li class="time-select__item" data-time='19:50'>19:50</li>
+                                <li class="time-select__item" data-time='21:50'>21:50</li>
+                            </ul>
+                        </div>
+
+                        <div class="time-select__group">
+                            <div class="col-sm-4">
+                                <p class="time-select__place">Empire</p>
+                            </div>
+                            <ul class="col-sm-8 items-wrap">
+                                <li class="time-select__item" data-time='10:45'>10:45</li>
+                                <li class="time-select__item" data-time='16:00'>16:00</li>
+                                <li class="time-select__item" data-time='19:00'>19:00</li>
+                                <li class="time-select__item" data-time='21:15'>21:15</li>
+                                <li class="time-select__item" data-time='23:00'>23:00</li>
+                            </ul>
+                        </div>
+
+                        <div class="time-select__group">
+                            <div class="col-sm-4">
+                                <p class="time-select__place">Curzon</p>
+                            </div>
+                            <ul class="col-sm-8 items-wrap">
+                                <li class="time-select__item" data-time='09:00'>09:00</li>
+                                <li class="time-select__item" data-time='11:00'>11:00</li>
+                                <li class="time-select__item" data-time='13:00'>13:00</li>
+                                <li class="time-select__item" data-time='15:00'>15:00</li>
+                                <li class="time-select__item" data-time='17:00'>17:00</li>
+                                <li class="time-select__item" data-time='19:0'>19:00</li>
+                                <li class="time-select__item" data-time='21:0'>21:00</li>
+                                <li class="time-select__item" data-time='23:0'>23:00</li>
+                                <li class="time-select__item" data-time='01:0'>01:00</li>
+                            </ul>
+                        </div>
+
+                        <div class="time-select__group">
+                            <div class="col-sm-4">
+                                <p class="time-select__place">Odeon</p>
+                            </div>
+                            <ul class="col-sm-8 items-wrap">
+                                <li class="time-select__item" data-time='10:45'>10:45</li>
+                                <li class="time-select__item" data-time='16:00'>16:00</li>
+                                <li class="time-select__item" data-time='19:00'>19:00</li>
+                                <li class="time-select__item" data-time='21:15'>21:15</li>
+                                <li class="time-select__item" data-time='23:00'>23:00</li>
+                            </ul>
+                        </div>
+
+                        <div class="time-select__group group--last">
+                            <div class="col-sm-4">
+                                <p class="time-select__place">Picturehouse</p>
+                            </div>
+                            <ul class="col-sm-8 items-wrap">
+                                <li class="time-select__item" data-time='17:45'>17:45</li>
+                                <li class="time-select__item" data-time='21:30'>21:30</li>
+                                <li class="time-select__item" data-time='02:20'>02:20</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end time table-->
+
+                </div>
+                <!-- end movie preview item -->
+                <div class="coloum-wrapper">
+                    <div class="pagination paginatioon--full">
+                            <a href='#' class="pagination__prev">prev</a>
+                            <a href='#' class="pagination__next">next</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        
+        <div class="clearfix"></div>
+
+    <!-- open/close -->
+        <div class="overlay overlay-hugeinc">
+            
+            <section class="container">
+
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button type="button" class="overlay-close">Close</button>
+                    <form id="login-form" class="login" method='get' novalidate=''>
+                        <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
+
+                        <div class="social social--colored">
+                                <a href='#' class="social__variant fa fa-facebook"></a>
+                                <a href='#' class="social__variant fa fa-twitter"></a>
+                                <a href='#' class="social__variant fa fa-tumblr"></a>
+                        </div>
+
+                        <p class="login__tracker">or</p>
+                        
+                        <div class="field-wrap">
+                        <input type='email' placeholder='Email' name='user-email' class="login__input">
+                        <input type='password' placeholder='Password' name='user-password' class="login__input">
+
+                        <input type='checkbox' id='#informed' class='login__check styled'>
+                        <label for='#informed' class='login__check-info'>remember me</label>
+                         </div>
+                        
+                        <div class="login__control">
+                            <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
+                            <a href="#" class="login__tracker form__tracker">Forgot password?</a>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+            </div>
+        <!-- jQuery UI -->
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		
+</body>
