@@ -6,14 +6,14 @@ INSERT INTO genre (id, name, tid) VALUES(20,'판타지',null);
 INSERT INTO genre (id, name, tid) VALUES(21,'판타지/모험',20);
 INSERT INTO genre (id, name, tid) VALUES(22,'판타지/SF',20);
 INSERT INTO genre (id, name, tid) VALUES(30,'공포',null);
-INSERT INTO genre (id, name, tid) VALUES(31,'공포/스릴러',null);
+INSERT INTO genre (id, name, tid) VALUES(31,'공포/스릴러',30);
 
 SELECT * FROM genre;
 
 
 
 -- movie insert
-INSERT INTO movie VALUES (null, 12,'바람과 함께 사라지다','victor fleming','bibian lee,frank mogan',19391215,'windimg1','windimg2','usa','221m','내일은 내일의 태양이 뜨는 법이니까
+INSERT INTO movie VALUES (null, 12,'바람과 함께 사라지다','victor fleming','bibian lee,frank mogan',19391215,'windimg1.jpg','windimg2.jpg','usa','221m','내일은 내일의 태양이 뜨는 법이니까
 남북전쟁 발발 직전, 오하라 가문의 장녀 스칼렛은 도도한 매력으로 뭇 남성들의 우상이다.
 그녀가 짝사랑하던 애슐리가 친구 멜라니와 결혼한다는 이야기를 듣고 뒤늦게 고백하지만 그 자리에서 거절당하고, 이 모습을 새로 이사 온 레트에게 들키고 만다.
 당황해 어쩔 줄을 모르는 스칼렛과는 반대로 이미 레트는 거침없는 매력의 스칼렛에게 빠져들고 있었다.
@@ -30,8 +30,7 @@ INSERT INTO movie VALUES (null, 31,'하녀','김기영 ','김진규, 이은심',
 그러던 어느 날 그의 집에 가정부(이은심 분)가 들어오고 집에는 이상한 분위기가 감돈다.
 그는 아내 몰래 가정부와 불의의 관계를 맺는다. 그런데 가정부는 이상성격의 소유자로 그를 협박한다.
 이렇게 한 지붕 아래서 남편과 아내, 그리고 가정부 이들의 기묘한 동거가 시작되는데...');
-
-
+Select * from movie;
 
 -- cust Insert
 INSERT INTO cust VALUES ('kms', 'pwd01', '김민식', 19900805, '1000', 'man');
@@ -48,8 +47,8 @@ INSERT INTO reviews VALUES (6001, 'awy', 1001, 2, '재밌다', '2022-07-02' );
 INSERT INTO reviews VALUES (6002, 'jhj', 1002, 3, '지겹다', '2022-04-08');
 INSERT INTO reviews VALUES (6003, 'jsy', 1003, 4, '잠이 온다', '2022-04-04');
 INSERT INTO reviews VALUES (6004, 'ljm', 1004, 5, '즐겁다', '2022-01-08');
+INSERT INTO reviews VALUES (null, 'kms', 1000, 4, '좋다', '2022-07-08');
 SELECT * FROM reviews;
-
 
 
 -- pointlist Insert
