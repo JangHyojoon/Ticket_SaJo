@@ -3,7 +3,7 @@
 function filter(e,c){
 	var input = $('#search-input').val();
 	//alert(input)
-	e.href = "search" + c + '?' + input //127.0.0.1//search... 로 보냄 
+	e.href = "/search" + c + '?searchtxt=' + input;
 
 }
 
@@ -14,7 +14,15 @@ $(document).ready(function(){
 
 
 </script>
+<style>
+.starsortimg{
 
+	width: 185px;
+	height: 280px;
+}
+
+
+</style>
 
 
 <!-- Slider -->
@@ -165,7 +173,7 @@ $(document).ready(function(){
 			<li data-transition="fade" class="slide"
 				data-title='Travel worldwide. Create trip film.'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
-				alt='' src="/images/bg-video.jpg">
+				alt='' src="/images/movie/ozimg1.jpg">
 				<div class="rs-background-video-layer" data-forcerewind="on"
 					data-volume="mute" data-videowidth="100%" data-videoheight="100%"
 					data-videomp4="video/The Wizard of Oz.mp4" data-videopreload="auto"
@@ -363,92 +371,16 @@ $(document).ready(function(){
 	<div class="movie-best">
 		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">
 			Best choice</div>
-		<div class="col-sm-12 change--col">
-			<div class="movie-beta__item ">
-				<img alt='' src="/images/movie/movie-sample1.jpg"> <span
-					class="best-rate">5.0</span>
+		<div class="col-sm-12 change--col ">
+			<div class="movie-beta__item" th:each="movie : ${starSortList}">
+				<img class="starsortimg" alt='' th:src="'/images/movie/' + ${movie.posterimg1}"> <span
+					class="best-rate" th:text="${movie.star}">5.0</span>
 
 				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
+					<li><span class="best-voted" th:text="${movie.title}"> voted today</span></li>
 					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
-					</li>
-					<li class="last-block"><a href="movie-page-left.html"
-						class="slide__link">more</a></li>
-				</ul>
-			</div>
-			<div class="movie-beta__item second--item">
-				<img alt='' src="/images/movie/movie-sample2.jpg"> <span
-					class="best-rate">5.0</span>
-
-				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
-					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
-					</li>
-					<li class="last-block"><a href="movie-page-left.html"
-						class="slide__link">more</a></li>
-				</ul>
-			</div>
-			<div class="movie-beta__item third--item">
-				<img alt='' src="/images/movie/movie-sample3.jpg"> <span
-					class="best-rate">5.0</span>
-
-				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
-					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
-					</li>
-					<li class="last-block"><a href="movie-page-left.html"
-						class="slide__link">more</a></li>
-				</ul>
-			</div>
-			<div class="movie-beta__item hidden-xs">
-				<img alt='' src="/images/movie/movie-sample4.jpg"> <span
-					class="best-rate">5.0</span>
-
-				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
-					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
-					</li>
-					<li class="last-block"><a href="movie-page-left.html"
-						class="slide__link">more</a></li>
-				</ul>
-			</div>
-			<div class="movie-beta__item hidden-xs hidden-sm">
-				<img alt='' src="/images/movie/movie-sample5.jpg"> <span
-					class="best-rate">5.0</span>
-
-				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
-					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
-					</li>
-					<li class="last-block"><a href="movie-page-left.html"
-						class="slide__link">more</a></li>
-				</ul>
-			</div>
-			<div class="movie-beta__item hidden-xs hidden-sm">
-				<img alt='' src="/images/movie/movie-sample6.jpg"> <span
-					class="best-rate">5.0</span>
-
-				<ul class="movie-beta__info">
-					<li><span class="best-voted">71 people voted today</span></li>
-					<li>
-						<p class="movie__time">169 min</p>
-						<p>Adventure | Drama | Fantasy</p>
-						<p>38 comments</p>
+						<p class="movie__time" th:text="${movie.runningtime}">169 min</p>
+						<p th:text="${movie.gname}"></p>
 					</li>
 					<li class="last-block"><a href="movie-page-left.html"
 						class="slide__link">more</a></li>
@@ -549,44 +481,31 @@ $(document).ready(function(){
 					</ul>
  -->
 					<ul class="select__group film-category">
-						<li class="select__variant" data-value="Children's">Children's</li>
-						<li class="select__variant" data-value='Comedy'>Comedy</li>
-						<li class="select__variant" data-value='Drama'>Drama</li>
-						<li class="select__variant" data-value='Fantasy'>Fantasy</li>
-						<li class="select__variant" data-value='Horror'>Horror</li>
-						<li class="select__variant" data-value='Thriller'>Thriller</li>
+						<li class="select__variant" data-value="로맨스">로맨스</li>
+						<li class="select__variant" data-value='코미디'>코미디</li>
+						<li class="select__variant" data-value='전쟁'>전쟁</li>
+						<li class="select__variant" data-value='판타지'>판타지</li>
+						<li class="select__variant" data-value='모험'>모험</li>
+						<li class="select__variant" data-value='공포'>공포</li>
+						<li class="select__variant" data-value='스릴러'>스릴러</li>
+						<li class="select__variant" data-value='SF'>SF</li>
 					</ul>
 
 					<ul class="select__group actors">
-						<li class="select__variant" data-value='Leonardo DiCaprio'>Leonardo
-							DiCaprio</li>
-						<li class="select__variant" data-value='Johnny Depp'>Johnny
-							Depp</li>
-						<li class="select__variant" data-value='Jack Nicholson'>Jack
-							Nicholson</li>
-						<li class="select__variant" data-value='Robert De Niro'>Robert
-							De Niro</li>
-						<li class="select__variant" data-value='Morgan Freeman'>Morgan
-							Freeman</li>
-						<li class="select__variant" data-value='Jim Carrey'>Jim
-							Carrey</li>
-						<li class="select__variant" data-value='Adam Sandler'>Adam
-							Sandler</li>
-						<li class="select__variant" data-value='Ben Stiller'>Ben
-							Stiller</li>
+						<li class="select__variant" data-value='Anthony Perkins'>Anthony Perkins</li>
+						<li class="select__variant" data-value='bibian lee'>bibian lee</li>
+						<li class="select__variant" data-value='frank mogan'>frank mogan</li>
+						<li class="select__variant" data-value='Gary Lockwood'>Gary Lockwood</li>
+						<li class="select__variant" data-value='Janet Leigh'>Janet Leigh</li>
+						<li class="select__variant" data-value='김진규'>김진규</li>
+						<li class="select__variant" data-value='이은심'>이은심</li>
 					</ul>
 
 					<ul class="select__group director">
-						<li class="select__variant" data-value='Steven Spielberg'>Steven
-							Spielberg</li>
-						<li class="select__variant" data-value='Martin Scorsese'>Martin
-							Scorsese</li>
-						<li class="select__variant" data-value='Guy Ritchie'>Guy
-							Ritchie</li>
-						<li class="select__variant" data-value='Christopher Nolan'>Christopher
-							Nolan</li>
-						<li class="select__variant" data-value='Tim Burton'>Tim
-							Burton</li>
+						<li class="select__variant" data-value='Alfred Joseph Hitchcock'>Alfred Joseph Hitchcock</li>
+						<li class="select__variant" data-value='victor fleming'>victor fleming</li>
+						<li class="select__variant" data-value='Stanley Kubrick'>Stanley Kubrick</li>
+						<li class="select__variant" data-value='김기영 '>김기영 </li>
 					</ul>
 
 					<ul class="select__group country">
