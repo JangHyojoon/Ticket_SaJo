@@ -19,13 +19,22 @@ public class MovielistController {
 	@RequestMapping("")
 	public String movielist(Model m) {
 		List<MovieVO> mlist = null;
+		List<MovieVO> schedules = null;
 		try {
+			schedules = mbiz.selectschedules();
 			mlist = mbiz.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		m.addAttribute("center", "movielist/movielist");
 		m.addAttribute("movie", mlist);
+		m.addAttribute("schedules", schedules);
+		return "index";
+	}
+	@RequestMapping("/moviedetail")
+	public String moviedetail(Model m) {
+		m.addAttribute("center", "movielist/moviedetail");
+
 		return "index";
 	}
 }
