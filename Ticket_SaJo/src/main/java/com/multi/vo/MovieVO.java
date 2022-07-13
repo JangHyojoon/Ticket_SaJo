@@ -1,5 +1,6 @@
 package com.multi.vo;
 
+import java.sql.Time;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,12 @@ public class MovieVO {
 	private String gname;
 	private double star;
 	private int hgid;
-
+	private int rcnt;
+	private int sid;
+	private int tid;
+	private Date sdate;
+	private Time starttime;
+	private Time endtime;
 	
 	public MovieVO(int gid, String title, String director, String mainactor, Date releasedate, String posterimg1,
 			String posterimg2, String country, String runningtime, String text) {

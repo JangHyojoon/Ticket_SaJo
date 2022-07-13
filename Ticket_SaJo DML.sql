@@ -42,12 +42,18 @@ SELECT * FROM cust;
 
 
 -- review Insert
-INSERT INTO reviews VALUES (6000, 'kms', 1000, 1, '좋다', '2022-07-08');
-INSERT INTO reviews VALUES (6001, 'awy', 1001, 2, '재밌다', '2022-07-02' );
-INSERT INTO reviews VALUES (6002, 'jhj', 1002, 3, '지겹다', '2022-04-08');
-INSERT INTO reviews VALUES (6003, 'jsy', 1003, 4, '잠이 온다', '2022-04-04');
-INSERT INTO reviews VALUES (6004, 'ljm', 1004, 5, '즐겁다', '2022-01-08');
-INSERT INTO reviews VALUES (null, 'kms', 1000, 4, '좋다', '2022-07-08');
+INSERT INTO reviews VALUES (null, 'kms', 1000, 1, '좋다', '2022-07-08');
+INSERT INTO reviews VALUES (null, 'awy', 1001, 2, '재밌다', '2022-07-02' );
+INSERT INTO reviews VALUES (null, 'jhj', 1002, 3, '지겹다', '2022-04-08');
+INSERT INTO reviews VALUES (null, 'jsy', 1003, 4, '잠이 온다', '2022-04-04');
+INSERT INTO reviews VALUES (null, 'ljm', 1004, 5, '즐겁다', '2022-01-08');
+INSERT INTO reviews VALUES (null, 'kms', 1000, 4, '명작입니다.', '2022-07-08');
+INSERT INTO reviews VALUES (null, 'awy', 1005, 1, '너무 졸려요', '2022-07-08');
+INSERT INTO reviews VALUES (null, 'ljm', 1004, 2, '생각보다는 별로', '2022-07-02' );
+INSERT INTO reviews VALUES (null, 'jsy', 1001, 3, '지겹다', '2022-04-08');
+INSERT INTO reviews VALUES (null, 'kms', 1002, 4, '기대보다 훨씬 재밌어요', '2022-04-04');
+INSERT INTO reviews VALUES (null, 'jhj', 1003, 5, '최고의 명작', '2022-01-08');
+INSERT INTO reviews VALUES (null, 'jhj', 1000, 4, '그럭저럭 재밌습니다.', '2022-07-08');
 SELECT * FROM reviews;
 
 

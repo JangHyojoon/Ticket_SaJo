@@ -10,6 +10,7 @@
 	<!-- jQuery UI -->
     <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
   	<script>
+  	
   	$(document).ready(function() {
   	//toggle timetable show
         $('.movie__show-btn').click(function (ev) {
@@ -20,15 +21,39 @@
             $('.time-select__item').removeClass('active');
             $(this).addClass('active');
         });
-  		$('.score').raty({
-  	        width:130, 
-  	        score: 5,
-  	        path: '/images/rate/',
-  	        starOff : 'star-off.svg',
-  	        starOn  : 'star-on.svg' 
-  	    });
+  		$('.star-ratings-fill space-x-2 text-lg').css('width',$(this).name);
+  		
     });
     </script>
+    <style>
+    
+		.star-ratings {
+		  color: #aaa9a9; 
+		  position: relative;
+		  unicode-bidi: bidi-override;
+		  width: max-content;
+		  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+		  -webkit-text-stroke-width: 1.3px;
+		  -webkit-text-stroke-color: #2b2a29;
+		}
+		 
+		.star-ratings-fill {
+		  color: #fff58c;
+		  padding: 0;
+		  position: absolute;
+		  z-index: 1;
+		  display: flex;
+		  top: 0;
+		  left: 0;
+		  overflow: hidden;
+		  -webkit-text-fill-color: gold;
+		}
+		 
+		.star-ratings-base {
+		  z-index: 0;
+		  padding: 0;
+		}
+    </style>
 </head>
 <body>
         <!-- Main content -->
@@ -56,16 +81,16 @@
                                 <img alt='' th:src="'images/movie/'+${m.posterimg1}">
                             </div>
                             <div class="movie__feature">
-                                <a href="#" class="movie__feature-item movie__feature--comment">123</a>
-                                <a href="#" class="movie__feature-item movie__feature--video">7</a>
-                                <a href="#" class="movie__feature-item movie__feature--photo">352</a>
+                                <a href="#" class="movie__feature-item movie__feature--comment" th:text="${m.rcnt}">123</a>
+                                <a href="#" class="movie__feature-item movie__feature--video">&nbsp;</a>
+                                <a href="#" class="movie__feature-item movie__feature--photo">&nbsp;</a>
                             </div>
                     </div>
 
                     <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
                             <a href='movie-page-full.html' class="movie__title link--huge" th:text="${m.title}">Last Vegas (2013)</a>
 
-                            <p class="movie__time">105 min</p>
+                            <p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
                             <p class="movie__option"><strong>Country: </strong><a href="#" th:text="${m.country}">USA</a></p>
                             <p class="movie__option"><strong>Category: </strong><a href="#" th:text="${m.gname}">Comady</a></p>
@@ -76,13 +101,21 @@
 
                             <div class="movie__btns">
                                 <a href="#" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></a>
-                                <a href="#" class="watchlist">Add to watchlist</a>
                             </div>
 
                             <div class="preview-footer">
-                                <div class="movie__rate"><div class="score"><img th:alt="${m.star}" src="/images/rate/star-off.svg"></div><span class="movie__rate-number">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span></div>
-                                
-
+                                <div class="movie__rate">
+                                	<div class="star-ratings">
+										<div name="${m.star}"
+									    class="star-ratings-fill space-x-2 text-lg"
+									    th:style="${'width: 50%'}">
+											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										</div>
+										<div class="star-ratings-base space-x-2 text-lg">
+											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+										</div>
+									</div>
+                                <span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span></div>
                                 <a class="movie__show-btn">Showtime</a>
                             </div>
                     </div>
@@ -91,7 +124,7 @@
                     
                     <!-- Time table (choose film start time)-->
                     <div class="time-select">
-                        <div class="time-select__group group--first">
+                        <div class="time-select__group group--first" >
                             <div class="col-sm-4">
                                 <p class="time-select__place">Cineworld</p>
                             </div>
@@ -102,61 +135,7 @@
                                 <li class="time-select__item" data-time='19:50'>19:50</li>
                                 <li class="time-select__item" data-time='21:50'>21:50</li>
                             </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Empire</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='10:45'>10:45</li>
-                                <li class="time-select__item" data-time='16:00'>16:00</li>
-                                <li class="time-select__item" data-time='19:00'>19:00</li>
-                                <li class="time-select__item" data-time='21:15'>21:15</li>
-                                <li class="time-select__item" data-time='23:00'>23:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Curzon</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='09:00'>09:00</li>
-                                <li class="time-select__item" data-time='11:00'>11:00</li>
-                                <li class="time-select__item" data-time='13:00'>13:00</li>
-                                <li class="time-select__item" data-time='15:00'>15:00</li>
-                                <li class="time-select__item" data-time='17:00'>17:00</li>
-                                <li class="time-select__item" data-time='19:0'>19:00</li>
-                                <li class="time-select__item" data-time='21:0'>21:00</li>
-                                <li class="time-select__item" data-time='23:0'>23:00</li>
-                                <li class="time-select__item" data-time='01:0'>01:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Odeon</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='10:45'>10:45</li>
-                                <li class="time-select__item" data-time='16:00'>16:00</li>
-                                <li class="time-select__item" data-time='19:00'>19:00</li>
-                                <li class="time-select__item" data-time='21:15'>21:15</li>
-                                <li class="time-select__item" data-time='23:00'>23:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group group--last">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Picturehouse</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='17:45'>17:45</li>
-                                <li class="time-select__item" data-time='21:30'>21:30</li>
-                                <li class="time-select__item" data-time='02:20'>02:20</li>
-                            </ul>
-                        </div>
+                        </div>                        
                     </div>
                     <!-- end time table-->
 
