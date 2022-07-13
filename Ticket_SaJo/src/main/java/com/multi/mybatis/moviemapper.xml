@@ -22,47 +22,55 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		GROUP BY id
 	</select>
 
-	<!-- 0713 안원영 추가 -->
-	<select id="search" parameterType="map" resultType="movieVO">
-		SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate,
-		m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
-		g.name as
-		gname, g.tid as hgid,
-		ROUND(AVG(r.star),1) as star
-		FROM movie m
-		INNER JOIN genre g ON m.gid=g.id
-		INNER JOIN reviews r ON
-		r.mid=m.id
-		<where>
-			<if test="searchfield == 'category'.toString()">
-				g.name LIKE CONCAT('%',#{searchtxt},'%')
-			</if>
-			<if test="searchfield == 'actors'.toString()">
-				m.mainactor LIKE CONCAT('%',#{searchtxt},'%')
-			</if>
-			<if test="searchfield == 'director'.toString()">
-				m.director LIKE CONCAT('%',#{searchtxt},'%')
-			</if>
-			<if test="searchfield == 'country'.toString()">
-				m.country LIKE CONCAT('%',#{searchtxt},'%')
-			</if>
-		</where>
-		GROUP BY id;
-	</select>
-	
-	<!-- 0713 안원영 추가 평점순 정렬-->
-	<select id="selectStarSort" resultType="movieVO">
-		SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate, m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
-		g.name as gname, g.tid as hgid,
-		ROUND(AVG(r.star),1) as star 
-		FROM movie m
-		INNER JOIN genre g ON m.gid=g.id
-		INNER JOIN reviews r ON r.mid=m.id
-		GROUP BY id
-		ORDER BY star DESC
-		LIMIT 0, 5
-	</select>
+   <!-- 0713 안원영 추가 -->
+   <select id="search" parameterType="map" resultType="movieVO">
+      SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate,
+      m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
+      g.name as
+      gname, g.tid as hgid,
+      ROUND(AVG(r.star),1) as star
+      FROM movie m
+      INNER JOIN genre g ON m.gid=g.id
+      INNER JOIN reviews r ON
+      r.mid=m.id
+      <where>
+         <if test="searchfield == 'category'.toString()">
+            g.name LIKE CONCAT('%',#{searchtxt},'%')
+         </if>
+         <if test="searchfield == 'actors'.toString()">
+            m.mainactor LIKE CONCAT('%',#{searchtxt},'%')
+         </if>
+         <if test="searchfield == 'director'.toString()">
+            m.director LIKE CONCAT('%',#{searchtxt},'%')
+         </if>
+         <if test="searchfield == 'country'.toString()">
+            m.country LIKE CONCAT('%',#{searchtxt},'%')
+         </if>
+      </where>
+      GROUP BY id;
+   </select>
+   
+   <!-- 0713 안원영 추가 평점순 정렬-->
+   <select id="selectStarSort" resultType="movieVO">
+      SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate, m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
+      g.name as gname, g.tid as hgid,
+      ROUND(AVG(r.star),1) as star 
+      FROM movie m
+      INNER JOIN genre g ON m.gid=g.id
+      INNER JOIN reviews r ON r.mid=m.id
+      GROUP BY id
+      ORDER BY star DESC
+      LIMIT 0, 5
+   </select>
 
+
+
+	<select id="selectschedules" resultType="movieVO">
+		SELECT m.id as id, s.id as sid,s.tid as tid,s.sdate as sdate,
+		ds.starttime as starttime, ds.endtime as endtime FROM movie m
+		INNER JOIN schedules s ON s.mid=m.id
+		INNER JOIN detail_schedules ds ON ds.sid = s.id
+	</select>
 
 	<insert id="insert" parameterType="movieVO">
 		INSERT INTO movie VALUES

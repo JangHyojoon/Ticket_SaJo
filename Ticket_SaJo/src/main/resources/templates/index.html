@@ -36,9 +36,12 @@
         <!-- Custom -->
         <link href="/css/style.css?v=1" rel="stylesheet" />
 
-
         <!-- Modernizr --> 
         <script src="/js/external/modernizr.custom.js"></script>
+        
+        <!-- Kakao Login -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     
     <style>
     .tp-caption.boxshadow,.boxshadow
@@ -46,7 +49,6 @@
 	box-shadow:0 0 0px rgba(0,0,0,0.0);
 }
     </style>
-
 </head>
 
 <body>
@@ -66,9 +68,9 @@
 		<div th:insert="${footer} ? ${footer} : footer"></div>
 
 		<!-- Footer End -->
-
     </div>
-<!-- open/close -->
+    
+		<!-- open/close -->
         <div class="overlay overlay-hugeinc">
             
             <section class="container">
@@ -79,9 +81,9 @@
                         <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
 
                         <div class="social social--colored">
-                                <a href='#' class="social__variant fa fa-facebook"></a>
-                                <a href='#' class="social__variant fa fa-twitter"></a>
-                                <a href='#' class="social__variant fa fa-tumblr"></a>
+                               <!-- <a href='#' class="social__variant fa fa-facebook"></a> --> 
+                                <a href='#' id="naver_id_login"></a>
+                                <a href='#' id="kakao-login-btn"></a>
                         </div>
 
                         <p class="login__tracker">or</p>
@@ -92,7 +94,7 @@
 
                         <input type='checkbox' id='#informed' class='login__check styled'>
                         <label for='#informed' class='login__check-info'>remember me</label>
-                         </div>
+                        </div>
                         
                         <div class="login__control">
                             <button id="signinbtn" class="btn btn-md btn--warning btn--wider">sign in</button>
@@ -103,8 +105,6 @@
 
             </section>
         </div>
-
-
 
 	<!-- JavaScript-->
 	<!-- jQuery 3.1.1-->
@@ -165,7 +165,37 @@
               $(document).ready(function() {
                 init_Home();
               });
-	  </script>
+	</script>
+	  
+	 <!-- Kakao Login -->
+	 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	  
+	 <script type='text/javascript'>
+	  	Kakao.init('db0465f4383a21cbe1ac57bdd4b21997');
+		Kakao.Auth.createLoginButton({
+			container: '#kakao-login-btn',
+			success: function(authObj) {
+				alert(JSON.stringify(authObj));
+			},
+			fail: function(err) {
+				alert(JSON.stringify(err));
+			}
+		});
+	 </script>
+	 
+	 <!-- Naver Login -->
+	 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  	 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  	 
+  	 <script type="text/javascript">
+	  	var naver_id_login = new naver_id_login("g8Ejqj0mH9oQZLrteMnZ", "http://127.0.0.1/naverlogin");
+	  	var state = naver_id_login.getUniqState();
+	  	naver_id_login.setButton("green", 25,48);
+	  	naver_id_login.setDomain("http://127.0.0.1");
+	  	naver_id_login.setState(state);
+	  	naver_id_login.setPopup();
+	  	naver_id_login.init_naver_id_login();
+  	 </script>
 
 </body>
 </html>
