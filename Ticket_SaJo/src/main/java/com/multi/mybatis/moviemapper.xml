@@ -3,26 +3,80 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.multi.mapper.MovieMapper">
-	
+
 	<select id="select" parameterType="Integer" resultType="movieVO">
-		SELECT * FROM movie WHERE id=#{id}
+		SELECT *
+		FROM movie WHERE id=#{id}
 	</select>
 	<select id="selectall" resultType="movieVO">
-		SELECT m.id as id,g.name as gname, m.director as director, m.mainactor as mainactor,
-		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg1, m.country as country,
-		m.runningtime as runningtime, m.text as text, ROUND(AVG(star),1) as star FROM movie m
-		INNER JOIN genre g ON g.id = m.gid
+		SELECT m.id as id,g.name as
+		gname, m.director as director, m.mainactor as mainactor,
+		m.releasedate
+		as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg1,
+		m.country as country,
+		m.runningtime as runningtime, m.text as text,
+		ROUND(AVG(star),1) as star FROM movie m
+		INNER JOIN genre g ON g.id =
+		m.gid
 		INNER JOIN reviews r ON r.mid=m.id
 		GROUP BY id
 	</select>
+
+	<!-- 0713 안원영 추가 -->
+	<select id="search" parameterType="map" resultType="movieVO">
+		SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate,
+		m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
+		g.name as
+		gname, g.tid as hgid,
+		ROUND(AVG(r.star),1) as star
+		FROM movie m
+		INNER JOIN genre g ON m.gid=g.id
+		INNER JOIN reviews r ON
+		r.mid=m.id
+		<where>
+			<if test="searchfield == 'category'.toString()">
+				g.name LIKE CONCAT('%',#{searchtxt},'%')
+			</if>
+			<if test="searchfield == 'actors'.toString()">
+				m.mainactor LIKE CONCAT('%',#{searchtxt},'%')
+			</if>
+			<if test="searchfield == 'director'.toString()">
+				m.director LIKE CONCAT('%',#{searchtxt},'%')
+			</if>
+			<if test="searchfield == 'country'.toString()">
+				m.country LIKE CONCAT('%',#{searchtxt},'%')
+			</if>
+		</where>
+		GROUP BY id;
+	</select>
+	
+	<!-- 0713 안원영 추가 평점순 정렬-->
+	<select id="selectStarSort" resultType="movieVO">
+		SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate, m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
+		g.name as gname, g.tid as hgid,
+		ROUND(AVG(r.star),1) as star 
+		FROM movie m
+		INNER JOIN genre g ON m.gid=g.id
+		INNER JOIN reviews r ON r.mid=m.id
+		GROUP BY id
+		ORDER BY star DESC
+		LIMIT 0, 5
+	</select>
+
+
 	<insert id="insert" parameterType="movieVO">
-		INSERT INTO movie VALUES (#{id},#{gid},#{title},#{director},#{mainactor},#{releasedate},#{posterimg1},#{posterimg2},#{country},#{runningtime},#{text})
+		INSERT INTO movie VALUES
+		(#{id},#{gid},#{title},#{director},#{mainactor},#{releasedate},#{posterimg1},#{posterimg2},#{country},#{runningtime},#{text})
 	</insert>
 	<update id="update" parameterType="movieVO">
-		UPDATE movie SET gid=#{gid},title=#{title}, director=#{director}, mainactor=#{mainactor},releasedate=#{releasedate},posterimg1=#{posterimg1},posterimg2=#{posterimg2},country=#{country},runningtime=#{runningtime},text=#{text} WHERE id=#{id}
+		UPDATE movie SET
+		gid=#{gid},title=#{title}, director=#{director},
+		mainactor=#{mainactor},releasedate=#{releasedate},posterimg1=#{posterimg1},posterimg2=#{posterimg2},country=#{country},runningtime=#{runningtime},text=#{text}
+		WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="movieVO">
-		DELETE FROM movie WHERE id=#{id}
+		DELETE FROM movie WHERE
+		id=#{id}
 	</delete>
 </mapper>
 

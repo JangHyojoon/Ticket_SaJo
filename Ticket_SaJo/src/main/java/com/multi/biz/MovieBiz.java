@@ -1,6 +1,7 @@
 package com.multi.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,13 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 		return dao.selectall();
 	}
 
+	// 0713 안원영 추가 
+	public List<MovieVO> search(Map<String, String> obj) throws Exception {
+		return dao.search(obj);
+	}
+	// 0713 안원영 추가 
+	public List<MovieVO> selectStarSort() throws Exception {
+		return dao.selectStarSort();
+	}
 	
 }
