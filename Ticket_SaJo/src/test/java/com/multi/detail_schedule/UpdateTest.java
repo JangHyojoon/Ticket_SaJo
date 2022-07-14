@@ -1,22 +1,20 @@
 package com.multi.detail_schedule;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.SchedulesBiz;
-import com.multi.vo.SchedulesVO;
+import com.multi.biz.Detail_SchedulesBiz;
+import com.multi.vo.Detail_SchedulesVO;
 
 @SpringBootTest
 class UpdateTest {
 	@Autowired
-	SchedulesBiz biz;
+	Detail_SchedulesBiz biz;
 	@Test
 	void contextLoads()  {
-		Date today = new Date();
-		SchedulesVO v = new SchedulesVO(2001,1,1000,today);
+	
+		Detail_SchedulesVO v = new Detail_SchedulesVO(2005,1,"210000","240000");
 		try {
 			biz.modify(v);
 		} catch (Exception e) {

@@ -39,6 +39,9 @@ public class SchedulesBiz implements Biz<Integer,SchedulesVO> {
 	public List<SchedulesVO> get() throws Exception {
 		return dao.selectall();
 	}
-
 	
+	public List<SchedulesVO> selectmiddate(Integer mid, String sdate) throws Exception {
+		return dao.selectmiddate(mid, sdate);
+	}
+
 }

@@ -1,6 +1,5 @@
 package com.multi.vo;
 
-import java.sql.Time;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -16,15 +15,15 @@ import lombok.ToString;
 public class Detail_SchedulesVO {
 	private int sid;
 	private int mcnt;
-	private Time starttime;
-	private Time endtime;
+	private String starttime;
+	private String endtime;
 	
 	private int tid;
 	private int mid;
 	private Date sdate;
 	
 	
-	public Detail_SchedulesVO(int sid, int mcnt, Time starttime, Time endtime) {
+	public Detail_SchedulesVO(int sid, int mcnt, String starttime, String endtime) {
 		super();
 		this.sid = sid;
 		this.mcnt = mcnt;
