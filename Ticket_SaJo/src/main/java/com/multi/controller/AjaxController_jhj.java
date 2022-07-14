@@ -40,26 +40,24 @@ public class AjaxController_jhj {
 				jo.put("posterimg1", sv.getPosterimg1());
 				jo.put("posterimg2", sv.getPosterimg2());
 				jo.put("runningtime", sv.getRunningtime());
-			
 				ja.add(jo);
-				System.out.println(ja.toJSONString());
+				
 				
 			}
-			
+		System.out.println("스케쥴"+ja.toJSONString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
 		return  ja;
 	}
 	@RequestMapping("selecttime")
-	public Object selecttime(int sid) {
+	public Object selecttime(int tid,int mid,String sdate) {
 		
 		List<Detail_SchedulesVO> dslist = null;
 		JSONArray ja = new JSONArray();
 		
 		try {
-			dslist= detail_schedulesbiz.selectsid(sid);
+			dslist= detail_schedulesbiz.selecttidmiddate(tid,mid,sdate);
 		
 			for (Detail_SchedulesVO dsv : dslist) {
 				JSONObject jo = new JSONObject();
@@ -67,12 +65,14 @@ public class AjaxController_jhj {
 				jo.put("mcnt", dsv.getMcnt());
 				jo.put("starttime", dsv.getStarttime());
 				jo.put("endtime", dsv.getEndtime());
-
+				jo.put("tid", dsv.getTid());
+				jo.put("mid", dsv.getMid());
+				jo.put("sdate", dsv.getSdate());
 				ja.add(jo);
-				System.out.println(ja.toJSONString());
+				
 				
 			}
-			
+		System.out.println("디테일 스케줄"+ja.toJSONString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
