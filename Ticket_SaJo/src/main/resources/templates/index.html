@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-	<!-- Basic Page Needs -->
+   <!-- Basic Page Needs -->
         <meta charset="utf-8">
         <title>AMovie</title>
         <meta name="description" content="A Template by Gozha.net">
@@ -10,7 +10,7 @@
         <meta name="author" content="Gozha.net">
     
     <!-- Mobile Specific Metas-->
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="telephone=no" name="format-detection">
     
     <!-- Fonts -->
@@ -40,37 +40,37 @@
         <script src="/js/external/modernizr.custom.js"></script>
         
         <!-- Kakao Login -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
     
     <style>
     .tp-caption.boxshadow,.boxshadow
-{		
-	box-shadow:0 0 0px rgba(0,0,0,0.0);
+{      
+   box-shadow:0 0 0px rgba(0,0,0,0.0);
 }
     </style>
 </head>
 
 <body>
-	<div class="wrapper">
-		<!-- Header start -->
-		<div th:insert="${header} ? ${header} : header"></div>
+   <div class="wrapper">
+      <!-- Header start -->
+      <div th:insert="${header} ? ${header} : header"></div>
 
-		<!-- Header End -->
+      <!-- Header End -->
 
-		<!-- Center start -->
-		<div th:insert="${center} ? ${center} : center"></div>
+      <!-- Center start -->
+      <div th:insert="${center} ? ${center} : center"></div>
 
-		<!-- Center End -->
+      <!-- Center End -->
 
-		<div class="clearfix"></div>
-		<!-- Footer start -->
-		<div th:insert="${footer} ? ${footer} : footer"></div>
+      <div class="clearfix"></div>
+      <!-- Footer start -->
+      <div th:insert="${footer} ? ${footer} : footer"></div>
 
-		<!-- Footer End -->
+      <!-- Footer End -->
     </div>
     
-		<!-- open/close -->
+      <!-- open/close -->
         <div class="overlay overlay-hugeinc">
             
             <section class="container">
@@ -105,97 +105,97 @@
 
             </section>
         </div>
+        
+        <!-- Kakao Login -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+     
+    <script type='text/javascript'>
+        Kakao.init('db0465f4383a21cbe1ac57bdd4b21997');
+      Kakao.Auth.createLoginButton({
+         container: '#kakao-login-btn',
+         success: function(authObj) {
+            alert(JSON.stringify(authObj));
+         },
+         fail: function(err) {
+            alert(JSON.stringify(err));
+         }
+      });
+    </script>
+    
+    <!-- Naver Login -->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+      
+      <script type="text/javascript">
+        var naver_id_login = new naver_id_login("g8Ejqj0mH9oQZLrteMnZ", "http://127.0.0.1/naverlogin");
+        var state = naver_id_login.getUniqState();
+        naver_id_login.setButton("green", 25,48);
+        naver_id_login.setDomain("http://127.0.0.1");
+        naver_id_login.setState(state);
+        naver_id_login.setPopup();
+        naver_id_login.init_naver_id_login();
+      </script>
 
-	<!-- JavaScript-->
-	<!-- jQuery 3.1.1-->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
-	<!-- Migrate -->
-	<script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
-	<!-- Bootstrap 3-->
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+   <!-- JavaScript-->
+   <!-- jQuery 3.1.1-->
+   <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
+   <!-- Migrate -->
+   <script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
+   <!-- Bootstrap 3-->
+   <script
+      src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-	<!-- Slider Revolution core JavaScript files -->
-	<script type="text/javascript"
-		src="/revolution/js/jquery.themepunch.tools.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
+   <!-- Slider Revolution core JavaScript files -->
+   <script type="text/javascript"
+      src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-	<!-- Slider Revolution extension scripts. -->
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-	<script type="text/javascript"
-		src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+   <!-- Slider Revolution extension scripts. -->
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+   <script type="text/javascript"
+      src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
 
-	<!-- Mobile menu -->
-	<script src="/js/jquery.mobile.menu.js"></script>
-	<!-- Select -->
-	<script src="/js/external/jquery.selectbox-0.2.min.js"></script>
-	<!-- Stars rate -->
-	<script src="/js/external/jquery.raty.js"></script>
+   <!-- Mobile menu -->
+   <script src="/js/jquery.mobile.menu.js"></script>
+   <!-- Select -->
+   <script src="/js/external/jquery.selectbox-0.2.min.js"></script>
+   <!-- Stars rate -->
+   <script src="/js/external/jquery.raty.js"></script>
 
-	<!-- Form element -->
-	<script src="/js/external/form-element.js"></script>
-	<!-- Form validation -->
-	<script src="/js/form.js"></script>
+   <!-- Form element -->
+   <script src="/js/external/form-element.js"></script>
+   <!-- Form validation -->
+   <script src="/js/form.js"></script>
 
-	<!-- Twitter feed -->
-	<script src="/js/external/twitterfeed.js"></script>
+   <!-- Twitter feed -->
+   <script src="/js/external/twitterfeed.js"></script>
 
-	<!-- Custom -->
-	<script src="/js/custom.js"></script>
+   <!-- Custom -->
+   <script src="/js/custom.js"></script>
 
-	<script type="text/javascript">
+   <script type="text/javascript">
               $(document).ready(function() {
                 init_Home();
               });
-	</script>
-	  
-	 <!-- Kakao Login -->
-	 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	  
-	 <script type='text/javascript'>
-	  	Kakao.init('db0465f4383a21cbe1ac57bdd4b21997');
-		Kakao.Auth.createLoginButton({
-			container: '#kakao-login-btn',
-			success: function(authObj) {
-				alert(JSON.stringify(authObj));
-			},
-			fail: function(err) {
-				alert(JSON.stringify(err));
-			}
-		});
-	 </script>
-	 
-	 <!-- Naver Login -->
-	 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-  	 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  	 
-  	 <script type="text/javascript">
-	  	var naver_id_login = new naver_id_login("g8Ejqj0mH9oQZLrteMnZ", "http://127.0.0.1/naverlogin");
-	  	var state = naver_id_login.getUniqState();
-	  	naver_id_login.setButton("green", 25,48);
-	  	naver_id_login.setDomain("http://127.0.0.1");
-	  	naver_id_login.setState(state);
-	  	naver_id_login.setPopup();
-	  	naver_id_login.init_naver_id_login();
-  	 </script>
-
+   </script>
+    
 </body>
 </html>
