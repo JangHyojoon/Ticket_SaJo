@@ -13,6 +13,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
 		INNER JOIN movie m ON s.mid = m.id 
 	</select>
+	<select id="selectmiddate" resultType="schedulesVO">
+		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
+		INNER JOIN movie m ON s.mid = m.id
+
+		WHERE mid=#{mid} AND sdate=#{sdate}
+	</select>
+	
 	<insert id="insert" parameterType="schedulesVO">
 		INSERT INTO schedules VALUES (NULL,#{tid},#{mid},#{sdate})
 	</insert>

@@ -1,7 +1,5 @@
 package com.multi.schedules;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +13,8 @@ class InsertTest {
 	SchedulesBiz biz;
 	@Test
 	void contextLoads() {
-		Date today = new Date();
-		SchedulesVO v = new SchedulesVO(2,1000,today);
+	
+		SchedulesVO v = new SchedulesVO(2,1002,"20220709");
 		try {
 			biz.register(v);
 		} catch (Exception e) {

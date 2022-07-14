@@ -1,7 +1,5 @@
 package com.multi.detail_schedule;
 
-import java.sql.Time;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +13,8 @@ class InsertTest {
 	Detail_SchedulesBiz biz;
 	@Test
 	void contextLoads() {
-		Time now = new Time(13,00,00);
-		Detail_SchedulesVO v = new Detail_SchedulesVO(2002,1,now,now);
+		
+		Detail_SchedulesVO v = new Detail_SchedulesVO(2009,1,"110000","130000");
 		try {
 			biz.register(v);
 		} catch (Exception e) {
