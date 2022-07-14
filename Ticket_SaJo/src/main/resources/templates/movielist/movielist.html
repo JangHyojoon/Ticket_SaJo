@@ -10,7 +10,6 @@
 	<!-- jQuery UI -->
     <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
   	<script>
-  	
   	$(document).ready(function() {
   	//toggle timetable show
         $('.movie__show-btn').click(function (ev) {
@@ -21,7 +20,6 @@
             $('.time-select__item').removeClass('active');
             $(this).addClass('active');
         });
-  		$('.star-ratings-fill space-x-2 text-lg').css('width',$(this).name);
   		
     });
     </script>
@@ -78,7 +76,7 @@
                 <div th:each="m:${movie}"class="movie movie--preview movie--full release">
                      <div class="col-sm-3 col-md-2 col-lg-2">
                             <div class="movie__images">
-                                <img alt='' th:src="'images/movie/'+${m.posterimg1}">
+                                <img alt='' th:src="'/images/movie/'+${m.posterimg1}">
                             </div>
                             <div class="movie__feature">
                                 <a href="#" class="movie__feature-item movie__feature--comment" th:text="${m.rcnt}">123</a>
@@ -88,7 +86,7 @@
                     </div>
 
                     <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
-                            <a href='movie-page-full.html' class="movie__title link--huge" th:text="${m.title}">Last Vegas (2013)</a>
+                            <a th:href="@{movielist/detail(id=${m.id})}" class="movie__title link--huge" th:text="${m.title}">Last Vegas (2013)</a>
 
                             <p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
@@ -106,9 +104,8 @@
                             <div class="preview-footer">
                                 <div class="movie__rate">
                                 	<div class="star-ratings">
-										<div name="${m.star}"
-									    class="star-ratings-fill space-x-2 text-lg"
-									    th:style="${'width: 50%'}">
+										<div class="star-ratings-fill space-x-2 text-lg"
+									    th:style="${'width:'+m.star*20+'%'}" th:value ="${m.star}">
 											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 										</div>
 										<div class="star-ratings-base space-x-2 text-lg">

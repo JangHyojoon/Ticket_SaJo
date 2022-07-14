@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.multi.biz.MovieBiz;
-import com.multi.vo.GenreVO;
 import com.multi.vo.MovieVO;
 
 @SpringBootTest
@@ -17,6 +16,7 @@ class SelectAllTest {
 	@Test
 	void contextLoads() {
 		List<MovieVO> list = null;
+		List<String> starrate = null;
 		try {
 			list= biz.get();
 			
