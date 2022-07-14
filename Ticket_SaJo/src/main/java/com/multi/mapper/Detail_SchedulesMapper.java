@@ -20,4 +20,6 @@ public interface Detail_SchedulesMapper {
 	public Detail_SchedulesVO selectone(Integer sid,Integer mcnt) throws Exception;
 	public List<Detail_SchedulesVO> selectsid(Integer sid) throws Exception;
 	public List<Detail_SchedulesVO> selectmcnt(Integer mcnt) throws Exception;
+	public List<Detail_SchedulesVO> selectmiddate(Integer mid,String sdate) throws Exception;
+	public List<Detail_SchedulesVO> selecttidmiddate(Integer tid,Integer mid,String sdate) throws Exception;
 }

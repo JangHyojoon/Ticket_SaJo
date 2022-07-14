@@ -1,7 +1,5 @@
 package com.multi.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +18,7 @@ public class Detail_SchedulesVO {
 	
 	private int tid;
 	private int mid;
-	private Date sdate;
+	private String sdate;
 	
 	
 	public Detail_SchedulesVO(int sid, int mcnt, String starttime, String endtime) {
