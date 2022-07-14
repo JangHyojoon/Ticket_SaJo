@@ -1,28 +1,58 @@
 <meta charset="UTF-8">
-<script>
-function filter(e,c){
-	var input = $('#search-input').val();
-	//alert(input)
-	e.href = "/search" + c + '?searchtxt=' + input;
 
-}
-
-$(document).ready(function(){
-	
-
-});
-
-
-</script>
 <style>
 .starsortimg{
-
-	width: 185px;
-	height: 280px;
+  top:0; left: 0;
+  width: 185px;
+  height: 278px;
+}
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
 }
 
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
 
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+
+.movie__images img {
+	width: 277px;
+	height: 277px;
+}
 </style>
+
+<script>
+	function filter(e, c) {
+		var input = $('#search-input').val();
+		//alert(input)
+		e.href = "/search" + c + '?searchtxt=' + input;
+
+	}
+
+	function googlesearch(){
+		var googlesearchtxt = $('#googletxt').val();
+	}
+
+</script>
 
 
 <!-- Slider -->
@@ -34,7 +64,8 @@ $(document).ready(function(){
 		<!-- BEGIN SLIDES LIST -->
 		<ul>
 			<!-- SLIDE 1 -->
-			<li data-transition="fade" class="slide" data-title='Rush.'>
+			<li data-transition="fade" class="slide"
+				data-title='Gone With The Wind'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
 				alt='' src="/images/slides/windimg1.jpg">
 
@@ -57,9 +88,9 @@ $(document).ready(function(){
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-           					Gone <span class="highlight">With</span> The <span
+					Gone <span class="highlight">With</span> The <span
 						class="highlight">Wind.</span>
-					   </div>
+				</div>
 
 				<div class="tp-caption n slide__time margin-slider" data-x="right"
 					data-hoffset='100' data-y="186"
@@ -95,83 +126,9 @@ $(document).ready(function(){
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					1939</div> <!-- 				<div class="tp-caption slide__time margin-slider" data-x="right"
-					data-hoffset='120' data-y="186"
-					data-frames='[{
-                               "delay":1200,
-                               "speed":300,
-                               "frame":"0",
-                               "from":"x:[50%];opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-					till</div>
-				<div class="tp-caption slide__date margin-slider" data-x="right"
-					data-y="186"
-					data-frames='[{
-                               "delay":1700,
-                               "speed":500,
-                               "frame":"0",
-                               "from":"y:100px;opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-					November 01</div> -->
-				<div class="tp-caption slide__text margin-slider text-right"
-					data-x="right" data-y="250"
-					data-frames='[{
-                               "delay":2300,
-                               "speed":400,
-                               "frame":"0",
-                               "from":"y:100px;skX:50px;opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-
-					남북전쟁 발발. 삶의 모든 것을 뜨겁게 사랑했던 여자 스칼렛<br> 그런 그녀를 운명처럼 사랑했던 남자 레트<br>
-					생애 가장 가슴 벅찬 클래식 로맨스가 찾아온다!<br>
-				</div>
-				<div class="tp-caption margin-slider" data-x="right" data-y="324"
-					data-frames='[{
-                               "delay":2600,
-                               "speed":400,
-                               "frame":"0",
-                               "from":"y:100px;opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-					<a href="#" class="slide__link">check out cinemas &amp; time</a>
-				</div>
-
-			</li>
-
-			<!-- SLIDE 2 -->
+					1939</div> <!-- SLIDE 2 -->
 			<li data-transition="fade" class="slide"
-				data-title='Travel worldwide. Create trip film.'>
+				data-title='The Wizard Of Oz.'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
 				alt='' src="/images/movie/ozimg1.jpg">
 				<div class="rs-background-video-layer" data-forcerewind="on"
@@ -234,40 +191,7 @@ $(document).ready(function(){
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					1939</div> <!-- 				<div class="tp-caption slide__time" data-x="center" data-hoffset='5'
-					data-y="242"
-					data-frames='[{
-                               "delay":1800,
-                               "speed":300,
-                               "frame":"0",
-                               "from":"x:[50%];opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-					- till</div>
-				<div class="tp-caption slide__date" data-x="center"
-					data-hoffset='60' data-y="242"
-					data-frames='[{
-                               "delay":2200,
-                               "speed":500,
-                               "frame":"0",
-                               "from":"y:100px;opacity:0;",
-                               "to":"o:1;",
-                               "ease":"Power3.easeInOut"
-                               },{
-                               "delay":"wait",
-                               "speed":300,
-                               "frame":"999",
-                               "to":"opacity:0;",
-                               "ease":"Power3.easeInOut"
-                             }]'>
-					May 01</div> -->
+					1939</div>
 
 				<div class="tp-caption slider-wrap-btn" data-x="center" data-y="310"
 					data-frames='[{
@@ -290,8 +214,7 @@ $(document).ready(function(){
 			</li>
 
 			<!-- SLIDE 3 -->
-			<li data-transition="fade" class="slide"
-				data-title='Stop wishing. Start doing.'>
+			<li data-transition="fade" class="slide" data-title='사이코'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
 				alt='' src="/images/slides/사이코.jpg">
 				<div
@@ -312,8 +235,7 @@ $(document).ready(function(){
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					사이코
-				</div>
+					사이코</div>
 
 				<div class="tp-caption slide__descript" data-x="center" data-y="240"
 					data-frames='[{
@@ -369,18 +291,38 @@ $(document).ready(function(){
 <!-- Main content -->
 <section class="container">
 	<div class="movie-best">
-		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">
-			Best choice</div>
-		<div class="col-sm-12 change--col ">
-			<div class="movie-beta__item" th:each="movie : ${starSortList}">
-				<img class="starsortimg" alt='' th:src="'/images/movie/' + ${movie.posterimg1}"> <span
+		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
+			choice</div>
+		<div class="col-sm-12 change--col">
+			<div class="movie-beta__item" th:each="movie,index : ${starSortList}" th:if="${index.index}<3">
+				<img class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"> <span
 					class="best-rate" th:text="${movie.star}">5.0</span>
 
 				<ul class="movie-beta__info">
-					<li><span class="best-voted" th:text="${movie.title}"> voted today</span></li>
+					<li><span class="best-voted" th:text="${movie.title}">
+							</span></li>
 					<li>
-						<p class="movie__time" th:text="${movie.runningtime}">169 min</p>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
+						<p th:text="${movie.rcnt} + ' Comments 71 people voted today'"></p>
+					</li>
+					<li class="last-block"><a href="movie-page-left.html"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item hidden-xs hidden-sm" th:each="movie,index : ${starSortList}" th:unless="${index.index}<3">
+				<img class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"> <span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+							</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="${movie.rcnt} + ' Comments 71 people voted today'"></p>
 					</li>
 					<li class="last-block"><a href="movie-page-left.html"
 						class="slide__link">more</a></li>
@@ -394,18 +336,6 @@ $(document).ready(function(){
 	<div class="col-sm-12">
 		<div class="mega-select-present mega-select-top mega-select--full">
 			<div class="mega-select-marker">
-<!-- 				<div class="marker-indecator location">
-					<p class="select-marker">
-						<span>movie to watch now</span> <br> Contry
-					</p>
-				</div> -->
-
-<!-- 				<div class="marker-indecator cinema">
-					<p class="select-marker">
-						<span>find your </span> <br>cinema
-					</p>
-				</div>
- -->
 				<div class="marker-indecator film-category">
 					<p class="select-marker">
 						<span>find movie due to </span> <br> your mood
@@ -435,51 +365,33 @@ $(document).ready(function(){
 				<span class="mega-select__point">Search by</span>
 				<!-- search 메뉴  -->
 				<ul class="mega-select__sort">
-<!-- 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter filter--active" data-filter='location'>Location</a></li>
 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter" data-filter='cinema'>Cinema</a></li>-->
+						class="mega-select__filter filter--active"
+						data-filter='film-category'>Category</a></li>
 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter" data-filter='film-category'>Category</a></li>  
-					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter filter--active" data-filter='actors'>Actors</a></li>
+						class="mega-select__filter" data-filter='actors'>Actors</a></li>
 					<li class="filter-wrap"><a href="#"
 						class="mega-select__filter" data-filter='director'>Director</a></li>
 					<li class="filter-wrap"><a href="#"
 						class="mega-select__filter" data-filter='country'>Country</a></li>
 				</ul>
 
-				<input name="search-input" type='text' class="select__field" value="111" id="search-input">
+				<input name="search-input" type='text' class="select__field"
+					id="search-input">
 
 				<div class="select__btn">
-<!-- 					<a href="#" class="btn btn-md btn--danger ">find <span class="hidden-exrtasm">your city</span></a>
-					<a href="#"	class="btn btn-md btn--danger cinema">find <span class="hidden-exrtasm">suitable cimema</span></a>--> 
- 					<a href="#"	class="btn btn-md btn--danger film-category" onclick="filter(this,'category')">find </a> 
-					<a href="#"	class="btn btn-md btn--danger actors" onclick="filter(this,'actors')">find </a> 
-					<a href="#"	class="btn btn-md btn--danger director" onclick="filter(this,'director')">find </a>
-					<a href="#" class="btn btn-md btn--danger country" onclick="filter(this,'country')">find </a> 
+					<a href="#" class="btn btn-md btn--danger film-category"
+						onclick="filter(this,'category')">find </a> <a href="#"
+						class="btn btn-md btn--danger actors"
+						onclick="filter(this,'actors')">find </a> <a href="#"
+						class="btn btn-md btn--danger director"
+						onclick="filter(this,'director')">find </a> <a href="#"
+						class="btn btn-md btn--danger country"
+						onclick="filter(this,'country')">find </a>
 
 				</div>
 
 				<div class="select__dropdowns">
-<!-- 				<ul class="select__group location">
-						<li class="select__variant" data-value='London'>London</li>
-						<li class="select__variant" data-value='New York'>New York</li>
-						<li class="select__variant" data-value='Paris'>Paris</li>
-						<li class="select__variant" data-value='Berlin'>Berlin</li>
-						<li class="select__variant" data-value='Moscow'>Moscow</li>
-						<li class="select__variant" data-value='Minsk'>Minsk</li>
-						<li class="select__variant" data-value='Warsawa'>Warsawa</li>
-					</ul>
-
-					<ul class="select__group cinema">
-						<li class="select__variant" data-value='Cineworld'>Cineworld</li>
-						<li class="select__variant" data-value='Empire'>Empire</li>
-						<li class="select__variant" data-value='Everyman'>Everyman</li>
-						<li class="select__variant" data-value='Odeon'>Odeon</li>
-						<li class="select__variant" data-value='Picturehouse'>Picturehouse</li>
-					</ul>
- -->
 					<ul class="select__group film-category">
 						<li class="select__variant" data-value="로맨스">로맨스</li>
 						<li class="select__variant" data-value='코미디'>코미디</li>
@@ -492,20 +404,28 @@ $(document).ready(function(){
 					</ul>
 
 					<ul class="select__group actors">
-						<li class="select__variant" data-value='Anthony Perkins'>Anthony Perkins</li>
-						<li class="select__variant" data-value='bibian lee'>bibian lee</li>
-						<li class="select__variant" data-value='frank mogan'>frank mogan</li>
-						<li class="select__variant" data-value='Gary Lockwood'>Gary Lockwood</li>
-						<li class="select__variant" data-value='Janet Leigh'>Janet Leigh</li>
+						<li class="select__variant" data-value='Anthony Perkins'>Anthony
+							Perkins</li>
+						<li class="select__variant" data-value='bibian lee'>bibian
+							lee</li>
+						<li class="select__variant" data-value='frank mogan'>frank
+							mogan</li>
+						<li class="select__variant" data-value='Gary Lockwood'>Gary
+							Lockwood</li>
+						<li class="select__variant" data-value='Janet Leigh'>Janet
+							Leigh</li>
 						<li class="select__variant" data-value='김진규'>김진규</li>
 						<li class="select__variant" data-value='이은심'>이은심</li>
 					</ul>
 
 					<ul class="select__group director">
-						<li class="select__variant" data-value='Alfred Joseph Hitchcock'>Alfred Joseph Hitchcock</li>
-						<li class="select__variant" data-value='victor fleming'>victor fleming</li>
-						<li class="select__variant" data-value='Stanley Kubrick'>Stanley Kubrick</li>
-						<li class="select__variant" data-value='김기영 '>김기영 </li>
+						<li class="select__variant" data-value='Alfred Joseph Hitchcock'>Alfred
+							Joseph Hitchcock</li>
+						<li class="select__variant" data-value='victor fleming'>victor
+							fleming</li>
+						<li class="select__variant" data-value='Stanley Kubrick'>Stanley
+							Kubrick</li>
+						<li class="select__variant" data-value='김기영 '>김기영</li>
 					</ul>
 
 					<ul class="select__group country">
@@ -527,214 +447,113 @@ $(document).ready(function(){
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--dark movie--test--left">
+				<div class="movie movie--test movie--test--dark movie--test--left"
+					th:each="movie,index : ${todayMovieList}">
 					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time8.jpg">
+						<a href="#" class="movie-beta__link"> <img alt='470-235'
+							th:src="'/images/movie/' + ${movie.posterimg1}">
 						</a>
 					</div>
 
 					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">Gravity
-							(2013) </a>
+						<a href='movie-page-left.html' class="movie__title"
+							th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time">91 min</p>
+						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
 						<p class="movie__option">
-							<a href="#">Sci-Fi</a> | <a href="#">Thriller</a> | <a href="#">Drama</a>
+							<a href="#" th:text="${movie.gname}"></a>
 						</p>
 
 						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">4.1</span>
+							<div class="star-ratings">
+								<div name="${movie.star}"
+									class="star-ratings-fill space-x-2 text-lg"
+									th:style="${'width:'+movie.star*20+'%'}">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+								<div class="star-ratings-base space-x-2 text-lg">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+							</div>
+							<!-- <div class="score" th:value="${movie.star}"></div> -->
+							<span class="movie__rating" th:text="${movie.star}">4.1</span>
 						</div>
 					</div>
 				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--light movie--test--left">
+				<div class="movie movie--test movie--test--dark movie--test--left"
+					th:each="movie : ${todayMovieList}">
 					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time1.jpg">
+						<a href="#" class="movie-beta__link"> <img alt='470-235'
+							th:src="'/images/movie/' + ${movie.posterimg1}">
 						</a>
 					</div>
 
 					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">The
-							Hobbit: The Desolation of Smaug (2013) </a>
+						<a href='movie-page-left.html' class="movie__title"
+							th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time">169 min</p>
+						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
 						<p class="movie__option">
-							<a href="#">Adventure</a> | <a href="#">Fantasy</a> | <a href="#">Drama</a>
+							<a href="#" th:text="${movie.gname}"></a>
 						</p>
 
 						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">5.0</span>
+							<div class="star-ratings">
+								<div name="${movie.star}"
+									class="star-ratings-fill space-x-2 text-lg"
+									th:style="${'width:'+movie.star*20+'%'}">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+								<div class="star-ratings-base space-x-2 text-lg">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+							</div>
+							<!-- <div class="score" th:value="${movie.star}"></div> -->
+							<span class="movie__rating" th:text="${movie.star}">4.1</span>
 						</div>
 					</div>
 				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--light movie--test--right">
+				<div class="movie movie--test movie--test--dark movie--test--right"
+					th:each="movie : ${todayMovieList}">
 					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time9.jpg">
+						<a href="#" class="movie-beta__link"> <img alt='470-235'
+							th:src="'/images/movie/' + ${movie.posterimg1}">
 						</a>
 					</div>
 
 					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">The Hunger
-							Games: Catching Fire (2013) </a>
+						<a href='movie-page-left.html' class="movie__title"
+							th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time">146 min</p>
+						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
 						<p class="movie__option">
-							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Sci-Fi</a>
+							<a href="#" th:text="${movie.gname}"></a>
 						</p>
 
 						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">4.9</span>
-						</div>
-					</div>
-				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--dark movie--test--right">
-					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time10.jpg">
-						</a>
-					</div>
-
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">Thor: The
-							Dark World (2013) </a>
-
-						<p class="movie__time">112 min</p>
-
-						<p class="movie__option">
-							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Fantasy</a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">5.0</span>
-						</div>
-					</div>
-				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--dark movie--test--left">
-					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time11.jpg">
-						</a>
-					</div>
-
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">World War
-							Z (2013) </a>
-
-						<p class="movie__time">116 min</p>
-
-						<p class="movie__option">
-							<a href="#">Action</a> | <a href="#">Adventure</a> | <a href="#">Horror</a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">4.1</span>
-						</div>
-					</div>
-				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--light movie--test--left">
-					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time12.jpg">
-						</a>
-					</div>
-
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">Prisoners
-							(2013) </a>
-
-						<p class="movie__time">153 min</p>
-
-						<p class="movie__option">
-							<a href="#">Crime</a> | <a href="#">Thriller</a> | <a href="#">Drama</a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">5.0</span>
-						</div>
-					</div>
-				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--light movie--test--right">
-					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time13.jpg">
-						</a>
-					</div>
-
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">This Is
-							the End (2013) </a>
-
-						<p class="movie__time">107 min</p>
-
-						<p class="movie__option">
-							<a href="#">Comedy</a> | <a href="#">Fantasy</a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">4.9</span>
-						</div>
-					</div>
-				</div>
-				<!-- Movie variant with time -->
-
-				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--dark movie--test--right">
-					<div class="movie__images">
-						<a href="movie-page-left.html" class="movie-beta__link"> <img
-							alt='' src="/images/movie/movie-time14.jpg">
-						</a>
-					</div>
-
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title">The
-							Internship (2013) </a>
-
-						<p class="movie__time">112 min</p>
-
-						<p class="movie__option">
-							<a href="#">Comedy</a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="score"></div>
-							<span class="movie__rating">5.0</span>
+							<div class="star-ratings">
+								<div name="${movie.star}"
+									class="star-ratings-fill space-x-2 text-lg"
+									th:style="${'width:'+movie.star*20+'%'}">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+								<div class="star-ratings-base space-x-2 text-lg">
+									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+								</div>
+							</div>
+							<!-- <div class="score" th:value="${movie.star}"></div> -->
+							<span class="movie__rating" th:text="${movie.star}">4.1</span>
 						</div>
 					</div>
 				</div>
 				<!-- Movie variant with time -->
 
 
+
+				<!-- 
 				<div class="row">
 					<div class="social-group">
 						<div class="col-sm-6 col-md-4 col-sm-push-6 col-md-push-4">
@@ -766,17 +585,19 @@ $(document).ready(function(){
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 
 		</div>
 	</div>
-
+<!--https://www.google.com/search?q=  -->
 	<div class="col-sm-12">
-		<h2 class="page-heading">Latest news</h2>
+		<h2 class="page-heading">영화에 관해 어떤게 궁금하신가요? </h2>
+		<input type="text" id="googletxt">
+		<button class="btn btn-md btn--shine" onclick="googlesearch()">search</button>
 
-		<div class="col-sm-4 similar-wrap col--remove">
+		<!-- <div class="col-sm-4 similar-wrap col--remove">
 			<div class="post post--preview post--preview--wide">
 				<div class="post__image">
 					<img alt='' src="/images/client-photo/post-thor.jpg">
@@ -827,7 +648,7 @@ $(document).ready(function(){
 					Film Awards 2013</a> <a href="single-page-left.html"
 					class="btn read-more post--btn">read more</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 </section>

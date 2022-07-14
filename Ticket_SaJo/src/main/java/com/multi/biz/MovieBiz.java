@@ -48,10 +48,16 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 	// 0713 안원영 추가 
 	public List<MovieVO> selectStarSort() throws Exception {
 		return dao.selectStarSort();
+	}
 
 	public List<MovieVO> selectschedules() throws Exception {
 		return dao.selectschedules();
 
+	}
+	
+	// 0714 안원영 추가 
+	public List<MovieVO> todayMovieList() throws Exception {
+		return dao.todayMovieList();
 	}
 	
 }
