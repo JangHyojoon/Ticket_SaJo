@@ -25,15 +25,16 @@ public class MainController {
 		
 		try {
 			starSortList = mbiz.selectStarSort();
+			todayMovieList = mbiz.todayMovieList();
 			
-			
-			
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
 		m.addAttribute("starSortList", starSortList);
+		m.addAttribute("todayMovieList", todayMovieList);
 		
 		return "index";
 	}

@@ -55,4 +55,9 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 
 	}
 	
+	// 0714 안원영 추가 
+	public List<MovieVO> todayMovieList() throws Exception {
+		return dao.todayMovieList();
+	}
+	
 }
