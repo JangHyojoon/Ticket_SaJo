@@ -31,10 +31,22 @@ public class MovielistController {
 		m.addAttribute("schedules", schedules);
 		return "index";
 	}
-	@RequestMapping("/moviedetail")
-	public String moviedetail(Model m) {
+	@RequestMapping("/detail")
+	public String detail(Model m,Integer id) {
 		m.addAttribute("center", "movielist/moviedetail");
-
+		MovieVO movie;
+		try {
+			movie = mbiz.get(id);
+			m.addAttribute("movie", movie);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/index";
+	}
+	@RequestMapping("/movie")
+	public String movie(Model m) {
+		m.addAttribute("center", "movielist/movie-page-full");
 		return "index";
 	}
+	
 }

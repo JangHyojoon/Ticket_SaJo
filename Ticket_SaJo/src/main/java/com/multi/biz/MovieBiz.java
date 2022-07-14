@@ -49,6 +49,7 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 	public List<MovieVO> selectStarSort() throws Exception {
 		return dao.selectStarSort();
 	}
+
 	public List<MovieVO> selectschedules() throws Exception {
 		return dao.selectschedules();
 

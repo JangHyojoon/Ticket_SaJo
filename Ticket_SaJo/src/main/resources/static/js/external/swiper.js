@@ -5331,4 +5331,4 @@ else if (typeof define === 'function' && define.amd) {
         return window.Swiper;
     });
 }
-//# sourceMappingURL=maps/swiper.js.map
+sourceMappingURL=maps/swiper.js.map

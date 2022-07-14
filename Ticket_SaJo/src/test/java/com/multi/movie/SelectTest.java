@@ -15,7 +15,7 @@ class SelectTest {
 	void contextLoads() {
 		MovieVO v = null;
 		try {
-			v = biz.get(1005);
+			v = biz.get(1000);
 			System.out.println(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
