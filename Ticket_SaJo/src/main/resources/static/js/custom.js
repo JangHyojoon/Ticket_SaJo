@@ -1241,7 +1241,7 @@ function init_MoviePage () {
                           toggle = false;
                     });
                 });
-
+                
     //4. Dropdown init 
 				//select
                 $("#select-sort").selectbox({
@@ -1269,7 +1269,7 @@ function init_MoviePage () {
                        $(".datepicker__input").datepicker("hide");
                      }
                 });
-
+	
     //6. Reply comment form
     			// button more comments
                 $('#hide-comments').hide();
@@ -1297,7 +1297,7 @@ function init_MoviePage () {
                     $('.time-select__item').removeClass('active');
                     $(this).addClass('active');
                 });
-
+/*
     //8. Toggle between cinemas timetable and map with location
     			//change map - ticket list
                 $('#map-switch').click(function(ev){
@@ -1314,6 +1314,7 @@ function init_MoviePage () {
                 $(window).load(function() {
                     $('.map').addClass('hide-map');
                 });
+
 
    	//9. Init map with several markers on.
    					//Map start init
@@ -1596,6 +1597,7 @@ function init_MoviePage () {
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerE.getPosition());
                     });
+        */            
     
     //10. Scroll down navigation function
     //scroll down
