@@ -15,7 +15,7 @@ class InsertTest {
 	
 	@Test
 	void contextLoads() {
-		ReviewVO r = new ReviewVO(6005, "hms", 1005, 1, "슬픔", "2019-07-07");
+		ReviewVO r = new ReviewVO(6005, "hms", 1005, 1, "슬픔");
 		try {
 			biz.register(r);
 		} catch (Exception e) {

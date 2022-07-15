@@ -39,5 +39,8 @@ public class ReviewBiz implements Biz<Integer,ReviewVO> {
 	public List<ReviewVO> get() throws Exception {
 		return dao.selectall();
 	}
+	public List<ReviewVO> selectmreviews(Integer k) throws Exception{
+		return dao.selectmreviews(k);
+	}
 
 }

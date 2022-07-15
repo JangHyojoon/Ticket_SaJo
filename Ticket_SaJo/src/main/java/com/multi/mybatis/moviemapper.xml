@@ -21,6 +21,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN reviews r ON r.mid=m.id
 		GROUP BY id
 	</select>
+	<!-- 0715 김민식 추가 -->
+	<select id="selectpage" parameterType="Integer" resultType="movieVO">
+		SELECT m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg2, m.country as country,
+		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
+		INNER JOIN genre g ON g.id = m.gid
+		INNER JOIN reviews r ON r.mid=m.id
+		where m.id BETWEEN #{id} and (#{id}+2)
+		GROUP BY id
+	</select>
 
 	<!-- 0713 안원영 추가 -->
 	<select id="search" parameterType="map" resultType="movieVO">

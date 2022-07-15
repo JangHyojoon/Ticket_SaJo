@@ -70,11 +70,15 @@
 		height: 130px;
 		width: 215px;
 		}
+		.comimg{
+		height: 50px;
+		width: 50px;
+		}
 </style>
 <body>
         <!-- Main content -->
         <section class="container">
-            <div class="col-sm-12">
+            <div class="col-lg-12">
                 <div class="movie">
                     <h2 class="page-heading" th:text="${movie.title}">The Hobbit: An Unexpected Journey</h2>
                     
@@ -93,7 +97,7 @@
 										<div class="star-ratings-base space-x-2 text-lg">
 											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 										</div>
-									</div></div>
+									</div> </div>
                         </div>
                         <div class="col-sm-8 col-md-9">
                             <p class="movie__time" th:text="${movie.runningtime}">169 min</p>
@@ -134,15 +138,15 @@
                         <div class="swiper-container">
                           <div class="swiper-wrapper">
                               <!--First Slide-->
-                              <div class="swiper-slide media-video">
-                                <a href='https://www.youtube.com/watch?v=Y5AehBA3IsE' class="movie__media-item ">
+                              <div class="swiper-slide media">
+                                <a th:href="'https://www.youtube.com/results?search_query='+${movie.title}" class="movie__media-item " target='_blank'>
                                      <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'1.jpg'">
                                 </a>
                               </div>
                               
                               <!--Second Slide-->
                               <div class="swiper-slide media-video">
-                                <a href='https://www.youtube.com/watch?v=Kb3ykVYvT4U' class="movie__media-item">
+                                <a th:href="'/video/'+${movie.id}+'.mp4'" class="movie__media-item">
                                     <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'2.jpg'">
                                 </a>
                               </div>
@@ -163,15 +167,15 @@
 
                               <!--Slide-->
                               <div class="swiper-slide media-photo"> 
-                                    <a href='/images/gallery/large/item-7.jpg' class="movie__media-item">
-                                        <img alt='' class="mvitem" src="/images/movie/movie-img3.jpg">
+                                    <a th:href="'/images/movie/'+${movie.id}+'2.jpg'" class="movie__media-item">
+                                        <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'3.jpg'">
                                      </a>
                               </div>
 
                               <!--Slide-->
                               <div class="swiper-slide media-photo"> 
-                                    <a href='/images/gallery/large/item-11.jpg' class="movie__media-item">
-                                        <img alt=' ' src="/images/movie/movie-img4.jpg">
+                                    <a th:href="'/images/movie/'+${movie.id}+'4.jpg'" class="movie__media-item">
+                                        <img alt=' ' th:src="'/images/movie/'+${movie.id}+'4.jpg'">
                                      </a>
                               </div>
                           </div>
@@ -180,95 +184,17 @@
                     </div>
 
                 </div>
-
-                <h2 class="page-heading">showtime &amp; tickets</h2>
                 <div class="choose-container">
-                    
-
-                    <div class="datepicker">
-                      <span class="datepicker__marker"><i class="fa fa-calendar"></i>Date</span>
-                      <input type="text" id="datepicker" value='03/10/2014' class="datepicker__input">
-                    </div>
-
                     <a href="#" id="map-switch" class="watchlist watchlist--map watchlist--map-full"><span class="show-map">Show cinemas on map</span><span  class="show-time">Show cinema time table</span></a>
                     
                     <div class="clearfix"></div>
-
-                    <div class="time-select">
-                        <div class="time-select__group group--first">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Cineworld</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='09:40'>09:40</li>
-                                <li class="time-select__item" data-time='13:45'>13:45</li>
-                                <li class="time-select__item active" data-time='15:45'>15:45</li>
-                                <li class="time-select__item" data-time='19:50'>19:50</li>
-                                <li class="time-select__item" data-time='21:50'>21:50</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Empire</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='10:45'>10:45</li>
-                                <li class="time-select__item" data-time='16:00'>16:00</li>
-                                <li class="time-select__item" data-time='19:00'>19:00</li>
-                                <li class="time-select__item" data-time='21:15'>21:15</li>
-                                <li class="time-select__item" data-time='23:00'>23:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Curzon</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='09:00'>09:00</li>
-                                <li class="time-select__item" data-time='11:00'>11:00</li>
-                                <li class="time-select__item" data-time='13:00'>13:00</li>
-                                <li class="time-select__item" data-time='15:00'>15:00</li>
-                                <li class="time-select__item" data-time='17:00'>17:00</li>
-                                <li class="time-select__item" data-time='19:0'>19:00</li>
-                                <li class="time-select__item" data-time='21:0'>21:00</li>
-                                <li class="time-select__item" data-time='23:0'>23:00</li>
-                                <li class="time-select__item" data-time='01:0'>01:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Odeon</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='10:45'>10:45</li>
-                                <li class="time-select__item" data-time='16:00'>16:00</li>
-                                <li class="time-select__item" data-time='19:00'>19:00</li>
-                                <li class="time-select__item" data-time='21:15'>21:15</li>
-                                <li class="time-select__item" data-time='23:00'>23:00</li>
-                            </ul>
-                        </div>
-
-                        <div class="time-select__group group--last">
-                            <div class="col-sm-4">
-                                <p class="time-select__place">Picturehouse</p>
-                            </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='17:45'>17:45</li>
-                                <li class="time-select__item" data-time='21:30'>21:30</li>
-                                <li class="time-select__item" data-time='02:20'>02:20</li>
-                            </ul>
-                        </div>
-                    </div>
                     
                     <!-- hiden maps with multiple locator-->
                     <div  class="map">
                         <div id='cimenas-map'></div> 
                     </div>
 
-                    <h2 class="page-heading">comments (15)</h2>
+                   <h2 class="page-heading" th:text="'comments('+${movie.rcnt}+')'">.</h2>
 
                     <div class="comment-wrapper">
                         <form id="comment-form" class="comment-form" method='post'>
@@ -279,72 +205,16 @@
 
                         <div class="comment-sets">
 
-                        <div class="comment">
+                        <div class="comment" th:each="r:${reviews}">
                             <div class="comment__images">
-                                <img alt='' src="images/comment/avatar.jpg">
+                                <img class="comimg" alt='' src="/images/comment/comments.jpg">
                             </div>
 
-                            <a href='#' class="comment__author"><span class="social-used fa fa-facebook"></span>Roberta Inetti</a>
-                            <p class="comment__date">today | 03:04</p>
-                            <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
+                            <a href='#' class="comment__author" th:text="${r.name}+'('+${r.uid}+')'"><span class="social-used fa fa-facebook"></span>Roberta Inetti</a>
+                            <p class="comment__date" th:text="${r.dday}+'일전'+'|'+${r.regdate}">today </p>
+                            <p class="comment__message" th:text="${r.text}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
                             <a href='#' class="comment__reply">Reply</a>
                         </div>
-
-                        <div class="comment">
-                            <div class="comment__images">
-                                <img alt='' src="images/comment/avatar-olia.jpg">
-                            </div>
-
-                            <a href='#' class="comment__author"><span class="social-used fa fa-vk"></span>Olia Gozha</a>
-                            <p class="comment__date">22.10.2013 | 14:40</p>
-                            <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-                            <a href='#' class="comment__reply">Reply</a>
-                        </div>
-
-                        <div class="comment comment--answer">
-                            <div class="comment__images">
-                                <img alt='' src="images/comment/avatar-dmitriy.jpg">
-                            </div>
-
-                            <a href='#' class="comment__author"><span class="social-used fa fa-vk"></span>Dmitriy Pustovalov</a>
-                            <p class="comment__date">today | 10:19</p>
-                            <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-                            <a href='#' class="comment__reply">Reply</a>
-                        </div>
-
-                        <div class="comment comment--last">
-                            <div class="comment__images">
-                                <img alt='' src="images/comment/avatar-sia.jpg">
-                            </div>
-
-                            <a href='#' class="comment__author"><span class="social-used fa fa-facebook"></span>Sia Andrews</a>
-                            <p class="comment__date"> 22.10.2013 | 12:31 </p>
-                            <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-                            <a href='#' class="comment__reply">Reply</a>
-                        </div>
-
-                        <div id='hide-comments' class="hide-comments">
-                            <div class="comment">
-                                <div class="comment__images">
-                                    <img alt='' src="images/comment/avatar.jpg">
-                                </div>
-
-                                <a href='#' class="comment__author"><span class="social-used fa fa-facebook"></span>Roberta Inetti</a>
-                                <p class="comment__date">today | 03:04</p>
-                                <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-                                <a href='#' class="comment__reply">Reply</a>
-                            </div>
-
-                            <div class="comment">
-                                <div class="comment__images">
-                                    <img alt='' src="images/comment/avatar-olia.jpg">
-                                </div>
-
-                                <a href='#' class="comment__author"><span class="social-used fa fa-vk"></span>Olia Gozha</a>
-                                <p class="comment__date">22.10.2013 | 14:40</p>
-                                <p class="comment__message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
-                                <a href='#' class="comment__reply">Reply</a>
-                            </div>
                         </div>
 
                         <div class="comment-more">
@@ -354,8 +224,7 @@
                     </div>
                     </div>
                 </div>
-            </div>
-
+                
         </section>
         
         <div class="clearfix"></div>

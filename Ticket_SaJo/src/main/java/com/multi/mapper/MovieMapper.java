@@ -29,6 +29,8 @@ public interface MovieMapper {
 
 	//0714 안원영 추가 
 	public List<MovieVO> todayMovieList() throws Exception;
+	//0715 김민식 추가
+	public List<MovieVO> selectpage(int id) throws Exception;
 	
 	
 	

@@ -10,11 +10,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="reviewVO">
 		SELECT * FROM reviews
 	</select>
+	<select id="selectmreviews" parameterType="int" resultType="reviewVO">
+		SELECT r.id as id, r.uid as uid , r.mid as mid, r.star as star, r.text as text, r.regdate as regdate,
+		abs(datediff(r.regdate,now())) as dday,c.name as name FROM reviews r
+		INNER JOIN cust c ON c.id = r.uid
+		where mid=#{mid}
+	</select>
 	<insert id="insert" parameterType="reviewVO">
-		INSERT INTO reviews VALUES (#{id},#{uid},#{mid},#{star},#{text},#{regdate})
+		INSERT INTO reviews VALUES (#{id},#{uid},#{mid},#{star},#{text},sysdate())
 	</insert>
 	<update id="update" parameterType="reviewVO">
-		UPDATE reviews SET uid=#{uid},mid=#{mid},star=#{star},text=#{text},regdate=#{regdate} WHERE id=#{id}
+		UPDATE reviews SET uid=#{uid},mid=#{mid},star=#{star},text=#{text},regdate=sysdate() WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="reviewVO">
 		DELETE FROM reviews WHERE id=#{id}
