@@ -140,13 +140,13 @@
                 <!-- end movie preview item -->
                 <div class="coloum-wrapper">
                     <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev">prev</a>
-                            <a href='#' class="pagination__next">next</a>
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=1000" th:href="@{/movielist(id=${mnum}-3)}">prev</a>
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1<=1000">prev</a>
+                            <a href='#' class="pagination__next" th:href="@{/movielist(id=${mnum}+3)}">next</a>
                     </div>
                 </div>
 
             </div>
-
         </section>
         
         <div class="clearfix"></div>

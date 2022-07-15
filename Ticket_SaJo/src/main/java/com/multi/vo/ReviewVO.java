@@ -1,5 +1,7 @@
 package com.multi.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +19,26 @@ public class ReviewVO {
 	private int mid;
 	private int star;
 	private String text;
-	private String regdate;
+	private Date regdate;
+	
+	// 7.15 김민식 추가
+	private int dday;
+	private String name;
+	public ReviewVO(int id, String uid, int mid, int star, String text, Date regdate) {
+		this.id = id;
+		this.uid = uid;
+		this.mid = mid;
+		this.star = star;
+		this.text = text;
+		this.regdate = regdate;
+	}
+	public ReviewVO(int id, String uid, int mid, int star, String text) {
+		this.id = id;
+		this.uid = uid;
+		this.mid = mid;
+		this.star = star;
+		this.text = text;
+	}
+	
+	
 }

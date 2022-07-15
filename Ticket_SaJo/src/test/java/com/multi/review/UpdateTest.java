@@ -15,7 +15,7 @@ class UpdateTest {
 	
 	@Test
 	void contextLoads()  {
-		ReviewVO r = new ReviewVO(6005, "jck", 1005, 1, "슬프다", "2022-05-29");
+		ReviewVO r = new ReviewVO(6005, "jck", 1005, 1, "슬프다");
 		try {
 			biz.modify(r);
 		} catch (Exception e) {

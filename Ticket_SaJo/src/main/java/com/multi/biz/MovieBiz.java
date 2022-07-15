@@ -59,5 +59,10 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 	public List<MovieVO> todayMovieList() throws Exception {
 		return dao.todayMovieList();
 	}
+	// 0715 김민식 추가
+	public List<MovieVO> selectpage(Integer k) throws Exception {
+		return dao.selectpage(k);
+
+	}
 	
 }

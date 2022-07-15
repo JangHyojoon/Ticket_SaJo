@@ -15,5 +15,6 @@ public interface ReviewMapper {
 	public void update(ReviewVO review) throws Exception;
 	public ReviewVO select(int id) throws Exception;
 	public List<ReviewVO> selectall() throws Exception;
+	public List<ReviewVO> selectmreviews(int mid) throws Exception;
 
 }
