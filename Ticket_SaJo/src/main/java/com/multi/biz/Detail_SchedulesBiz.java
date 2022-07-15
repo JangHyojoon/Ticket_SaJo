@@ -56,4 +56,7 @@ public class Detail_SchedulesBiz implements Biz<Integer,Detail_SchedulesVO> {
 	public List<Detail_SchedulesVO> selecttidmiddate(Integer tid,Integer mid,String sdate) throws Exception {
 		return dao.selecttidmiddate(tid, mid, sdate);
 	}
+	public Detail_SchedulesVO selectmidtidsdatetime(Integer mid,Integer tid, String sdate, String starttime) throws Exception {
+		return dao.selectmidtidsdatetime(mid, tid, sdate, starttime);
+	}
 }

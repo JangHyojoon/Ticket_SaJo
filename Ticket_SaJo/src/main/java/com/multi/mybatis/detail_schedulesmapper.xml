@@ -33,7 +33,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN schedules s ON ds.sid = s.id
         WHERE mid = #{mid} AND sdate = #{sdate} AND tid=#{tid}
 	</select>
-	
+	<select id="selectmidtidsdatetime" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		WHERE mid=#{mid} AND tid=#{tid} AND sdate=#{sdate} AND starttime=#{starttime}
+	</select>
 	<insert id="insert" parameterType="detail_schedulesVO">
 		INSERT INTO detail_schedules VALUES (#{sid},#{mcnt},#{starttime},#{endtime})
 	</insert>
