@@ -448,6 +448,7 @@ function init_BookingOne() {
     
     //5. Datepicker init
                 $( ".datepicker__input" ).datepicker({
+                  dateFormat: 'yy-mm-dd',
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"

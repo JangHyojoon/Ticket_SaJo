@@ -44,11 +44,24 @@ public class MainController_jhj {
 		
 		return "index";
 	}
-	@RequestMapping("/book11")
-	public String book11(Model m) {
-	
-		return "book11";
+
+	@RequestMapping("/book1impl")
+	public String book1impl(Model m, int mid, String date,String time,int theater) {
+		Detail_SchedulesVO dsv = null;
+		try {
+			dsv = detail_schedulesbiz.selectmidtidsdatetime(mid, theater, date, time);
+			m.addAttribute("book1info", dsv);
+			
+		} catch (Exception e) {
+			
+		}
+		m.addAttribute("center", "book2");
+		m.addAttribute("header", "header");
+		m.addAttribute("footer", "footer");
+		return "index";
 	}
+
+
 	@RequestMapping("/elements")
 	public String elements(Model m) {
 
