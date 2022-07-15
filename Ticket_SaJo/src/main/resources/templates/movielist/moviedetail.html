@@ -37,7 +37,6 @@
 
         <!-- Modernizr --> 
         <script src="/js/external/modernizr.custom.js"></script>
-    
 </head>
 <style>
 
@@ -137,14 +136,14 @@
                               <!--First Slide-->
                               <div class="swiper-slide media-video">
                                 <a href='https://www.youtube.com/watch?v=Y5AehBA3IsE' class="movie__media-item ">
-                                     <img alt='' class="mvitem" src="/images/movie/movie-video1.jpg">
+                                     <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'1.jpg'">
                                 </a>
                               </div>
                               
                               <!--Second Slide-->
                               <div class="swiper-slide media-video">
                                 <a href='https://www.youtube.com/watch?v=Kb3ykVYvT4U' class="movie__media-item">
-                                    <img alt='' class="mvitem" src="/images/movie/movie-video2.jpg">
+                                    <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'2.jpg'">
                                 </a>
                               </div>
                               
