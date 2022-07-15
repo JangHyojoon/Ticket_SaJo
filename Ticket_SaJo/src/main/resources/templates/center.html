@@ -1,11 +1,13 @@
 <meta charset="UTF-8">
 
 <style>
-.starsortimg{
-  top:0; left: 0;
-  width: 185px;
-  height: 278px;
+.starsortimg {
+	top: 0;
+	left: 0;
+	width: 185px;
+	height: 278px;
 }
+
 .star-ratings {
 	color: #aaa9a9;
 	position: relative;
@@ -48,10 +50,9 @@
 
 	}
 
-	function googlesearch(){
+	function googlesearch() {
 		var googlesearchtxt = $('#googletxt').val();
 	}
-
 </script>
 
 
@@ -294,14 +295,15 @@
 		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
 			choice</div>
 		<div class="col-sm-12 change--col">
-			<div class="movie-beta__item" th:each="movie,index : ${starSortList}" th:if="${index.index}<3">
+			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"
+				th:if="${index.index}<3">
 				<img class="starsortimg" alt=''
 					th:src="'/images/movie/' + ${movie.posterimg1}"> <span
 					class="best-rate" th:text="${movie.star}">5.0</span>
 
 				<ul class="movie-beta__info">
 					<li><span class="best-voted" th:text="${movie.title}">
-							</span></li>
+					</span></li>
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
@@ -311,14 +313,15 @@
 						class="slide__link">more</a></li>
 				</ul>
 			</div>
-			<div class="movie-beta__item hidden-xs hidden-sm" th:each="movie,index : ${starSortList}" th:unless="${index.index}<3">
+			<div class="movie-beta__item hidden-xs hidden-sm"
+				th:each="movie,index : ${starSortList}" th:unless="${index.index}<3">
 				<img class="starsortimg" alt=''
 					th:src="'/images/movie/' + ${movie.posterimg1}"> <span
 					class="best-rate" th:text="${movie.star}">5.0</span>
 
 				<ul class="movie-beta__info">
 					<li><span class="best-voted" th:text="${movie.title}">
-							</span></li>
+					</span></li>
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
@@ -440,115 +443,89 @@
 
 	<div class="clearfix"></div>
 
-	<h2 id='target' class="page-heading heading--outcontainer">Now in
-		the cinema</h2>
+	<h2 id='target' class="page-heading heading--outcontainer">Today
+		Movie !!</h2>
 
 	<div class="col-sm-12">
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<!-- Movie variant with time -->
-				<div class="movie movie--test movie--test--dark movie--test--left"
-					th:each="movie,index : ${todayMovieList}">
-					<div class="movie__images">
-						<a href="#" class="movie-beta__link"> <img alt='470-235'
-							th:src="'/images/movie/' + ${movie.posterimg1}">
-						</a>
-					</div>
+				<div th:each="movie,index : ${todayMovieList}"
+					th:if="${todayMovieList != null}">
+					<div class="movie movie--test movie--test--dark movie--test--left"
+						th:if="${(index.index+1) % 2 == 0}">
+						<div class="movie__images">
+							<a href="#" class="movie-beta__link"> <img alt='470-235'
+								th:src="'/images/movie/' + ${movie.posterimg1}">
+							</a>
+						</div>
 
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title"
-							th:text="${movie.title}">Gravity (2013) </a>
+						<div class="movie__info">
+							<a href='movie-page-left.html' class="movie__title"
+								th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
+							<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
-						<p class="movie__option">
-							<a href="#" th:text="${movie.gname}"></a>
-						</p>
+							<p class="movie__option">
+								<a href="#" th:text="${movie.gname}"></a>
+							</p>
 
-						<div class="movie__rate">
-							<div class="star-ratings">
-								<div name="${movie.star}"
-									class="star-ratings-fill space-x-2 text-lg"
-									th:style="${'width:'+movie.star*20+'%'}">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							<div class="movie__rate">
+								<div class="star-ratings">
+									<div name="${movie.star}"
+										class="star-ratings-fill space-x-2 text-lg"
+										th:style="${'width:'+movie.star*20+'%'}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
 								</div>
-								<div class="star-ratings-base space-x-2 text-lg">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-								</div>
+								<!-- <div class="score" th:value="${movie.star}"></div> -->
+								<span class="movie__rating" th:text="${movie.star}">4.1</span>
 							</div>
-							<!-- <div class="score" th:value="${movie.star}"></div> -->
-							<span class="movie__rating" th:text="${movie.star}">4.1</span>
 						</div>
 					</div>
-				</div>
-				<div class="movie movie--test movie--test--dark movie--test--left"
-					th:each="movie : ${todayMovieList}">
-					<div class="movie__images">
-						<a href="#" class="movie-beta__link"> <img alt='470-235'
-							th:src="'/images/movie/' + ${movie.posterimg1}">
-						</a>
-					</div>
+					<div class="movie movie--test movie--test--dark movie--test--right"
+						th:unless="${(index.index+1) % 2 == 0}">
+						<div class="movie__images">
+							<a href="#" class="movie-beta__link"> <img alt='470-235'
+								th:src="'/images/movie/' + ${movie.posterimg1}">
+							</a>
+						</div>
 
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title"
-							th:text="${movie.title}">Gravity (2013) </a>
+						<div class="movie__info">
+							<a href='movie-page-left.html' class="movie__title"
+								th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
+							<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
-						<p class="movie__option">
-							<a href="#" th:text="${movie.gname}"></a>
-						</p>
+							<p class="movie__option">
+								<a href="#" th:text="${movie.gname}"></a>
+							</p>
 
-						<div class="movie__rate">
-							<div class="star-ratings">
-								<div name="${movie.star}"
-									class="star-ratings-fill space-x-2 text-lg"
-									th:style="${'width:'+movie.star*20+'%'}">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							<div class="movie__rate">
+								<div class="star-ratings">
+									<div name="${movie.star}"
+										class="star-ratings-fill space-x-2 text-lg"
+										th:style="${'width:'+movie.star*20+'%'}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
 								</div>
-								<div class="star-ratings-base space-x-2 text-lg">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-								</div>
+								<!-- <div class="score" th:value="${movie.star}"></div> -->
+								<span class="movie__rating" th:text="${movie.star}">4.1</span>
 							</div>
-							<!-- <div class="score" th:value="${movie.star}"></div> -->
-							<span class="movie__rating" th:text="${movie.star}">4.1</span>
 						</div>
 					</div>
+					<div th:unless="${todayMovieList != null}"> <i class="fa fa-times-circle"> 오늘 상영 예정인 영화가
+						없습니다.</div>
 				</div>
-				<div class="movie movie--test movie--test--dark movie--test--right"
-					th:each="movie : ${todayMovieList}">
-					<div class="movie__images">
-						<a href="#" class="movie-beta__link"> <img alt='470-235'
-							th:src="'/images/movie/' + ${movie.posterimg1}">
-						</a>
-					</div>
 
-					<div class="movie__info">
-						<a href='movie-page-left.html' class="movie__title"
-							th:text="${movie.title}">Gravity (2013) </a>
 
-						<p class="movie__time" th:text="${movie.runningtime}">91 min</p>
 
-						<p class="movie__option">
-							<a href="#" th:text="${movie.gname}"></a>
-						</p>
-
-						<div class="movie__rate">
-							<div class="star-ratings">
-								<div name="${movie.star}"
-									class="star-ratings-fill space-x-2 text-lg"
-									th:style="${'width:'+movie.star*20+'%'}">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-								</div>
-								<div class="star-ratings-base space-x-2 text-lg">
-									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-								</div>
-							</div>
-							<!-- <div class="score" th:value="${movie.star}"></div> -->
-							<span class="movie__rating" th:text="${movie.star}">4.1</span>
-						</div>
-					</div>
-				</div>
 				<!-- Movie variant with time -->
 
 
@@ -591,7 +568,7 @@
 
 		</div>
 	</div>
-<!--https://www.google.com/search?q=  -->
+	<!--https://www.google.com/search?q=  -->
 	<div class="col-sm-12">
 		<h2 class="page-heading">영화에 관해 어떤게 궁금하신가요? </h2>
 		<input type="text" id="googletxt">
