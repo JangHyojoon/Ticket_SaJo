@@ -32,6 +32,7 @@ public interface MovieMapper {
 	//0715 김민식 추가
 	public List<MovieVO> selectpage(int id) throws Exception;
 	
-	
+	//0715 안원영 추가
+	public List<MovieVO> selectrankpage(Map<String, Integer> mnum) throws Exception;
 	
 }

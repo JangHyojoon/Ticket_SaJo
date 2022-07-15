@@ -105,14 +105,15 @@
                                 <div class="movie__rate">
                                 	<div class="star-ratings">
 										<div class="star-ratings-fill space-x-2 text-lg"
-									    th:style="${'width:'+m.star*20+'%'}" th:value ="${m.star}">
+									    th:style="${'width:'+m.star*20+'%'}">
 											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 										</div>
 										<div class="star-ratings-base space-x-2 text-lg">
 											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 										</div>
 									</div>
-                                <span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span></div>
+                                <span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span>
+                                </div>
                                 <a class="movie__show-btn">Showtime</a>
                             </div>
                     </div>

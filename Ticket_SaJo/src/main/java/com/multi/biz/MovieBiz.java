@@ -65,4 +65,9 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 
 	}
 	
+	// 0714 안원영 추가 
+	public List<MovieVO> selectrankpage(Map<String, Integer> mnum) throws Exception {
+		return dao.selectrankpage(mnum);
+	}
+	
 }

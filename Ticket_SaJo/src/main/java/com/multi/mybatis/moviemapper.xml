@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
 		g.name as
 		gname, g.tid as hgid,
-		ROUND(AVG(r.star),1) as star
+		ROUND(AVG(r.star),1) as star, COUNT(mid) as rcnt
 		FROM movie m
 		INNER JOIN genre g ON m.gid=g.id
 		INNER JOIN reviews r ON
@@ -87,6 +87,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN reviews r ON r.mid=m.id
 		WHERE s.sdate = DATE_FORMAT(sysdate(), '%Y-%m-%d')
 		GROUP BY m.id
+	</select>
+	
+	
+		<!-- 0713 안원영 추가 평점순 정렬 -->
+	<select id="selectrankpage" parameterType="map" resultType="movieVO">
+		SELECT m.id, m.gid, m.title, m.director, m.mainactor, m.releasedate,
+		m.posterimg1, m.posterimg2, m.country, m.runningtime, m.text,
+		g.name as gname, g.tid as hgid,
+		ROUND(AVG(r.star),1) as star ,COUNT(mid) as rcnt
+		FROM movie m
+		INNER JOIN genre g ON m.gid=g.id
+		INNER JOIN reviews r ON r.mid=m.id
+		GROUP BY id
+		ORDER BY star DESC
+		LIMIT #{mnum1},#{mnum2}
 	</select>
 
 

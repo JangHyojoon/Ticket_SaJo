@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Basic Page Needs -->
+        <meta charset="utf-8">
+        <title>AMovie - Rates</title>
+        <meta name="description" content="A Template by Gozha.net">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Gozha.net">
+    
+    <!-- Mobile Specific Metas-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="telephone=no" name="format-detection">
+    
+
+    
+    
+</head>
+
+<body>
+    <div class="wrapper">
+
+        
+        <!-- Search bar -->
+        <div class="search-wrapper">
+            <div class="container container--add">
+                <form id='search-form' method='get' class="search">
+                    <input type="text" class="search__field" placeholder="Search">
+                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
+                        <option value="1" selected='selected'>By title</option>
+                        <option value="2">By year</option>
+                        <option value="3">By producer</option>
+                        <option value="4">By title</option>
+                        <option value="5">By year</option>
+                    </select>
+                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <section class="container">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="page-heading">Rates</h2>
+
+                        <div class="rates-wrapper rates--full">
+                            
+                            <table>
+                                <colgroup class="col-width-lg">
+                                <colgroup class="col-width">
+                                <colgroup class="col-width-sm">
+                                <colgroup class="col-width">
+
+                                <tr class="rates rates--top" th:each="movie,index : ${starSortList}">
+                                    <td class="rates__obj"><a href="#" class="rates__obj-name" th:text="(${index.index}+1+${mnum})+'. '+${movie.title}"></a></td>
+                                    <td class="rates__vote" th:text="${movie.rcnt}+' votes'">233 546 votes</td>
+                                    <td class="rates__result" th:text="${movie.star}">5.0</td>
+                                    <td class="rates__stars" th:text="${movie.star}"><div class="score"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="pagination paginatioon--full coloum-wrapper">
+                            <a th:href="@{/reviewrank(mnum=${mnum}-3)}" th:if="${mnum}-3 >= 0" class="pagination__prev">prev</a>
+                            <a th:href="@{/reviewrank(mnum=${mnum}+3)}" class="pagination__next">next</a>
+                        </div>    
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <div class="clearfix"></div>
+
+
+    </div>
+
+
+
+		
+		<script type="text/javascript">
+            $(document).ready(function() {
+                init_Rates();
+            });
+		</script>
+
+</body>
+</html>
