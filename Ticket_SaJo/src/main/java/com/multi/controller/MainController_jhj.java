@@ -44,12 +44,10 @@ public class MainController_jhj {
 		
 		return "index";
 	}
-	@RequestMapping("/book2")
+	@RequestMapping("/book11")
 	public String book11(Model m) {
-		m.addAttribute("center", "book2");
-		m.addAttribute("header", "header");
-		m.addAttribute("footer", "footer");
-		return "index";
+	
+		return "book11";
 	}
 	@RequestMapping("/elements")
 	public String elements(Model m) {
