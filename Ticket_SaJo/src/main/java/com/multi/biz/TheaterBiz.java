@@ -39,6 +39,8 @@ public class TheaterBiz implements Biz<Integer,TheaterVO> {
 	public List<TheaterVO> get() throws Exception {
 		return dao.selectall();
 	}
-
+	public List<TheaterVO> selectid(int id) throws Exception {
+		return dao.selectid(id);
+	}
 	
 }

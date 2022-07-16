@@ -16,5 +16,6 @@ public interface TheaterMapper {
 	
 	public TheaterVO select(int id) throws Exception;
 	public List<TheaterVO> selectall() throws Exception;
+	public List<TheaterVO> selectid(int id) throws Exception;
 
 }
