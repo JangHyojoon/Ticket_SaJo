@@ -13,6 +13,6 @@ import lombok.ToString;
 public class TheaterVO {
 	private int id;
 	private String seatid;
-	private int capacity;
+	
 
 }

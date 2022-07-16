@@ -1,7 +1,5 @@
 package com.multi.theater;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +13,8 @@ class InsertTest {
 	TheaterBiz biz;
 	@Test
 	void contextLoads() {
-		Date today = new Date();
-		TheaterVO v = new TheaterVO(4,"C01",168);
+		
+		TheaterVO v = new TheaterVO(4,"C01");
 		try {
 			biz.register(v);
 		} catch (Exception e) {
