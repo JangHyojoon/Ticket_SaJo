@@ -38,7 +38,7 @@ public class MainController_jhj {
 		List<Detail_SchedulesVO> detail_scheduleslist = null;
 		try {
 			movielist = moviebiz.get();
-			scheduleslist = schedulesbiz.get();
+			scheduleslist = schedulesbiz.selectmovieonschedules();
 			detail_scheduleslist = detail_schedulesbiz.get();
 		} catch (Exception e) {
 			e.printStackTrace();

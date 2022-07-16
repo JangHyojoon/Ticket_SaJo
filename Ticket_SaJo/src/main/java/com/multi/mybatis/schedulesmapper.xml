@@ -19,6 +19,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 		WHERE mid=#{mid} AND sdate=#{sdate}
 	</select>
+	<select id="selectmovieonschedules" resultType="schedulesVO">
+		select s.mid, m.title, m.posterimg1 from schedules s 
+		INNER JOIN movie m ON s.mid = m.id
+		Group BY m.id
+	</select>
 	
 	<insert id="insert" parameterType="schedulesVO">
 		INSERT INTO schedules VALUES (NULL,#{tid},#{mid},#{sdate})
