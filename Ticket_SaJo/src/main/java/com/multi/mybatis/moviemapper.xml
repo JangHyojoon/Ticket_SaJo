@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN reviews r ON r.mid=m.id
 		GROUP BY id
 		ORDER BY star DESC
-		LIMIT 0, 5
+		LIMIT 0, 6
 	</select>
 
 	<!-- 0714 안원영 추가 당일 상영 영화 -->
@@ -102,6 +102,16 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		GROUP BY id
 		ORDER BY star DESC
 		LIMIT #{mnum1},#{mnum2}
+	</select>
+	
+		
+	<!-- 0716 안원영 추가 - 리뷰 랭크의 행 갯수 -->
+	<select id="selectrankcnt" resultType="Integer">
+		SELECT COUNT(*) FROM (
+		SELECT m.id, ROUND(AVG(r.star),1) as star 
+		FROM movie m
+		INNER JOIN reviews r ON r.mid=m.id
+		GROUP BY id) c
 	</select>
 
 
