@@ -43,5 +43,8 @@ public class SchedulesBiz implements Biz<Integer,SchedulesVO> {
 	public List<SchedulesVO> selectmiddate(Integer mid, String sdate) throws Exception {
 		return dao.selectmiddate(mid, sdate);
 	}
+	public List<SchedulesVO> selectmovieonschedules() throws Exception {
+		return dao.selectmovieonschedules();
+	}
 
 }

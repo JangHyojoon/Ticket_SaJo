@@ -18,5 +18,8 @@ public interface SchedulesMapper {
 	public List<SchedulesVO> selectall() throws Exception;
 	
 	public List<SchedulesVO> selectmiddate(Integer mid,String sdate) throws Exception;
+	public List<SchedulesVO> selectmovieonschedules() throws Exception;
+	
+
 }
 
