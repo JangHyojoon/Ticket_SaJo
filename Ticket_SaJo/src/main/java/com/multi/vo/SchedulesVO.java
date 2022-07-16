@@ -35,6 +35,13 @@ public class SchedulesVO {
 		this.mid = mid;
 		this.sdate = sdate;
 	}
+
+	public SchedulesVO(int mid, String title, String posterimg1) {
+		super();
+		this.mid = mid;
+		this.title = title;
+		this.posterimg1 = posterimg1;
+	}
 	
 	
 
