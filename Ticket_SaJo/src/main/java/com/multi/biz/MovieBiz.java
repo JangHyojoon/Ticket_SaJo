@@ -70,4 +70,9 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 		return dao.selectrankpage(mnum);
 	}
 	
+	// 0716 안원영 추가 
+	public Integer selectrankcnt() throws Exception {
+		return dao.selectrankcnt();
+	}
+	
 }

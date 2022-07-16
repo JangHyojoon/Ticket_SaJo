@@ -1,90 +1,141 @@
 <!doctype html>
 <html>
 <head>
-	<!-- Basic Page Needs -->
-        <meta charset="utf-8">
-        <title>AMovie - Rates</title>
-        <meta name="description" content="A Template by Gozha.net">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Gozha.net">
-    
-    <!-- Mobile Specific Metas-->
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="telephone=no" name="format-detection">
-    
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>AMovie - Rates</title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
 
-    
-    
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
+
+
+
+<style>
+.star-ratings {
+	color: #aaa9a9;
+	position: relative;
+	unicode-bidi: bidi-override;
+	width: max-content;
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.3px;
+	-webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+	color: #fff58c;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-text-fill-color: gold;
+}
+
+.star-ratings-base {
+	z-index: 0;
+	padding: 0;
+}
+</style>
 </head>
 
 <body>
-    <div class="wrapper">
-
-        
-        <!-- Search bar -->
-        <div class="search-wrapper">
-            <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input type="text" class="search__field" placeholder="Search">
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By year</option>
-                        <option value="3">By producer</option>
-                        <option value="4">By title</option>
-                        <option value="5">By year</option>
-                    </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Main content -->
-        <section class="container">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="page-heading">Rates</h2>
-
-                        <div class="rates-wrapper rates--full">
-                            
-                            <table>
-                                <colgroup class="col-width-lg">
-                                <colgroup class="col-width">
-                                <colgroup class="col-width-sm">
-                                <colgroup class="col-width">
-
-                                <tr class="rates rates--top" th:each="movie,index : ${starSortList}">
-                                    <td class="rates__obj"><a href="#" class="rates__obj-name" th:text="(${index.index}+1+${mnum})+'. '+${movie.title}"></a></td>
-                                    <td class="rates__vote" th:text="${movie.rcnt}+' votes'">233 546 votes</td>
-                                    <td class="rates__result" th:text="${movie.star}">5.0</td>
-                                    <td class="rates__stars" th:text="${movie.star}"><div class="score"></div></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="pagination paginatioon--full coloum-wrapper">
-                            <a th:href="@{/reviewrank(mnum=${mnum}-3)}" th:if="${mnum}-3 >= 0" class="pagination__prev">prev</a>
-                            <a th:href="@{/reviewrank(mnum=${mnum}+3)}" class="pagination__next">next</a>
-                        </div>    
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        
-        <div class="clearfix"></div>
+	<div class="wrapper">
 
 
-    </div>
+		<!-- Search bar -->
+		<div class="search-wrapper">
+			<div class="container container--add">
+				<form id='search-form' method='get' class="search">
+					<input type="text" class="search__field" placeholder="Search">
+					<select name="sorting_item" id="search-sort" class="search__sort"
+						tabindex="0">
+						<option value="1" selected='selected'>By title</option>
+						<option value="2">By year</option>
+						<option value="3">By producer</option>
+						<option value="4">By title</option>
+						<option value="5">By year</option>
+					</select>
+					<button type='submit' class="btn btn-md btn--danger search__button">search
+						a movie</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="container">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="page-heading">평점 순위를 확인해 보세요!!</h2>
+
+						<div class="rates-wrapper rates--full">
+
+							<table>
+								<colgroup class="col-width-lg">
+								<colgroup class="col-width">
+								<colgroup class="col-width-sm">
+								<colgroup class="col-width">
+								<tr class="rates rates--top"
+									th:each="movie,index : ${starSortList}">
+									<td class="rates__obj"><a href="#" class="rates__obj-name"
+										th:text="(${index.index}+1+${mnum})+'. '+${movie.title}" th:href="@{/movielist/detail(id=${movie.id})}"></a></td>
+									<td class="rates__vote" th:text="${movie.rcnt}+' reviews'">
+										reviews</td>
+									<td class="rates__result" th:text="${movie.star}">5.0</td>
+									<td class="rates__stars">
+										<div class="col-sm-4"></div>
+										<div class="col-sm-8">
+											<div class="movie__rate">
+												<div class="star-ratings">
+													<div name="${movie.star}"
+														class="star-ratings-fill space-x-4 text-lg"
+														th:style="${'width:'+movie.star*20+'%'}">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+													</div>
+													<div class="star-ratings-base space-x-4 text-lg">
+														<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="pagination paginatioon--full coloum-wrapper">
+							<a th:href="@{/reviewrank(mnum=${mnum}-5)}"
+								th:if="${mnum}-5 >= 0" class="pagination__prev">prev</a> <a
+								th:href="@{/reviewrank(mnum=${mnum}+5)}"
+								th:if="${mnum}+5 <= ${rankcnt}" class="pagination__next">next</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<div class="clearfix"></div>
+
+
+	</div>
 
 
 
-		
-		<script type="text/javascript">
-            $(document).ready(function() {
-                init_Rates();
-            });
-		</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			init_Rates();
+		});
+	</script>
 
 </body>
 </html>

@@ -35,4 +35,7 @@ public interface MovieMapper {
 	//0715 안원영 추가
 	public List<MovieVO> selectrankpage(Map<String, Integer> mnum) throws Exception;
 	
+	//0716 안원영 추가
+	public Integer selectrankcnt() throws Exception;
+	
 }

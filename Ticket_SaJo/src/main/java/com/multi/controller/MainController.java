@@ -26,7 +26,7 @@ public class MainController {
 		try {
 			starSortList = mbiz.selectStarSort();
 			todayMovieList = mbiz.todayMovieList();
-			
+//			System.out.println("todayMovieList : " + todayMovieList);
 			 
 		} catch (Exception e) {
 			e.printStackTrace();
