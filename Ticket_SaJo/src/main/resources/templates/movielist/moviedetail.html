@@ -30,13 +30,19 @@
         <link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
         <!-- Magnific-popup -->
         <link href="/css/external/magnific-popup.css" rel="stylesheet" />
-
     
         <!-- Custom -->
         <link href="/css/style.css?v=1" rel="stylesheet" />
 
         <!-- Modernizr --> 
         <script src="/js/external/modernizr.custom.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		
+		<link rel="stylesheet" type="text/css"
+    	href="https://github.s3.amazonaws.com/downloads/lafeber/world-flags-sprite/flags32.css" />
 </head>
 <style>
 
@@ -184,6 +190,7 @@
                     </div>
 
                 </div>
+                <div id="container"></div>
                 <div class="choose-container">
                     <a href="#" id="map-switch" class="watchlist watchlist--map watchlist--map-full"><span class="show-map">Show cinemas on map</span><span  class="show-time">Show cinema time table</span></a>
                     
@@ -198,8 +205,8 @@
 
                     <div class="comment-wrapper">
                         <form id="comment-form" class="comment-form" method='post'>
-                            <textarea class="comment-form__text" placeholder='Add you comment here'></textarea>
-                            <label class="comment-form__info">250 characters left</label>
+                            <textarea name="text" class="comment-form__text" placeholder='Add you comment here'></textarea>
+                            <label class="comment-form__info" id="cinfo">250 characters left</label>
                             <button type='submit' class="btn btn-md btn--danger comment-form__btn">add comment</button>
                         </form>
 
@@ -211,7 +218,7 @@
                             </div>
 
                             <a href='#' class="comment__author" th:text="${r.name}+'('+${r.uid}+')'"><span class="social-used fa fa-facebook"></span>Roberta Inetti</a>
-                            <p class="comment__date" th:text="${r.dday}+'일전'+'|'+${r.regdate}">today </p>
+                            <p class="comment__date" th:text="${r.dday}+'일전'+'|'+${#dates.format(r.regdate,'yyyy-MM-dd E요일')}">today </p>
                             <p class="comment__message" th:text="${r.text}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
                             <a href='#' class="comment__reply">Reply</a>
                         </div>
@@ -263,12 +270,86 @@
 
         <!-- Custom -->
         <script src="/js/custom.js"></script>
-		
 		<script type="text/javascript">
+		function display(gdata){
+			chart = Highcharts.chart('container', {
+			    chart: {
+			        type: 'column'
+			    },
+			    title: {
+			        text: '연령별 예매 분포',
+			        align: 'left'
+			    },
+			    plotOptions: {
+			        series: {
+			            grouping: false,
+			            borderWidth: 0
+			        }
+			    },
+			    legend: {
+			        enabled: false
+			    },
+			    tooltip: {
+			        shared: true,
+			        headerFormat: '<span style="font-size: 15px">{point.point.name}</span><br/>',
+			        pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y} medals</b><br/>'
+			    },
+			    xAxis: {
+			        type: 'category',
+			        accessibility: {
+			            description: 'age'
+			        },
+			        max: 4,
+			    },
+			    yAxis: [{
+			        title: {
+			            text: '예매율'
+			        },
+			        showFirstLabel: false
+			    }],
+			    series: [{
+			        name: '2016',
+			        id: 'main',
+			        dataSorting: {
+			            enabled: true,
+			            matchByName: true
+			        },
+			        dataLabels: [{
+			            enabled: true,
+			            inside: true,
+			            style: {
+			                fontSize: '16px'
+			            }
+			        }],
+			        data: getData(data[2016]).slice()
+			    }],
+			    exporting: {
+			        allowHTML: true
+			    }
+			});
+		};
+		function getData(){
+			//var gdata = {'cate':['p1','p2','p3','p4','p5'],'data':[10000,30000,20000,50000,60000]};
+			//display(gdata);
+			$.ajax({
+				url:'chartimpl',
+				success:function(data){
+					display(data);
+				}
+			});
+		};
             $(document).ready(function() {
                 init_MoviePage();
                  init_MoviePageFull();
+                 
+                 $('textarea[name="text"]').keyup(function(){
+             		var text = $(this).val();
+             			$('#cinfo').text((250-text.length)+' characters left');
+             		
+             	});
+                getdata();
             });
+            
 		</script>
 
 </body>
