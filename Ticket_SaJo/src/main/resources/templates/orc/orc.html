@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	function display(data) {
+		var info = data.documents[0];
+
+		$('#result').text(info['address_name'] + info['place_name']);
+	}
+
+	$(document).ready(function() {
+		$('#bt').click(function() {
+			var param = $('#param').val();
+			$.ajax({
+				url : 'orcresult',
+				data : {
+					'keyword' : param
+				},
+				success : function(data) {
+					//display(data);
+					//data.images[0].fields[4].inferText
+					alert(data.images[0].fields[4].inferText);
+
+				}
+			});
+		});
+	});
+</script>
+
+</head>
+<body>
+	<section class="container">
+		<div class="col-sm-12">
+			<h2 class="page-heading">Movies</h2>
+			<h3>ORC page</h3>
+			<input type="text" id="param">
+			<button id="bt">click</button>
+			<h3 id="result"></h3>
+		</div>
+	</section>
+
+
+
+
+</body>
+</html>

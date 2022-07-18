@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.MovieBiz;
+import com.multi.vo.CustVO;
 import com.multi.vo.MovieVO;
 
 @Controller
@@ -38,4 +39,15 @@ public class MainController {
 		
 		return "index";
 	}
+	
+	
+	@RequestMapping("/loginimpl")
+	public String loginimpl(Model m,CustVO user) {
+		System.out.print(user.getName());
+	
+		
+		
+		return "index";
+	}
+	
 }
