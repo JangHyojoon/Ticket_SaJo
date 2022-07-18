@@ -1,28 +1,28 @@
-package com.multi.detail_schedule;
+package com.multi.theater;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.Detail_SchedulesBiz;
-import com.multi.vo.Detail_SchedulesVO;
+import com.multi.biz.TheaterBiz;
+import com.multi.vo.TheaterVO;
 
 @SpringBootTest
-class SelectMidTidDateTimeTest {
+class SelectCntTest {
 	@Autowired
-	Detail_SchedulesBiz biz;
+	TheaterBiz biz;
 	@Test
 	void contextLoads() {
-		Detail_SchedulesVO dsv = null;
+		TheaterVO list = null;
 		try {
-			dsv= biz.selectmidtidsdatetime(1000,1,"2022-07-18","130000");
+			list= biz.selectcnt(2);
 			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 		
-			System.out.println(dsv);
+			System.out.println(list);
 		
 	}
 

@@ -1,5 +1,7 @@
 package com.multi.theater;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,18 +10,21 @@ import com.multi.biz.TheaterBiz;
 import com.multi.vo.TheaterVO;
 
 @SpringBootTest
-class UpdateTest {
+class SelectColumnsTest {
 	@Autowired
 	TheaterBiz biz;
 	@Test
-	void contextLoads()  {
-
-		TheaterVO v = new TheaterVO(4,"A02","A",2);
+	void contextLoads() {
+		List<TheaterVO> list = null;
 		try {
-			biz.modify(v);
+			list= biz.selectcolumns(1);
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		}
+		for (TheaterVO uv : list) {
+			System.out.println(uv);
 		}
 	}
 

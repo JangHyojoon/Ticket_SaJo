@@ -16,6 +16,13 @@ public interface TheaterMapper {
 	
 	public TheaterVO select(int id) throws Exception;
 	public List<TheaterVO> selectall() throws Exception;
+	
+	
 	public List<TheaterVO> selectid(int id) throws Exception;
-
+	public TheaterVO selectcnt(int id) throws Exception;
+	public TheaterVO selectone(int id,String seatid) throws Exception;
+	
+	public List<TheaterVO> selectcolumns(int id) throws Exception;
+	public List<TheaterVO> selectrows(int id) throws Exception;
+	public TheaterVO selectseatid(int id,int r, int c) throws Exception;
 }

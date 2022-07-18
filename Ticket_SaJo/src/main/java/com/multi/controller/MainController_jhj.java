@@ -56,15 +56,17 @@ public class MainController_jhj {
 	@RequestMapping("/book1impl")
 	public String book1impl(Model m, int mid, String date,String time,int theater) {
 		Detail_SchedulesVO dsv = null;
-		List<TheaterVO> theaterlist = null;
-		List<SeatVO> seatlist = null;
+		TheaterVO tv =null;
+		List<TheaterVO> tlist =null;
+		List<TheaterVO> rows =null;
+		List<TheaterVO> columns =null;
 		try {
 			dsv = detail_schedulesbiz.selectmidtidsdatetime(mid, theater, date, time);
 			m.addAttribute("book1info", dsv);
-			theaterlist = theaterbiz.selectid(theater);
-			m.addAttribute("theater", theaterlist);
-			seatlist = seatbiz.get();
-			m.addAttribute("seat", seatlist);
+			rows = theaterbiz.selectrows(theater);
+			m.addAttribute("rows", rows);
+			columns = theaterbiz.selectcolumns(theater);
+			m.addAttribute("columns", columns);
 		} catch (Exception e) {
 			
 		}

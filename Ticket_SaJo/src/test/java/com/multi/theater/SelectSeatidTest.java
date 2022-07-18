@@ -8,15 +8,15 @@ import com.multi.biz.TheaterBiz;
 import com.multi.vo.TheaterVO;
 
 @SpringBootTest
-class UpdateTest {
+class SelectSeatidTest {
 	@Autowired
 	TheaterBiz biz;
 	@Test
-	void contextLoads()  {
-
-		TheaterVO v = new TheaterVO(4,"A02","A",2);
+	void contextLoads() {
+		TheaterVO v = null;
 		try {
-			biz.modify(v);
+			v = biz.selectseatid(1,1,1);
+			System.out.println(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
