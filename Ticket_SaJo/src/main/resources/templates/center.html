@@ -40,6 +40,13 @@
 	width: 277px;
 	height: 277px;
 }
+
+img{
+
+	border-radius: 30px;
+
+}
+
 </style>
 
 <script>
@@ -295,9 +302,9 @@
 	<div class="movie-best">
 		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
 			choice</div>
-		<div class="col-sm-12 change--col">
+		<div class="col-sm-12 change--col" id="dropdown_movie_info">
 			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"
-				th:if="${index.index}<3">
+				th:if="${index.index}<3" id="starsortimgdiv">
 				<a th:href="@{/movielist/detail(id=${movie.id})}"> <img
 					class="starsortimg" alt=''
 					th:src="'/images/movie/' + ${movie.posterimg1}"></a> <span
@@ -309,7 +316,7 @@
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
-						<p th:text="${movie.rcnt} + ' Comments 71 people voted today'"></p>
+						<p th:text="'Comments ' + ${movie.rcnt} + ' people review'"></p>
 					</li>
 					<li class="last-block"><a href="movie-page-left.html"
 						class="slide__link">more</a></li>
@@ -328,7 +335,7 @@
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
-						<p th:text="${movie.rcnt} + ' Comments 71 people voted today'"></p>
+						<p th:text="'Comments ' + ${movie.rcnt} + ' people review'"></p>
 					</li>
 					<li class="last-block"><a href="movie-page-left.html"
 						class="slide__link">more</a></li>
@@ -454,7 +461,7 @@
 			<div class="col-sm-12 col-md-12">
 				<!-- Movie variant with time -->
 				<div th:each="movie,index : ${todayMovieList}"
-					th:if="${todayMovieList != null}">
+					th:if="${not #lists.isEmpty(todayMovieList)}">
 					<div class="movie movie--test movie--test--dark movie--test--left"
 						th:if="${(index.index+1) % 2 == 0}">
 						<div class="movie__images">
@@ -530,10 +537,10 @@
 
 				</div>
 
-				<div th:unless="${todayMovieList != null}">
-					<h3>
-						<i class="fa fa-check-circle"> 오늘 상영 예정인 영화가 없습니다. 
-					</h3>
+				<div th:unless="${not #lists.isEmpty(todayMovieList)}">
+					<h5>
+						<span style="color:orange"><i class="fa fa-times-circle"> 아쉽지만 오늘은 상영 예정인 영화가 없습니다...</i> </span> 
+					</h5>
 				</div>
 
 			</div>

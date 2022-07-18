@@ -143,10 +143,12 @@
   <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
   <script type="text/javascript">
   
+  var user="aaa";
+  
   const naverLogin = new naver.LoginWithNaverId(
    {
     clientId: "8yr3ISCsaTS7ppBmqjsu",
-    callbackUrl: "http://127.0.0.1",
+    callbackUrl: "http://127.0.0.1/",
     loginButton: {color: "green", type: 2, height: 40}
     }
    );
@@ -154,6 +156,7 @@
 
     naverLogin.init();
     naverLogin.getLoginStatus(function (status) {
+    	
       if (status) {
           const nickName=naverLogin.user.getNickName();
           const age=naverLogin.user.getAge();
@@ -168,11 +171,11 @@
          }
 	}
     });
-    console.log(naverLogin);
 
     function setLoginStatus(){
-    
       const message_area=document.getElementById('message');
+            
+      
       message_area.innerHTML=`
       <h3> Login 성공 </h3>
       <div>user Name : ${naverLogin.user.name}</div>
