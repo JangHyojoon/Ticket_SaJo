@@ -9,43 +9,59 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.multi.biz.MovieBiz;
+import com.multi.biz.ReviewBiz;
 import com.multi.vo.MovieVO;
+import com.multi.vo.ReviewVO;
 
 @RestController
 public class AjaxController_kms {
 
 	@Autowired
 	MovieBiz mbiz;
+	@Autowired
+	ReviewBiz rbiz;
 	
-	@RequestMapping("/chartimpl")
-	public Object chartimpl() {
-		 //{'cate':['p1','p2','p3','p4','p5'],'data':[10000,30000,20000,50000,60000]}
+	@RequestMapping("/movielist/chartimpl")
+	public Object chartimpl(int id) {
+		 //{'age':['20','30'],'rcnt':[1,2,3]}
 		JSONObject jo = new JSONObject();
 		JSONArray ja1 = new JSONArray();
 		JSONArray ja2 = new JSONArray();
-		List<MovieVO> list =null;
+		List<ReviewVO> list =null;
 		
 		try {
-			list = mbiz.get();
+			list = rbiz.selectbyage(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		for (MovieVO p : list) {
-			
+		for (ReviewVO p : list) {
+			String age = Integer.toString(p.getAge())+'대';
+			ja1.add(age);
+			ja2.add(p.getRcnt());
 		}
-//		data = {  연령, 숫자 만 뽑아오는 예
-//			    2016: [
-//			        ['South Korea', 0],
-//			        ['Japan', 0],
-//			        ['Australia', 0],
-//			        ['Germany', 17],
-//			        ['Russia', 19],
-//			        ['China', 26],
-//			        ['Great Britain', 27],
-//			        ['United States', 46]
-//			    ],
-		jo.put("cate", ja1);
-		jo.put("data", ja2);
+		jo.put("age", ja1);
+		jo.put("rcnt", ja2);
+		return jo;
+	}
+	@RequestMapping("/movielist/circlechartimpl")
+	public Object circlechartimpl(int id) {
+		 //{'age':['20','30'],'rcnt':[1,2,3]}
+		JSONObject jo = new JSONObject();
+		JSONArray ja1 = new JSONArray();
+		JSONArray ja2 = new JSONArray();
+		List<ReviewVO> list =null;
+		try {
+			list = rbiz.selectbysex(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		for (ReviewVO p : list) {
+			ja1.add(p.getSex());
+			ja2.add(p.getRpercent());
+
+		}
+		jo.put("sex", ja1);
+		jo.put("rpercent", ja2);
 		return jo;
 	}
 	

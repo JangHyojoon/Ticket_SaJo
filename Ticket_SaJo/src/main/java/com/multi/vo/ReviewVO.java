@@ -24,6 +24,12 @@ public class ReviewVO {
 	// 7.15 김민식 추가
 	private int dday;
 	private String name;
+	// 7.17
+	private int age;
+	private int rcnt;
+	private String sex;
+	private Double rpercent;
+	
 	public ReviewVO(int id, String uid, int mid, int star, String text, Date regdate) {
 		this.id = id;
 		this.uid = uid;
