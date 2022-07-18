@@ -16,5 +16,7 @@ public interface ReviewMapper {
 	public ReviewVO select(int id) throws Exception;
 	public List<ReviewVO> selectall() throws Exception;
 	public List<ReviewVO> selectmreviews(int mid) throws Exception;
-
+	//0718 김민식추가
+	public List<ReviewVO> selectbyage(int mid) throws Exception;
+	public List<ReviewVO> selectbysex(int mid) throws Exception;
 }
