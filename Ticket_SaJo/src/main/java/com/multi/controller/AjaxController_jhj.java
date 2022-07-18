@@ -40,6 +40,7 @@ public class AjaxController_jhj {
 				jo.put("posterimg1", sv.getPosterimg1());
 				jo.put("posterimg2", sv.getPosterimg2());
 				jo.put("runningtime", sv.getRunningtime());
+				
 				ja.add(jo);
 				
 				
@@ -68,6 +69,7 @@ public class AjaxController_jhj {
 				jo.put("tid", dsv.getTid());
 				jo.put("mid", dsv.getMid());
 				jo.put("sdate", dsv.getSdate());
+				jo.put("booked", dsv.getBooked());
 				ja.add(jo);
 				
 				

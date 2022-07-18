@@ -14,7 +14,7 @@ class InsertTest {
 	@Test
 	void contextLoads() {
 		
-		TheaterVO v = new TheaterVO(4,"C01");
+		TheaterVO v = new TheaterVO(4,"A1","A",1);
 		try {
 			biz.register(v);
 		} catch (Exception e) {

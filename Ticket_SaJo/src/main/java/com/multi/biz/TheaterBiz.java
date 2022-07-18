@@ -43,4 +43,19 @@ public class TheaterBiz implements Biz<Integer,TheaterVO> {
 		return dao.selectid(id);
 	}
 	
+	public TheaterVO selectcnt(int id) throws Exception {
+		return dao.selectcnt(id);
+	}
+	public TheaterVO selectone(int id,String seatid) throws Exception {
+		return dao.selectone(id, seatid);
+	}
+	public List<TheaterVO> selectcolumns(int id) throws Exception {
+		return dao.selectcolumns(id);
+	}
+	public List<TheaterVO> selectrows(int id) throws Exception {
+		return dao.selectrows(id);
+	}
+	public TheaterVO selectseatid(int id,int r, int c) throws Exception {
+		return dao.selectseatid(id, r, c);
+	}
 }
