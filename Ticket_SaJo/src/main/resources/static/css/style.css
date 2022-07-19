@@ -7011,7 +7011,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .sits .sits__checked {
   position: relative;
-  width: 50px;
+  width: 55px;
   height: 450px;
   background-color: #4c4145;
   position: absolute;
@@ -7026,10 +7026,9 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   color: #ffffff;
   position: absolute;
   top: 20px;
-  left: 18px;
+  left: 20px;
 }
 .sits .sits__checked:after {
-  content: "=";
   font: 13px;
   color: #ffffff;
   position: absolute;
@@ -7042,7 +7041,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .sits .sits__checked .checked-result {
   color: #ffffff;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   position: absolute;
   bottom: 20px;

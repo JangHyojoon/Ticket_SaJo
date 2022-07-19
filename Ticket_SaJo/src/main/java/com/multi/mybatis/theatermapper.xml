@@ -33,13 +33,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE id=#{id} AND r=#{r} AND c=#{c}
 	</select>
 	<insert id="insert" parameterType="theaterVO">
-		INSERT INTO theater VALUES (#{id},#{seatid},#{r},#{c})
+		
+		INSERT INTO theater VALUES(#{id},#{r},#{c},CONCAT(r,c))
 	</insert>
-	<update id="update" parameterType="theaterVO">
-		UPDATE theater SET seatid=#{seatid}, r=#{r}, c=#{c} WHERE id=#{id}
+	<update id="updateone" parameterType="theaterVO">
+		UPDATE theater SET r=#{r}, c=#{c}, seatid=CONCAT(r,c)  WHERE id=#{id} AND seatid=#{seatid}
 	</update>
 	<delete id="delete" parameterType="theaterVO">
-		DELETE FROM theater WHERE id=#{id}
+		DELETE FROM theater WHERE id=#{id} AND seatid=#{seatid}
 	</delete>
 </mapper>
 

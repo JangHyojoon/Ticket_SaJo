@@ -12,18 +12,17 @@ import lombok.ToString;
 @ToString
 public class TheaterVO {
 	private int id;
-	private String seatid;
 	private String r;
-	private int c;
+	private String c;
+	private String seatid;
 	
 	private int rcnt;
 	private int ccnt;
 	
 	
-	public TheaterVO(int id, String seatid, String r, int c) {
+	public TheaterVO(int id, String r, String c) {
 		super();
 		this.id = id;
-		this.seatid = seatid;
 		this.r = r;
 		this.c = c;
 	}
@@ -34,6 +33,15 @@ public class TheaterVO {
 		this.id = id;
 		this.rcnt = rcnt;
 		this.ccnt = ccnt;
+	}
+
+
+	public TheaterVO(int id, String r, String c, String seatid) {
+		super();
+		this.id = id;
+		this.r = r;
+		this.c = c;
+		this.seatid = seatid;
 	}
 	
 	
