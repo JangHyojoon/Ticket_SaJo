@@ -25,4 +25,5 @@ public interface TheaterMapper {
 	public List<TheaterVO> selectcolumns(int id) throws Exception;
 	public List<TheaterVO> selectrows(int id) throws Exception;
 	public TheaterVO selectseatid(int id,int r, int c) throws Exception;
+	public void updateone(TheaterVO theater) throws Exception;
 }

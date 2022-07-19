@@ -359,9 +359,8 @@ function init_BookingOne() {
     //3. Swiper slider
     //init employee sliders
                 var mySwiper = new Swiper('.swiper-container',{
-                    slidesPerView:5,
-                    loop:false
-             
+                    slidesPerView:10,
+                    loop:true
                   });
 
                 $('.swiper-slide-active').css({'marginLeft':'-2px'});
@@ -448,7 +447,6 @@ function init_BookingOne() {
     
     //5. Datepicker init
                 $( ".datepicker__input" ).datepicker({
-                  dateFormat: 'yy-mm-dd',
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"
@@ -585,21 +583,21 @@ function init_BookingTwo () {
 
                             switch(ticketPrice)
                                 {
-                                case '10000':
-                                  sum += 10000;
+                                case '10':
+                                  sum += 10;
                                   cheap += 1;
                                   break;
-                                case '20000':
-                                  sum += 20000;
+                                case '20':
+                                  sum += 20;
                                   middle += 1;
                                   break;
-                                case '30000':
-                                  sum += 30000;
+                                case '30':
+                                  sum += 30;
                                   expansive += 1;
                                   break;
                             }
 
-                            $('.checked-result').text(sum+"원");
+                            $('.checked-result').text('$'+sum);
                         }
                     }
 
@@ -610,21 +608,21 @@ function init_BookingTwo () {
 
                         switch(ticketPrice)
                                 {
-                                case '10000':
-                                  sum -= 10000;
+                                case '10':
+                                  sum -= 10;
                                   cheap -= 1;
                                   break;
-                                case '20000':
+                                case '20':
                                   sum -= 20;
                                   middle -= 1;
                                   break;
-                                case '30000':
-                                  sum -= 30000;
+                                case '30':
+                                  sum -= 30;
                                   expansive -= 1;
                                   break;
                             }
 
-                        $('.checked-result').text(sum+"원")
+                        $('.checked-result').text('$'+sum)
                     }
 
                     //data element init
@@ -726,27 +724,27 @@ function init_BookingTwo () {
                 $('.sits-area--mobile .checked-place').prepend('<span class="choosen-place" data-sit="'+ch_sits+'">'+ ch_sits +'</span>');
 
                 if (row ==  "A" || row ==  "B" || row ==  "C" || row ==  "D"){
-                    ticketPrice = 10000;
-                } else if (row ==  "E" || row ==  "F" || row ==  "G" || row ==  "H"){
-                    ticketPrice = 10000;
-                } else if (row ==  "I" || row ==  "J" || row ==  "K" || row ==  "L"){
-                    ticketPrice = 10000;
+                    ticketPrice = 10;
+                } else if (row ==  "E" || row ==  "F" || row ==  "G" || row ==  "I"){
+                    ticketPrice = 20;
+                } else if (row ==  "J" || row ==  "K" || row ==  "L"){
+                    ticketPrice = 30;
                 }
 
                 switch(ticketPrice)
                         {
-                        case 10000:
-                            sum += 10000;
+                        case 10:
+                            sum += 10;
                             break;
-                        case 20000:
-                            sum += 20000;
+                        case 20:
+                            sum += 20;
                             break;
-                        case 30000:
-                            sum += 30000;
+                        case 30:
+                            sum += 30;
                             break;
                 }
 
-                $('.checked-result').text(sum+"원");
+                $('.checked-result').text('$'+sum);
 
                 
 
@@ -769,27 +767,27 @@ function init_BookingTwo () {
                     	$(this).parent().remove();
 
                         if (row ==  "A" || row ==  "B" || row ==  "C" || row ==  "D"){
-                            ticketPrice = 10000;
-                        } else if (row ==  "E" || row ==  "F" || row ==  "G" || row ==  "H"){
-                            ticketPrice = 10000;
-                        } else if (row ==  "I" || row ==  "J" || row ==  "K" || row ==  "L"){
-                            ticketPrice = 10000;
+                            ticketPrice = 10;
+                        } else if (row ==  "E" || row ==  "F" || row ==  "G" || row ==  "I"){
+                            ticketPrice = 20;
+                        } else if (row ==  "J" || row ==  "K" || row ==  "L"){
+                            ticketPrice = 30;
                         }
 
                         switch(ticketPrice)
                         {
-                                case 10000:
-                                    sum -= 10000;
+                                case 10:
+                                    sum -= 10;
                                     break;
-                                case 20000:
-                                    sum -= 20000;
+                                case 20:
+                                    sum -= 20;
                                     break;
-                                case 30000:
-                                    sum -= 30000;
+                                case 30:
+                                    sum -= 30;
                                     break;
                         }
 
-                        $('.checked-result').text(sum+"원");
+                        $('.checked-result').text('$'+sum);
                     }
 
                     
@@ -1242,7 +1240,7 @@ function init_MoviePage () {
                           toggle = false;
                     });
                 });
-                
+
     //4. Dropdown init 
 				//select
                 $("#select-sort").selectbox({
@@ -1270,7 +1268,7 @@ function init_MoviePage () {
                        $(".datepicker__input").datepicker("hide");
                      }
                 });
-	
+
     //6. Reply comment form
     			// button more comments
                 $('#hide-comments').hide();
@@ -1298,7 +1296,7 @@ function init_MoviePage () {
                     $('.time-select__item').removeClass('active');
                     $(this).addClass('active');
                 });
-/*
+
     //8. Toggle between cinemas timetable and map with location
     			//change map - ticket list
                 $('#map-switch').click(function(ev){
@@ -1315,7 +1313,6 @@ function init_MoviePage () {
                 $(window).load(function() {
                     $('.map').addClass('hide-map');
                 });
-
 
    	//9. Init map with several markers on.
    					//Map start init
@@ -1598,7 +1595,6 @@ function init_MoviePage () {
                      //Sets the Glastonbury marker to be the center of the map.
                      map.setCenter(markerE.getPosition());
                     });
-        */            
     
     //10. Scroll down navigation function
     //scroll down

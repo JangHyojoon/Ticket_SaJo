@@ -21,6 +21,7 @@ public class Detail_SchedulesVO {
 
 	private int mid;
 	private String sdate;
+	private String title;
 	public Detail_SchedulesVO(int sid, int mcnt, String starttime, String endtime) {
 		super();
 		this.sid = sid;

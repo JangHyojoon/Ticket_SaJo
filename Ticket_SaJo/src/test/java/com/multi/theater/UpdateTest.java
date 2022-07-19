@@ -14,9 +14,9 @@ class UpdateTest {
 	@Test
 	void contextLoads()  {
 
-		TheaterVO v = new TheaterVO(4,"A02","A",2);
+		TheaterVO v = new TheaterVO(4,"A","01","A1");
 		try {
-			biz.modify(v);
+			biz.updateone(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

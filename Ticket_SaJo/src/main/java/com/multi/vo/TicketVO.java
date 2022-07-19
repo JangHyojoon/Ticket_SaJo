@@ -1,7 +1,5 @@
 package com.multi.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +14,10 @@ public class TicketVO {
 	private int id;
 	private int sid;
 	private int rid;
-	private Date purchasedate;
+	private String purchasedate;
 	private int mcnt;
 	private String seatid;
-	public TicketVO(int sid, int rid, Date purchasedate, int mcnt, String seatid) {
+	public TicketVO(int sid, int rid, String purchasedate, int mcnt, String seatid) {
 		super();
 		this.sid = sid;
 		this.rid = rid;
