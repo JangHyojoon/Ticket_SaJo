@@ -1,50 +1,138 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<style>
+.div_margin {
+	margin: 40px;
+}
+</style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-	function display(data) {
-		var info = data.documents[0];
 
-		$('#result').text(info['address_name'] + info['place_name']);
+	function display(data) {
+		
+		if(data.images[0].inferResult == 'FAILURE'){//적립할수 없는 영수증  
+			$('#UploadResult').text("적립금을 받을 수 없는 영수증 입니다. 다른 영수증을 이용해 주세요.");
+			$('#UploadResult').css('color','red');
+			$('#UploadResult')[0].scrollIntoView();
+			$('#context').hide();
+			
+			
+			
+		}else{// 적립할수 있는 영수증 
+			
+			$('#UploadResult').text("적립금을 받을 수 있는 영수증 입니다. ");
+			$('#UploadResult').css('color','green');
+			$('#UploadResult')[0].scrollIntoView();
+			$('#context').show();
+			//alert('성공' + data.images[0].fields[4].inferText);
+		}
+
+	}
+	
+	function previewimg(event) {// 이미지 미리 보여주는 함수 
+		$('#context').hide();
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+        	$('#uploadeimg').attr('src',event.target.result);
+//			alert('event.target.result : ' + event.target.result)
+//          var img = document.getElementById('#uploadeimg');
+//          img.setAttribute("src", event.target.result);
+          
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+        //alert('reader.readAsDataURL : ' + event.target.files[0]);
+      }
+
+	function upload() {
+		const imageInput = $("#mf")[0];
+		// 파일을 여러개 선택할 수 있으므로 files 라는 객체에 담긴다.
+		console.log("mf: ", imageInput.files)
+
+		if (imageInput.files.length === 0) {
+			alert("파일을 선택해주세요");
+			return;
+		}
+
+		const formData = new FormData();
+		formData.append("image", imageInput.files[0]);
+
+/* for (var key of formData.keys()) {
+    console.log(key);
+} */
+		for (var value of formData.values()) {
+		   console.log(value);
+		}
+
+		$.ajax({
+			type : "POST",
+			url : 'orcresult',
+			processData : false,
+			contentType : false,
+		 	data: formData,
+			success : function(data) {
+				//alert(data);
+				//data.images[0].fields[4].inferText
+				//alert(data.images[0].fields[4].inferText);
+				display(data);
+
+			}
+		});
 	}
 
 	$(document).ready(function() {
-		$('#bt').click(function() {
-			var param = $('#param').val();
-			$.ajax({
-				url : 'orcresult',
-				data : {
-					'keyword' : param
-				},
-				success : function(data) {
-					//display(data);
-					//data.images[0].fields[4].inferText
-					alert(data.images[0].fields[4].inferText);
-
-				}
-			});
-		});
+		$('#context').hide();
+		
 	});
 </script>
 
-</head>
-<body>
-	<section class="container">
-		<div class="col-sm-12">
-			<h2 class="page-heading">Movies</h2>
-			<h3>ORC page</h3>
-			<input type="text" id="param">
-			<button id="bt">click</button>
-			<h3 id="result"></h3>
+
+
+<div class="div_margin"></div>
+<section class="container">
+	<h2 class="page-heading heading--outcontainer">영수증 적립 이벤트 !!</h2>
+	<div class="contact">
+		<p class="contact__title">
+			적립하고자 하는 영수증을 선택해 주세요. <br> <span class="contact__describe">영수증
+				선택 후 '영수증 검사'를 눌러 주세요. </span>
+		</p>
+
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-3">
+				<form id="uploadForm" enctype="multipart/form-data">
+					<input type="file" name="mf" id="mf" placeholder="Enter imgname"
+						onchange="previewimg(event);" class="btn btn-md btn--shine">
+				</form>
+			</div>
+			<div class="col-sm-3">
+				<button class="btn btn-md btn--shine" onclick="upload()">영수증 검사</button>
+			</div>
+
 		</div>
-	</section>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="img_container">
+					<img id="uploadeimg">
+				</div>
+			</div>
+		</div>
+
+		<div class="div_margin"></div>
 
 
+		<div class="row">
 
-
-</body>
-</html>
+			<div class="col-sm-12">
+				<div id="UploadResult"></div>
+			</div>
+			<div class="col-sm-12">
+				<div class="btn btn-md btn--default" id="context"> 적립금 받기 </div>
+			
+			</div>
+		</div>
+	</div>
+</section>
