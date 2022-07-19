@@ -318,7 +318,7 @@ img{
 						<p th:text="${movie.gname}"></p>
 						<p th:text="'Comments ' + ${movie.rcnt} + ' people review'"></p>
 					</li>
-					<li class="last-block"><a href="movie-page-left.html"
+					<li class="last-block"><a th:href="@{/movielist/detail(id=${movie.id})}"
 						class="slide__link">more</a></li>
 				</ul>
 			</div>

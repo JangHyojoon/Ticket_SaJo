@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class ORCAPI {
@@ -24,11 +25,16 @@ public class ORCAPI {
 	String secretKey = "d2NVcFRPemZUYnloZkVxekpPSExyYnVxSXZwQmJHY3A=";// 
 
 	public Object orcresult(String imgname) {
-
-		String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","receipt").toString();//이미지 저장 경로 
-		String imageFile = imgpath +"\\영화영수증_오즈의 마법사.png";//이미지 이름 
+		System.out.println("orcresult API 실행 ...");
 		StringBuffer response = null;
 		Object obj = null;
+		System.out.println("imgname : " + imgname);
+		
+		
+		String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","receipt").toString();//이미지 저장 경로 
+		String imageFile = imgpath +"\\" + imgname;//이미지 이름 
+		// server 주소 : /root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/img
+
 		
 		try {
 			URL url = new URL(apiURL);
@@ -41,6 +47,7 @@ public class ORCAPI {
 			String boundary = "----" + UUID.randomUUID().toString().replaceAll("-", "");
 			con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 			con.setRequestProperty("X-OCR-SECRET", secretKey);
+			
 
 			JSONObject json = new JSONObject();
 			json.put("version", "V2");
@@ -53,11 +60,12 @@ public class ORCAPI {
 			images.put(image);
 			json.put("images", images);
 			String postParams = json.toString();
-
 			con.connect();
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 			long start = System.currentTimeMillis();
-			File file = new File(imageFile);
+			File file = new File(imageFile);// 서버에 사진 저장되었을 경우 사용
+			
+			System.out.println("1 success..");
 			System.out.println("----------"+file.getName());
 			System.out.println("----------"+file.getPath());
 			System.out.println("----------"+file.getAbsolutePath());
@@ -82,12 +90,15 @@ public class ORCAPI {
 			
 			JSONParser parser = new JSONParser();
 			obj = parser.parse(response.toString());
+			file.delete();// 파일 삭제 
 
 
 		} catch (Exception e) {
+			System.out.println("ORC API Error 발생 ... ");
 			System.out.println(e);
 		}
 		
+		System.out.println("end ORC...");
 		return obj;
 	}
 
@@ -103,6 +114,7 @@ public class ORCAPI {
 		out.flush();
 
 		if (file != null && file.isFile()) {
+			System.out.println("file isFile True... ");
 			out.write(("--" + boundary + "\r\n").getBytes("UTF-8"));
 			StringBuilder fileString = new StringBuilder();
 			fileString
