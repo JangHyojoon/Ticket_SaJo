@@ -1,8 +1,6 @@
 package com.multi.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.MovieBiz;
-import com.multi.vo.CustVO;
 import com.multi.vo.MovieVO;
 
 @Controller
@@ -40,14 +37,5 @@ public class MainController {
 		return "index";
 	}
 	
-	
-	@RequestMapping("/loginimpl")
-	public String loginimpl(Model m,CustVO user) {
-		System.out.print(user.getName());
-	
-		
-		
-		return "index";
-	}
 	
 }
