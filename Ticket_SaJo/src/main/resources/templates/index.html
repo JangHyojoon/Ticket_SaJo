@@ -23,14 +23,14 @@
     
     <!-- Stylesheets -->
 
- 		<!-- jQuery UI 장효준 추가--> 
+       <!-- jQuery UI 장효준 추가--> 
         <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
         <!-- Mobile menu -->
         <link href="/css/gozha-nav.css" rel="stylesheet" />
         <!-- Select -->
         <link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
-		<!-- Swiper slider -->
+      <!-- Swiper slider -->
         <link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
         <!-- Magnific-popup -->
         <link href="/css/external/magnific-popup.css" rel="stylesheet" />
@@ -45,11 +45,7 @@
 
         <!-- Modernizr --> 
         <script src="/js/external/modernizr.custom.js"></script>
-        
-        <!-- Kakao Login -->
-      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-    
+
     <style>
     .tp-caption.boxshadow,.boxshadow
 {      
@@ -77,127 +73,9 @@
       <!-- Footer End -->
     </div>
     
-      <!-- open/close -->
-        <div class="overlay overlay-hugeinc">
-            
-            <section class="container">
-                <div class="col-sm-4 col-sm-offset-4">
-                    <button type="button" class="overlay-close">Close</button>
-                    <form id="login-form" class="login" method='get' novalidate=''>
-                        <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
-
-                        <div class="social social--colored">
-                               <!-- <a href='#' class="social__variant fa fa-facebook"></a> --> 
-                                <a href='#' id="naver_id_login"></a>
-                                <div class="overlay overlay-hugeinc">
-								    <div class="login-area">
-								      <div id="message">
-								        로그인 버튼을 눌러 로그인 해주세요.
-								      </div>
-								      <div id="button_area">
-								        <div id="naverIdLogin"></div>
-								      </div>
-								    </div>
-								  </div>
-                                <a href='#' id="kakao-login-btn"></a>
-                        </div>
-
-                        <p class="login__tracker">or</p>
-                        
-                        <div class="field-wrap">
-                        <input type='text' placeholder='Id' name='user-id' class="login__input">
-                        <input type='password' placeholder='Password' name='user-password' class="login__input">
-
-                        <input type='checkbox' id='#informed' class='login__check styled'>
-                        <label for='#informed' class='login__check-info'>remember me</label>
-                        </div>
-                        
-                        <div class="login__control">
-                            <button id="signinbtn" class="btn btn-md btn--warning btn--wider">sign in</button>
-                            <a href="#" class="login__tracker form__tracker">Forgot password?</a>
-                        </div>
-                    </form>
-                </div>
-
-            </section>
-        </div>
-        
-        <!-- Kakao Login -->
-    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-     
-    <script type='text/javascript'>
-        Kakao.init('db0465f4383a21cbe1ac57bdd4b21997');
-      Kakao.Auth.createLoginButton({
-         container: '#kakao-login-btn',
-         success: function(authObj) {
-            alert(JSON.stringify(authObj));
-         },
-         fail: function(err) {
-            alert(JSON.stringify(err));
-         }
-      });
-    </script>
-    
-    <!-- Naver Login -->
-  <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-  <script type="text/javascript">
-  
-  var user="aaa";
-  
-  const naverLogin = new naver.LoginWithNaverId(
-   {
-    clientId: "8yr3ISCsaTS7ppBmqjsu",
-    callbackUrl: "http://127.0.0.1/",
-    loginButton: {color: "green", type: 2, height: 40}
-    }
-   );
-  
-
-    naverLogin.init();
-    naverLogin.getLoginStatus(function (status) {
-    	
-      if (status) {
-          const nickName=naverLogin.user.getNickName();
-          const age=naverLogin.user.getAge();
-          const birthday=naverLogin.user.getBirthday();
-
-          if(nickName===null||nickName===undefined ){
-            alert("별명이 필요합니다. 정보제공을 동의해주세요.");
-            naverLogin.reprompt();
-            return ;  
-         }else{
-          setLoginStatus();
-         }
-	}
-    });
-
-    function setLoginStatus(){
-      const message_area=document.getElementById('message');
-            
       
-      message_area.innerHTML=`
-      <h3> Login 성공 </h3>
-      <div>user Name : ${naverLogin.user.name}</div>
-      <div>user Nickname : ${naverLogin.user.nickname}</div>
-      <div>user Age(범위) : ${naverLogin.user.age}</div>
-      <div>user Birthday : ${naverLogin.user.birthday}</div>
-      `;
-     
-      const button_area=document.getElementById('button_area');
-      button_area.innerHTML="<button id='btn_logout'>로그아웃</button>";
-
-      const logout=document.getElementById('btn_logout');
-      logout.addEventListener('click',(e)=>{
-        naverLogin.logout();
-	location.replace("http://127.0.0.1");
-      })
-    }
-   
-
-  </script>
-
-   <!-- JavaScript-->
    <!-- jQuery 3.1.1-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
@@ -254,8 +132,7 @@
    
    
   <!-- Twitter feed -->
-<!--  
-   <script src="/js/external/twitterfeed.js"></script> -->
+  <!--  <script src="/js/external/twitterfeed.js"></script> -->
 
    <!-- Custom -->
    <script src="/js/custom.js"></script>
@@ -265,8 +142,6 @@
                 init_Home();             
               });
    </script>
-     
-   
 
 </body>
 </html>
