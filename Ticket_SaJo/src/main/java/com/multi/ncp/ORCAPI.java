@@ -71,6 +71,7 @@ public class ORCAPI {
 			System.out.println("----------"+file.getAbsolutePath());
 			writeMultiPart(wr, postParams, file, boundary);
 			wr.close();
+			System.out.println("2 success..");
 
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
@@ -87,10 +88,10 @@ public class ORCAPI {
 			br.close();
 			System.out.println("REsult:");
 			System.out.println("imgae result JSON : " + response);
-			
+			System.out.println("3 success..");
 			JSONParser parser = new JSONParser();
 			obj = parser.parse(response.toString());
-			file.delete();// 파일 삭제 
+			//file.delete();// 파일 삭제 
 
 
 		} catch (Exception e) {
