@@ -28,8 +28,29 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
 		LEFT JOIN genre g ON g.id = m.gid
 		LEFT JOIN reviews r ON r.mid=m.id
-		WHERE m.id BETWEEN #{id} and (#{id}+2)
 		GROUP BY id
+		LIMIT #{mnum},3;
+	</select>
+	<!-- 0720 김민식 추가 -->
+	<select id="sortbyreleasedate" parameterType="Integer" resultType="movieVO">
+		SELECT m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg2, m.country as country,
+		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
+		LEFT JOIN genre g ON g.id = m.gid
+		LEFT JOIN reviews r ON r.mid=m.id
+		GROUP BY id
+		ORDER BY releasedate ASC
+		LIMIT #{mnum},3;
+	</select>
+	<select id="sortbyrcnt" parameterType="Integer" resultType="movieVO">
+		SELECT m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg2, m.country as country,
+		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
+		LEFT JOIN genre g ON g.id = m.gid
+		LEFT JOIN reviews r ON r.mid=m.id
+		GROUP BY id
+		ORDER BY rcnt DESC
+		LIMIT #{mnum},3;
 	</select>
 
 	<!-- 0713 안원영 추가 -->

@@ -74,5 +74,14 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 	public Integer selectrankcnt() throws Exception {
 		return dao.selectrankcnt();
 	}
+	// 0720 김민식 추가
+	public List<MovieVO> sortbyreleasedate(Integer k) throws Exception {
+		return dao.sortbyreleasedate(k);
+
+	}
+	public List<MovieVO> sortbyrcnt(Integer k) throws Exception {
+		return dao.sortbyrcnt(k);
+
+	}
 	
 }

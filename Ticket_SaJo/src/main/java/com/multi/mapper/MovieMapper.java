@@ -19,6 +19,8 @@ public interface MovieMapper {
 	//김민식 추가
 
 	public List<MovieVO> selectstar() throws Exception;
+	public List<MovieVO> sortbyreleasedate(int mnum) throws Exception;
+	public List<MovieVO> sortbyrcnt(int mnum) throws Exception;
 	//0713 안원영 추가 
 	public List<MovieVO> search(Map<String, String> obj) throws Exception;	
 	//0713 안원영 추가 
