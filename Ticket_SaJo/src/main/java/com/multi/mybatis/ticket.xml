@@ -10,6 +10,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="ticketVO">
 		SELECT * FROM ticket
 	</select>
+	<select id="selectrid" resultType="ticketVO">
+		SELECT * FROM ticket
+		WHERE rid=#{rid}
+	</select>
 	<insert id="insert" parameterType="ticketVO">
 		INSERT INTO ticket VALUES (#{id},#{sid},#{rid},sysdate(),#{mcnt},#{seatid})
 	</insert>

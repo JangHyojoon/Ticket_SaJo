@@ -45,7 +45,7 @@ public class AjaxController_jhj {
 				
 				
 			}
-		System.out.println("스케쥴"+ja.toJSONString());
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,7 +74,7 @@ public class AjaxController_jhj {
 				
 				
 			}
-		System.out.println("디테일 스케줄"+ja.toJSONString());
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

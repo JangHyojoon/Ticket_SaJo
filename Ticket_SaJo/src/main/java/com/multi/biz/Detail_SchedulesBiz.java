@@ -59,4 +59,7 @@ public class Detail_SchedulesBiz implements Biz<Integer,Detail_SchedulesVO> {
 	public Detail_SchedulesVO selectmidtidsdatetime(Integer mid,Integer tid, String sdate, String starttime) throws Exception {
 		return dao.selectmidtidsdatetime(mid, tid, sdate, starttime);
 	}
+	public void updatebooked(Detail_SchedulesVO v) throws Exception	{
+		dao.updatebooked(v);
+	}
 }
