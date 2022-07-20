@@ -322,8 +322,8 @@ function init_Home() {
     //Rating star
     $('.score').raty({
         width:130, 
-        score: 0,
-        path: 'images/rate/',
+        star: 0,
+        path: '/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });

@@ -63,16 +63,28 @@
                     <div class="tags tags--unmarked">
                         <span class="tags__label">Sorted by:</span>
                             <ul>
-                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>all</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>release date</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='popularity'>popularity</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='comments'>comments</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='ending'>ending soon</a></li>
+                                <li class="item-wrap">
+                                	<a id="1" th:href="@{/movielist(sort=0)}" th:if="${sort}==0" class="tags__item item-active" data-filter='all'>all</a>
+                                	<a id="1" th:href="@{/movielist(sort=0)}" th:if="${sort}!=0" class="tags__item" data-filter='all'>all</a>
+                               	</li>
+                                <li class="item-wrap">
+                                	<a id="2" th:href="@{/movielist(sort=1)}" th:if="${sort}==1" class="tags__item item-active" data-filter='release'>개봉일 오래된 순</a>
+                                	<a id="2" th:href="@{/movielist(sort=1)}" th:if="${sort}!=1" class="tags__item" data-filter='release'>개봉일 오래된 순</a>
+                               	</li>
+                                <li class="item-wrap">
+                               		<a id="3" th:href="@{/movielist(sort=2)}" th:if="${sort}==2" class="tags__item item-active" data-filter='release'>별점 순</a>
+                               		<a id="3" th:href="@{/movielist(sort=2)}" th:if="${sort}!=2" class="tags__item" data-filter='release'>별점 순</a>
+                                </li>
+                                <li class="item-wrap">
+                                	<a id="4" th:href="@{/movielist(sort=3)}" th:if="${sort}==3" class="tags__item item-active" data-filter='comments'>리뷰 많은 순</a>
+                                	<a id="4" th:href="@{/movielist(sort=3)}" th:if="${sort}!=3" class="tags__item" data-filter='comments'>리뷰 많은 순</a>
+                                </li>
                             </ul>
                     </div>
                 </div>
                 
                 <!-- Movie preview item -->
+                
                 <div th:each="m:${movie}"class="movie movie--preview movie--full release">
                      <div class="col-sm-3 col-md-2 col-lg-2">
                             <div class="movie__images">
@@ -86,7 +98,7 @@
                     </div>
 
                     <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
-                            <a th:href="@{/movielist/detail(id=${m.id})}" class="movie__title link--huge" th:text="${m.title}">Last Vegas (2013)</a>
+                            <a th:href="@{/movielist/detail(id=${m.id})}" class="movie__title link--huge" th:name="title" th:text="${m.title}">Last Vegas (2013)</a>
 
                             <p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
@@ -141,9 +153,9 @@
                 <!-- end movie preview item -->
                 <div class="coloum-wrapper">
                     <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=1000" th:href="@{/movielist(id=${mnum}-3)}">prev</a>
-                            <a href='#' class="pagination__prev" th:if="${mnum}-1<=1000">prev</a>
-                            <a href='#' class="pagination__next" th:href="@{/movielist(id=${mnum}+3)}">next</a>
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/movielist(mnum=${mnum}-3,sort=${sort})}">prev</a>
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1<=0">prev</a>
+                            <a href='#' class="pagination__next" th:href="@{/movielist(mnum=${mnum}+3,sort=${sort})}">next</a>
                     </div>
                 </div>
 

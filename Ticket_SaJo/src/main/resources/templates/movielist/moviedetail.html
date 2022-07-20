@@ -266,9 +266,12 @@
 
                     <div class="comment-wrapper">
                         <form id="comment-form" class="comment-form" method='post'>
+                        	<input name=mid th:value="${movie.id}" type="hidden">
+                        	<input name=uid th:value="${uid}" type="hidden">
+                        	    <div class="movie__rate"><div class="score"><input name="star" type="hidden"></div> <span class="movie__rating"></span></div>
                             <textarea name="text" class="comment-form__text" placeholder='Add you comment here'></textarea>
                             <label class="comment-form__info" id="cinfo">250 characters left</label>
-                            <button type='submit' class="btn btn-md btn--danger comment-form__btn">add comment</button>
+                            <button type='submit' id="btn" class="btn btn-md btn--danger comment-form__btn">add comment</button>
                         </form>
 
                         <div class="comment-sets">
@@ -346,6 +349,7 @@
 		function display(data){
 			var title = $('#title').text();
 			chart = Highcharts.chart('chartcontainer', {
+				colors: ['#FAE0D4', '#E8D9FF', '#FFFF7E', '#FFFF7E', '#00D8FF'],
 			    title: {
 			        text: '연령별 영화 리뷰 수'
 			    },
@@ -372,9 +376,11 @@
 			
 		};
 		function display2(data){
-			alert(JSON.stringify(data.rpercent[0]));
+			
 			Highcharts.chart('circlecontainer', {
+				colors: ['#C2F4F5', '#FFD9EC', '#666666', '#999999', '#dddddd'],
 			    chart: {
+			    	
 			        type: 'pie',
 			        options3d: {
 			            enabled: true,
@@ -408,8 +414,13 @@
 			        type: 'pie',
 			        name: '성별',
 			        data: [
-			            
-			            ['Man',       data.rpercent[0]],
+			        	{
+			                name: 'Man',
+			                y: data.rpercent[0],
+			                sliced: true,
+			                selected: true
+			               
+			            },
 			            ['Woman',       data.rpercent[1]]
 			        ]
 			    }],
@@ -442,6 +453,13 @@
                 init_MoviePage();
                  init_MoviePageFull();
                  
+                 $('#btn').click(function(){
+             		$('.comment-form').attr({
+             			'method':'post',
+             			'action':'/movielist/reviewimpl'
+             		});
+             		$('.comment-form').submit();
+             	});
                  $('textarea[name="text"]').keyup(function(){
              		var text = $(this).val();
              			$('#cinfo').text((250-text.length)+' characters left');

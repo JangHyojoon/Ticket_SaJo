@@ -742,7 +742,7 @@
     readOnly     : false,
     round        : { down: 0.25, full: 0.6, up: 0.76 },
     score        : undefined,
-    scoreName    : 'score',
+    scoreName    : 'star',
     single       : false,
     space        : true,
     starHalf     : 'star-half.png',
