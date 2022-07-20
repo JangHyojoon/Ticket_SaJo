@@ -15,7 +15,7 @@ class InsertTest {
 	
 	@Test
 	void contextLoads() {
-		PointlistVO pl = new PointlistVO(3005, "hms", 4000, "2021-02-04", "쿠폰5");
+		PointlistVO pl = new PointlistVO("hms", 4000, "쿠폰5");
 		try {
 			biz.register(pl);
 		} catch (Exception e) {

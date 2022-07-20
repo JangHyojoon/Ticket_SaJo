@@ -1,0 +1,210 @@
+
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
+
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
+
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700'
+	rel='stylesheet' type='text/css'>
+
+
+<!-- Modernizr -->
+<script src="js/external/modernizr.custom.js"></script>
+
+
+
+<div class="wrapper">
+	<!-- Banner -->
+	<div class="banner-top">
+	</div>
+	<!-- Search bar -->
+	<div class="search-wrapper">
+		<div class="container container--add">
+			<form id='search-form' method='get' class="search">
+				<input type="text" class="search__field" placeholder="Search">
+				<select name="sorting_item" id="search-sort" class="search__sort"
+					tabindex="0">
+					<option th:each="coupon,index : ${couponList}" th:value="${index.index}+1" ><span th:text="${coupon.id}"> </span></option>
+			<!-- 		<option value="2"  selected='selected'>By year</option> -->
+
+				</select>
+				<button class="btn btn-md btn--danger search__button">search
+					a Coupon</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Main content -->
+	<section class="container">
+		<div class="col-sm-12">
+			<h2 class="page-heading">Best offers</h2>
+
+			<div class="offers-block">
+				<p class="offer-place">Odeon West End offers</p>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--winter">
+						<div class="offer__head">
+							<p class="offer__name">
+								Christmas<br>
+							</p>
+							<span class="offer__datail">with <br> Odeon West End
+							</span>
+						</div>
+						<p class="offer__full">We’re open all day, everyday this
+							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--family">
+						<div class="offer__head">
+							<p class="offer__name">
+								family <br> ticket
+							</p>
+						</div>
+						<p class="offer__full">Everyone pays the child price!</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--day">
+						<div class="offer__head">
+							<p class="offer__name">
+								super<br> tuesday
+							</p>
+						</div>
+						<p class="offer__full">Up to 1/3 off adult tickets all day,
+							sign up nowand claim your discount.</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--teen">
+						<div class="offer__head">
+							<p class="offer__name">
+								teen<br> tickets
+							</p>
+						</div>
+						<p class="offer__full">Aged 13 -18? Save up to 20% on the
+							adult ticket price with our teen ticket.</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--gift">
+						<div class="offer__head">
+							<p class="offer__name">
+								Christmas<br>
+							</p>
+							<span class="offer__datail">with <br> Odeon West End
+							</span>
+						</div>
+						<p class="offer__full">Spread Christmas cheer with the perfect
+							gift for everyone.</p>
+					</a>
+				</div>
+
+			</div>
+
+			<div class="offers-block">
+				<p class="offer-place">Vue Islington offers</p>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--winter">
+						<div class="offer__head">
+							<p class="offer__name">
+								giftcard<br>
+							</p>
+							<span class="offer__datail">from <br> Odeon West End
+							</span>
+						</div>
+						<p class="offer__full">We’re open all day, everyday this
+							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--family">
+						<div class="offer__head">
+							<p class="offer__name">
+								family <br> ticket
+							</p>
+						</div>
+						<p class="offer__full">Everyone pays the child price!</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--day">
+						<div class="offer__head">
+							<p class="offer__name">
+								super<br> tuesday
+							</p>
+						</div>
+						<p class="offer__full">Up to 1/3 off adult tickets all day,
+							sign up nowand claim your discount.</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--teen">
+						<div class="offer__head">
+							<p class="offer__name">
+								teen<br> tickets
+							</p>
+						</div>
+						<p class="offer__full">Aged 13 -18? Save up to 20% on the
+							adult ticket price with our teen ticket.</p>
+					</a>
+				</div>
+
+			</div>
+
+			<div class="offers-block offers-block--last">
+				<p class="offer-place">Marble Arch Odeon offers</p>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--winter">
+						<div class="offer__head">
+							<p class="offer__name">
+								Christmas<br>
+							</p>
+							<span class="offer__datail">with <br> Odeon West End
+							</span>
+						</div>
+						<p class="offer__full">We’re open all day, everyday this
+							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
+					</a>
+				</div>
+
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
+					<a href='#' class="offer offer--family">
+						<div class="offer__head">
+							<p class="offer__name">
+								family <br> ticket
+							</p>
+						</div>
+						<p class="offer__full">Everyone pays the child price!</p>
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+	</section>
+
+	<div class="clearfix"></div>
+
+</div>
