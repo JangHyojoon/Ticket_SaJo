@@ -1,6 +1,8 @@
 package com.multi.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -86,7 +88,9 @@ public class MainController_jhj {
 			String booked ="";
 			booked = dsv.getBooked();
 			String[] bookedarr =booked.split(",");
-			m.addAttribute("booked", bookedarr);
+			List<String> booklist = Arrays.asList(bookedarr);
+			System.out.println(booklist);
+			m.addAttribute("booked", booklist);
 			
 			
 			
@@ -98,6 +102,7 @@ public class MainController_jhj {
 		m.addAttribute("footer", "footer");
 		return "index";
 	}
+	
 	@RequestMapping("/book2impl")
 	public String book2impl(Model m, String sid, String mcnt, String starttime, String endtime, String tid, String mid, String sdate,
 		    String choosen_cost, String choosen_sits) {
@@ -116,27 +121,65 @@ public class MainController_jhj {
 			System.out.println(dsv);
 			m.addAttribute("dsv", dsv);
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 		m.addAttribute("center", "book3");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
 	}
+	
 	@RequestMapping("/book3impl")
 	public String book3mpl(Model m, String sid, String mcnt, String title, String price,String sdate, String seatlist) {
+		//선택좌석 리스트
+		seatlist =seatlist.substring(0,seatlist.length() -1);  
+		String sseatlist =seatlist.substring(1,seatlist.length()); 
+		String[] bookedarr =sseatlist.split(", ");
+		HashSet<String> hashset = new HashSet<>(Arrays.asList(bookedarr));	
+		String[] choosensit = hashset.toArray(new String[0]);
 		
-		ReservationVO rv = new ReservationVO("jhj",Integer.parseInt(mcnt),Integer.parseInt(price),Integer.parseInt(price));
-		
+	
+		ReservationVO rv = new ReservationVO("jhj",choosensit.length,Integer.parseInt(price),Integer.parseInt(price));	
 		try {
-			reservationbiz.register(rv);		
+			reservationbiz.register(rv);
+	
 		} catch (Exception e) {
 
 		}
-	      
-	    
+		int rid = rv.getRid();
+		//티켓테이블 인서트와 booked의 좌석 추가
+		for (int i = 0; i < choosensit.length; i++) {
+			TicketVO tv = new TicketVO(Integer.parseInt(sid),rid,sdate,Integer.parseInt(mcnt),choosensit[i]);
+			try {
+				ticketbiz.register(tv);
+				Detail_SchedulesVO dsv = new Detail_SchedulesVO(Integer.parseInt(sid),Integer.parseInt(mcnt),choosensit[i]);
+				detail_schedulesbiz.updatebooked(dsv);
+				
+			} catch (Exception e) {		
+				e.printStackTrace();
+			}			
+		}
+		//티켓을 만들기 위한 테이블들 정보
+		try {
+			List<TicketVO> tlist = ticketbiz.selectrid(rid);
+			ReservationVO rrv = reservationbiz.get(rid);
+			Detail_SchedulesVO ddsv = detail_schedulesbiz.get(Integer.parseInt(sid), Integer.parseInt(mcnt));
+			int mid = ddsv.getMid();
+			MovieVO mv = moviebiz.get(mid);
+			//개봉년도
+			Date date = mv.getReleasedate();
+			SimpleDateFormat getyear = new SimpleDateFormat("yyyy");
+			String ryear = getyear.format(date);
+			
+			m.addAttribute("tlist", tlist);
+			m.addAttribute("rrv", rrv);
+			m.addAttribute("ddsv", ddsv);
+			m.addAttribute("sdate", sdate);
+			m.addAttribute("ryear", ryear);
 
-		
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		m.addAttribute("center", "book4");
 		m.addAttribute("header", "header");

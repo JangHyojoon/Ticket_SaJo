@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="int" resultType="schedulesVO">
 		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
 		INNER JOIN movie m ON s.mid = m.id 
-		WHERE id=#{id}
+		WHERE s.id=#{id}
 	</select>
 	<select id="selectall" resultType="schedulesVO">
 		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s

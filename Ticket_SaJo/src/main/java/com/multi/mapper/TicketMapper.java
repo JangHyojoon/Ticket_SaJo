@@ -16,4 +16,6 @@ public interface TicketMapper {
 	public TicketVO select(int id) throws Exception;
 	public List<TicketVO> selectall() throws Exception;
 
+	
+	public List<TicketVO> selectrid(int rid) throws Exception;
 }

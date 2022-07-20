@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="reservationVO">
 		SELECT * FROM reservation
 	</select>
-	<insert id="insert" parameterType="reservationVO">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="rid" parameterType="reservationVO">
 		INSERT INTO reservation VALUES (NULL,#{uid},#{pcnt},#{price},#{totalprice})
 	</insert>
 	<update id="update" parameterType="reservationVO">

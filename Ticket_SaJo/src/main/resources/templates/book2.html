@@ -33,35 +33,29 @@
         <!-- Ajax -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         
-    	<script>
-    	
-    	</script>
     	<script th:inline="javascript">
+    	//버튼 클릭
+			function clickbtn(){
+				$('.book2').submit();
+				return false
+	
+			};
+			var test = [[${booked}]];
 	    	$(document).ready(function(){
-	    		var test = [[${booked}]];
+	    	
+	    		
+	    		
 	    		
 	    		for(var i = 0; i<test.length; i++){
 	    			$("#"+test[i]).addClass("sits-state--not");
 	    		}
-	    		
-	    		//버튼 클릭
-				$('#book2btn').click(function(){
-					$('.book2').attr({
-						'method':'post',
-						'action':'book2impl'
-					});
-					$('.book2').submit();
-					
+		        
+		        
+	    	
 
-				});
-					
-
-				
-					
-	    		
-	    	});
-    	
+	    	});   
     	</script>
+
 </head>
  
 <body>
@@ -76,6 +70,7 @@
                     <p class="order__title">Book a ticket <br><span class="order__descript">and have fun movie time</span></p>
 
                         <h1 th:text="${book1info}">good</h1>
+                       
                     
                 </div>
             </div>
@@ -174,7 +169,7 @@
                 
  		</section>
        </div>
-            <form class="book2">
+            <form class="book2" id="book2" method='post' action='book2impl'>
 	            <input type='text' name='sid' th:value="${book1info.sid}">
 				<input type='text' name='mcnt' th:value="${book1info.mcnt}">
 		        <input type='text' name='starttime' th:value="${book1info.starttime}">
@@ -182,10 +177,6 @@
 		        <input type='text' name='tid' th:value="${book1info.tid}">
 		        <input type='text' name='mid' th:value="${book1info.mid}">
 		        <input type='text' name='sdate' th:value="${book1info.sdate}">
-		    <label>choosen_number</label><input type='text' name='choosen_number' class="choosen-number">
-            <label>choosen_number__cheap</label><input type='text' name='choosen_number__cheap' class="choosen-number--cheap">
-            <label>choosen_number__middle</label><input type='text' name='choosen_number__middle' class="choosen-number--middle">
-            <label>choosen_number__expansive</label><input type='text' name='choosen_number__expansive' class="choosen-number--expansive">
             <label>choosen_cost</label><input type='text' name='choosen_cost' class="choosen-cost">
             <label>choosen_sits</label><input type='text' name='choosen_sits' class="choosen-sits">
             </form>
@@ -197,7 +188,7 @@
                         <span class="arrow__text arrow--prev">prev step</span>
                         <span class="arrow__info">what&amp;where&amp;when</span>
                     </a>
-                    <a href="#" class="booking-pagination__next" id="book2btn">
+                    <a href="#" onclick="clickbtn();" class="booking-pagination__next" id="book2btn">
                         <span class="arrow__text arrow--next">next step</span>
                         <span class="arrow__info">checkout</span>
                     </a>
