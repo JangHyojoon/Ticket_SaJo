@@ -10,22 +10,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.multi.biz.CustBiz;
 import com.multi.vo.CustVO;
 
+
 @Controller
 public class MainController_jsy {
 	
 	@Autowired
 	CustBiz custbiz;
 	
-	@RequestMapping("/login")
-	public String login(Model m) {
-		m.addAttribute("center", "login");
+	@RequestMapping("/signin")
+	public String signin(Model m) {
+		m.addAttribute("center", "signin");
+		return "index";
+	}
+	
+	@RequestMapping("/signout")
+	public String signout(Model m, HttpSession session) {
+		if(session !=null ) {
+			session.invalidate();			
+		}
 		return "index";
 	}
 
-	@RequestMapping("/loginimpl")
-	public String loginimpl(Model m, String id, String pwd, String name, HttpSession session) {
+	@RequestMapping("/signinimpl")
+	public String signinimpl(Model m, String id, String pwd, HttpSession session) {
 		String next = "";
-		System.out.println("loginimpl");
+		System.out.println("asd");
 		CustVO cust = null;
 		try {
 			cust = custbiz.get(id);
@@ -33,7 +42,6 @@ public class MainController_jsy {
 				if(cust.getPwd().equals(pwd)) {
 					session.setAttribute("user",cust);
 					m.addAttribute("user", cust);
-					next = "loginok";
 				}else {
 					throw new Exception(); 
 				}
@@ -44,8 +52,6 @@ public class MainController_jsy {
 		} catch (Exception e) {
 			next="loginfail";		
 		}
-		
-		m.addAttribute("center", next);
 		return "index";
 	}
 
