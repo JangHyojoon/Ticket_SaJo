@@ -46,7 +46,12 @@
     	href="https://github.s3.amazonaws.com/downloads/lafeber/world-flags-sprite/flags32.css" />
 </head>
 <style>
-
+		h4 {
+		margin: 20px 0px 20px;
+		}
+		p{
+		margin: 0px;
+		}
 		#chartcontainer {
 			float : left;
 		    height: 400px;
@@ -253,21 +258,21 @@
 				    <button id="inverted">Inverted</button>
 				</figure>
                 <div class="choose-container">
-                    <a href="#" id="map-switch" class="watchlist watchlist--map watchlist--map-full"><span class="show-map">Show cinemas on map</span><span  class="show-time">Show cinema time table</span></a>
+                    <a href="#" id="map-switch" class="watchlist watchlist--map watchlist--map-full"><span class="show-map">Show cinemas on map</span><span  class="show-time">Show cinemas off map</span></a>
                     
                     <div class="clearfix"></div>
                     
                     <!-- hiden maps with multiple locator-->
-                    <div  class="map">
-                        <div id='cimenas-map'></div> 
+                    <div  class="map" style="display:none">
+                        <div id="map" style="width:100%; height: 70vh;"></div> 
                     </div>
 
                    <h2 class="page-heading" th:text="'comments('+${movie.rcnt}+')'">.</h2>
 
                     <div class="comment-wrapper">
-                        <form id="comment-form" class="comment-form" method='post'>
+                        <form id="comment-form" class="comment-form" method='post' th:if="${session.user!=null}">
                         	<input name=mid th:value="${movie.id}" type="hidden">
-                        	<input name=uid th:value="${uid}" type="hidden">
+                        	<input name=uid th:value=${session.user.id} type="hidden">
                         	    <div class="movie__rate"><div class="score"><input name="star" type="hidden"></div> <span class="movie__rating"></span></div>
                             <textarea name="text" class="comment-form__text" placeholder='Add you comment here'></textarea>
                             <label class="comment-form__info" id="cinfo">250 characters left</label>
@@ -333,7 +338,8 @@
         <script src="/js/external/idangerous.swiper.min.js"></script>
         <!-- Magnific-popup -->
         <script src="/js/external/jquery.magnific-popup.min.js"></script> 
-
+		<!--*** Google map  ***-->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVcOlUeG5vMxZi4i7fI-F0ELlSICjLxaA&callback=initMap&region=kr"></script>
         <!-- Share buttons -->
         <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-525fd5e9061e7ef0"></script>
@@ -346,6 +352,7 @@
         <!-- Custom -->
         <script src="/js/custom.js"></script>
 		<script type="text/javascript">
+		
 		function display(data){
 			var title = $('#title').text();
 			chart = Highcharts.chart('chartcontainer', {
@@ -376,7 +383,7 @@
 			
 		};
 		function display2(data){
-			
+			var title = $('#title').text();
 			Highcharts.chart('circlecontainer', {
 				colors: ['#C2F4F5', '#FFD9EC', '#666666', '#999999', '#dddddd'],
 			    chart: {
@@ -390,6 +397,9 @@
 			    },
 			    title: {
 			        text: '성별별 영화 리뷰 수'
+			    },
+			    subtitle: {
+			        text: title+'의 영화 리뷰'
 			    },
 			    accessibility: {
 			        point: {
@@ -450,9 +460,6 @@
 			});
 		}
             $(document).ready(function() {
-                init_MoviePage();
-                 init_MoviePageFull();
-                 
                  $('#btn').click(function(){
              		$('.comment-form').attr({
              			'method':'post',
@@ -492,9 +499,55 @@
                         }
                     });
                 });
+                init_MoviePage();
+                init_MoviePageFull();
 
             });
-            
+            var map;
+    		var button = document.getElementById('button');
+    		function initMap() {
+    		      var mulcam = { lat: 37.50333108332433 ,lng: 127.04989170123987 };
+    		      var infowindow = new google.maps.InfoWindow();
+    		      var map = new google.maps.Map(
+    		        document.getElementById('map'), {
+    		          zoom: 15,
+    		          center: mulcam
+    		        });
+    		      var locations = '<div class="wrap"><div class="text-box"><h4 margin="20px 0px 20px">A_Movie</h4><p>특별한 클래식 영화관</p><div class="img-box"><img width="260px" height="280px" src="/images/cinema/theater3.jpg"></div><a target="_blank" href="https://www.google.co.kr/maps/place/%EB%A9%80%ED%8B%B0%EC%BA%A0%ED%8D%BC%EC%8A%A4+%EC%84%A0%EB%A6%89/data=!4m5!3m4!1s0x357ca512b1b5e77b:0x90048774d24a2a4f!8m2!3d37.503376!4d127.049776?hl=ko"><p style="color:blue">서울특별시 강남구 선릉로 428</p><p style="color:blue"> 멀티캠퍼스 건물 7층</p></a></div>'
+    	                
+    		      marker = new google.maps.Marker({	    	    
+    				    position: mulcam,			    
+    				    map: map,
+    				    animation: google.maps.Animation.BOUNCE,
+    				    label: {
+    				        text: "A Movie",
+    				        color: "#C70E20"
+    				    },
+    			      icon: {
+    			          url: "/images/cinema/movieicon.png",
+    			          scaledSize: new google.maps.Size(40, 40),
+    			          labelOrigin: new google.maps.Point(20, 45),
+    			      }    
+    			  });
+    		      google.maps.event.addListener(marker, 'click', (function(marker) {
+                      return function() {
+                          
+                          //html로 표시될 인포 윈도우의 내용
+                          infowindow.setContent(locations);
+                          
+                          //인포윈도우가 표시될 위치
+                          infowindow.open(map, marker);
+                      }
+                  })(marker));
+    		      marker.addListener('click', function() {
+                      
+                      //중심 위치를 클릭된 마커의 위치로 변경
+                      map.setCenter(this.getPosition());
+
+                      //마커 클릭 시의 줌 변화
+                      map.setZoom(14);
+                  });
+    		    }
 		</script>
 
 </body>
