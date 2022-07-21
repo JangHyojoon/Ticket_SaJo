@@ -34,7 +34,6 @@ public class MainController_jsy {
 	@RequestMapping("/signinimpl")
 	public String signinimpl(Model m, String id, String pwd, HttpSession session) {
 		String next = "";
-		System.out.println("asd");
 		CustVO cust = null;
 		try {
 			cust = custbiz.get(id);
@@ -50,7 +49,25 @@ public class MainController_jsy {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			next="loginfail";		
+			next="signinfail";		
+		}
+		return "index";
+	}
+	
+	@RequestMapping("/signup")
+	public String signup(Model m) {
+		m.addAttribute("center", "signup");
+		return "index";
+	}
+	
+	@RequestMapping("/signupimpl")
+	public String signupimpl(Model m, CustVO cust, HttpSession session) {
+		try {
+			System.out.println(cust);
+			custbiz.register(cust);
+			session.setAttribute("user", cust);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return "index";
 	}
