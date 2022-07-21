@@ -15,13 +15,13 @@ import lombok.ToString;
 public class MycouponVO {
 	private int id;
 	private String uid;
-	private String cid;
+	private int cid;
 	private boolean used;
 	private Date udate;
 	private Date rdate;
 	
 	// mycoupon insert 시 사용
-	public MycouponVO(String uid, String cid, boolean used, Date rdate) {
+	public MycouponVO(String uid, int cid, boolean used, Date rdate) {
 		super();
 		this.uid = uid;
 		this.cid = cid;

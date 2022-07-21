@@ -156,10 +156,16 @@ ALTER TABLE ticket ADD CONSTRAINT FOREIGN KEY (rid) REFERENCES reservation (id);
 
 -- coupon
 CREATE TABLE coupon(
-   id VARCHAR(100) PRIMARY KEY, -- 쿠폰번호
-    cprice INT -- 할인가격 
+	id INT PRIMARY KEY, -- 쿠폰번호
+	name VARCHAR(100),
+    sdate DATE,
+    edate DATE,
+    icon VARCHAR(100),
+    sale INT, -- 할인가격 
+    text VARCHAR(500)
 );
-    
+ALTER TABLE mycoupon MODIFY id INT AUTO_INCREMENT;
+ALTER TABLE mycoupon AUTO_INCREMENT = 8000;
 
 -- mycoupon
 CREATE TABLE mycoupon(

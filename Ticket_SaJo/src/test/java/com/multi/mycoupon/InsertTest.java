@@ -19,7 +19,7 @@ class InsertTest {
 	void contextLoads() {
 		Date date = new Date();
 		
-		MycouponVO v = new MycouponVO("awy","event05",true,date);
+		MycouponVO v = new MycouponVO("awy",8001,true,date);
 		try {
 			biz.register(v);
 			System.out.println("insert ok... ");

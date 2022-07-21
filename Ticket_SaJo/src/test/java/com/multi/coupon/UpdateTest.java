@@ -16,7 +16,8 @@ class UpdateTest {
 	CouponBiz biz;
 	@Test
 	void contextLoads()  {
-		CouponVO v = new CouponVO("eventTest01",3000);
+		Date a = new Date();
+		CouponVO v = new CouponVO(8010,"event07-BIG sale",a,a,"gift", 1000,"Big Sale 쿠폰입니다. ");
 		try {
 			biz.modify(v);
 			System.out.println("Update success... ");

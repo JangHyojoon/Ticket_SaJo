@@ -13,7 +13,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CouponVO {
-	private String id;
-	private int cprice;
+	private int id;
+	private String name;
+	private Date sdate;
+	private Date edate;
+	private String icon;
+	private int sale;
+	private String text;
+	
 
 }

@@ -103,10 +103,6 @@
 	
 	function point(user, e){// 적립금 받기 버튼 클릭시 동작
 		if(user == null){// 로그인 하지 않았을 경우 login 페이지로 이동 ======================= > login 완성되면 else랑 내용 체인지 
-			window.location.href ="/orc/orcimpl";
-		
-		
-		}else{
 			// 로그인 되어있는지 확인
 			//var uid = '<%=session.getAttribute("user")%>';
 			alert('user 정보 없음 ');
@@ -118,7 +114,8 @@
 				$('#UploadResult').css('color','red');
 				$('#UploadResult')[0].scrollIntoView();
 			}
-			
+		}else{
+			window.location.href ="/orc/orcimpl";
 		}
 	}
 
@@ -129,9 +126,8 @@
 	});
 </script>
 
-	<!-- Banner -->
-	<div class="banner-top">
-	</div>
+<!-- Banner -->
+<div class="banner-top"></div>
 
 <div class="div_margin"></div>
 <section class="container">

@@ -33,9 +33,10 @@ public class ORCController {
 	public String orcimpl(Model m, HttpSession session) {
 		String msg = "";
 		PointlistVO pl = null;
+		CustVO cust = (CustVO) session.getAttribute("user"); // ======> login 기능 구현시 추가 
+		
 		try {
-	//		CustVO cust = (CustVO) session.getAttribute("user"); // ======> login 기능 구현시 추가 
-			CustVO cust = cbiz.get("awy");
+			
 			
 			cust.setPoint(cust.getPoint() + 500);// 영수증 적립금 500원 적립
 			cbiz.modify(cust);// 적립금 수정 
