@@ -1,0 +1,82 @@
+<meta charset="UTF-8">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<script>
+function sendId(id) {
+	$.ajax({
+		url:'/checkid',
+		data:{'id':id},
+		success:function(data){
+			if(data == '1') {
+				$('#ispan').text('사용 불가능한 ID');
+			}else {
+				$('#ispan').text('사용 가능한 ID');
+			}
+		}
+	});
+};
+
+
+$(document).ready(function(){
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val();
+		sendId(id);
+	});
+	
+	$('input[name="pwdcheck"]').keyup(function(){
+		var pwd = $('input[name="pwd"]').val();
+		var pwd2 = $('input[name="pwdcheck"]').val();
+		if(pwd == pwd2){
+			$('#pspan2').text('일치');
+		}else {
+			$('#pspan2').text('불일치');
+		}
+	});
+	
+	$('#signupbtn').click(function(){
+		$('#signup_form').attr({
+			'method' : 'post',
+		    'action' : 'signupimpl'
+		});
+		$('#signup_form').submit();
+	});
+});
+
+</script>
+<br>
+<br>
+   <form id="signup_form" class="form-horizontal">
+	   <div class="field-wrap">
+	   <br>
+	   <br>
+	      ID: 
+	      <span id="ispan"></span><input type='text' placeholder='아이디를 입력하세요' name='id'>
+	      </div>
+	   <div class="field-wrap">
+	      PASSWORD: 
+	      <span id="pspan"></span><input type='password' placeholder='비밀번호를 입력하세요' name='pwd'> 
+	   </div>
+	   <div class="field-wrap">
+	      PASSWORD : 
+	      <span id="pspan2"></span><input type='password' placeholder='비밀번호를 입력하세요' name='pwdcheck'> 
+	   </div>
+	   <div class="field-wrap">
+	      NAME: <input type='text' placeholder='이름을 입력하세요' name='name'> 
+	   </div>
+	   <div class="field-wrap">
+	      BIRTH: <input type='date' placeholder='생년월일을 입력하세요' name='birth'> 
+	   </div>
+	   <div class="field-wrap">
+	      POINT: <input type='text' placeholder='0' name='point'> 
+	   </div>
+	   <div class="field-wrap">
+	      SEX: <input type='text' placeholder='성별을 입력하세요' name='sex'> 
+	   </div>
+	   
+	   <div class="login__control">
+	      <button id="signupbtn" class="btn btn-md btn--warning btn--wider">Sign Up</button>
+	   </div>
+   </form>

@@ -1,5 +1,7 @@
 package com.multi.cust;
 
+
+
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -15,16 +17,12 @@ class InsertTest {
 	CustBiz biz;
 	@Test
 	void contextLoads() {
-		Date today = new Date();
-		CustVO v = new CustVO("id01","pwd01","김말숙",today,2000,"women");
+		Date date = new Date();
+		CustVO v = new CustVO("jsy","3333","정세연",date,500,"woman");
 		try {
 			biz.register(v);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	
-
 }

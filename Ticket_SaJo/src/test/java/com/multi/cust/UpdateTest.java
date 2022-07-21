@@ -15,16 +15,12 @@ class UpdateTest {
 	CustBiz biz;
 	@Test
 	void contextLoads()  {
-	Date today = new Date();
-		CustVO v = new CustVO("id01","pwd01","정말숙",today,2000,"women");
+	Date date = new Date();
+		CustVO v = new CustVO("id04","pwd04","주말숙",date,150000,"woman");
 		try {
 			biz.modify(v);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	
-
 }
