@@ -1,24 +1,22 @@
-package com.multi.seat;
+package com.multi.booked;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.SeatBiz;
-import com.multi.vo.SeatVO;
+import com.multi.biz.BookedBiz;
+import com.multi.vo.BookedVO;
 
 @SpringBootTest
-class SelectTest {
+class InsertTest {
 	@Autowired
-	SeatBiz biz;
+	BookedBiz biz;
 	@Test
 	void contextLoads() {
-		SeatVO v = null;
+		BookedVO v = new BookedVO(2000,1,"A01");
 		try {
-			v = biz.get("T01");
-			System.out.println(v);
+			biz.register(v);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

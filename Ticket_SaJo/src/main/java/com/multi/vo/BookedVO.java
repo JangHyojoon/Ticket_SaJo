@@ -10,9 +10,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class SeatVO {
-	private String id;
-	private String r;
-	private int c;
+public class BookedVO {
+	private int sid;
+	private int mcnt;
+	
+	private String seatid;
+
 
 }
+
+

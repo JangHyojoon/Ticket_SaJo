@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.BookedMapper">
+	<!-- 구현안됨 -->
+	<select id="select" parameterType="String" resultType="bookedVO">
+		SELECT * FROM booked WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="BookedVO">
+		SELECT * FROM booked
+	</select>
+	<insert id="insert" parameterType="BookedVO">
+		INSERT INTO booked VALUES (#{sid},#{mcnt},#{seatid})
+	</insert>
+
+	
+	<!-- 구현안됨 -->
+	<update id="update" parameterType="BookedVO">
+		UPDATE booked SET r=#{r},c=#{c} WHERE id=#{id}
+	</update>
+	<!-- 구현안됨 -->
+	<delete id="delete" parameterType="BookedVO">
+		DELETE FROM booked WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
