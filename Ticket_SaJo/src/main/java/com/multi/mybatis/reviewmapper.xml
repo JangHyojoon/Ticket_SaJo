@@ -14,7 +14,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT r.id as id, r.uid as uid , r.mid as mid, r.star as star, r.text as text, r.regdate as regdate,
 		abs(datediff(r.regdate,now())) as dday,c.name as name FROM reviews r
 		INNER JOIN cust c ON c.id = r.uid
-		where mid=#{mid}
+		WHERE mid=#{mid}
+		ORDER BY regdate DESC
 	</select>
 	<select id="selectbyage" parameterType="int" resultType="reviewVO">
 		SELECT TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(c.birth))/365,-1)as age,count(r.id) as rcnt FROM reviews r

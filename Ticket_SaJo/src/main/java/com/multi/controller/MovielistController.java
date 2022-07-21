@@ -85,8 +85,6 @@ public class MovielistController {
 	@RequestMapping("/detail")
 	public String detail(Model m,Integer id,HttpSession session) {
 		CustVO ncust = (CustVO) session.getAttribute("user");
-		String uid = null;
-		uid = "kms";
 		List<ReviewVO> rlist = null;
 		MovieVO movie;
 		try {
@@ -96,7 +94,6 @@ public class MovielistController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("uid", uid);
 		m.addAttribute("reviews", rlist);
 		m.addAttribute("center", "movielist/moviedetail");
 		return "/index";

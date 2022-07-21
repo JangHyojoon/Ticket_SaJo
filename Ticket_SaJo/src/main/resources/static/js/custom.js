@@ -1298,13 +1298,11 @@ function init_MoviePage () {
                     $('.time-select__item').removeClass('active');
                     $(this).addClass('active');
                 });
-/*
+
     //8. Toggle between cinemas timetable and map with location
     			//change map - ticket list
                 $('#map-switch').click(function(ev){
                     ev.preventDefault();
-
-                    $('.time-select').slideToggle(500);
                     $('.map').slideToggle(500);
 
                     $('.show-map').toggle();
@@ -1312,11 +1310,8 @@ function init_MoviePage () {
                     $(this).blur();
                 });
 
-                $(window).load(function() {
-                    $('.map').addClass('hide-map');
-                });
-
-
+                
+/*
    	//9. Init map with several markers on.
    					//Map start init
                     var mapOptions = {
