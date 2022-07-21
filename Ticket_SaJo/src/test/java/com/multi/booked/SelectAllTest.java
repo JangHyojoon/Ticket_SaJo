@@ -1,24 +1,30 @@
-package com.multi.seat;
+package com.multi.booked;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.SeatBiz;
-import com.multi.vo.SeatVO;
+import com.multi.biz.BookedBiz;
+import com.multi.vo.BookedVO;
 
 @SpringBootTest
-class InsertTest {
+class SelectAllTest {
 	@Autowired
-	SeatBiz biz;
+	BookedBiz biz;
 	@Test
 	void contextLoads() {
-		SeatVO v = new SeatVO("T01","T",01);
+		List<BookedVO> list = null;
 		try {
-			biz.register(v);
+			list= biz.get();
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		}
+		for (BookedVO uv : list) {
+			System.out.println(uv);
 		}
 	}
 
