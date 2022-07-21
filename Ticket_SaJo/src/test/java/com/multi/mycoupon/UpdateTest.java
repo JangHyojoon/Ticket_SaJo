@@ -19,7 +19,7 @@ class UpdateTest {
 	void contextLoads()  {
 	Date date = new Date();
 	//int id, String uid, String cid, boolean used, Date udate
-		MycouponVO v = new MycouponVO(7007,"awy","event05",false,date,date);
+		MycouponVO v = new MycouponVO(7007,"awy",8001,false,date,date);
 		// 내 쿠폰함의 쿠폰 업데이트는 사용했을 경우밖에없음 
 		try {
 			biz.modify(v);

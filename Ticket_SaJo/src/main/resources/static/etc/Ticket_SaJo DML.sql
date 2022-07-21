@@ -901,23 +901,24 @@ select * from ticket;
 
 
 -- coupon Insert
-INSERT INTO coupon VALUES ('event01', 1000);
-INSERT INTO coupon VALUES ('event02', 2000);
-INSERT INTO coupon VALUES ('event03', 3000);
-INSERT INTO coupon VALUES ('event04', 4000);
-INSERT INTO coupon VALUES ('event05', 5000);
-INSERT INTO coupon VALUES ('event06', 6000);
+INSERT INTO coupon VALUES (null,'event01','2022-06-01','2022-09-30','snow', 1000,'모든 고객에게 제공되는 쿠폰 입니다. ');
+INSERT INTO coupon VALUES (null,'event02','2022-06-01','2022-07-30','users', 2000,'여름기념 쿠폰 입니다. ');
+INSERT INTO coupon VALUES (null,'event03','2022-07-20','2022-08-20','wizard', 3000,'깜짝 할인 이벤트 쿠폰 입니다.');
+INSERT INTO coupon VALUES (null,'event04','2022-07-20','2022-08-20','smile', 4000,'반짝 할인 이벤트 쿠폰 입니다.');
+INSERT INTO coupon VALUES (null,'event05','2022-06-20','2022-08-20','users', 2000,'봄 기념 쿠폰 입니다. ');
+INSERT INTO coupon VALUES (null,'event06','2022-07-25','2022-08-20','wizard', 30000,'코로나 기원 쿠폰 입니다.');
+INSERT INTO coupon VALUES (null,'event07-BIG sale','2022-06-25','2022-07-25','gift', 10000,'Big Sale 쿠폰입니다. ');
 SELECT * FROM coupon;
 
 
 
 -- mycoupon Insert
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event01',true, NULL, sysdate());
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event02',true, NULL, sysdate());
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event03',false, sysdate(), sysdate());
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event04',false, sysdate(), sysdate());
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event05',true, NULL, sysdate());
-INSERT INTO mycoupon VALUES (NULL,'kms', 'event06',true, NULL, sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8000,true, NULL, sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8001,true, NULL, sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8002,false, sysdate(), sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8003,false, sysdate(), sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8004,true, NULL, sysdate());
+INSERT INTO mycoupon VALUES (NULL,'kms', 8005,true, NULL, sysdate());
 SELECT * FROM mycoupon;
 
 

@@ -19,8 +19,9 @@ class InsertTest {
 	
 	@Test
 	void contextLoads() {
+		Date a = new Date();
 		
-		CouponVO v = new CouponVO("eventTest01",2000);
+		CouponVO v = new CouponVO(8010,"event07-BIG sale",a,a,"gift", 1000,"Big Sale 쿠폰입니다. ");
 		try {
 			biz.register(v);
 			System.out.println("insert ok... ");

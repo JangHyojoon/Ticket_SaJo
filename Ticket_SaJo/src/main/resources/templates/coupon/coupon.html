@@ -22,12 +22,161 @@
 <!-- Modernizr -->
 <script src="js/external/modernizr.custom.js"></script>
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+<style>
+a { text-decoration:none; }
+.offer {
+	background-color: #4c4145;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	min-height: 325px;
+	padding: 0 25px;
+	margin-bottom: 30px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	border-radius: 30px;
+}
+
+.offer .offer__head {
+	position: relative;
+	height: 120px;
+	display: block;
+	margin-bottom: 41px;
+}
+
+.offer .offer__head:before {
+	background-image: url("../images/components/wave-light.svg");
+	background-repeat: no-repeat;
+	background-size: 84px 8px;
+	bottom: 0px;
+	content: "";
+	height: 8px;
+	left: 50%;
+	margin-left: -42px;
+	position: absolute;
+	width: 84px;
+}
+
+.offer .offer__name {
+	color: #ffffff;
+	font: 30px 'aleobold', sans-serif;
+	text-transform: uppercase;
+	margin-top: 44px;
+	margin-bottom: 17px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.offer .offer__datail {
+	color: #ffffff;
+	font: 18px 'aleoitalic', sans-serif;
+	text-transform: none;
+	font-weight: 300;
+	line-height: 21px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.offer .offer__full {
+	color: #b4b1b2;
+	font-size: 13px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.offer:hover {
+	background-color: #ffd564;
+	text-decoration:none;
+}
+
+.offer:hover .offer__name, .offer:hover .offer__datail, .offer:hover .offer__full
+	{
+	color: #4c4145;
+}
+
+.offer-place {
+	color: #fe505a;
+	font-family: 'aleoitalic', sans-serif;
+	font-size: 18px;
+	text-align: center;
+	margin-bottom: 23px;
+}
+
+.offers-block {
+	overflow: hidden;
+	margin-top: -10px;
+	margin-bottom: 32px;
+}
+
+.offers-block--last {
+	margin-bottom: -30px;
+}
+
+.offer {
+	background-repeat: no-repeat;
+	background-position: 50% 7px;
+}
+
+.offer--snow {
+	background-image: url(../images/icons/snow-dark.svg);
+}
+
+.offer--users {
+	background-image: url(../images/icons/users-dark.svg);
+}
+
+.offer--wizard {
+	background-image: url(../images/icons/wizard-dark.svg);
+}
+
+.offer--smile {
+	background-image: url(../images/icons/smile-dark.svg);
+}
+
+.offer--gift {
+	background-image: url(../images/icons/gift-dark.svg);
+}
+
+.offer--snow:hover {
+	background-image: url(../images/icons/snow-light.svg);
+}
+
+.offer--users:hover {
+	background-image: url(../images/icons/users-light.svg);
+}
+
+.offer--wizard:hover {
+	background-image: url(../images/icons/wizard-light.svg);
+}
+
+.offer--smile:hover {
+	background-image: url(../images/icons/smile-light.svg);
+}
+
+.offer--gift:hover {
+	background-image: url(../images/icons/gift-light.svg);
+}
+
+.offer {
+	padding: 0 15px;
+	min-height: 345px;
+}
+
+.offer {
+	min-height: 350px;
+}
+</style>
 
 <div class="wrapper">
 	<!-- Banner -->
-	<div class="banner-top">
-	</div>
+	<div class="banner-top"></div>
 	<!-- Search bar -->
 	<div class="search-wrapper">
 		<div class="container container--add">
@@ -35,8 +184,10 @@
 				<input type="text" class="search__field" placeholder="Search">
 				<select name="sorting_item" id="search-sort" class="search__sort"
 					tabindex="0">
-					<option th:each="coupon,index : ${couponList}" th:value="${index.index}+1" ><span th:text="${coupon.id}"> </span></option>
-			<!-- 		<option value="2"  selected='selected'>By year</option> -->
+					<option th:each="coupon,index : ${couponList}"
+						th:value="${index.index}+1"><span th:text="${coupon.name}">
+						</span></option>
+					<!-- 		<option value="2"  selected='selected'>By year</option> -->
 
 				</select>
 				<button class="btn btn-md btn--danger search__button">search
@@ -48,25 +199,30 @@
 	<!-- Main content -->
 	<section class="container">
 		<div class="col-sm-12">
-			<h2 class="page-heading">Best offers</h2>
+			<h2 class="page-heading">쿠폰 이벤트!!</h2>
 
 			<div class="offers-block">
-				<p class="offer-place">Odeon West End offers</p>
+				<p class="offer-place">여러가지 쿠폰을 적용해 더 저렴하게 구매해 보세요!</p>
 
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--winter">
+				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap"
+					th:each="coupon : ${couponList}">
+					<a th:href="'#modal'+${coupon.id}"
+						th:class="'offer offer--'+${coupon.icon}" data-toggle="modal">
 						<div class="offer__head">
-							<p class="offer__name">
-								Christmas<br>
+							<p class="offer__name" th:text="${coupon.name}">
+								<br>
 							</p>
-							<span class="offer__datail">with <br> Odeon West End
+							<span class="offer__datail" th:text="${coupon.sale}+'원'">
 							</span>
 						</div>
-						<p class="offer__full">We’re open all day, everyday this
-							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
+						<p class="offer__full" th:text="${coupon.text}"></p>
+						<p class="offer__full"
+							th:text="${#dates.format(coupon.sdate,'yyyy-MM-dd')}+' ~ '+${#dates.format(coupon.edate,'yyyy-MM-dd')}"></p>
+
 					</a>
 				</div>
 
+				<!-- 
 				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
 					<a href='#' class="offer offer--family">
 						<div class="offer__head">
@@ -114,93 +270,9 @@
 						<p class="offer__full">Spread Christmas cheer with the perfect
 							gift for everyone.</p>
 					</a>
-				</div>
+				</div> -->
 
 			</div>
-
-			<div class="offers-block">
-				<p class="offer-place">Vue Islington offers</p>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--winter">
-						<div class="offer__head">
-							<p class="offer__name">
-								giftcard<br>
-							</p>
-							<span class="offer__datail">from <br> Odeon West End
-							</span>
-						</div>
-						<p class="offer__full">We’re open all day, everyday this
-							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
-					</a>
-				</div>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--family">
-						<div class="offer__head">
-							<p class="offer__name">
-								family <br> ticket
-							</p>
-						</div>
-						<p class="offer__full">Everyone pays the child price!</p>
-					</a>
-				</div>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--day">
-						<div class="offer__head">
-							<p class="offer__name">
-								super<br> tuesday
-							</p>
-						</div>
-						<p class="offer__full">Up to 1/3 off adult tickets all day,
-							sign up nowand claim your discount.</p>
-					</a>
-				</div>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--teen">
-						<div class="offer__head">
-							<p class="offer__name">
-								teen<br> tickets
-							</p>
-						</div>
-						<p class="offer__full">Aged 13 -18? Save up to 20% on the
-							adult ticket price with our teen ticket.</p>
-					</a>
-				</div>
-
-			</div>
-
-			<div class="offers-block offers-block--last">
-				<p class="offer-place">Marble Arch Odeon offers</p>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--winter">
-						<div class="offer__head">
-							<p class="offer__name">
-								Christmas<br>
-							</p>
-							<span class="offer__datail">with <br> Odeon West End
-							</span>
-						</div>
-						<p class="offer__full">We’re open all day, everyday this
-							Christmas! (Except Christmas day ‘coz we’re helping Santa).</p>
-					</a>
-				</div>
-
-				<div class="col-xs-6 col-sm-4 col-md-3 offers-wrap">
-					<a href='#' class="offer offer--family">
-						<div class="offer__head">
-							<p class="offer__name">
-								family <br> ticket
-							</p>
-						</div>
-						<p class="offer__full">Everyone pays the child price!</p>
-					</a>
-				</div>
-			</div>
-
 
 		</div>
 	</section>
@@ -208,3 +280,61 @@
 	<div class="clearfix"></div>
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" th:id="modal+${coupon.id}" role="dialog"
+	th:each="coupon : ${couponList}">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content text-center">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title" th:text="${coupon.name}+'Coupon..'">Modal Header</h4>
+			</div>
+			<div class="modal-body text-left">
+				<p th:text="${coupon.name}+' 쿠폰을 발급받으시겠습니까??'"></p>
+			</div>
+			<div class="modal-footer">
+                <button type="button" th:onclick="addcoupon([[${coupon.id}]],[[${session.user}]])" id="inputcoupon" class="btn btn-default">발급</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Modal -->
+<div class="modal fade" id="Loginerror" role="dialog"
+	>
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content text-center">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Login Error!! </h4>
+			</div>
+			<div class="modal-body text-left">
+				<p >로그인이 필요한 서비스 입니다. </p>
+				<p >로그인 페이지로 이동하시겠습니까? </p>
+			</div>
+			
+			<div class="modal-footer">
+                <button type="button"  id="login_go" class="btn btn-default">로그인</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Modal -->
+
+
+<script>
+function addcoupon(couponid, user) {
+	if(user == null){// 유저 정보가 없을경우 실행 
+		alert('user info no');
+		$('#Loginerror').modal('show'); 
+		$('#modal'+couponid).modal('hide');
+	}else{// 유저 정보가 있을경우 실행 
+		alert('user info ok');
+	}
+}
+
+</script>
