@@ -10,6 +10,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="mycouponVO">
 		SELECT * FROM mycoupon
 	</select>
+	
+	<!-- 0722 안원영 추가 - 쿠폰 유무 확인  -->
+	<select id="selectKeepCoupon" parameterType="map" resultType="mycouponVO">
+		SELECT * FROM mycoupon WHERE uid=#{userId} and cid=#{couponid}
+	</select>
+	
 	<insert id="insert" parameterType="mycouponVO">
 		INSERT INTO mycoupon VALUES (NULL,#{uid},#{cid},#{used},NULL,sysdate())
 	</insert>

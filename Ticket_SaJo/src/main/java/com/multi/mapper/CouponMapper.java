@@ -18,5 +18,8 @@ public interface CouponMapper {
 	
 	public CouponVO  select(String id) throws Exception;
 	public List<CouponVO> selectall() throws Exception;
+	
+	// 0722 안원영 추가 - 쿠폰 정렬
+	public List<CouponVO> selectsortall() throws Exception;
 
 }

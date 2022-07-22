@@ -1,7 +1,12 @@
 package com.multi.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,14 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.multi.biz.MycouponBiz;
 import com.multi.frame.Util;
 import com.multi.ncp.ORCAPI;
+import com.multi.vo.CustVO;
+import com.multi.vo.MycouponVO;
 
 @RestController
 public class AjaxController_awy {
 	
 	@Autowired
 	ORCAPI orcapi;
+	
+	
+	@Autowired
+	MycouponBiz mcbiz;
 	
 	@RequestMapping("/orcresult")//ORC 영수증 인식 이용 
 	public Object orcresult(MultipartHttpServletRequest filelist) {
@@ -44,10 +56,37 @@ public class AjaxController_awy {
 	        
 	    }
 		obj = orcapi.orcresult(mfile.getOriginalFilename());// ORC 판독 진행 
-		
-
 		return obj;
 	}
+	
+	@RequestMapping("/userCouponCheck")//유저가 쿠폰 가지고 있는지 체크
+	public String userCouponCheck(HttpSession session, int couponid) {
+		String result = "0";
+		CustVO cust = (CustVO) session.getAttribute("user");
+		List<MycouponVO> mycouponList = null;
+		MycouponVO mycoupon = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("userId", cust.getId());
+		map.put("couponid", couponid);
+		
+		try {
+			mycouponList = mcbiz.selectKeepCoupon(map);
+			System.out.println("쿠폰 유무 확인 : " + mycouponList);
+			
+			if(mycouponList.isEmpty()) {//비어있으면 로그인한 아이디에 해당 쿠폰 없다는 것임. 발급 받아도 됨
+				mycoupon = new MycouponVO(cust.getId(),couponid,true);
+				mcbiz.register(mycoupon);// 쿠폰 추가 
+				result = "1"; // 발급 성공 
+			}else {// 발급 취소시켜야함 
+				result = "0";// 발급 취소 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	
 	
 	

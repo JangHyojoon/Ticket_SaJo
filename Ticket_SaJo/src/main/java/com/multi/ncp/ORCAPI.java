@@ -91,7 +91,7 @@ public class ORCAPI {
 			System.out.println("3 success..");
 			JSONParser parser = new JSONParser();
 			obj = parser.parse(response.toString());
-			//file.delete();// 파일 삭제 
+			file.delete();// 파일 삭제 
 
 
 		} catch (Exception e) {
