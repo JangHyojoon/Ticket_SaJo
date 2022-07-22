@@ -26,5 +26,23 @@ public class Util {
 		}
 		
 	}
+	public static void saveFile2(MultipartFile mf) {
+		String filename = mf.getOriginalFilename();// 파일 이름 출력 
+		String dir = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","cfr",filename).toString();//이미지 저장 경로
+
+		byte [] data;
+		
+		try {
+			System.out.println("이미지 저장 시작 ...");
+			data = mf.getBytes();
+			FileOutputStream fo = 
+					new FileOutputStream(dir);//receipt 파일밑에 이미지 저장 
+			fo.write(data);
+			fo.close();
+		}catch(Exception e) {
+			
+		}
+		
+	}
 	
 }

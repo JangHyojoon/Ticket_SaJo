@@ -1,5 +1,6 @@
 package com.multi.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -7,9 +8,13 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.multi.biz.MovieBiz;
 import com.multi.biz.ReviewBiz;
+import com.multi.frame.Util;
+import com.multi.ncp.CFRAPI;
 import com.multi.vo.MovieVO;
 import com.multi.vo.ReviewVO;
 
@@ -20,6 +25,8 @@ public class AjaxController_kms {
 	MovieBiz mbiz;
 	@Autowired
 	ReviewBiz rbiz;
+	@Autowired
+	CFRAPI cfrapi;
 	
 	@RequestMapping("/movielist/chartimpl")
 	public Object chartimpl(int id) {
@@ -45,7 +52,7 @@ public class AjaxController_kms {
 	}
 	@RequestMapping("/movielist/circlechartimpl")
 	public Object circlechartimpl(int id) {
-		 //{'age':['20','30'],'rcnt':[1,2,3]}
+		 //{'sex':['남','녀'],'rcnt':[1,2,3]}
 		JSONObject jo = new JSONObject();
 		JSONArray ja1 = new JSONArray();
 		JSONArray ja2 = new JSONArray();
@@ -63,6 +70,20 @@ public class AjaxController_kms {
 		jo.put("sex", ja1);
 		jo.put("rpercent", ja2);
 		return jo;
+	}
+	@RequestMapping("/cfrresult")
+	public Object cfrresult(MultipartHttpServletRequest file) {
+		Object obj = null;
+		String fieldName = "";
+		MultipartFile mfile = null; 
+		Iterator<String> iter = file.getFileNames(); 
+	    while (iter.hasNext()) { 
+	        fieldName = (String) iter.next(); 
+	        mfile = file.getFile(fieldName);  //저장된 파일 객체
+	        Util.saveFile2(mfile);//서버에 파일을 저장하는 모듈 
+	    }
+		obj = cfrapi.cfrapi(mfile.getOriginalFilename());// CFR 판독 진행 
+		return obj;
 	}
 	
 }
