@@ -1,7 +1,27 @@
 <meta charset="UTF-8">
+<style>
+   #signup_form{
+   		font-family: 고딕;
+		font-size: twayair;
+		color: #8B4513;
+   }
+   
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+    }
+    
+    #registerbtn{
+    font-size: twayair;
+    color: #FFF8DC;
+    background-color: #333;
+    position: static;
+    width: 100px;
+    height: 40px;
+    }
+</style>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 <script>
@@ -11,9 +31,11 @@ function sendId(id) {
 		data:{'id':id},
 		success:function(data){
 			if(data == '1') {
-				$('#ispan').text('사용 불가능한 ID');
+				$('#ispan').text('이미 사용중이거나 탈퇴한 아이디입니다');
+				$('#ispan').css('color','red');
 			}else {
-				$('#ispan').text('사용 가능한 ID');
+				$('#ispan').text('사용가능한 아이디입니다');
+				$('#ispan').css('color','#3CB371');
 			}
 		}
 	});
@@ -31,8 +53,10 @@ $(document).ready(function(){
 		var pwd2 = $('input[name="pwdcheck"]').val();
 		if(pwd == pwd2){
 			$('#pspan2').text('일치');
+			$('#pspan2').css('color','#3CB371');
 		}else {
 			$('#pspan2').text('불일치');
+			$('#pspan2').css('color', 'red');
 		}
 	});
 	
@@ -42,6 +66,30 @@ $(document).ready(function(){
 		    'action' : 'signupimpl'
 		});
 		$('#signup_form').submit();
+		alert('등록이 완료되었습니다');
+	});
+	
+	
+	
+	$('input[name="pwd"]').keyup(function(){
+		var pwd = $(this).val();
+		if(pwd.length < 5){
+			$('#pspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
+			$('#pspan').css('color', 'red');
+		}else {
+			$('#pspan').text('보안에 강합니다. 사용가능합니다.');
+			$('#pspan').css('color','#3CB371');
+		}
+	});
+	
+	$("select[name=sex]").change(function(){
+		console.log($(this).val());
+		console.log($("select[name=sex] option:selected").text());
+	});
+	
+	$("select[name=point]").change(function(){
+		console.log($(this).val());
+		console.log($("select[name=point] option:selected").text());
 	});
 });
 
@@ -52,31 +100,41 @@ $(document).ready(function(){
 	   <div class="field-wrap">
 	   <br>
 	   <br>
-	      ID: 
-	      <span id="ispan"></span><input type='text' placeholder='아이디를 입력하세요' name='id'>
+	      아이디: 
+	      <span id="ispan"></span><input type='text' name='id'>
 	      </div>
 	   <div class="field-wrap">
-	      PASSWORD: 
-	      <span id="pspan"></span><input type='password' placeholder='비밀번호를 입력하세요' name='pwd'> 
+	      비밀번호: 
+	      <span id="pspan"></span><input type='password' name='pwd'> 
 	   </div>
 	   <div class="field-wrap">
-	      PASSWORD : 
-	      <span id="pspan2"></span><input type='password' placeholder='비밀번호를 입력하세요' name='pwdcheck'> 
+	      비밀번호 재확인: 
+	      <span id="pspan2"></span><input type='password' name='pwdcheck'> 
 	   </div>
 	   <div class="field-wrap">
-	      NAME: <input type='text' placeholder='이름을 입력하세요' name='name'> 
+	      이름: <input type='text' name='name'> 
 	   </div>
 	   <div class="field-wrap">
-	      BIRTH: <input type='date' placeholder='생년월일을 입력하세요' name='birth'> 
+	      생년월일: <input type='date'name='birth'> 
 	   </div>
 	   <div class="field-wrap">
-	      POINT: <input type='text' placeholder='0' name='point'> 
+	      포인트: 
+	      <select name="point">
+	      	<option value="0">0</option>	     
+	      </select> 
 	   </div>
 	   <div class="field-wrap">
-	      SEX: <input type='text' placeholder='성별을 입력하세요' name='sex'> 
+	      성별:
+	       <select name="sex">
+	      	<option value="woman">여성</option>
+	      	<option value="man">남성</option>	     
+	      </select> 
 	   </div>
-	   
-	   <div class="login__control">
-	      <button id="signupbtn" class="btn btn-md btn--warning btn--wider">Sign Up</button>
-	   </div>
+		<br>
+		<br>
+	  <div class="field-wrap">
+         <button id="signupbtn" class="btn btn-md btn--warning btn--wider">회원가입</button>
+      </div>
+
+
    </form>

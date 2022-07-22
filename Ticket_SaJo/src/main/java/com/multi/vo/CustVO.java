@@ -21,8 +21,9 @@ public class CustVO {
 	private String id;
 	private String pwd;
 	private String name;
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birth;
+	private Date birth;	
 	private int point;
 	private String sex;
 
