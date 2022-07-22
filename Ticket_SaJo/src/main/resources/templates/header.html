@@ -137,15 +137,11 @@ li {
 				</ul>
 			</div>
 
-                    <li th:if="${session.user == null}" > 
-                    <a href="/signin" class="btn btn--sign">Sign in</a></li>
+                    <li th:if="${session.user == null}" >
+                    <a href="/signin" class="btn btn--sign">로그인</a></li>
                     
                     <li th:unless="${session.user == null}">
-                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span>  Sign Out</a></li>	
-                    
-                    <li th:if="${session.user == null}">
-	      			<a href="/signup" class="btn btn--sign">Sign Up</a></li>
- 
+                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span>  로그아웃</a></li>	
 		  </div>
 
 	</div>

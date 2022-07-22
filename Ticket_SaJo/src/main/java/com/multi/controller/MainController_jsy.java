@@ -71,5 +71,11 @@ public class MainController_jsy {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/mypage")
+	public String mypage(Model m) {
+		m.addAttribute("center", "mypage");
+		return "index";
+	}
 
 }
