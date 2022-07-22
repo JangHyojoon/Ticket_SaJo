@@ -45,7 +45,7 @@ public class BookedBiz implements Biz<String,BookedVO> {
 	@Transactional
 	public void insertseat(int sid, int mcnt, String seatlist) throws Exception {
 		//선택좌석 리스트
-		System.out.println(seatlist);
+	
 	
 		String sseatlist =seatlist.substring(1,seatlist.length()); 
 		String[] bookedarr =sseatlist.split(", ");
@@ -60,5 +60,7 @@ public class BookedBiz implements Biz<String,BookedVO> {
 			
 		}
 	}
-	
+	public List<BookedVO> selectseatlist(int sid, int mcnt) throws Exception {
+		return dao.selectseatlist(sid, mcnt);
+	}
 }

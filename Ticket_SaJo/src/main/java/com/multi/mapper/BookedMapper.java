@@ -16,5 +16,6 @@ public interface BookedMapper {
 	
 	public BookedVO select(String id) throws Exception;
 	public List<BookedVO> selectall() throws Exception;
-
+	
+	public List<BookedVO> selectseatlist(int sid, int mcnt) throws Exception;
 }

@@ -61,21 +61,21 @@
                                 <li class="ticket__number" th:each="t:${tlist}" th:text="'&nbsp&nbsp'+${t.id}" style="font-size:20px;">티켓번호</li>
                                 </ul>
                                 
-                                <div class="ticket__number" th:text="'총인원 : '+${rrv.pcnt}" style="font-size:20px;margin-top:20px;">총인원<br></div>
+                                <div class="ticket__number" th:text="'총인원 : '+${rlist[0].pcnt}" style="font-size:20px;margin-top:20px;">총인원<br></div>
                   
                             </div>
 
                             <div class="ticket-primery">
                                 <span class="ticket__item ticket__item--primery ticket__film">
-	                                <strong class="ticket__movie" th:text="${ddsv.title}" style="font-size:30px;">영화이름</strong>
+	                                <strong class="ticket__movie" th:text="${rlist[0].title}" style="font-size:30px;">영화이름</strong>
 	                              	<span th:text="'('+${ryear}+')'"></span>
                                 </span>
                                
                                 <ul class="ticket__item ticket__item--primery">
-                                	  <li class="ticket__item ticket__item--primery"  th:text="${sdate}+' '+${ddsv.starttime}" >날짜 시간	</li>
+                                	  <li class="ticket__item ticket__item--primery"  th:text="${rlist[0].sdate}+' '+${rlist[0].starttime}" >날짜 시간	</li>
                                 </ul>	  
                                       <ul class="ticket__item ticket__item--primery">
-                                	  <li class="ticket__item ticket__item--primery"  th:text="${ddsv.tid}+'관  '" style="float: left;margin-right:15px;">상영관</li>
+                                	  <li class="ticket__item ticket__item--primery"  th:text="${rlist[0].tid}+'관  '" style="float: left;margin-right:15px;">상영관</li>
 	                            	  <li class="ticket__item ticket__item--primery"  th:each="t:${tlist}" th:text="${t.seatid}" style="float: left;margin-right:15px;">좌석</li>
                                 </ul>
                             </div>

@@ -14,9 +14,9 @@ class UpdateTest {
 	@Test
 	void contextLoads()  {
 	
-		Detail_SchedulesVO v = new Detail_SchedulesVO(2001,1,"A06");
+		Detail_SchedulesVO v = new Detail_SchedulesVO(2005,1,"240000","240000");
 		try {
-			biz.updatebooked(v);
+			biz.modify(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

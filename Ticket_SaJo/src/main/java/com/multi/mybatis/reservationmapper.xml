@@ -10,6 +10,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="reservationVO">
 		SELECT * FROM reservation
 	</select>
+	<select id="selectridall" parameterType="int" resultType="reservationVO">
+		SELECT r.id,r.uid,r.pcnt,r.price,r.totalprice,t.id AS ticketid,t.sid,t.seatid,s.mid,s.sdate,s.tid,m.title,m.releasedate,ds.starttime from reservation r
+		INNER JOIN ticket t ON r.id = t.rid
+		INNER JOIN schedules s ON t.sid = s.id 
+		INNER JOIN movie m ON s.mid =m.id
+		INNER JOIN detail_schedules ds ON t.sid = ds.sid
+		WHERE r.id=#{id}
+	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="rid" parameterType="reservationVO">
 		INSERT INTO reservation VALUES (NULL,#{uid},#{pcnt},#{price},#{totalprice})
 	</insert>

@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -69,17 +68,24 @@ public class MainController_jhj {
 	}
 	
 	@RequestMapping("/book1impl")
-	public String book1impl(Model m, int mid, String date,String time,int theater) {
+	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
 		Detail_SchedulesVO dsv = null;
-		TheaterVO tv =null;
-		List<TheaterVO> tlist =null;
+		List<BookedVO> blist = null;
 		List<TheaterVO> rows =null;
 		List<TheaterVO> columns =null;
-		
+		if(msg != null && msg.equals("f")) {
+			m.addAttribute("msg", "예매된 좌석입니다. 다른 좌석을 선택해주세요");
+	
+		}
+			
 		try {
 			//선택된 스케쥴에 해당하는 디테일 스케쥴 정보
 			dsv = detail_schedulesbiz.selectmidtidsdatetime(mid, theater, date, time);
 			m.addAttribute("book1info", dsv);
+			int sid = dsv.getSid();
+			int mcnt = dsv.getMcnt();
+			blist =bookedbiz.selectseatlist(sid, mcnt);
+			m.addAttribute("blist", blist);
 			
 			//영화관 좌석 행열 정보
 			rows = theaterbiz.selectrows(theater);
@@ -87,17 +93,13 @@ public class MainController_jhj {
 			columns = theaterbiz.selectcolumns(theater);
 			m.addAttribute("columns", columns);
 			
-			//예약된 좌석 배열
-			String booked ="";
-			booked = dsv.getBooked();
-			String[] bookedarr =booked.split(",");
-			List<String> booklist = Arrays.asList(bookedarr);
-			m.addAttribute("booked", booklist);
+		
 			
 			
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+
 		}
 		m.addAttribute("center", "book2");
 		m.addAttribute("header", "header");
@@ -139,50 +141,56 @@ public class MainController_jhj {
 		HashSet<String> hashset = new HashSet<>(Arrays.asList(bookedarr));	//중복값 삭제
 		String[] choosensit = hashset.toArray(new String[0]);
 		Arrays.sort(choosensit);
+		//
+		
 		int mid = 0;
+		int rid = 0;
 		int theater = 0;
 		String time = "";
 		Detail_SchedulesVO dsv = null;
-		SchedulesVO sv = null;
-		MovieVO mv = null;
+		SchedulesVO sv = null;			
 		try {
-			sv = schedulesbiz.get(sid);
-			dsv = detail_schedulesbiz.get(sid, mcnt);
+			sv = schedulesbiz.get(sid);	
 			mid = sv.getMid();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+		try {
+			dsv = detail_schedulesbiz.get(sid, mcnt);
 			theater = dsv.getTid();
 			time = dsv.getStarttime();
-		} catch (Exception e) {		
-		}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 
+		}
 		try {
 			bookedbiz.insertseat(sid,mcnt, seatlist);//book테이블 INSERT
-			
-			ReservationVO rv = new ReservationVO("jhj",choosensit.length,price,price);	
+			} catch (Exception e2) {
+				e2.printStackTrace();
+				return "redirect:book1impl?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
+			}                  //book1impl?mid=1001&date=2022-07-21&time=19%3A00&theater=2
+		ReservationVO rv = new ReservationVO("jhj",choosensit.length,price,price);	
+		try {
 			reservationbiz.register(rv);
-			
-			int rid = rv.getRid();//ticket테이블 INSERT
-			for (int i = 0; i < choosensit.length; i++) {
-				TicketVO tv = new TicketVO(sid,rid,sdate,mcnt,choosensit[i]);				
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}			
+		rid = rv.getRid();//ticket테이블 INSERT
+	
+		for (int i = 0; i < choosensit.length; i++) {
+			TicketVO tv = new TicketVO(sid,rid,sdate,mcnt,choosensit[i]);				
+			try {
 				ticketbiz.register(tv);
-				List<TicketVO> tlist = ticketbiz.selectrid(rid);//티켓을 만들기 위한 테이블들 정보
-				ReservationVO rrv = reservationbiz.get(rid);
-
-				mv = moviebiz.get(mid);
-				//개봉년도
-				Date date = mv.getReleasedate();
-				SimpleDateFormat getyear = new SimpleDateFormat("yyyy");
-				String ryear = getyear.format(date);				
-				m.addAttribute("tlist", tlist);
-				m.addAttribute("rrv", rrv);
-				m.addAttribute("dsv", dsv);
-				m.addAttribute("sdate", sdate);
-				m.addAttribute("ryear", ryear);
+			} catch (Exception e) {
+				e.printStackTrace();
+	
 			}
-		} catch (Exception e2) {
-			return "redirect:book1impl?mid="+ mid+"?theater="+theater+"?date="+sdate+"?time="+time;
-			
 		}
-		m.addAttribute("center", "book4");
+		m.addAttribute("center", "reserve");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
@@ -191,10 +199,29 @@ public class MainController_jhj {
 	}
 	
 	
-	@RequestMapping("/book22")
-	public String book22(Model m) {
-
-		return "book22";
+	@RequestMapping("/book4")
+	public String book4(Model m) {
+		int rid = 6000;
+		List<TicketVO> tlist;
+		List<ReservationVO> rlist;
+		ReservationVO rv;
+		try {
+			rlist = reservationbiz.selectridall(rid);
+			tlist = ticketbiz.selectrid(rid);
+			rv = rlist.get(0);
+			String rdate = rv.getReleasedate();
+			String ryear = rdate.substring(0,4);
+			m.addAttribute("rlist", rlist);
+			m.addAttribute("tlist", tlist);
+			m.addAttribute("ryear", ryear);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "book4" );
+		m.addAttribute("header", "header");
+		m.addAttribute("footer", "footer");
+		return "index";
 	}
 
 

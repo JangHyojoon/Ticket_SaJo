@@ -24,5 +24,5 @@ public interface Detail_SchedulesMapper {
 	public List<Detail_SchedulesVO> selecttidmiddate(Integer tid,Integer mid,String sdate) throws Exception;
 	public Detail_SchedulesVO selectmidtidsdatetime(Integer mid,Integer tid, String sdate, String starttime) throws Exception;
 	
-	public void updatebooked(Detail_SchedulesVO v) throws Exception;
+	
 }
