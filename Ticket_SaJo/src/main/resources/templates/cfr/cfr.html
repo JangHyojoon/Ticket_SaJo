@@ -50,6 +50,42 @@ img{
                             </a>
                         </div>
                     </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="gallery-item">
+                            <a href='/images/gallery/thumb/anne.jpg' class="gallery-item__image gallery-item--photo">
+                                <img alt='' src="/images/gallery/thumb/anne.jpg">
+                            </a>
+                            <a href='/images/gallery/thumb/anne.jpg' class="gallery-item__descript gallery-item--photo-link">
+                                <span class="gallery-item__icon"><i class="fa fa-camera"></i></span>
+                                <p class="gallery-item__name">Anne Hathaway</p>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="gallery-item">
+                            <a href='https://www.youtube.com/watch?v=vz3W87uWcx8' class="gallery-item__image gallery-item--video">
+                                <img alt='' src="/images/gallery/thumb/dean.jpg">
+                            </a>
+                            <a href='https://www.youtube.com/watch?v=vz3W87uWcx8' class="gallery-item__descript gallery-item--video-link">
+                                <span class="gallery-item__icon"><i class="fa fa-video-camera"></i></span>
+                                <p class="gallery-item__name">James Dean</p>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                        <div class="gallery-item">
+                            <a href='https://www.youtube.com/watch?v=s70BpI66YF0' class="gallery-item__image gallery-item--video">
+                                <img alt='' src="/images/gallery/thumb/kimtaehee.jpg">
+                            </a>
+                            <a href='https://www.youtube.com/watch?v=s70BpI66YF0' class="gallery-item__descript gallery-item--video-link">
+                                <span class="gallery-item__icon"><i class="fa fa-video-camera"></i></span>
+                                <p class="gallery-item__name">김태희</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -58,10 +94,12 @@ img{
          <section class="container">
             <div class="order-container">
                 <div class="order">
-                    <img class="order__images" alt='' src="/images/gallery/thumb/chris.jpg">
-                    <p class="order__title">이미지와 같은 닮은꼴 배우를 찾아보세요.<br><span class="order__descript">and have fun movie time</span></p>
+                    <img id="uploadimg"alt='' src="/images/gallery/thumb/chris.jpg">
+                    <p class="order__title">닮은꼴 배우를 찾아보세요.<br><span class="order__descript">and have fun movie time</span></p>
                     <div class="order__control">
-                        <a href="#" class="order__control-btn">Button</a>
+                        <a href="#" onclick="upload()" class="order__control-btn">닮은꼴 찾기</a>
+                        <input type="file" name="mf" id="mf" placeholder="Enter imgname"
+						onchange="PreviewImage(event)" class="btn btn-md btn--shine">
                     </div>
                 </div>
             </div>
@@ -132,8 +170,46 @@ img{
         <script src="js/custom.js"></script>
 		
 		<script type="text/javascript">
+		function display(data){
+			var faces = data["faces"][0];
+			alert(JSON.stringify(faces.fields[1]));
+		};
+		function PreviewImage(event) {
+	        // 파일리더 생성 
+	        var preview = new FileReader();
+	        preview.onload = function (event) {
+	        // img id 값 
+	        	$('#uploadimg').attr('src',event.target.result);
+			    };
+			    // input id 값 
+			    preview.readAsDataURL(event.target.files[0]);
+			    //alert('preview.readAsDataURL : ' + event.target.files[0]);
+			 };
+	 	function upload(){
+	 		var file = $('#mf')[0];
+	 		if (file.files.length === 0) {
+				alert("파일을 선택해주세요");
+				return;
+			}
+	 		const formData = new FormData();
+			formData.append("image", file.files[0]);
+			
+			$.ajax({
+				type:"POST",
+				url : 'cfrresult',
+				processData : false,
+				contentType : false,
+				data: formData,
+				success : function(data) {
+					alert(JSON.stringify(data.faces));
+					
+					display(data);
+				}
+			});
+	 	};
             $(document).ready(function() {
                 init_Gallery();
+                
             });
 		</script>
 
