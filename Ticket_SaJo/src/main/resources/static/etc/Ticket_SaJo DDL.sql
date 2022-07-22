@@ -113,7 +113,7 @@ CREATE TABLE detail_schedules(
     sid INT,
     mcnt INT,
     starttime TIME,
-    endtime TIME,
+    endtime TIME
     
 );
 ALTER TABLE detail_schedules ADD CONSTRAINT FOREIGN KEY(sid) REFERENCES schedules(id);

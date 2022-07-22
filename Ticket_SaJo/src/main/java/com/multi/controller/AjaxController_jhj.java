@@ -69,7 +69,7 @@ public class AjaxController_jhj {
 				jo.put("tid", dsv.getTid());
 				jo.put("mid", dsv.getMid());
 				jo.put("sdate", dsv.getSdate());
-				jo.put("booked", dsv.getBooked());
+				
 				ja.add(jo);
 				
 				
