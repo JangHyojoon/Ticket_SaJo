@@ -35,22 +35,24 @@
         
     	<script th:inline="javascript">
     	//버튼 클릭
+    		
 			function clickbtn(){
 				$('.book2').submit();
-				return false
-	
 			};
-			var test = [[${booked}]];
+			var test = [[${blist}]];
 	    	$(document).ready(function(){
-	    	
-	    		
-	    		
-
+	    		for(var i = 0; i<test.length; i++){
+	    			$("#"+test[i].seatid).addClass("sits-state--not");
+	    		}
+		    
 		        
-		        
+	    		var msg = [[${msg}]];
+	    		if(msg != null){
+	    			alert(msg);
+	    		}
+	    		
+	    	});  
 	    	
-
-	    	});   
     	</script>
 
 </head>
@@ -66,7 +68,7 @@
                     <img class="order__images" alt='' src="images/tickets.png">
                     <p class="order__title">Book a ticket <br><span class="order__descript">and have fun movie time</span></p>
 
-                        <h1 th:text="${book1info}">good</h1>
+                      
                        
                     
                 </div>
@@ -167,21 +169,21 @@
  		</section>
        </div>
             <form class="book2" id="book2" method='post' action='book2impl'>
-	            <input type='text' name='sid' th:value="${book1info.sid}">
-				<input type='text' name='mcnt' th:value="${book1info.mcnt}">
-		        <input type='text' name='starttime' th:value="${book1info.starttime}">
-		        <input type='text' name='endtime' th:value="${book1info.endtime}">
-		        <input type='text' name='tid' th:value="${book1info.tid}">
-		        <input type='text' name='mid' th:value="${book1info.mid}">
-		        <input type='text' name='sdate' th:value="${book1info.sdate}">
-            <label>choosen_cost</label><input type='text' name='choosen_cost' class="choosen-cost">
-            <label>choosen_sits</label><input type='text' name='choosen_sits' class="choosen-sits">
+	            <input type='hidden' name='sid' th:value="${book1info.sid}">
+				<input type='hidden' name='mcnt' th:value="${book1info.mcnt}">
+		        <input type='hidden' name='starttime' th:value="${book1info.starttime}">
+		        <input type='hidden' name='endtime' th:value="${book1info.endtime}">
+		        <input type='hidden' name='tid' th:value="${book1info.tid}">
+		        <input type='hidden' name='mid' th:value="${book1info.mid}">
+		        <input type='hidden' name='sdate' th:value="${book1info.sdate}">
+	            <input type='hidden' name='choosen_cost' class="choosen-cost">
+	            <input type='hidden' name='choosen_sits' class="choosen-sits">
             </form>
 
         <div class="clearfix"></div>
 
             <div class="booking-pagination booking-pagination--margin">
-                    <a href="/book1" class="booking-pagination__prev" id="prevbtn">
+                    <a th:href="@{book1}" class="booking-pagination__prev" id="prevbtn">
                         <span class="arrow__text arrow--prev">prev step</span>
                         <span class="arrow__info">what&amp;where&amp;when</span>
                     </a>

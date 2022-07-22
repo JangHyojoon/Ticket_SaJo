@@ -18,6 +18,20 @@ public class ReservationVO {
 	private int pcnt;
 	private int price;
 	private int totalprice;
+	
+	private int ticketid;
+	private int sid;
+	private int mid;
+	private int tid;
+	private String seatid;
+	private String sdate;
+	private String title;
+	private String releasedate;
+	private String starttime;
+
+	
+	
+	
 	private int rid;
 	// Reservation insert 시 사용 
 	public ReservationVO( String uid, int pcnt, int price, int totalprice) {

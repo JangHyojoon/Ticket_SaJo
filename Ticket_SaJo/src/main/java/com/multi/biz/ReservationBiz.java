@@ -40,6 +40,8 @@ public class ReservationBiz implements Biz<Integer,ReservationVO> {
 	public List<ReservationVO> get() throws Exception {
 		return dao.selectall();
 	}
-
+	public List<ReservationVO> selectridall(int id) throws Exception {
+		return dao.selectridall(id);
+	}
 	
 }

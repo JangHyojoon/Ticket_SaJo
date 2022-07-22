@@ -16,5 +16,5 @@ public interface ReservationMapper {
 	
 	public ReservationVO select(int id) throws Exception;
 	public List<ReservationVO> selectall() throws Exception;
-
+	public List<ReservationVO> selectridall(int id) throws Exception;
 }

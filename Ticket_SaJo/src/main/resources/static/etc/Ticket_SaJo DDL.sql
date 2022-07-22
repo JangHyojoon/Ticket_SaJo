@@ -17,6 +17,7 @@ DROP TABLE IF EXISTS seat;
 DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS detail_schedules;
 DROP TABLE IF EXISTS ticket;
+DROP TABLE IF EXISTS booked;
 
 CREATE TABLE genre(
    id INT,
@@ -84,7 +85,7 @@ ALTER TABLE pointlist AUTO_INCREMENT = 3000;
 CREATE TABLE theater(
     id INT,
     r varchar(5),
-    c INT,
+    c varchar(5),
      seatid varchar(5)
 );
 
@@ -113,7 +114,7 @@ CREATE TABLE detail_schedules(
     mcnt INT,
     starttime TIME,
     endtime TIME,
-    booked varchar(10000)
+    
 );
 ALTER TABLE detail_schedules ADD CONSTRAINT FOREIGN KEY(sid) REFERENCES schedules(id);
 ALTER TABLE detail_schedules ADD CONSTRAINT PRIMARY KEY(sid,mcnt);
@@ -156,22 +157,23 @@ ALTER TABLE ticket ADD CONSTRAINT FOREIGN KEY (rid) REFERENCES reservation (id);
 
 -- coupon
 CREATE TABLE coupon(
-	id INT PRIMARY KEY, -- 쿠폰번호
-	name VARCHAR(100),
+   id INT PRIMARY KEY, -- 쿠폰번호
+   name VARCHAR(100),
     sdate DATE,
     edate DATE,
     icon VARCHAR(100),
     sale INT, -- 할인가격 
     text VARCHAR(500)
 );
-ALTER TABLE mycoupon MODIFY id INT AUTO_INCREMENT;
-ALTER TABLE mycoupon AUTO_INCREMENT = 8000;
+ALTER TABLE coupon MODIFY id INT AUTO_INCREMENT;
+ALTER TABLE coupon AUTO_INCREMENT = 8000;
+    
 
 -- mycoupon
 CREATE TABLE mycoupon(
     id VARCHAR(100), -- 내 쿠폰함 아이디 
     uid VARCHAR(100), -- 회원아이디
-    cid VARCHAR(100), -- 쿠폰번호
+    cid INT, -- 쿠폰번호
     used BOOLEAN, -- 쿠폰 사용여부
     udate DATE, -- 사용한 날짜
     rdate DATE -- 발급날짜
@@ -181,4 +183,13 @@ ALTER TABLE mycoupon MODIFY id INT AUTO_INCREMENT;
 ALTER TABLE mycoupon AUTO_INCREMENT = 7000;
 ALTER TABLE mycoupon ADD CONSTRAINT FOREIGN KEY (uid) REFERENCES cust (id);
 ALTER TABLE mycoupon ADD CONSTRAINT FOREIGN KEY (cid) REFERENCES coupon (id);
+
+-- booked
+CREATE TABLE booked(
+	sid INT,
+    mcnt INT,
+    seatid VARCHAR(100)
+   
+);
+ALTER TABLE booked ADD CONSTRAINT PRIMARY KEY(sid,mcnt,seatid);
 

@@ -54,14 +54,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="update" parameterType="detail_schedulesVO">
 		UPDATE detail_schedules SET mcnt=#{mcnt},starttime=#{starttime},endtime=#{endtime} WHERE sid=#{sid} AND mcnt=#{mcnt}
 	</update>
-	<update id="updatebooked" parameterType="detail_schedulesVO">
-		UPDATE detail_schedules SET booked =
-			CASE		
-				WHEN booked NOT LIKE CONCAT('%',#{add},'%') THEN CONCAT(booked,#{add},',')
-			    ELSE booked
-			    END
-		 WHERE sid=#{sid} AND mcnt=#{mcnt};
-	</update>
+	
 	
 	<delete id="delete" parameterType="detail_schedulesVO">
 		DELETE FROM detail_schedules WHERE sid=#{sid}

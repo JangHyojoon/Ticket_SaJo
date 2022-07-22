@@ -23,7 +23,6 @@ public class Detail_SchedulesVO {
 	private String sdate;
 	private String title;
 	
-	private String add;
 	public Detail_SchedulesVO(int sid, int mcnt, String starttime, String endtime) {
 		super();
 		this.sid = sid;
@@ -39,12 +38,7 @@ public class Detail_SchedulesVO {
 		this.endtime = endtime;
 		this.booked = booked;
 	}
-	public Detail_SchedulesVO(int sid, int mcnt, String add) {
-		super();
-		this.sid = sid;
-		this.mcnt = mcnt;
-		this.add = add;
-	}
+
 	
 	
 	
