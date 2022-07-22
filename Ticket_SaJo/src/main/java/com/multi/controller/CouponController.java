@@ -31,7 +31,7 @@ public class CouponController {
 	public String coupon(Model m) {
 		List<CouponVO> couponList = null;
 		try {
-			couponList = cobiz.get();
+			couponList = cobiz.selectsortall();
 			m.addAttribute("couponList", couponList);
 			
 		} catch (Exception e) {

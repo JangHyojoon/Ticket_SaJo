@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="couponVO">
 		SELECT * FROM coupon
 	</select>
+	<!-- 0722 안원영 수정 - 쿠폰 정렬 -->
+	<select id="selectsortall" resultType="couponVO">
+		SELECT * FROM coupon ORDER BY sale
+	</select>
+	
 	<insert id="insert" parameterType="couponVO">
 		INSERT INTO coupon VALUES (null,#{name},#{sdate},#{edate},#{icon},#{sale},#{text})
 	</insert>

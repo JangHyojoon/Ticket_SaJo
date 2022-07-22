@@ -4196,6 +4196,7 @@ ul#navigation a:hover {
   width: 140px;
   top: 37px !important;
   border: none;
+  border-radius: 10px;
   padding: 14px 7px;
   z-index: 23;
   background-color: #4c4145;

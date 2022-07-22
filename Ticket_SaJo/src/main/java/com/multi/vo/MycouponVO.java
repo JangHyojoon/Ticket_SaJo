@@ -21,12 +21,11 @@ public class MycouponVO {
 	private Date rdate;
 	
 	// mycoupon insert 시 사용
-	public MycouponVO(String uid, int cid, boolean used, Date rdate) {
+	public MycouponVO(String uid, int cid, boolean used) {
 		super();
 		this.uid = uid;
 		this.cid = cid;
 		this.used = used;
-		this.rdate = rdate;
 	}
 	
 //	// mycoupone update 시 사용 

@@ -1,16 +1,14 @@
 package com.multi.biz;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.multi.frame.Biz;
 import com.multi.mapper.MycouponMapper;
-import com.multi.mapper.ReservationMapper;
 import com.multi.vo.MycouponVO;
-import com.multi.vo.ReservationVO;
 
 @Service("mycouponbiz")
 public class MycouponBiz implements Biz<Integer,MycouponVO> {
@@ -41,6 +39,10 @@ public class MycouponBiz implements Biz<Integer,MycouponVO> {
 	@Override
 	public List<MycouponVO> get() throws Exception {
 		return dao.selectall();
+	}
+	
+	public List<MycouponVO> selectKeepCoupon(Map<String,Object> map) throws Exception {
+		return dao.selectKeepCoupon(map);
 	}
 
 	

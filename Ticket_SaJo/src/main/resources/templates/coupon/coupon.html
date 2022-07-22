@@ -41,88 +41,12 @@ a { text-decoration:none; }
 	border-radius: 30px;
 }
 
-.offer .offer__head {
-	position: relative;
-	height: 120px;
-	display: block;
-	margin-bottom: 41px;
-}
-
-.offer .offer__head:before {
-	background-image: url("../images/components/wave-light.svg");
-	background-repeat: no-repeat;
-	background-size: 84px 8px;
-	bottom: 0px;
-	content: "";
-	height: 8px;
-	left: 50%;
-	margin-left: -42px;
-	position: absolute;
-	width: 84px;
-}
-
-.offer .offer__name {
-	color: #ffffff;
-	font: 30px 'aleobold', sans-serif;
-	text-transform: uppercase;
-	margin-top: 44px;
-	margin-bottom: 17px;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-	transition: 0.3s;
-}
-
-.offer .offer__datail {
-	color: #ffffff;
-	font: 18px 'aleoitalic', sans-serif;
-	text-transform: none;
-	font-weight: 300;
-	line-height: 21px;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-	transition: 0.3s;
-}
-
-.offer .offer__full {
-	color: #b4b1b2;
-	font-size: 13px;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-	transition: 0.3s;
-}
 
 .offer:hover {
 	background-color: #ffd564;
 	text-decoration:none;
 }
 
-.offer:hover .offer__name, .offer:hover .offer__datail, .offer:hover .offer__full
-	{
-	color: #4c4145;
-}
-
-.offer-place {
-	color: #fe505a;
-	font-family: 'aleoitalic', sans-serif;
-	font-size: 18px;
-	text-align: center;
-	margin-bottom: 23px;
-}
-
-.offers-block {
-	overflow: hidden;
-	margin-top: -10px;
-	margin-bottom: 32px;
-}
-
-.offers-block--last {
-	margin-bottom: -30px;
-}
-
-.offer {
-	background-repeat: no-repeat;
-	background-position: 50% 7px;
-}
 
 .offer--snow {
 	background-image: url(../images/icons/snow-dark.svg);
@@ -172,34 +96,97 @@ a { text-decoration:none; }
 .offer {
 	min-height: 350px;
 }
+
+
+
+
+
+.search {
+  position: relative;
+  top: -2px;/* 수정  */
+}
+.search .search__field {/* 수정 */
+  display: inline-block;
+  width: 100%;
+  padding: 9px 300px 9px 19px; /* 수정 */
+  margin-top: 14px;
+  line-height: 18px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 10px;
+  border: solid 1px #dbdee1;
+  background-color: #fff;
+  color: #4c4145;
+  font-size: 13px;
+}
+
+.search .search__button {
+  position: absolute;
+  border-radius: 10px;
+  top: 16px;/* 수정 */
+  right: 0;
+  z-index: 3;
+}
+.search .sbHolder {/* 수정 */
+  display: inline-block;
+  position: absolute;
+  border-radius: 10px;
+  top: 15px;/* 수정 */
+  right: 160px;/* 수정 */
+  width: 130px;
+  height: 35px;
+  border: none;
+  border-left: 1px solid #dbdee1;
+  background-color: #fff;
+}
+
+.search .sbHolder .sbToggle {/* 수정 */
+  top: 10px;
+  right: 10px;
+}
+.search .sbHolder .sbOptions {
+  width: 130px;
+  top: 37px !important;
+  border: none;
+  border-radius: 10px;/* 수정 */
+  padding: 14px 7px;
+  z-index: 23;
+  background-color: #4c4145;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
 </style>
+
+
 
 <div class="wrapper">
 	<!-- Banner -->
 	<div class="banner-top"></div>
 	<!-- Search bar -->
-	<div class="search-wrapper">
-		<div class="container container--add">
+<!-- 	<div class="search-wrapper">
+		<div class="container container--add ">
 			<form id='search-form' method='get' class="search">
 				<input type="text" class="search__field" placeholder="Search">
 				<select name="sorting_item" id="search-sort" class="search__sort"
-					tabindex="0">
+					>
 					<option th:each="coupon,index : ${couponList}"
 						th:value="${index.index}+1"><span th:text="${coupon.name}">
 						</span></option>
-					<!-- 		<option value="2"  selected='selected'>By year</option> -->
+							<option value="2"  selected='selected'>By year</option>
 
 				</select>
-				<button class="btn btn-md btn--danger search__button">search
+				<button class="btn btn-md btn--shine search__button" tabindex="0" id="couponSearch">search
 					a Coupon</button>
 			</form>
 		</div>
 	</div>
-
+ -->
 	<!-- Main content -->
 	<section class="container">
 		<div class="col-sm-12">
-			<h2 class="page-heading">쿠폰 이벤트!!</h2>
+			<h2 class="page-heading">진행중인 쿠폰 이벤트 !!</h2>
 
 			<div class="offers-block">
 				<p class="offer-place">여러가지 쿠폰을 적용해 더 저렴하게 구매해 보세요!</p>
@@ -218,7 +205,6 @@ a { text-decoration:none; }
 						<p class="offer__full" th:text="${coupon.text}"></p>
 						<p class="offer__full"
 							th:text="${#dates.format(coupon.sdate,'yyyy-MM-dd')}+' ~ '+${#dates.format(coupon.edate,'yyyy-MM-dd')}"></p>
-
 					</a>
 				</div>
 
@@ -289,7 +275,7 @@ a { text-decoration:none; }
 		<div class="modal-content text-center">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title" th:text="${coupon.name}+'Coupon..'">Modal Header</h4>
+				<h4 class="modal-title" th:text="${coupon.name}+' Coupon 발급'">Modal Header</h4>
 			</div>
 			<div class="modal-body text-left">
 				<p th:text="${coupon.name}+' 쿠폰을 발급받으시겠습니까??'"></p>
@@ -317,7 +303,31 @@ a { text-decoration:none; }
 			</div>
 			
 			<div class="modal-footer">
-                <button type="button"  id="login_go" class="btn btn-default">로그인</button>
+                <button type="button"  id="login_go" class="btn btn-default" th:onclick="logingo()">로그인</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Modal -->
+
+<!-- End Modal -->
+<div class="modal fade" id="login" role="dialog"
+	>
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content text-center">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Login Error!! </h4>
+			</div>
+			<div class="modal-body text-left">
+				<p >로그인이 필요한 서비스 입니다. </p>
+				<p >로그인 페이지로 이동하시겠습니까? </p>
+			</div>
+			
+			<div class="modal-footer">
+                <button type="button"  id="login_go" class="btn btn-default" th:onclick="logingo()">로그인</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -327,14 +337,55 @@ a { text-decoration:none; }
 
 
 <script>
+
+$(document).ready(function(){
+	$('#couponSearch').click(function(){
+		alert('hi');	
+	});
+
+	
+});
+
+function logingo(){
+	$('#Loginerror').modal('hide');
+	window.location.href ="/signin";
+	
+}
+
+
+
 function addcoupon(couponid, user) {
 	if(user == null){// 유저 정보가 없을경우 실행 
-		alert('user info no');
 		$('#Loginerror').modal('show'); 
 		$('#modal'+couponid).modal('hide');
+		
 	}else{// 유저 정보가 있을경우 실행 
-		alert('user info ok');
+		$('#modal'+couponid).modal('hide');
+		userCouponCheck(couponid);
 	}
+}
+
+function userCouponCheck(couponid){
+
+ 	$.ajax({
+		url : 'userCouponCheck',
+ 	 	data: {'couponid':couponid},
+		success : function(data) {// data 가 1이면 발급성공, 0이면 발급취소 
+			keepcoupon(data);
+
+		}
+	});
+}
+
+function keepcoupon(data){
+	if(data == "1"){
+		alert('발급에 성공했습니다. ');		
+	}else if(data == "0"){
+		alert('발급에 실패했습니다. ');
+	}else{
+		alert("잘못된 접근입니다. ");
+	}
+	
 }
 
 </script>

@@ -41,6 +41,11 @@ public class CouponBiz implements Biz<String,CouponVO> {
 	public List<CouponVO> get() throws Exception {
 		return dao.selectall();
 	}
+	
+	// 0722 안원영 추가 - 쿠폰 정렬 
+	public List<CouponVO> selectsortall() throws Exception {
+		return dao.selectsortall();
+	}
 
 	
 }

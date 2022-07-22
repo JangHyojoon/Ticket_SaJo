@@ -1,12 +1,12 @@
 package com.multi.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.multi.vo.MycouponVO;
-import com.multi.vo.ReservationVO;
 
 @Repository
 @Mapper
@@ -17,5 +17,6 @@ public interface MycouponMapper {
 	
 	public MycouponVO select(int id) throws Exception;
 	public List<MycouponVO> selectall() throws Exception;
+	public List<MycouponVO> selectKeepCoupon(Map<String,Object> map) throws Exception;
 
 }
