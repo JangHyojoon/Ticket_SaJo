@@ -98,11 +98,7 @@ public class MovielistController {
 		m.addAttribute("center", "movielist/moviedetail");
 		return "/index";
 	}
-	@RequestMapping("/movie")
-	public String movie(Model m) {
-		m.addAttribute("center", "movielist/movie-page-full");
-		return "index";
-	}
+
 	@RequestMapping("/reviewimpl")
 	public String reviewimpl(Model m,ReviewVO review) {
 		int id = 0;
