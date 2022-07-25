@@ -81,5 +81,16 @@ public class AjaxController_jhj {
 	
 		return  ja;
 	}
-	
+	@RequestMapping("btnshow")
+	public int btnshow(int cnt) {
+		int data = 0;
+		System.out.println(cnt);
+		if (cnt ==0) {
+			data= 0;
+		}else {
+			data=1;
+		}
+		
+		return data;
+	}
 }

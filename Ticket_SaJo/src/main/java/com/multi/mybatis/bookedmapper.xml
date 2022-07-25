@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	<select id="selectseatlist" resultType="BookedVO">
 		SELECT * FROM booked
+		WHERE sid=#{sid} AND mcnt=#{mcnt}
 	</select>
 	<insert id="insert" parameterType="BookedVO">
 		INSERT INTO booked VALUES (#{sid},#{mcnt},#{seatid})
