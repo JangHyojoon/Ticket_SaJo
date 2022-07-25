@@ -10,6 +10,9 @@ public class Util {
 		System.out.println("saveFile 시작 ... ");
 		String filename = mf.getOriginalFilename();// 파일 이름 출력 
 		String dir = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","receipt",filename).toString();//이미지 저장 경로
+//		String dir = "/root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/receipt/" + filename;// ncp 서버경로로 변경 
+		// /root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/receipt
+
 		System.out.println("이미지 저장할 path : " + dir);
 
 		byte [] data;
