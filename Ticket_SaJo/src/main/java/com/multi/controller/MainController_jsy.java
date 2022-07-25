@@ -52,7 +52,6 @@ public class MainController_jsy {
 				if(cust.getPwd().equals(pwd)) {
 					session.setAttribute("user",cust);
 					m.addAttribute("user", cust);
-					
 					// ********** 0722 - 안원영 수정 **********
 					if(session.getAttribute("prevPage") != null) {
 						String prevPage;

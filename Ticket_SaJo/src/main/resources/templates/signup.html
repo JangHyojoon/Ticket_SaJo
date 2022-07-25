@@ -1,140 +1,167 @@
 <meta charset="UTF-8">
 <style>
    #signup_form{
-   		font-family: 고딕;
-		font-size: twayair;
-		color: #8B4513;
+         font-family: 고딕;
+     	 font-size: twayair;
+      	 color: #8B4513;
    }
-   
-    .container-fluid {
-      display: flex;
-      justify-content: center;
-    }
-    
-    #registerbtn{
-    font-size: twayair;
-    color: #FFF8DC;
-    background-color: #333;
-    position: static;
-    width: 100px;
-    height: 40px;
-    }
+
+	.div_margin {
+		text-align: center;
+		color: red;
+}
+ 
 </style>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
 <script>
 function sendId(id) {
-	$.ajax({
-		url:'/checkid',
-		data:{'id':id},
-		success:function(data){
-			if(data == '1') {
-				$('#ispan').text('이미 사용중이거나 탈퇴한 아이디입니다');
-				$('#ispan').css('color','red');
-			}else {
-				$('#ispan').text('사용가능한 아이디입니다');
-				$('#ispan').css('color','#3CB371');
-			}
-		}
-	});
+   $.ajax({
+      url:'/checkid',
+      data:{'id':id},
+      success:function(data){
+         if(data == '1') {
+            $('#ispan').text('이미 사용중이거나 탈퇴한 아이디입니다');
+            $('#ispan').css('color','red');
+         }else {
+            $('#ispan').text('사용가능한 아이디입니다');
+            $('#ispan').css('color','#3CB371');
+         }
+      }
+   });
+};
+
+function checkpwd(password) {
+	var pwd = password;
+	var one,two;
+	
+	let number = pwd.search(/[0-9]/g);
+    let english = pwd.search(/[a-z]/ig); 
+    let reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    
+    if(pwd.length < 5 || pwd.length > 10) {
+    	$('#pwd_li_one').html('비밀번호는 5자리~10자리 이내로 입력해주세요'+ '<i class="fa fa-remove"></i>');
+    	$('#pwd_li_one').css('color','red');
+		one = false;
+		
+    } else {
+		$('#pwd_li_one').html('5자리 ~ 10자리 이내로 입력해주세요.' + '<i class="fa fa-check"></i>');
+		$('#pwd_li_one').css('color','green');
+		one = true;
+    }
+	if (number < 0 || english < 0) {
+		$('#pwd_li_two').html('영문,숫자,특수문자를 혼합하여 입력해주세요.' + '<i class="fa fa-remove"></i>');
+		$('#pwd_li_two').css('color','red');
+		three = false;
+    }else{
+		$('#pwd_li_two').html('영문,숫자,특수문자를 혼합하여 입력해주세요.' + '<i class="fa fa-check"></i>');
+		$('#pwd_li_two').css('color','green');
+		three = true;
+    }
+    
+    if(one && two ){// 모든 조건 만족시 실행 
+    	$('#pspan').text('사용할 수 있는 password 입니다. ');
+    	$('#pspan').css('color','green');
+    	pwd_ok = 1;
+    }else{
+    	pwd_ok = 0;
+    }
+
 };
 
 
 $(document).ready(function(){
-	$('input[name="id"]').keyup(function(){
-		var id = $(this).val();
-		sendId(id);
-	});
-	
-	$('input[name="pwdcheck"]').keyup(function(){
-		var pwd = $('input[name="pwd"]').val();
-		var pwd2 = $('input[name="pwdcheck"]').val();
-		if(pwd == pwd2){
-			$('#pspan2').text('일치');
-			$('#pspan2').css('color','#3CB371');
-		}else {
-			$('#pspan2').text('불일치');
-			$('#pspan2').css('color', 'red');
-		}
-	});
-	
-	$('#signupbtn').click(function(){
-		$('#signup_form').attr({
-			'method' : 'post',
-		    'action' : 'signupimpl'
-		});
-		$('#signup_form').submit();
-		alert('등록이 완료되었습니다');
-	});
-	
-	
-	
-	$('input[name="pwd"]').keyup(function(){
-		var pwd = $(this).val();
-		if(pwd.length < 5){
-			$('#pspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
-			$('#pspan').css('color', 'red');
-		}else {
-			$('#pspan').text('보안에 강합니다. 사용가능합니다.');
-			$('#pspan').css('color','#3CB371');
-		}
-	});
-	
-	$("select[name=sex]").change(function(){
-		console.log($(this).val());
-		console.log($("select[name=sex] option:selected").text());
-	});
-	
-	$("select[name=point]").change(function(){
-		console.log($(this).val());
-		console.log($("select[name=point] option:selected").text());
-	});
+   $('input[name="id"]').keyup(function(){
+      var id = $(this).val();
+      sendId(id);
+   });
+
+   $('input[name="pwdcheck"]').keyup(function(){
+	      var pwd = $('input[name="pwd"]').val();
+	      var pwd2 = $('input[name="pwdcheck"]').val();
+	      if(pwd == pwd2){
+	         $('#pspan2').text('일치합니다');
+	         $('#pspan2').css('color','#3CB371');
+	      }else {
+	         $('#pspan2').text('일치하지 않습니다. 비밀번호를 다시 확인해주세요');
+	         $('#pspan2').css('color', 'red');
+	      }
+	   });
+   
+   $('#signupbtn').click(function(){
+      $('#signup_form').attr({
+         'method' : 'post',
+          'action' : 'signupimpl'
+      });
+      $('#signup_form').submit();
+      alert('등록이 완료되었습니다');
+   });
+   
+   
+   
+   $('input[name="pwd"]').keyup(function(){
+      var pwd = $(this).val();
+      if(pwd.length < 5){
+         $('#pspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
+         $('#pspan').css('color', 'red');
+      }else {
+         $('#pspan').text('보안에 강합니다. 사용가능합니다.');
+         $('#pspan').css('color','#3CB371');
+      }
+   });
+   
+   $("select[name=sex]").change(function(){
+      console.log($(this).val());
+      console.log($("select[name=sex] option:selected").text());
+   });
+
 });
 
 </script>
 <br>
 <br>
    <form id="signup_form" class="form-horizontal">
-	   <div class="field-wrap">
-	   <br>
-	   <br>
-	      아이디: 
-	      <span id="ispan"></span><input type='text' name='id'>
-	      </div>
-	   <div class="field-wrap">
-	      비밀번호: 
-	      <span id="pspan"></span><input type='password' name='pwd'> 
-	   </div>
-	   <div class="field-wrap">
-	      비밀번호 재확인: 
-	      <span id="pspan2"></span><input type='password' name='pwdcheck'> 
-	   </div>
-	   <div class="field-wrap">
-	      이름: <input type='text' name='name'> 
-	   </div>
-	   <div class="field-wrap">
-	      생년월일: <input type='date'name='birth'> 
-	   </div>
-	   <div class="field-wrap">
-	      포인트: 
-	      <select name="point">
-	      	<option value="0">0</option>	     
-	      </select> 
-	   </div>
-	   <div class="field-wrap">
-	      성별:
-	       <select name="sex">
-	      	<option value="woman">여성</option>
-	      	<option value="man">남성</option>	     
-	      </select> 
-	   </div>
-		<br>
-		<br>
-	  <div class="field-wrap">
+      <div class="field-wrap">
+      <br>
+      <br>
+         아이디: 
+         <span id="ispan"></span><input type='text' name='id'>
+         </div>
+      <div class="field-wrap">
+         비밀번호: 
+         <span id="pspan"></span><input type='password' name='pwd'> 
+      </div>
+      
+      <strong>패스워드는 다음 요건을 반드시 포함해야 합니다.</strong>
+			<div class="div_margin">
+				<ul style="list-style-type: square;" id="pwd_ul">
+					<li><span id="pwd_li_one" class="pwd_li">5자 이상 입력해주세요 <i class="fa fa-remove"></i></span>
+					<li><span id="pwd_li_two" class="pwd_li">영문,숫자,특수문자를 혼합하여 입력해주세요. <i class="fa fa-remove"></i></span>
+				</ul>
+			</div>	
+      <div class="field-wrap">
+         비밀번호 재확인: 
+         <span id="pspan2"></span><input type='password' name='pwdcheck'> 
+      </div>
+      <div class="field-wrap">
+         이름: <input type='text' name='name'> 
+      </div>
+      <div class="field-wrap">
+         생년월일: <input type='date'name='birth'> 
+      </div>
+      <div class="field-wrap">
+         포인트: <input value=0 readonly="readonly">
+      </div>
+      <div class="field-wrap">
+         성별:
+          <select name="sex">
+            <option value="woman">여성</option>
+            <option value="man">남성</option>        
+         </select> 
+      </div>
+      <br>
+      <br>
+     <div class="field-wrap">
          <button id="signupbtn" class="btn btn-md btn--warning btn--wider">회원가입</button>
       </div>
-
-
    </form>
