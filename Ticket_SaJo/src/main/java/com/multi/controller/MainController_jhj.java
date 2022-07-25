@@ -1,8 +1,6 @@
 package com.multi.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -56,19 +54,22 @@ public class MainController_jhj {
 			detail_scheduleslist = detail_schedulesbiz.get();
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		m.addAttribute("movielist", movielist);
 		m.addAttribute("scheduleslist", scheduleslist);
 		m.addAttribute("detail_scheduleslist", detail_scheduleslist);
+		
 		m.addAttribute("center", "book1");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		
 		return "index";
 	}
-	
-	@RequestMapping("/book1impl")
-	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
+	@RequestMapping("/book2")
+	public String book2(Model m, int mid, String date,String time,int theater,String msg) {
+		
+		
 		Detail_SchedulesVO dsv = null;
 		List<BookedVO> blist = null;
 		List<TheaterVO> rows =null;
@@ -99,16 +100,16 @@ public class MainController_jhj {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-
+		
 		}
 		m.addAttribute("center", "book2");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
-	}
 	
-	@RequestMapping("/book2impl")
-	public String book2impl(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
+	}
+	@RequestMapping("/book3")
+	public String book3(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
 		    String choosen_cost, String choosen_sits) {
 		//선택 좌석 배열
 		String[] bookedarr =choosen_sits.split(", ");
@@ -125,15 +126,62 @@ public class MainController_jhj {
 			m.addAttribute("dsv", dsv);
 		} catch (Exception e) {
 			e.printStackTrace();
+	
 		}
 		m.addAttribute("center", "book3");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
+	
+	}
+	@RequestMapping("/book4")
+	public String book4(Model m,int rid) {
+		
+		List<TicketVO> tlist;
+		List<ReservationVO> rlist;
+		ReservationVO rv;
+		try {
+			rlist = reservationbiz.selectridall(rid);
+			tlist = ticketbiz.selectrid(rid);
+			rv = rlist.get(0);
+			String rdate = rv.getReleasedate();
+			String ryear = rdate.substring(0,4);
+			m.addAttribute("rlist", rlist);
+			m.addAttribute("tlist", tlist);
+			m.addAttribute("ryear", ryear);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		
+		}
+		m.addAttribute("center", "book4" );
+		m.addAttribute("header", "header");
+		m.addAttribute("footer", "footer");
+		return "index";
 	}
 	
+	@RequestMapping("/fail")
+	public String fail(Model m) {
+		return "fail";
+	}
+	
+	@RequestMapping("/book1impl")
+	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
+	
+		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater;
+	}
+	
+	@RequestMapping("/book2impl")
+	public String book2impl(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
+		    String choosen_cost, String choosen_sits) {
+
+		return "redirect:book3?sid="+sid+"&mcnt="+mcnt+"&starttime="+starttime+"&endtime="+endtime+"&tid="+tid+"&mid="+mid+"&sdate="+sdate
+				+"&choosen_cost="+choosen_cost+"&choosen_sits="+choosen_sits;
+	}
+
+	
 	@RequestMapping("/book3impl")
-	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist) {
+	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist, String uid) {
 		//선택좌석 리스트		
 		seatlist =seatlist.substring(0,seatlist.length() -1);  
 		String sseatlist =seatlist.substring(1,seatlist.length()); 
@@ -155,6 +203,7 @@ public class MainController_jhj {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		
 		}
 		try {
@@ -163,7 +212,7 @@ public class MainController_jhj {
 			time = dsv.getStarttime();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();		
 
 		}
 		try {
@@ -172,13 +221,14 @@ public class MainController_jhj {
 				e2.printStackTrace();
 				return "redirect:book1impl?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
 			}                  //book1impl?mid=1001&date=2022-07-21&time=19%3A00&theater=2
-		ReservationVO rv = new ReservationVO("jhj",choosensit.length,price,price);	
+		ReservationVO rv = new ReservationVO(uid,choosensit.length,price,price);	
 		try {
 			reservationbiz.register(rv);
 		} catch (Exception e) {
 			e.printStackTrace();
+			
+		}	
 		
-		}			
 		rid = rv.getRid();//ticket테이블 INSERT
 	
 		for (int i = 0; i < choosensit.length; i++) {
@@ -187,42 +237,17 @@ public class MainController_jhj {
 				ticketbiz.register(tv);
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 	
 			}
 		}
-		m.addAttribute("center", "reserve");
-		m.addAttribute("header", "header");
-		m.addAttribute("footer", "footer");
-		return "index";
+	
+		return "redirect:/book4?rid="+rid;
 		
 
 	}
 	
-	
-	@RequestMapping("/book4")
-	public String book4(Model m) {
-		int rid = 6000;
-		List<TicketVO> tlist;
-		List<ReservationVO> rlist;
-		ReservationVO rv;
-		try {
-			rlist = reservationbiz.selectridall(rid);
-			tlist = ticketbiz.selectrid(rid);
-			rv = rlist.get(0);
-			String rdate = rv.getReleasedate();
-			String ryear = rdate.substring(0,4);
-			m.addAttribute("rlist", rlist);
-			m.addAttribute("tlist", tlist);
-			m.addAttribute("ryear", ryear);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		m.addAttribute("center", "book4" );
-		m.addAttribute("header", "header");
-		m.addAttribute("footer", "footer");
-		return "index";
-	}
 
+	
 
 }
