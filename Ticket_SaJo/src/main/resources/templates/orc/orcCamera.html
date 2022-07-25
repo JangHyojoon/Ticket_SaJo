@@ -6,8 +6,6 @@
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script>
 
 	function display(data) {
@@ -31,7 +29,7 @@
 		//alert(today);
 
 		
-		if(data.images[0].inferResult == 'SUCCESS'){// 적립할수 있는 영수증 
+		if(data.images[0].inferResult != 'FAILURE' || data.code !='UNKNOWN'){// 적립할수 있는 영수증 
 			receipt_projectName = data.images[0].fields[4].inferText;
 			receipt_date = data.images[0].fields[1].inferText;
 			movie_date = new Date(receipt_date.substr(0, 4),receipt_date.substr(5, 2),receipt_date.substr(8, 2));// 영수증 시간 
@@ -65,8 +63,6 @@
 
         reader.onload = function(event) {
         	$('#uploadeimg').attr('src',event.target.result);
-        	$('#uploadeimg').attr('style','width:200px; hight:200px;');
-        	
         };
         reader.readAsDataURL(event.target.files[0]);
         //alert('reader.readAsDataURL : ' + event.target.files[0]);
@@ -105,24 +101,14 @@
 		});
 	}
 	
-
-	function logingo(){
-		$('#Loginerror').modal('hide');
-		window.location.href ="/signin";
-		
-	}
-
-
-	
 	function point(user, e){// 적립금 받기 버튼 클릭시 동작
 		if(user == null){// 로그인 하지 않았을 경우 login 페이지로 이동 ======================= > login 완성되면 else랑 내용 체인지 
 			// 로그인 되어있는지 확인
 			//var uid = '<%=session.getAttribute("user")%>';
-			//alert('user 정보 없음 ');
-			// var loginok = confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?');
-			var loginok = $('#Loginerror').modal('show');
+			alert('user 정보 없음 ');
+			var loginok = confirm('로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?');
 			if(loginok == true){// 로그인 하겠다고 한 경우 
-				logingo();
+				window.location.href ="/sigin";
 			}else{//로그인 하지 않겠다고 한 경우
 				$('#UploadResult').text("로그인이 필요한 서비스 입니다. 영수증 적립 이벤트에 참여할 수 없습니다. ");
 				$('#UploadResult').css('color','red');
@@ -132,9 +118,6 @@
 			window.location.href ="/orc/orcimpl";
 		}
 	}
-	
-
-
 
 	$(document).ready(function() {
 		$('#context').hide();
@@ -165,9 +148,8 @@
 				<form id="uploadForm" enctype="multipart/form-data">
 					<input type="file" name="mf" id="mf" placeholder="Enter imgname"
 						onchange="previewimg(event);" class="btn btn-md btn--shine">
-					<!-- 					<input type="file" name="mf" id="mf" accept="image/*"
-						capture="camera" placeholder="Enter imgname"
-						onchange="previewimg(event);" class="btn btn-md btn--shine"> -->
+					<input type="file" name="mf" id="mf" accept="image/*" capture="camera" placeholder="Enter imgname"
+						onchange="previewimg(event);" class="btn btn-md btn--shine">
 				</form>
 			</div>
 			<div class="col-sm-4">
@@ -200,28 +182,3 @@
 		</div>
 	</div>
 </section>
-
-
-<!-- End Modal -->
-<div class="modal fade" id="Loginerror" role="dialog">
-	<div class="modal-dialog">
-		<!-- Modal content-->
-		<div class="modal-content text-center">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Login Error!!</h4>
-			</div>
-			<div class="modal-body text-left">
-				<p>로그인이 필요한 서비스 입니다.</p>
-				<p>로그인 페이지로 이동하시겠습니까?</p>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" id="login_go" class="btn btn-default"
-					th:onclick="logingo()">로그인</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End Modal -->
