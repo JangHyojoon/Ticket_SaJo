@@ -20,7 +20,18 @@
             $('.time-select__item').removeClass('active');
             $(this).addClass('active');
         });
-  		
+  		$( ".datepicker__input" ).datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            showAnim:"fade"
+          });
+
+          $(document).click(function(e) { 
+              var ele = $(e.target); 
+              if (!ele.hasClass("datepicker__input") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length){
+                 $(".datepicker__input").datepicker("hide");
+               }
+          });
     });
     </script>
     <style>
@@ -135,6 +146,12 @@
                     <!-- Time table (choose film start time)-->
                     <div class="time-select">
                         <div class="time-select__group group--first" >
+                        	<div class="datepicker">
+		                      <span class="datepicker__marker" ><i class="fa fa-calendar"></i>Date</span>
+		                     
+		                      <input type="date" id="datepicker" name="datepicker" class="datepicker__input">
+		                     
+		                    </div>
                             <div class="col-sm-4">
                                 <p class="time-select__place">Cineworld</p>
                             </div>

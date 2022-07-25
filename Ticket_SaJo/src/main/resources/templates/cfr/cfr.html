@@ -94,12 +94,14 @@ img{
          <section class="container">
             <div class="order-container">
                 <div class="order">
-                    <img id="uploadimg"alt='' src="/images/gallery/thumb/chris.jpg">
+                    <img id="uploadimg"alt='' src="/images/gallery/thumb/cfrbasic.jpg">
                     <p class="order__title">닮은꼴 배우를 찾아보세요.<br><span class="order__descript">and have fun movie time</span></p>
-                    <div class="order__control">
-                        <a href="#" onclick="upload()" class="order__control-btn">닮은꼴 찾기</a>
+                    <h2 id="celeb"></h2>
+                    <a id="celeblink"></a>
+                    <div class="order__control">                 
                         <input type="file" name="mf" id="mf" placeholder="Enter imgname"
 						onchange="PreviewImage(event)" class="btn btn-md btn--shine">
+						<button onclick="upload()" class="order__control-btn">닮은꼴 찾기</button>
                     </div>
                 </div>
             </div>
@@ -171,15 +173,32 @@ img{
 		
 		<script type="text/javascript">
 		function display(data){
-			var faces = data["faces"][0];
-			alert(JSON.stringify(faces.fields[1]));
+			if(data==''){
+				$('#celeb').hide();
+				$('#celeb').fadeIn(3000);
+				$('#celeb').text("사진을 한번 더 확인해 주세요");
+				return;
+			}
+			var celeb = data.faces[0].celebrity.value;
+			$('#celeb').hide();
+			$('#celeb').fadeIn(3000);
+			$('#celeb').text("당신의 닮은꼴은 "+celeb+" 입니다!");
+			$('#celeblink').hide();
+			$('#celeblink').fadeIn(3000);
+			$('#celeblink').text(celeb+"이 궁금하시다면 클릭하세요!");
+			$('#celeblink').attr("href", "https://www.google.com/search?q="+celeb+"&tbm=isch&ved=2ahUKEwiTlZqQjoz5AhUmzYsBHeWwD_YQ2-cCegQIABAA&oq=%EA%B6%8C%EC%84%B1%ED%98%84&gs_lcp=CgNpbWcQAzILCAAQgAQQsQMQgwEyBAgAEAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoECAAQGDoGCAAQHhAHOggIABCABBCxAzoICAAQsQMQgwFQ3gVY2A5gpg9oAHAAeACAAXOIAdkIkgEDMy44mAEAoAEBqgELZ3dzLXdpei1pbWewAQDAAQE&sclient=img&ei=G2TaYtObJqaar7wP5eG-sA8&bih=880&biw=1920")
+	
+
 		};
+		
 		function PreviewImage(event) {
 	        // 파일리더 생성 
 	        var preview = new FileReader();
 	        preview.onload = function (event) {
 	        // img id 값 
 	        	$('#uploadimg').attr('src',event.target.result);
+	        	$('#uploadimg').hide();
+	        	$('#uploadimg').fadeIn(1500);
 			    };
 			    // input id 값 
 			    preview.readAsDataURL(event.target.files[0]);
@@ -201,8 +220,6 @@ img{
 				contentType : false,
 				data: formData,
 				success : function(data) {
-					alert(JSON.stringify(data.faces));
-					
 					display(data);
 				}
 			});
