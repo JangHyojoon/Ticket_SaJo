@@ -32,10 +32,12 @@
 <script src="js/external/modernizr.custom.js"></script>
 
 <p>
-   <br> <br> <br>
-
-
-
+   <br> <br> 
+<style>
+   .field-wrap{
+   text-align: center;
+   }
+</style>
    <!-- Main content -->
    <form class="login">
                     <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
@@ -47,19 +49,24 @@
                     </div>
 
                     <p class="login__tracker">or</p>
-	</form>
+   </form>
    
-	<form id="signin_form" class="form-horizontal">
-	   <div class="field-wrap">
-	      <input type='text' placeholder='Id' name='id' class="login__input">
-	      <input type='password' placeholder='Password' name='pwd' class="login__input"> 
-	   </div>
-	   
-	   <div class="field-wrap">
-	      <button id="signinbtn" class="btn btn-md btn--warning btn--wider">로그인</button>
-	      <p class="signUpclass">아직 회원이 아니신가요? &nbsp;<a href="/signup" class="btn btn--sign">회원가입</a>
-		</p>
-	   </div>
+   <form id="signin_form" class="form-horizontal">
+      <div class="field-wrap">
+         <input type='text' placeholder='아이디' name='id' class="login__input">
+         <br>
+         <br>
+         <input type='password' placeholder='비밀번호' name='pwd' class="login__input"> 
+      </div>
+      
+      <div class="field-wrap">
+      <br>
+         <button id="signinbtn" class="btn btn-md btn--warning btn--wider">로그인</button>
+         <br>
+         <br>
+         <p class="signUpclass">아직 회원이 아니신가요? &nbsp;<a href="/signup" class="btn btn--sign">회원가입</a>
+      </p>
+      </div>
    </form>
 
 
@@ -89,13 +96,13 @@
 
 <script>
 $(document).ready(function(){
-	$('#signinbtn').click(function(){
-		$('#signin_form').attr({
-			'method':'post',
-			'action':'/signinimpl'
-		});
-		$('#signin_form').sumbit();
-	});
+   $('#signinbtn').click(function(){
+      $('#signin_form').attr({
+         'method':'post',
+         'action':'/signinimpl'
+      });
+      $('#signin_form').sumbit();
+   });
 });
 
 </script>

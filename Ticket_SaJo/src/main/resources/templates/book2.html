@@ -34,22 +34,45 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         
     	<script th:inline="javascript">
-    	//버튼 클릭
+    	
+		var c = $(".sits__sort sit-number").val()
+		var r = $(".sits__sort sit-row").val()
+    
+    	
     		
-			function clickbtn(){
-				$('.book2').submit();
-			};
+		function clickbtn(){
+			var cost = $('input[name=choosen_cost]').val();
+			
+			if (cost == 0) {
+				alert("좌석을 선택해주세요")
+				return
+			}
+			$('.book2').submit();
+			
+		};
+    	$('.btn btn-md btn--warning toogle-sits').click(function(){
+    		alert();
+    		
+    	});
+
 			var test = [[${blist}]];
 	    	$(document).ready(function(){
 	    		for(var i = 0; i<test.length; i++){
 	    			$("#"+test[i].seatid).addClass("sits-state--not");
 	    		}
-		    
-		        
 	    		var msg = [[${msg}]];
 	    		if(msg != null){
 	    			alert(msg);
 	    		}
+	
+
+    			
+    	    			
+    				
+    		
+    	
+	    		
+	    		
 	    		
 	    	});  
 	    	
@@ -57,7 +80,7 @@
 
 </head>
  
-<body>
+<body th:if="${session.user != null}">
     
         
         <!-- Main content -->
@@ -109,7 +132,8 @@
                                  th:name="${r.r}+${c.c}" 
                                  th:id="${r.r}+${c.c}" 
                                  th:attr='data-place=${c.c} ? ${r.r}+${c.c}'
-                                 th:text='${r.r}+${c.c}'>A2</span>
+                                 th:text='${r.r}+${c.c}'
+                                 >A2</span>
                                 
                             </div>
                             
@@ -136,12 +160,12 @@
                     <div class="sits-area--mobile-wrap">
                         <div class="sits-select">
                             <select name="sorting_item" class="sits__sort sit-row" tabindex="0">
-                                    <option  th:each="r:${rows}" th:text="${r.r}" th:value="${r.r}">A</option>
+                                    <option  th:each="r:${rows}" th:text="${r.r}"  >A</option>
 
                             </select>
  
                             <select name="sorting_item" class="sits__sort sit-number" tabindex="1">
-                                    <option  th:each="c:${columns}" th:text="${c.c}" th:value="${c.c}">1</option>
+                                    <option  th:each="c:${columns}" th:text="${c.c}" >1</option>
                                     
                             </select>
 
@@ -156,7 +180,7 @@
                                 <span class="choosen-place"></span>
                             </div>
                             <div class="checked-result">
-                                $0
+                                
                             </div>
                     </aside>
 
@@ -176,8 +200,8 @@
 		        <input type='hidden' name='tid' th:value="${book1info.tid}">
 		        <input type='hidden' name='mid' th:value="${book1info.mid}">
 		        <input type='hidden' name='sdate' th:value="${book1info.sdate}">
-	            <input type='hidden' name='choosen_cost' class="choosen-cost">
-	            <input type='hidden' name='choosen_sits' class="choosen-sits">
+	            <input type='text' name='choosen_cost' class="choosen-cost" value="0">
+	            <input type='text' name='choosen_sits' class="choosen-sits">
             </form>
 
         <div class="clearfix"></div>
@@ -187,7 +211,7 @@
                         <span class="arrow__text arrow--prev">prev step</span>
                         <span class="arrow__info">what&amp;where&amp;when</span>
                     </a>
-                    <a href="#" onclick="clickbtn();" class="booking-pagination__next" id="book2btn">
+                     <a href="#" onclick="clickbtn();" class="booking-pagination__next" id="book2btn">
                         <span class="arrow__text arrow--next">next step</span>
                         <span class="arrow__info">checkout</span>
                     </a>
@@ -196,8 +220,9 @@
         
 
     
-
-  
+<div th:unless="${session.user == null}">
+<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
+</div>
 
 	<!-- JavaScript-->
         <!-- jQuery 3.1.1--> 
@@ -224,8 +249,32 @@
 		<script type="text/javascript">
             $(document).ready(function() {
                 init_BookingTwo();
+	    		
+	    		
+	    			
+	    		
             });
 		</script>
 
 </body>
+<body th:unless="${session.user != null}">
+	<div class="wrapper">
+	       <div class="error-wrapper">
+	           <a href='/' class="logo logo--dark">
+	               <img alt='logo' src="images/logo-dark.png">
+	               <p class="slogan--dark">fun to search, fun to watch</p>
+	           </a>
+	
+	           <div class="error">
+	               <img alt='' src='images/error.png' class="error__image">
+	               <h1 class="error__text">sorry, but page can’t be found</h1>
+	               <a href="/" class="btn btn-md btn--warning">return to homepage</a>
+	           </div>
+	       </div>
+	
+	       <div class="copy-bottom">
+	           <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
+	       </div>
+	
+	</div>
 </html>

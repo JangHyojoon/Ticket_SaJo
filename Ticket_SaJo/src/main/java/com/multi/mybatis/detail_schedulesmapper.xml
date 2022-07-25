@@ -5,36 +5,36 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.Detail_SchedulesMapper">
 	
 	<select id="selectone" parameterType="int" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
 		INNER JOIN movie m ON s.mid = m.id
 		WHERE sid=#{sid} AND mcnt=#{mcnt}
 	</select>
 	<select id="selectall" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
 		INNER JOIN movie m ON s.mid = m.id
 	</select>
 	<select id="selectsid" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id		
 		INNER JOIN movie m ON s.mid = m.id
 		WHERE sid=#{sid}
 	</select>
 	<select id="selectmcnt" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
 		INNER JOIN movie m ON s.mid = m.id
 		WHERE mcnt=#{mcnt}
 	</select>
 	<select id="selectmiddate" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
 		INNER JOIN movie m ON s.mid = m.id
         WHERE mid = #{mid} AND sdate = #{sdate}
 	</select>
 	<select id="selecttidmiddate" resultType="detail_schedulesVO">
-		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
 		INNER JOIN movie m ON s.mid = m.id
         WHERE mid = #{mid} AND sdate = #{sdate} AND tid=#{tid}
@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select ds.sid, ds.mcnt, 
 		date_format(ds.starttime,'%H:%i') as starttime,
         date_format(ds.endtime,'%H:%i') as endtime, 
-        ds.booked, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+        s.tid, s.mid, s.sdate, m.title from detail_schedules ds
 		INNER JOIN schedules s ON ds.sid = s.id
         INNER JOIN movie m ON s.mid = m.id
 		WHERE mid=#{mid} AND tid=#{tid} AND sdate=#{sdate} AND starttime=#{starttime}

@@ -69,7 +69,7 @@ public class AjaxController_jhj {
 				jo.put("tid", dsv.getTid());
 				jo.put("mid", dsv.getMid());
 				jo.put("sdate", dsv.getSdate());
-				jo.put("booked", dsv.getBooked());
+				
 				ja.add(jo);
 				
 				
@@ -81,5 +81,16 @@ public class AjaxController_jhj {
 	
 		return  ja;
 	}
-	
+	@RequestMapping("btnshow")
+	public int btnshow(int cnt) {
+		int data = 0;
+		System.out.println(cnt);
+		if (cnt ==0) {
+			data= 0;
+		}else {
+			data=1;
+		}
+		
+		return data;
+	}
 }

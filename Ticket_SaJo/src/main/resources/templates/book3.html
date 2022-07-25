@@ -57,7 +57,7 @@
 				</script>
 </head>
 
-<body>
+<body th:if="${session.user != null}">>
         <!-- Main content -->
         <section class="container">
             <div class="order-container">
@@ -92,6 +92,7 @@
 				        <input type='text' name='price' th:value="${price}">
 				        <input type='text' name='seatlist' th:value="${seatlist}">
 						<input type='text' name='sdate' th:value="${dsv.sdate}">
+						<input type='text' name='uid' th:value="${session.user.id}">
 					
 					</form>
                     <h2 class="page-heading">Choose payment method</h2>
@@ -169,4 +170,24 @@
         <script src="js/custom.js"></script>
 
 </body>
+<body th:unless="${session.user != null}">
+	<div class="wrapper">
+	       <div class="error-wrapper">
+	           <a href='/' class="logo logo--dark">
+	               <img alt='logo' src="images/logo-dark.png">
+	               <p class="slogan--dark">fun to search, fun to watch</p>
+	           </a>
+	
+	           <div class="error">
+	               <img alt='' src='images/error.png' class="error__image">
+	               <h1 class="error__text">sorry, but page can’t be found</h1>
+	               <a href="/" class="btn btn-md btn--warning">return to homepage</a>
+	           </div>
+	       </div>
+	
+	       <div class="copy-bottom">
+	           <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
+	       </div>
+	
+	</div>
 </html>
