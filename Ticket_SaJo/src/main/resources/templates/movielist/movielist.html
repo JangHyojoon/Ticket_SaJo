@@ -4,34 +4,78 @@
        <meta name="description" content="A Template by Gozha.net">
        <meta name="keywords" content="HTML, CSS, JavaScript">
        <meta name="author" content="Gozha.net">
-       <!-- jQuery 3.1.1--> 
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    	<script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
-	<!-- jQuery UI -->
-    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
-  	<script>
-  	$(document).ready(function() {
-  	//toggle timetable show
-        $('.movie__show-btn').click(function (ev) {
-            ev.preventDefault();
-            $(this).parents('.movie--preview').find('.time-select').slideToggle(500);
-        });
-  		$('.time-select__item').click(function (){
-            $('.time-select__item').removeClass('active');
-            $(this).addClass('active');
-        });
-  		$( ".datepicker__input" ).datepicker({
-            showOtherMonths: true,
-            selectOtherMonths: true,
-            showAnim:"fade"
-          });
+       
+    
+    <!-- Mobile Specific Metas-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="telephone=no" name="format-detection">
+    
+    <!-- Fonts -->
+        <!-- Font awesome - icon font -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Roboto -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    
+    <!-- Stylesheets -->
+    <!-- jQuery UI --> 
+        <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
-          $(document).click(function(e) { 
-              var ele = $(e.target); 
-              if (!ele.hasClass("datepicker__input") && !ele.hasClass("ui-datepicker") && !ele.hasClass("ui-icon") && !$(ele).parent().parents(".ui-datepicker").length){
-                 $(".datepicker__input").datepicker("hide");
-               }
-          });
+        <!-- Mobile menu -->
+        <link href="/css/gozha-nav.css" rel="stylesheet" />
+        <!-- Select -->
+        <link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
+        <!-- Swiper slider -->
+        <link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
+    
+        <!-- Custom -->
+        <link href="/css/style.css?v=1" rel="stylesheet" />
+
+        <!-- Modernizr --> 
+        <script src="/js/external/modernizr.custom.js"></script>
+        <!-- Ajax -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  	<script>
+  	function display(data){
+ 		var tid = data[0].tid
+ 		$('#tid'+data[0].mid).text(tid+'관');
+ 		for (var i = 0; i < data.length; i++) {
+			$('#schedules'+data[i].mid).append('<li class="time-select__item">'+data[i].starttime+'</li>');
+ 		
+		}
+  	};
+  	function changeschedule(mid,date){
+  		$('#schedules'+mid).empty();
+  		$('#tid'+mid).text('');
+  		$.ajax({
+			url:'/selectschedule',
+			data:{'mid':mid,'date':date},
+			success:function(data){
+				display(data);
+				
+			}
+		});
+  	};
+  	$(document).ready(function() {  		
+  		init_MovieList ();
+  		
+  		var mid;
+  		$('input[name=datepicker]').click(function(){
+  			mid = $(this).attr('placeholder');
+  		});
+		$('.movie__show-btn').one('click',function(){
+			mid = $(this).attr('id');
+			$('#datepicker'+mid).datepicker('setDate', 'today');
+			var date = $('#datepicker'+mid).val();			
+			$('input[name=date]').attr('value',date);
+			changeschedule(mid,date);
+		}); 
+		$('input[name=datepicker]').on("change",function(){
+				var date=$(this).val();
+				$('input[name=date]').attr('value',date);
+				changeschedule(mid,date);
+			});
+		
+		
     });
     </script>
     <style>
@@ -62,6 +106,9 @@
 		  z-index: 0;
 		  padding: 0;
 		}
+		.time-select__item{
+		 width: 50px;
+		}
     </style>
 </head>
 <body>
@@ -73,7 +120,7 @@
                  <div class="tags-area">
                     <div class="tags tags--unmarked">
                         <span class="tags__label">Sorted by:</span>
-                            <ul>
+                            <ul>                          	
                                 <li class="item-wrap">
                                 	<a id="1" th:href="@{/movielist(sort=0)}" th:if="${sort}==0" class="tags__item item-active" data-filter='all'>all</a>
                                 	<a id="1" th:href="@{/movielist(sort=0)}" th:if="${sort}!=0" class="tags__item" data-filter='all'>all</a>
@@ -90,7 +137,13 @@
                                 	<a id="4" th:href="@{/movielist(sort=3)}" th:if="${sort}==3" class="tags__item item-active" data-filter='comments'>리뷰 많은 순</a>
                                 	<a id="4" th:href="@{/movielist(sort=3)}" th:if="${sort}!=3" class="tags__item" data-filter='comments'>리뷰 많은 순</a>
                                 </li>
+                                <li class="item-wrap">
+                                	<a id="5" th:href="@{/movielist(sort=4)}" th:if="${sort}==4" class="tags__item item-active" data-filter='comments'>상영중인 영화</a>
+                                	<a id="5" th:href="@{/movielist(sort=4)}" th:if="${sort}!=4" class="tags__item" data-filter='comments'>상영중인 영화</a>
+                                </li>
+                                
                             </ul>
+                            
                     </div>
                 </div>
                 
@@ -109,7 +162,7 @@
                     </div>
 
                     <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
-                            <a th:href="@{/movielist/detail(id=${m.id})}" class="movie__title link--huge" th:name="title" th:text="${m.title}">Last Vegas (2013)</a>
+                            <a th:href="@{/movielist/detail(id=${m.id})}" class="movie__title link--huge" th:id="title" th:text="${m.title}">Last Vegas (2013)</a>
 
                             <p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
@@ -137,7 +190,7 @@
 									</div>
                                 <span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span>
                                 </div>
-                                <a class="movie__show-btn">Showtime</a>
+                                <a class="movie__show-btn" th:id="${m.id}" th:name="showtime">Showtime</a>
                             </div>
                     </div>
 
@@ -145,22 +198,20 @@
                     
                     <!-- Time table (choose film start time)-->
                     <div class="time-select">
+                        <div class="datepicker">
+		                      <span class="datepicker__marker">Date</span>
+		                      <input type="text" th:id="datepicker+${m.id}" th:name="datepicker" value='' class="datepicker__input" th:placeholder="${m.id}">
+		                      <input type="hidden" th:id="formid" th:name="formid" th:value="${m.id}">
+	                    </div>
+	                    
+	                    
+	                    
+	                    
                         <div class="time-select__group group--first" >
-                        	<div class="datepicker">
-		                      <span class="datepicker__marker" ><i class="fa fa-calendar"></i>Date</span>
-		                     
-		                      <input type="date" id="datepicker" name="datepicker" class="datepicker__input">
-		                     
-		                    </div>
                             <div class="col-sm-4">
-                                <p class="time-select__place">Cineworld</p>
+                                <p class="time-select__place" th:id="tid+${m.id}"></p>
                             </div>
-                            <ul class="col-sm-8 items-wrap">
-                                <li class="time-select__item" data-time='09:40'>09:40</li>
-                                <li class="time-select__item" data-time='13:45'>13:45</li>
-                                <li class="time-select__item active" data-time='15:45'>15:45</li>
-                                <li class="time-select__item" data-time='19:50'>19:50</li>
-                                <li class="time-select__item" data-time='21:50'>21:50</li>
+                            <ul class="col-sm-8 items-wrap" th:name="schedules" th:id="schedules+${m.id}">
                             </ul>
                         </div>                        
                     </div>
@@ -180,7 +231,8 @@
         </section>
         
         <div class="clearfix"></div>
-
+		
+	  	</div>
     <!-- open/close -->
         <div class="overlay overlay-hugeinc">
             

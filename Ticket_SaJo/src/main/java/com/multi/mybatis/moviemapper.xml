@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		LEFT JOIN genre g ON g.id = m.gid
 		LEFT JOIN reviews r ON r.mid=m.id
 		GROUP BY id
-		LIMIT #{mnum},3;
+		LIMIT #{mnum},3
 	</select>
 	<!-- 0720 김민식 추가 -->
 	<select id="sortbyreleasedate" parameterType="Integer" resultType="movieVO">
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		LEFT JOIN reviews r ON r.mid=m.id
 		GROUP BY id
 		ORDER BY releasedate ASC
-		LIMIT #{mnum},3;
+		LIMIT #{mnum},3
 	</select>
 	<select id="sortbyrcnt" parameterType="Integer" resultType="movieVO">
 		SELECT m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
@@ -50,6 +50,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		LEFT JOIN reviews r ON r.mid=m.id
 		GROUP BY id
 		ORDER BY rcnt DESC
+		LIMIT #{mnum},3
+	</select>
+	<!-- 0726 김민식 추가 -->
+	<select id="sortbyonmovie" parameterType="Integer" resultType="movieVO">
+		select m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg2, m.country as country,
+		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
+		INNER JOIN schedules s ON s.mid = m.id
+		LEFT JOIN genre g ON g.id = m.gid
+		LEFT JOIN reviews r ON r.mid=m.id
+		Group BY m.id
+		ORDER BY s.sdate DESC
 		LIMIT #{mnum},3;
 	</select>
 

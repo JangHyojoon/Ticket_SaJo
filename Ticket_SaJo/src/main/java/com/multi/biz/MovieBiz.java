@@ -83,5 +83,10 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 		return dao.sortbyrcnt(k);
 
 	}
+	//0726 김민식 추가
+	public List<MovieVO> sortbyonmovie(Integer k) throws Exception {
+		return dao.sortbyonmovie(k);
+
+	}
 	
 }
