@@ -57,6 +57,43 @@
 				</script>
 </head>
 
+
+<script>
+
+
+</script>
+
+<script>
+
+    function totalPrice(price) {
+    	var coupon = $("#selectCoupon option:selected").val();
+    	var coupon_id = $("#selectCoupon option:selected").attr('id');
+    	var real_price = price;//쿠폰 적용 전 금액
+    	var sale_price = coupon; // 할인금액 
+    	var total_price = 0;// 쿠폰 적용 후 금액
+    	var coupon_cid;
+    	
+    	if(coupon != "선택"){// 쿠폰 적용했을 경우 실행 
+        	total_price = real_price - sale_price;
+        	if(total_price < 0 ){// 할인 금액이 할인전 금액보다 클 경우 0으로 출력 
+        		total_price = 0;
+        	}
+        	coupon_cid = coupon_id.split(' ',2);// coupon cid 의 형태에서 cid만 추출하기 위해 사용 
+        	
+    	}else{// 쿠폰을 아무것도 적용하지 않았을 경우 실행 
+    		total_price = price;
+    	}
+
+    	//alert('coupon_id : ' + coupon_id);
+    	$("#totalPrice").text(total_price);// 쿠폰 적용 금액을 text() 에 표시 
+    	$("#totalprice").val(total_price);// form-input 에 있는 totalprice 
+    	$("#selectcid").val(coupon_cid[1]);// form-input 에 있는 cid - 쿠폰의 id를 넘겨서 결제시 mycoupon에 있는 해당 쿠폰의 used필드를 false로, udate를 현재시간으로 설정  
+    	
+
+    }
+
+</script>
+
 <body th:if="${session.user != null}">>
         <!-- Main content -->
         <section class="container">
@@ -83,7 +120,19 @@
                         <li class="book-result__item">시작시간 <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
                         <li class="book-result__item">끝나는시간 <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
                         <li class="book-result__item">좌석 <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
-                        <li class="book-result__item">Total: <span class="book-result__count booking-cost" th:text="${price}">가격</span></li>
+                        <li class="book-result__item">사용할 쿠폰
+						<div class="form-group">
+							<select th:onchange="totalPrice([[${price}]])" id="selectCoupon" class="form-control">
+								<option value="선택">선택</option>
+								<option th:each="mycoupon,index : ${mycouponlist}"
+									th:value="${mycoupon?.sale}" th:id="'coupon '+${mycoupon.id}"
+									th:utext="${mycoupon?.text}+'( '+${mycoupon?.sale}+'원 )'"></option>
+							</select>
+						</div>
+
+					</li>
+                        
+                        <li class="book-result__item">Total: <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}">가격</span></li>
                     </ul>
 					<form class="book3">
 						<input type='text' name='sid' th:value="${dsv.sid}">
@@ -93,6 +142,8 @@
 				        <input type='text' name='seatlist' th:value="${seatlist}">
 						<input type='text' name='sdate' th:value="${dsv.sdate}">
 						<input type='text' name='uid' th:value="${session.user.id}">
+						<input type='text' name='totalprice' id="totalprice" th:value="${price}">
+						<input type='text' name='cid' id="selectcid">
 					
 					</form>
                     <h2 class="page-heading">Choose payment method</h2>
