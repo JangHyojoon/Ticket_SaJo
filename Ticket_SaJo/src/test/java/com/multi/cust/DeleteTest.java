@@ -14,7 +14,7 @@ class DeleteTest {
 	void contextLoads() {
 		
 		try {
-			biz.remove("id07");
+			biz.remove("id11");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -19,7 +19,10 @@ public class MainController_jsy {
 	CustBiz custbiz;
 	
 	@RequestMapping("/signin")
-	public String signin(Model m, HttpServletRequest request) {
+	public String signin(Model m, String msg, HttpServletRequest request) {
+		if(msg !=null && msg.equals("f")) {
+			m.addAttribute("msg", "아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+		}
 		// ********** 0722 - 안원영 수정 **********
 		String uri = request.getHeader("Referer");
 //		System.out.println("이전 url : " + uri);
@@ -76,12 +79,11 @@ public class MainController_jsy {
 			}else {
 				throw new Exception();
 			}
-		} catch (Exception e) {
-			next="/signinfail";		
-			m.addAttribute("center", next);
+		} catch (Exception e) {	
+			return "redirect:signin?msg=f";
 		}
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/signup")
@@ -96,10 +98,11 @@ public class MainController_jsy {
 			System.out.println(cust);
 			custbiz.register(cust);
 			session.setAttribute("user", cust);
+			m.addAttribute("center", "/signupok");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/mypage")
@@ -107,5 +110,10 @@ public class MainController_jsy {
 		m.addAttribute("center", "mypage");
 		return "index";
 	}
-
-}
+	
+	@RequestMapping("custdelete")
+		public String custdelete(Model m, HttpSession session) {
+			m.addAttribute("center", "custdelete");
+			return "index";
+		}
+	}

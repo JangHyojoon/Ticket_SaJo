@@ -35,8 +35,21 @@
    <br> <br> 
 <style>
    .field-wrap{
-   text-align: center;
+  	 text-align: center;
    }
+   
+   #id, #pwd{
+  	 border-radius: 20px;
+  	 border-color: #B8860B;
+  	 
+   }
+   
+   #msg{
+   	color: red;
+   	text-align: center;
+   }
+   
+   
 </style>
    <!-- Main content -->
    <form class="login">
@@ -53,18 +66,19 @@
    
    <form id="signin_form" class="form-horizontal">
       <div class="field-wrap">
-         <input type='text' placeholder='아이디' name='id' class="login__input">
+         <input id="id" type='text' placeholder='아이디' name='id' class="login__input">
          <br>
          <br>
-         <input type='password' placeholder='비밀번호' name='pwd' class="login__input"> 
+         <input id="pwd" type='password' placeholder='비밀번호' name='pwd' class="login__input"> 
       </div>
+      	<h5 id="msg" th:text="${msg}"></h5>
       
       <div class="field-wrap">
       <br>
          <button id="signinbtn" class="btn btn-md btn--warning btn--wider">로그인</button>
          <br>
          <br>
-         <p class="signUpclass">아직 회원이 아니신가요? &nbsp;<a href="/signup" class="btn btn--sign">회원가입</a>
+         <p class="signUpclass">아직 회원이 아니신가요?<a href="/signup" class="btn btn--sign">회원가입</a>
       </p>
       </div>
    </form>
