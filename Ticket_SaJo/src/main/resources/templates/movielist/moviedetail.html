@@ -288,19 +288,18 @@
 
                             <a href='#' class="comment__author" th:text="${r.name}+'('+${r.uid}+')'"><span class="social-used fa fa-facebook"></span>Roberta Inetti</a>
                             <p class="comment__date" th:text="${r.dday}+'일전'+'|'+${#dates.format(r.regdate,'yyyy-MM-dd E요일')}">today </p>
-                            <p class="comment__message" th:text="${r.text}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae enim sollicitudin, euismod erat id, fringilla lacus. Cras ut rutrum lectus. Etiam ante justo, volutpat at viverra a, mattis in velit. Morbi molestie rhoncus enim, vitae sagittis dolor tristique et.</p>
+                            <p class="comment__message" th:text="${r.text}">Lorem psumus.agittis dolor tristique et.</p>
                             <div class="movie__rate">
                             	<div class="star-ratings">
-										<div class="star-ratings-fill space-x-2 text-lg"
-									    th:style="${'width:'+r.star*20+'%'}" th:value ="${r.star}">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-										</div>
-										<div class="star-ratings-base space-x-2 text-lg">
-											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-										</div>
-									</div> </div>
-                            <a href='#' class="comment__reply">Reply</a>
-                            
+									<div class="star-ratings-fill space-x-2 text-lg"
+								    th:style="${'width:'+r.star*20+'%'}" th:value ="${r.star}">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+									<div class="star-ratings-base space-x-2 text-lg">
+										<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+									</div>
+								</div> 
+							</div>                          
                         </div>
                         </div>
 
