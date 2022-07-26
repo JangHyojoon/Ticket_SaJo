@@ -44,6 +44,12 @@ public class MycouponBiz implements Biz<Integer,MycouponVO> {
 	public List<MycouponVO> selectKeepCoupon(Map<String,Object> map) throws Exception {
 		return dao.selectKeepCoupon(map);
 	}
+	
+	// 0725 안원영 수정 - 티켓결제에 쿠폰 결합
+	public List<MycouponVO> selectUsableCoupon(String uid) throws Exception {
+		return dao.selectUsableCoupon(uid);
+	}
+
 
 	
 }

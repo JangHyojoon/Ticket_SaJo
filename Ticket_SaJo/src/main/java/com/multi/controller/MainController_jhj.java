@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.multi.biz.BookedBiz;
 import com.multi.biz.Detail_SchedulesBiz;
 import com.multi.biz.MovieBiz;
+import com.multi.biz.MycouponBiz;
 import com.multi.biz.ReservationBiz;
 import com.multi.biz.SchedulesBiz;
 import com.multi.biz.TheaterBiz;
 import com.multi.biz.TicketBiz;
 import com.multi.vo.BookedVO;
+import com.multi.vo.CustVO;
 import com.multi.vo.Detail_SchedulesVO;
 import com.multi.vo.MovieVO;
+import com.multi.vo.MycouponVO;
 import com.multi.vo.ReservationVO;
 import com.multi.vo.SchedulesVO;
 import com.multi.vo.TheaterVO;
@@ -42,6 +47,11 @@ public class MainController_jhj {
 	TicketBiz ticketbiz;
 	@Autowired
 	BookedBiz bookedbiz;
+	@Autowired
+	MycouponBiz mycouponbiz;
+
+	
+	
 	@RequestMapping("/book1")
 	public String book1(Model m) {
 		
@@ -110,9 +120,13 @@ public class MainController_jhj {
 	}
 	@RequestMapping("/book3")
 	public String book3(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
-		    String choosen_cost, String choosen_sits) {
+		    String choosen_cost, String choosen_sits, HttpSession session) {
 		//선택 좌석 배열
 		String[] bookedarr =choosen_sits.split(", ");
+		CustVO cust = (CustVO) session.getAttribute("user");// 유저 정보
+		List<MycouponVO> clist = null; // 사용 가능 쿠폰 저장할 변수 
+		
+		
 		HashSet<String> hashset = 
 				new HashSet<>(Arrays.asList(bookedarr));	
 		String[] choosensit = hashset.toArray(new String[0]);
@@ -124,6 +138,12 @@ public class MainController_jhj {
 		try {
 			dsv = detail_schedulesbiz.get(sid, mcnt);
 			m.addAttribute("dsv", dsv);
+			
+			// 사용가능 쿠폰 리스트 
+			clist = mycouponbiz.selectUsableCoupon(cust.getId());
+//			System.out.println("clist : " + clist);
+			m.addAttribute("mycouponlist", clist);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 	
