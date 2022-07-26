@@ -101,4 +101,14 @@ public class AjaxController_kms {
 		
 		return ja1;
 	}
+	@RequestMapping("/selectreivew")
+	public Object selectreivew(int mid) {
+		List<ReviewVO> ja1 = new JSONArray();
+		try {
+			ja1 = rbiz.selectmreviews(mid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ja1;
+	}
 }
