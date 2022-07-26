@@ -168,7 +168,7 @@ public class MainController_jhj {
 	@RequestMapping("/book1impl")
 	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
 	
-		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater;
+		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater+"&theater="+msg;
 	}
 	
 	@RequestMapping("/book2impl")

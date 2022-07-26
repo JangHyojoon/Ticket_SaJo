@@ -35,10 +35,7 @@
         
     	<script th:inline="javascript">
     	
-		var c = $(".sits__sort sit-number").val()
-		var r = $(".sits__sort sit-row").val()
-    
-    	
+
     		
 		function clickbtn(){
 			var cost = $('input[name=choosen_cost]').val();
@@ -49,17 +46,17 @@
 			}
 			$('.book2').submit();
 			
+			
 		};
-    	$('.btn btn-md btn--warning toogle-sits').click(function(){
-    		alert();
-    		
-    	});
+    
 
 			var test = [[${blist}]];
 	    	$(document).ready(function(){
 	    		for(var i = 0; i<test.length; i++){
 	    			$("#"+test[i].seatid).addClass("sits-state--not");
 	    		}
+	    		
+	    		
 	    		var msg = [[${msg}]];
 	    		if(msg != null){
 	    			alert(msg);
@@ -111,8 +108,8 @@
                     </ul>
                 </div>
                 
-                <div class="col-sm-12 col-lg-10 col-lg-offset-1">
-                <div class="sits-area hidden-xs">
+                <div>
+                <div class="sits-area">
                     <div class="sits-anchor">screen</div>
 
                     <div class="sits">
@@ -155,38 +152,7 @@
                 </div>
             </div>
                 
-            <div class="col-sm-12 visible-xs"> 
-                <div class="sits-area--mobile">
-                    <div class="sits-area--mobile-wrap">
-                        <div class="sits-select">
-                            <select name="sorting_item" class="sits__sort sit-row" tabindex="0">
-                                    <option  th:each="r:${rows}" th:text="${r.r}"  >A</option>
-
-                            </select>
- 
-                            <select name="sorting_item" class="sits__sort sit-number" tabindex="1">
-                                    <option  th:each="c:${columns}" th:text="${c.c}" >1</option>
-                                    
-                            </select>
-
-                            <a href="#" class="btn btn-md btn--warning toogle-sits">Choose sit</a>
-                        </div>
-                    </div>
-
-                    <a href="#" class="watchlist add-sits-line">Add new sit</a>
-
-                    <aside class="sits__checked">
-                            <div class="checked-place">
-                                <span class="choosen-place"></span>
-                            </div>
-                            <div class="checked-result">
-                                
-                            </div>
-                    </aside>
-
-                    <img alt="" src="images/components/sits_mobile.png">
-                </div>
-            </div>   
+            
                 
             </div>
                 
@@ -200,8 +166,8 @@
 		        <input type='hidden' name='tid' th:value="${book1info.tid}">
 		        <input type='hidden' name='mid' th:value="${book1info.mid}">
 		        <input type='hidden' name='sdate' th:value="${book1info.sdate}">
-	            <input type='text' name='choosen_cost' class="choosen-cost" value="0">
-	            <input type='text' name='choosen_sits' class="choosen-sits">
+	            <input type='hidden' name='choosen_cost' class="choosen-cost" value="0">
+	            <input type='hidden' name='choosen_sits' class="choosen-sits">
             </form>
 
         <div class="clearfix"></div>
@@ -220,9 +186,8 @@
         
 
     
-<div th:unless="${session.user == null}">
-<h1 class="text-black text-center">잘못 된 경로입니다.</h1>
-</div>
+
+
 
 	<!-- JavaScript-->
         <!-- jQuery 3.1.1--> 
@@ -260,15 +225,15 @@
 <body th:unless="${session.user != null}">
 	<div class="wrapper">
 	       <div class="error-wrapper">
-	           <a href='/' class="logo logo--dark">
+	           <a th:href="@{/}" class="logo logo--dark">
 	               <img alt='logo' src="images/logo-dark.png">
 	               <p class="slogan--dark">fun to search, fun to watch</p>
 	           </a>
 	
 	           <div class="error">
 	               <img alt='' src='images/error.png' class="error__image">
-	               <h1 class="error__text">sorry, but page can’t be found</h1>
-	               <a href="/" class="btn btn-md btn--warning">return to homepage</a>
+	               <h1 class="error__text">로그인이 만료되었습니다. 다시 로그인해주세요</h1>
+	               <a th:href="@{signin}" class="btn btn-md btn--warning">로그인</a>
 	           </div>
 	       </div>
 	
@@ -277,4 +242,5 @@
 	       </div>
 	
 	</div>
+</body>
 </html>
