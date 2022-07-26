@@ -94,7 +94,8 @@
 
 </script>
 
-<body th:if="${session.user != null}">>
+ 
+<body th:if="${session.user != null}">
         <!-- Main content -->
         <section class="container">
             <div class="order-container">
@@ -109,41 +110,43 @@
                     <div class="order-step third--step">3. Check out</div>
                 </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-8">
                 <div class="checkout-wrapper">
                     <h2 class="page-heading">price</h2>
-                    <ul class="book-result">
-                        <li class="book-result__item">영화 <span class="book-result__count booking-ticket" th:text="${dsv.title}">영화</span></li>
-                        <li class="book-result__item">날짜 <span class="book-result__count booking-price" th:text="${dsv.sdate}">날짜</span></li>
-                        <li class="book-result__item">상영관 <span class="book-result__count booking-ticket"th:text="${dsv.tid}">상영관</span></li>
-                        <li class="book-result__item">회차 <span class="book-result__count booking-ticket" th:text="${dsv.mcnt}">회차</span></li>                 
-                        <li class="book-result__item">시작시간 <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
-                        <li class="book-result__item">끝나는시간 <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
-                        <li class="book-result__item">좌석 <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
-                        <li class="book-result__item">사용할 쿠폰
-						<div class="form-group">
-							<select th:onchange="totalPrice([[${price}]])" id="selectCoupon" class="form-control">
+                    <ul class="book-result" style="display: block;">
+                        <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}">영화</span></li>
+                        <li class="book-result__item col-sm-3">날짜</li><li class="book-result__item"> <span class="book-result__count booking-price" th:text="${dsv.sdate}">날짜</span></li>
+                        <li class="book-result__item col-sm-3">상영관</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.tid}">상영관</span></li>
+                                      
+                        <li class="book-result__item col-sm-3">시작시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
+                        <li class="book-result__item col-sm-3">끝나는시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
+                        <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
+                        <li class="book-result__item col-sm-3">사용할 쿠폰</li>	<li class="book-result__item">
+	                        <select th:onchange="totalPrice([[${price}]])" id="selectCoupon" class="book-result__count booking-ticket"  >
 								<option value="선택">선택</option>
 								<option th:each="mycoupon,index : ${mycouponlist}"
 									th:value="${mycoupon?.sale}" th:id="'coupon '+${mycoupon.id}"
 									th:utext="${mycoupon?.text}+'( '+${mycoupon?.sale}+'원 )'"></option>
 							</select>
-						</div>
+                        </li>
+					
+			
+					
 
-					</li>
-                        
-                        <li class="book-result__item">Total: <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}">가격</span></li>
+					
+                   
+                        <li class="book-result__item col-sm-3">Total: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}">가격</span></li>
                     </ul>
 					<form class="book3">
-						<input type='text' name='sid' th:value="${dsv.sid}">
-						<input type='text' name='mcnt' th:value="${dsv.mcnt}">
-				        <input type='text' name='title' th:value="${dsv.title}">
-				        <input type='text' name='price' th:value="${price}">
-				        <input type='text' name='seatlist' th:value="${seatlist}">
-						<input type='text' name='sdate' th:value="${dsv.sdate}">
-						<input type='text' name='uid' th:value="${session.user.id}">
-						<input type='text' name='totalprice' id="totalprice" th:value="${price}">
-						<input type='text' name='cid' id="selectcid">
+						<input type='hidden' name='sid' th:value="${dsv.sid}">
+						<input type='hidden' name='mcnt' th:value="${dsv.mcnt}">
+				        <input type='hidden' name='title' th:value="${dsv.title}">
+				        <input type='hidden' name='price' th:value="${price}">
+				        <input type='hidden' name='seatlist' th:value="${seatlist}">
+						<input type='hidden' name='sdate' th:value="${dsv.sdate}">
+						<input type='hidden' name='uid' th:value="${session.user.id}">
+						<input type='hidden' name='totalprice' id="totalprice" th:value="${price}">
+						<input type='hidden' name='cid' id="selectcid">
 					
 					</form>
                     <h2 class="page-heading">Choose payment method</h2>
@@ -181,7 +184,9 @@
                 </div>
 
             </div>
-
+			<div class="film-images col-sm-4"  th:id="${sv.mid} ? ${sv.mid}">
+							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${sv.posterimg1}}" style="width:380px; height:600px; padding:10px">
+			</div>
         </section>
         
 
@@ -241,4 +246,5 @@
 	       </div>
 	
 	</div>
+	</body>
 </html>
