@@ -128,12 +128,12 @@ li {
 						src="/images/client-photo/auth.png">
 					</span>
 				</div>
+				<li th:if="${session.user == null}">
+				<li th:unless="${session.user == null}">
 				<a href="#" class="btn btn--sign btn--singin"> me </a>
 				<ul class="auth__function">
-					<li><a href="#" class="auth__function-item">Watchlist</a></li>
-					<li><a href="#" class="auth__function-item">Booked tickets</a></li>
-					<li><a href="#" class="auth__function-item">Discussion</a></li>
-					<li><a href="#" class="auth__function-item">Settings</a></li>
+					<li><a href="/mypage" class="auth__function-item">회원정보</a></li>
+					<li><a href="/signout" class="auth__function-item">로그아웃</a></li>
 				</ul>
 			</div>
 
@@ -141,8 +141,8 @@ li {
                     <a href="/signin" class="btn btn--sign">로그인</a></li>
                     
                     <li th:unless="${session.user == null}">
-                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span>  로그아웃</a></li>	
-		  </div>
+                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span>  로그아웃</a></li>
 
+		</div>
 	</div>
 </header>
