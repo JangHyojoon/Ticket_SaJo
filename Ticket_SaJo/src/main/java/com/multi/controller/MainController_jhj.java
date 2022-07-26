@@ -81,6 +81,7 @@ public class MainController_jhj {
 		
 		
 		Detail_SchedulesVO dsv = null;
+		
 		List<BookedVO> blist = null;
 		List<TheaterVO> rows =null;
 		List<TheaterVO> columns =null;
@@ -104,7 +105,6 @@ public class MainController_jhj {
 			columns = theaterbiz.selectcolumns(theater);
 			m.addAttribute("columns", columns);
 			
-		
 			
 			
 			
@@ -121,6 +121,8 @@ public class MainController_jhj {
 	@RequestMapping("/book3")
 	public String book3(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
 		    String choosen_cost, String choosen_sits, HttpSession session) {
+		
+		
 		//선택 좌석 배열
 		String[] bookedarr =choosen_sits.split(", ");
 		CustVO cust = (CustVO) session.getAttribute("user");// 유저 정보
@@ -144,6 +146,10 @@ public class MainController_jhj {
 //			System.out.println("clist : " + clist);
 			m.addAttribute("mycouponlist", clist);
 			
+			//포스터 이미지 
+			SchedulesVO sv = null;
+			sv = schedulesbiz.get(sid);
+			m.addAttribute("sv", sv);
 		} catch (Exception e) {
 			e.printStackTrace();
 	
@@ -188,7 +194,7 @@ public class MainController_jhj {
 	@RequestMapping("/book1impl")
 	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
 	
-		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater+"&theater="+msg;
+		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater;
 	}
 	
 	@RequestMapping("/book2impl")
@@ -201,7 +207,7 @@ public class MainController_jhj {
 
 	
 	@RequestMapping("/book3impl")
-	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist, String uid) {
+	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist, String uid, int totalprice) {
 		//선택좌석 리스트		
 		seatlist =seatlist.substring(0,seatlist.length() -1);  
 		String sseatlist =seatlist.substring(1,seatlist.length()); 
@@ -239,9 +245,9 @@ public class MainController_jhj {
 			bookedbiz.insertseat(sid,mcnt, seatlist);//book테이블 INSERT
 			} catch (Exception e2) {
 				e2.printStackTrace();
-				return "redirect:book1impl?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
-			}                  //book1impl?mid=1001&date=2022-07-21&time=19%3A00&theater=2
-		ReservationVO rv = new ReservationVO(uid,choosensit.length,price,price);	
+				return "redirect:book2?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
+			}                
+		ReservationVO rv = new ReservationVO(uid,choosensit.length,price,totalprice);	
 		try {
 			reservationbiz.register(rv);
 		} catch (Exception e) {
@@ -268,6 +274,18 @@ public class MainController_jhj {
 	}
 	
 
+	@RequestMapping("/elements")
+	public String elements(Model m) {
+		
+		m.addAttribute("center", "elements");
+		m.addAttribute("header", "header");
+		m.addAttribute("footer", "footer");
+		
+		return "index";
+	}
 	
-
+	@RequestMapping("/websocket")
+	public String websocket() {
+		return "websocket";
+	}
 }

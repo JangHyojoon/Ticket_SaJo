@@ -34,8 +34,37 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         
     	<script th:inline="javascript">
-    	
+ 		var stompClient = null;
+		var id = [[${session.user.id}]];
+		// 서버소켓에 연결
+		function connect() {
+			connect("웹소켓 스타트")
+			var socket = new SockJS('/ws');
+			stompClient = Stomp.over(socket);
 
+			stompClient.connect({}, function(frame) { 
+				setConnected(true);
+				console.log('Connected: ' + frame);
+				stompClient.subscribe('/sends', function(msg) { 
+					$("#all").append(
+							"<h4>" + JSON.parse(msg.body).sendid +":"+
+							JSON.parse(msg.body).content1
+									+ "</h4>");
+				});
+
+			});
+		}
+		// 서버소켓에 연결해제
+		function disconnect() {
+			alert();
+			if (stompClient !== null) {
+				stompClient.disconnect();
+			}
+			setConnected(false);
+			console.log("Disconnected");
+			
+		}
+		
     		
 		function clickbtn(){
 			var cost = $('input[name=choosen_cost]').val();
@@ -44,6 +73,7 @@
 				alert("좌석을 선택해주세요")
 				return
 			}
+			 disconnect();
 			$('.book2').submit();
 			
 			
@@ -52,6 +82,7 @@
 
 			var test = [[${blist}]];
 	    	$(document).ready(function(){
+	    		connect()
 	    		for(var i = 0; i<test.length; i++){
 	    			$("#"+test[i].seatid).addClass("sits-state--not");
 	    		}
@@ -61,6 +92,11 @@
 	    		if(msg != null){
 	    			alert(msg);
 	    		}
+	
+	    		
+	    		
+	    		
+	   
 	
 
     			
@@ -222,6 +258,7 @@
 		</script>
 
 </body>
+
 <body th:unless="${session.user != null}">
 	<div class="wrapper">
 	       <div class="error-wrapper">
@@ -243,4 +280,5 @@
 	
 	</div>
 </body>
+
 </html>

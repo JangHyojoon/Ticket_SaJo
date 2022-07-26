@@ -7236,10 +7236,13 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   margin: -9px 0 -7px;
 }
 .book-result .book-result__item {
-  display: inline-block;
-  font-size: 13px;
+  
+  font-size: 20px;
   color: #4c4145;
   padding-right: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
 }
 .book-result .book-result__count {
   padding: 0 25px;
@@ -7247,6 +7250,9 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   font-weight: bold;
   position: relative;
   top: 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
 }
 .book-result .booking-cost {
   color: #fe505a;
