@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.MovieBiz;
 import com.multi.biz.ReviewBiz;
+import com.multi.biz.SchedulesBiz;
 import com.multi.vo.CustVO;
 import com.multi.vo.MovieVO;
 import com.multi.vo.ReviewVO;
@@ -25,6 +26,9 @@ public class MovielistController {
 	MovieBiz mbiz;
 	@Autowired
 	ReviewBiz rbiz;
+	@Autowired
+	SchedulesBiz sbiz;
+	
 	
 	@RequestMapping("")
 	public String movielist(Model m,Integer mnum,Integer sort) {
@@ -71,7 +75,15 @@ public class MovielistController {
 				} else if(mnum == null) {
 					mlist = mbiz.sortbyrcnt(page);
 				}
+			}else if(sort == 4) {
+				if (mnum != null) {
+					page= mnum;
+					mlist = mbiz.sortbyonmovie(page);
+				} else if(mnum == null) {
+					mlist = mbiz.sortbyonmovie(page);
+				}
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

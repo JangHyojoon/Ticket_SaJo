@@ -34,6 +34,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="schedulesVO">
 		DELETE FROM schedules WHERE id=#{id}
 	</delete>
+	<!-- 0725 김민식 추가 -->
+	<select id="movielistschedule" resultType="schedulesVO">
+		SELECT s.tid as tid, s.sdate as sdate, s.mid as mid, DATE_FORMAT(ds.starttime,'%H:%i') as starttime FROM schedules s
+		INNER JOIN detail_schedules ds ON ds.sid = s.id
+		WHERE mid = #{mid} AND sdate = #{sdate};
+	</select>
 </mapper>
 
 

@@ -40,4 +40,7 @@ public interface MovieMapper {
 	//0716 안원영 추가
 	public Integer selectrankcnt() throws Exception;
 	
+	//0726 김민식 추가
+	public List<MovieVO> sortbyonmovie(int mnum) throws Exception;
+	
 }

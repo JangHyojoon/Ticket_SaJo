@@ -1,3 +1,4 @@
+<!doctype html>
 <html  lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<!-- Basic Page Needs -->
@@ -33,30 +34,162 @@
 
         <!-- Modernizr --> 
         <script src="/js/external/modernizr.custom.js"></script>
+        <!-- Ajax -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script>
+	<style>
+	.tbox{
+	line-height:500%;
+	text-align: center;
+	margin: 5px 16px 5px 0;
+	display: inline-block;
+	padding: 9px 150px 8px 50px;
+	font-size: 16px;
+	}
+	.noschedules{
+	text-align: center;
+	font-size:30px;
+	}
+	
 
-	$(document).ready(function(){
-		var mid = $(this).attr('id');
-			$('.movie').click(function(){
-				var mid = $(this).attr('id');
-				$('.movie').css({'opacity':''});
-				$('.movie').not($(this)).css({'opacity':'0.3'});
-				selectmovie(mid);
-			});
-			
-			
+	</style>
+	
+	
+	<script>
+	
+	var tcnt;
+	var tid;
+	function selecttime(tid,mid,sdate){
+			$.ajax({
+			    url:'/selecttime',
+			    data:{
+			  	  'mid':mid,
+			  	  'sdate':sdate,
+			  	  'tid':tid
+			    },
+			    async:false,
+				success:function(data){
+					for(var i = 0 ; i < data.length; i++){
+						$("#"+tid).append("<li class='time-select__item'>"+ data[i].starttime + "</li>");
+				    	$('.time-select__item').click(function (){
+			            	//visual iteractive for choose
+			                $('.time-select__item').removeClass('active');
+			                $(this).addClass('active');
+			                $('input[name=time]').attr('value',$(this).text());
+			                $('input[name=theater]').attr('value',$(this).parents('ul').attr('id'));
+			                $('#book1btn').show();
+				    	});
+					}
+				}
+		   });
+	};
+	function selectmovie(mid,date){
+		$.ajax({
+		    url:'/selectmovie',
+		    data:{
+		  	  'mid':mid,
+		  	  'date':date
+		    },
+		    async:false,
+			success:function(data){
+				var datalength = data.length		    
+				$(".pick").empty();
+				$(".times").empty();	  	
+				$('input[name=time]').attr('value','');
+				$('input[name=theater]').attr('value','');
+				$('#book1btn').hide();
+				if(datalength==0){
+					$(".pick").append($("<div class='noschedules'><i class='fa fa-times-circle fa-5x'></i><br>상영 스케쥴이 없습니다.<br>다른 날짜를 선택해 주세요</div>"));
+					}else{
+						for(var i = 0; i < datalength; i++) {
+							tid = data[i].tid;
+							var mid = data[i].mid;
+							var sdate = data[i].sdate;	  
+							tcnt = i
+							$(".pick").append($("<ul class='ul' id='ul'></ul>"));
+							$("#ul").attr('id',+data[i].tid);
+							$("#"+data[i].tid).append("<li class='tbox'>"+ data[i].tid +'관'+ "</li>");
+							selecttime(tid,mid,sdate);			    	  
+							}	    	  
+		  	  	}	             
+			}
 		});
+	};
+	function chk_form() {
+		var session = '[[${session.user}]]';
+	
+
+		if(session == ''){
+			var result = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?');
+	        if(result) {
+		           //yes
+		            location.replace('signin');
+		            return false;
+		        } else {
+		     		
+		        }
+			
+		}else{
+			
+			$('#book1').submit();
+			
+		}
 		
 
+
+
+		
+		}
+
+			
+			
+			
+			
+			
+	$(document).ready(function(){
+
+				$('#book1btn').hide();
+				//영화 선택 
+				$(function() {
+					$('.film-images').click(function(){
+						var mid = $(this).attr('id');
+						var date = $('input[name="datepicker"]').val();
+						
+						$('.film-images').css({'opacity':''});
+						$('.film-images').not($(this)).css({'opacity':'0.3'});
+	
+						$('input[name=mid]').attr('value',mid);
+						selectmovie(mid,date);				
+					});
+	
+				});
+				//오늘 날짜			
+				$(function() {
+					$('#datepicker').datepicker('setDate', 'today');
+					var date = $('#datepicker').val();
+					
+					$('input[name=date]').attr('value',date);
+					
+				});
+				//날짜 선택
+				$(function() {
+				$('#datepicker').on("change",function(){
+					var mid = $('input[name="mid"]').val();
+					date=$(this).val();					
+					$('input[name=date]').attr('value',date);
+					selectmovie(mid,date);
+					});
+				
+				});		
+		});
 	</script>
 </head>
 
 <body>
+
     <div class="wrapper">
-
+	
         <!-- Main content -->
-
+        
         <section class="container">
             <div class="order-container">
                 <div class="order">
@@ -77,14 +210,16 @@
               <div class="swiper-wrapper " >
                   <!--First Slide-->
 				
-                  <div class="swiper-slide" th:each = "s : ${scheduleslist}" >
-                                 
-                       <div class="movie" th:id="${s.mid} ? ${s.mid}"> 
-	                       <img  alt='' src= "" th:src="@{'css/img/'+${s.posterimg1}}"  width="380" height="600">						   
-                       </div>
-                        <p class="choose-film__title" th:text="${s.title}">Movie Title</p>
-                      
-                  </div>
+
+					<div class="swiper-slide" th:each = "s : ${scheduleslist}"> 
+						<div class="film-images"  th:id="${s.mid} ? ${s.mid}">
+							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${s.posterimg1}}" width="380" height="600">
+						</div>
+						<p class="choose-film__title" th:text="${s.title}">The Fifth Estate</p>
+
+					</div>
+
+
 
               </div>
             </div>
@@ -96,59 +231,43 @@
 
                 <h2 class="page-heading ">Date</h2>
  
-                <div class="choose-container choose-container--short">
-                    <div class="datepicker">
-                      <span class="datepicker__marker" ><i class="fa fa-calendar"></i>Date</span>
-                     
-                      <input type="date" id="datepicker" name="datepicker" class="datepicker__input">
-                     
+                
+                   <div class="datepicker">
+                      <span class="datepicker__marker">Date</span>
+                      <input type="text" id="datepicker" name="datepicker" value='' class="datepicker__input">
                     </div>
-                </div>
+               
 
                 <h2 class="page-heading">Pick time</h2>
-
-					<div class="time-select time-select--wide">
-                        <div class="time-select__group group--first"  th:each = "s : ${scheduleslist}">
-                            <div class="col-sm-2">
-                                <p class="time-select__place" th:text="${s.tid}+'관'">1관</p>
-                            </div>
-                            <div class="col-sm-10">
-                            <ul class="col-sm-2 items-wrap" th:each = "ds : ${detail_scheduleslist}">
-                                <li class="time-select__item" th:text="${ds.starttime}">09:40</li>
-                            </ul>
-                            </div>
-                        </div>
-
-                        
-
-                    </div>
-		</div>
+				<div class="time-select time-select--wide pick">                
+              
+                   </div>
+			</div>
 		</section>
-        <div class="clearfix"></div>
+       <form class="book1" method='post' action='book1impl' id="book1">
+						<input type='hidden' name='mid' class="mid" value="">
+						<input type='hidden' name='date' class="date" value="">
+						<input type='hidden' name='time' class="time" value="">
+						<input type='hidden' name='theater' class="theater" value="">
+		</form>
 
-        <form id='film-and-time' class="booking-form" method='get' action='book2.html'>
-            <input type='text' name='choosen-movie' class="choosen-movie">
-    
-            <input type='text' name='choosen-date' class="choosen-date">
+      
             
-            <input type='text' name='choosen-cinema' class="choosen-cinema">
-            <input type='text' name='choosen-time' class="choosen-time">
+    
+          
         
 
             <div class="booking-pagination">
-                    <a href="#" class="booking-pagination__prev hide--arrow">
-                        <span class="arrow__text arrow--prev"></span>
-                        <span class="arrow__info"></span>
-                    </a>
-                    <a href="book2.html" class="booking-pagination__next">
+
+                    <a href="#" onclick="return chk_form()" class="booking-pagination__next" id="book1btn">
                         <span class="arrow__text arrow--next">next step</span>
                         <span class="arrow__info">choose a sit</span>
                     </a>
             </div>
 
-        </form>
+       
         
-        <div class="clearfix"></div>
+     
 
 
     </div>
@@ -156,34 +275,11 @@
 
 
 	<!-- JavaScript-->
-        <!-- jQuery 3.1.1--> 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
-        <!-- Migrate --> 
-        <script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
-        <!-- jQuery UI -->
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <!-- Bootstrap 3--> 
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-        <!-- Mobile menu -->
-        <script src="/js/jquery.mobile.menu.js"></script>
-         <!-- Select -->
-        <script src="/js/external/jquery.selectbox-0.2.min.js"></script>
-        <!-- Swiper slider -->
-        <script src="/js/external/idangerous.swiper.min.js"></script>
-
-        <!-- Form element -->
-        <script src="/js/external/form-element.js"></script>
-        <!-- Form validation -->
-        <script src="/js/form.js"></script>
-
-        <!-- Custom -->
-        <script src="/js/custom.js"></script>
-		
 		<script type="text/javascript">
             $(document).ready(function() {
                 init_BookingOne();
+                
             });
 		</script>
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,10 +14,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.multi.biz.MovieBiz;
 import com.multi.biz.ReviewBiz;
+import com.multi.biz.SchedulesBiz;
 import com.multi.frame.Util;
 import com.multi.ncp.CFRAPI;
 import com.multi.vo.MovieVO;
 import com.multi.vo.ReviewVO;
+import com.multi.vo.SchedulesVO;
 
 @RestController
 public class AjaxController_kms {
@@ -27,6 +30,8 @@ public class AjaxController_kms {
 	ReviewBiz rbiz;
 	@Autowired
 	CFRAPI cfrapi;
+	@Autowired
+	SchedulesBiz sbiz;
 	
 	@RequestMapping("/movielist/chartimpl")
 	public Object chartimpl(int id) {
@@ -85,5 +90,15 @@ public class AjaxController_kms {
 		obj = cfrapi.cfrapi(mfile.getOriginalFilename());// CFR 판독 진행 
 		return obj;
 	}
-	
+	@RequestMapping("/selectschedule")
+	public Object cfrresult(int mid,String date) {
+		List<SchedulesVO> ja1 = new JSONArray();
+		try {
+			ja1 = sbiz.movielistschedule(mid, date);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ja1;
+	}
 }

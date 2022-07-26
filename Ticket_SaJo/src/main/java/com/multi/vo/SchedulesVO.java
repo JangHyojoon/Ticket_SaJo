@@ -21,6 +21,7 @@ public class SchedulesVO {
 	private String posterimg2;
 	private String runningtime;
 
+	private String starttime;
 	public SchedulesVO(int tid, int mid, String sdate) {
 		super();
 		this.tid = tid;
