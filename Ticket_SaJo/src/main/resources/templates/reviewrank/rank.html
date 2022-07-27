@@ -3,7 +3,7 @@
 <head>
 <!-- Basic Page Needs -->
 <meta charset="utf-8">
-<title>AMovie - Rates</title>
+<title>Ticket_SaJo</title>
 <meta name="description" content="A Template by Gozha.net">
 <meta name="keywords" content="HTML, CSS, JavaScript">
 <meta name="author" content="Gozha.net">
@@ -65,7 +65,7 @@
 									th:each="movie,index : ${starSortList}">
 									<td class="rates__obj"><a href="#" class="rates__obj-name"
 										th:text="(${index.index}+1+${mnum})+'. '+${movie.title}" th:href="@{/movielist/detail(id=${movie.id})}"></a></td>
-									<td class="rates__vote" th:text="${movie.rcnt}+' reviews'">
+									<td class="rates__vote" th:text="'실관람평 : '+ ${movie.rcnt}+' 명'">
 										reviews</td>
 									<td class="rates__result" th:text="${movie.star}">5.0</td>
 									<td class="rates__stars">
@@ -92,9 +92,9 @@
 
 						<div class="pagination paginatioon--full coloum-wrapper">
 							<a th:href="@{/reviewrank(mnum=${mnum}-5)}"
-								th:if="${mnum}-5 >= 0" class="pagination__prev">prev</a> <a
+								th:if="${mnum}-5 >= 0" class="pagination__prev">이전</a> <a
 								th:href="@{/reviewrank(mnum=${mnum}+5)}"
-								th:if="${mnum}+5 <= ${rankcnt}" class="pagination__next">next</a>
+								th:if="${mnum}+5 <= ${rankcnt}" class="pagination__next">다음</a>
 						</div>
 					</div>
 				</div>
