@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		})
+		$('.user').submit();
+		alert('a');
+	});
+});
+</script>
+<br>
+<br>
+<br>
+<div class="field-wrap">
+      <h3>회원정보 수정</h3>
+<form class ="user">
+      <div class="field-wrap"> 
+         아이디: <input type="text" name="id" th:value="${session.user.id}">
+      </div>
+
+      <div class="field-wrap">
+         비밀번호: <input type="text" name="pwd" th:value="${session.user.pwd}">
+      </div>
+      
+      <div class="field-wrap">
+         이름: <input type="text" name="name" th:value="${session.user.name}">
+      </div>
+    
+  <br>
+  <br>
+  
+  <div class="field-wrap">
+  	<button id="updatebtn" class="btn btn-md btn--warning btn--wider">회원정보 수정</button>
+  </div>
+</form>
+</div>

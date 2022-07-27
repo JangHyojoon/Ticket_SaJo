@@ -15,5 +15,6 @@ public interface CustMapper {
 	public void update(CustVO users) throws Exception;
 	public CustVO select(String id) throws Exception;
 	public List<CustVO> selectall() throws Exception;
+	public void updatecust(CustVO users) throws Exception;
 
 }
