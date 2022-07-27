@@ -61,11 +61,11 @@ INSERT INTO movie VALUES (null, 41,'시계 태엽 오렌지','Stanley Kubrick','
 Select * from movie;
 
 -- cust Insert
-INSERT INTO cust VALUES ('kms', 'pwD1', '김민식', 19900805, '1000', 'man');
-INSERT INTO cust VALUES ('awy', 'pwD2', '안원영', 19600908, '1500', 'man');
-INSERT INTO cust VALUES ('jhj', 'pwD3', '장효준', 19680402, '2000', 'man');
-INSERT INTO cust VALUES ('jsy', 'pwD4', '정세연', 19601103, '3000', 'woman');
-INSERT INTO cust VALUES ('ljm', 'pwD5', '이진만', 19390805, '4500', 'man');
+INSERT INTO cust VALUES ('kms', 'pwD1', '김민식', 19900805, '0', 'man');
+INSERT INTO cust VALUES ('awy', 'pwD2', '안원영', 19600908, '0', 'man');
+INSERT INTO cust VALUES ('jhj', 'pwD3', '장효준', 19680402, '0', 'man');
+INSERT INTO cust VALUES ('jsy', 'pwD4', '정세연', 19601103, '0', 'woman');
+INSERT INTO cust VALUES ('ljm', 'pwD5', '이진만', 19390805, '0', 'man');
 INSERT INTO cust VALUES ('id01', '11111', '방말숙', 19700504, '0', 'woman');
 INSERT INTO cust VALUES ('id02', '22222', '이말숙', 19620503, '0', 'man');
 INSERT INTO cust VALUES ('id03', '33333', '태말숙', 20030214, '0', 'woman');
