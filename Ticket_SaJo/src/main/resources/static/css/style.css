@@ -6858,6 +6858,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .choose-film .film-images {
   position: relative;
+
 }
 .choose-film .film-images:before {
   content: '';

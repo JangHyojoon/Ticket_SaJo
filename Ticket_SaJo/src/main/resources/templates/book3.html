@@ -99,21 +99,24 @@
         <!-- Main content -->
         <section class="container">
             <div class="order-container">
-                <div class="order">
-                    <img class="order__images" alt='' src="images/tickets.png">
-                    <p class="order__title">Book a ticket <br><span class="order__descript">and have fun movie time</span></p>     
-                </div>
+             
             </div>
                 <div class="order-step-area">
-                    <div class="order-step first--step order-step--disable ">1. What &amp; Where &amp; When</div>
-                    <div class="order-step second--step order-step--disable">2. Choose a sit</div>
-                    <div class="order-step third--step">3. Check out</div>
+                    <div class="order-step first--step order-step--disable ">1. 영화 선택</div>
+                    <div class="order-step second--step order-step--disable">2. 좌석 선택</div>
+                    <div class="order-step third--step">3. 결제</div>
                 </div>
-
-            <div class="col-sm-8">
-                <div class="checkout-wrapper">
-                    <h2 class="page-heading">price</h2>
-                    <ul class="book-result" style="display: block;">
+                
+                
+		
+          
+               
+                    <h2 class="page-heading">예매정보</h2>
+                 <div>
+	                 <div class="film-images col-lg-3"  th:id="${sv.mid} ? ${sv.mid}" >
+					 	<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${sv.posterimg1}}" style="width:260px; height:400px; margin:10px;justify-content: center;">
+					 </div>
+                     <ul class="book-result col-lg-8" style="display: block;">
                         <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}">영화</span></li>
                         <li class="book-result__item col-sm-3">날짜</li><li class="book-result__item"> <span class="book-result__count booking-price" th:text="${dsv.sdate}">날짜</span></li>
                         <li class="book-result__item col-sm-3">상영관</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.tid}">상영관</span></li>
@@ -121,6 +124,7 @@
                         <li class="book-result__item col-sm-3">시작시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
                         <li class="book-result__item col-sm-3">끝나는시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
                         <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
+                        <li class="book-result__item col-sm-3">적립금</li><li class="book-result__item"> <input type="number" name='point' th:value="${cust.point}"></li>
                         <li class="book-result__item col-sm-3">사용할 쿠폰</li>	<li class="book-result__item">
 	                        <select th:onchange="totalPrice([[${price}]])" id="selectCoupon" class="book-result__count booking-ticket"  >
 								<option value="선택">선택</option>
@@ -129,14 +133,15 @@
 									th:utext="${mycoupon?.text}+'( '+${mycoupon?.sale}+'원 )'"></option>
 							</select>
                         </li>
-					
-			
-					
-
-					
-                   
-                        <li class="book-result__item col-sm-3">Total: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}">가격</span></li>
                     </ul>
+                 </div> 
+                 
+                     
+                  <ul class="book-result col-lg-8" style="display: block;margin-top:30px;">
+                                <li class="book-result__item col-sm-3">최종 금액: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}+'원'">가격</span></li>
+        		  </ul>
+        		  
+                   
 					<form class="book3">
 						<input type='hidden' name='sid' th:value="${dsv.sid}">
 						<input type='hidden' name='mcnt' th:value="${dsv.mcnt}">
@@ -147,59 +152,33 @@
 						<input type='hidden' name='uid' th:value="${session.user.id}">
 						<input type='hidden' name='totalprice' id="totalprice" th:value="${price}">
 						<input type='hidden' name='cid' id="selectcid">
+						
 					
 					</form>
-                    <h2 class="page-heading">Choose payment method</h2>
-                    <div class="payment">
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay1.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay2.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay3.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay4.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay5.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay6.png">
-                        </a>
-                        <a href="#" class="payment__item">
-                            <img alt='' src="images/payment/pay7.png">
-                        </a>
-                    </div>
+                    
 
 
 
                 
-                </div>
                 
-                <div class="order">
-                    <a href="#" class="btn btn-md btn--warning btn--wide" id="book3btn">purchase</a>
-                </div>
+                
+               
 
-            </div>
-			<div class="film-images col-sm-4"  th:id="${sv.mid} ? ${sv.mid}">
-							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${sv.posterimg1}}" style="width:380px; height:600px; padding:10px">
-			</div>
+            
+			
         </section>
         
-
+ 			
         <div class="clearfix"></div>
 
         <div class="booking-pagination">
                 <a href="book2.html" class="booking-pagination__prev">
-                    <p class="arrow__text arrow--prev">prev step</p>
-                    <span class="arrow__info">choose a sit</span>
+                    <p class="arrow__text arrow--prev">이전 페이지</p>
+                    <span class="arrow__info">좌석 선택</span>
                 </a>
-                <a href="#" class="booking-pagination__next hide--arrow">
-                    <p class="arrow__text arrow--next">next step</p>
-                    <span class="arrow__info"></span>
+                <a href="#" class="booking-pagination__next" id="book3btn">
+                    <p class="arrow__text arrow--next">결제하기</p>
+                    <span class="arrow__info">&nbsp;</span>
                 </a>
         </div>
     

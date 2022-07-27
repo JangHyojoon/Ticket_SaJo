@@ -145,7 +145,7 @@ public class MainController_jhj {
 			clist = mycouponbiz.selectUsableCoupon(cust.getId());
 //			System.out.println("clist : " + clist);
 			m.addAttribute("mycouponlist", clist);
-			
+			m.addAttribute("cust", cust);
 			//포스터 이미지 
 			SchedulesVO sv = null;
 			sv = schedulesbiz.get(sid);
