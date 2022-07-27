@@ -179,30 +179,24 @@
 	
         <!-- Main content -->
         
-        <section class="container">
-            <div class="order-container">
-                <div class="order">
-                    <img class="order__images" alt='' src="images/tickets.png">
-                    <p class="order__title">Book a ticket <br><span class="order__descript">and have fun movie time</span></p>
-
-                </div>
-            </div>
+        <section class="container" style="margin-top:80px;">
+     
                 <div class="order-step-area">
-                    <div class="order-step first--step">1. What &amp; Where &amp; When</div>
+                    <div class="order-step first--step">1. 영화 선택</div>
                 </div>
 
-            <h2 class="page-heading heading--outcontainer">Choose a movie</h2>
+            <h2 class="page-heading heading--outcontainer">상영중인 영화</h2>
         </section>
         
-        <div class="choose-film" >
-            <div class="swiper-container" >
-              <div class="swiper-wrapper " >
+        <div class="choose-film">
+            <div class="swiper-container">
+              <div class="swiper-wrapper" >
                   <!--First Slide-->
 				
 
 					<div class="swiper-slide" th:each = "s : ${scheduleslist}"> 
 						<div class="film-images"  th:id="${s.mid} ? ${s.mid}">
-							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${s.posterimg1}}" width="380" height="600">
+							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${s.posterimg1}}" width="360" height="600">
 						</div>
 						<p class="choose-film__title" th:text="${s.title}">The Fifth Estate</p>
 
@@ -218,16 +212,16 @@
             <div class="col-sm-12">
 
 
-                <h2 class="page-heading ">Date</h2>
+                <h2 class="page-heading ">날짜</h2>
  
                 
                    <div class="datepicker">
-                      <span class="datepicker__marker">Date</span>
+                      <span class="datepicker__marker">상영일</span>
                       <input type="text" id="datepicker" name="datepicker" value='' class="datepicker__input">
                     </div>
                
 
-                <h2 class="page-heading">Pick time</h2>
+                <h2 class="page-heading">시간</h2>
 				<div class="time-select time-select--wide pick">                
               
                    </div>
@@ -249,8 +243,8 @@
             <div class="booking-pagination">
 
                     <a href="#" onclick="return chk_form()" class="booking-pagination__next" id="book1btn">
-                        <span class="arrow__text arrow--next">next step</span>
-                        <span class="arrow__info">choose a sit</span>
+                        <span class="arrow__text arrow--next">다음 페이지</span>
+                        <span class="arrow__info">좌석 선택</span>
                     </a>
             </div>
 

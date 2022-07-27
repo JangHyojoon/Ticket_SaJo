@@ -1,5 +1,9 @@
 package com.multi.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +38,22 @@ public class AjaxController_jsy {
 		}
 		return result;
 	}
-
-}
+	
+	@RequestMapping("checkpwd")
+		public String checkpwd(String delete_pwd, HttpSession session) {
+			CustVO cust = null;
+			List<CustVO> list = null;
+			cust = (CustVO) session.getAttribute("user");
+			String pwd = cust.getPwd();
+			String result = "0";
+			
+			try {
+				if(pwd.equals(delete_pwd)) {
+					result = "1";
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
+	}

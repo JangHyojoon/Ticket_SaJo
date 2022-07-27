@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+   <div class="field-wrap">
+      <h3>내 정보</h3>
+
+      <div class="field-wrap"> 
+         <img src = "/img/user.png" width="20">
+         <span th:text="${session.user.name}"></span>님
+      </div>
+
+      <div class="field-wrap">
+         <a href="mymovielist">나의 예매 내역</a>
+      </div>
+      
+      <div class="field-wrap">
+            <a href="pointlist">내 포인트 내역</a>
+         </div>
+
+      <div class="field-wrap">
+         <p>기본 정보</p>
+         <div class="field-wrap">
+            <a href="/custdetail">회원 정보 수정</a>
+         </div>
+         <div class="field-wrap">
+            <a href="/custdelete">회원탈퇴 </a>
+         </div>
+      </div>
+    </div>

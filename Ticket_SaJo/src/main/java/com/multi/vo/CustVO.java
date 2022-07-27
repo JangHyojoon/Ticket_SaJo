@@ -26,5 +26,11 @@ public class CustVO {
 	private Date birth;	
 	private int point;
 	private String sex;
+	
+	public CustVO(String id, String pwd, String name) {
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+	}
 
 }
