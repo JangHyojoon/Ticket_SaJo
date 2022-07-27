@@ -47,6 +47,11 @@ img, .movie-beta__info{
 
 }
 
+#starsortdiv{
+	border-radius: 10px;
+
+}
+
 </style>
 
 <script>
@@ -117,7 +122,7 @@ img, .movie-beta__info{
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					Come Out</div>
+					개봉연도 : </div>
 
 				<div class="tp-caption  slide__date margin-slider" data-x="right"
 					data-hoffset='40' data-y="186"
@@ -182,7 +187,7 @@ img, .movie-beta__info{
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					Come Out</div>
+					개봉연도 : </div>
 				<div
 					class="tp-caption slide__date position-center postion-place--two lfb ltb"
 					data-x="center" data-hoffset='50' data-y="242"
@@ -217,8 +222,7 @@ img, .movie-beta__info{
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					<a href="#" class="btn btn-md btn--danger btn--wide slider--btn">learn
-						more</a>
+					<a href="#" class="btn btn-md btn--danger btn--wide slider--btn">영화정보 GO!</a>
 				</div>
 			</li>
 
@@ -262,7 +266,7 @@ img, .movie-beta__info{
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					Come Out 1960</div>
+					개봉연도 : 1960</div>
 
 				<div class="tp-caption slider-wrap-btn" data-x="center" data-y="310"
 					data-frames='[{
@@ -280,8 +284,7 @@ img, .movie-beta__info{
                                "to":"opacity:0;",
                                "ease":"Power3.easeInOut"
                              }]'>
-					<a href="#" class="btn btn-md btn--danger slider--btn">check
-						out movies</a>
+					<a href="#" class="btn btn-md btn--danger slider--btn">영화정보 GO!</a>
 				</div>
 			</li>
 
@@ -300,8 +303,7 @@ img, .movie-beta__info{
 <!-- Main content -->
 <section class="container">
 	<div class="movie-best">
-		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
-			choice</div>
+		<div class="col-sm-10 col-sm-offset-1 movie-best__rating" id="starsortdiv"> 평점이 높은 영화 </div>
 		<div class="col-sm-12 change--col" id="dropdown_movie_info">
 			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"
 				th:if="${index.index}<3" id="starsortimgdiv">
@@ -335,58 +337,57 @@ img, .movie-beta__info{
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
-						<p th:text="'Comments ' + ${movie.rcnt} + ' people review'"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
 					</li>
 					<li class="last-block"><a th:href=@{/movielist/detail(id=${movie.id})}
 						class="slide__link">more</a></li>
 				</ul>
 			</div>
 		</div>
-		<div class="col-sm-10 col-sm-offset-1 movie-best__check">check
-			all movies now playing</div>
+		<div class="col-sm-10 col-sm-offset-1 movie-best__check" id="starsortdiv"> 오늘 상영작 확인하러 가기 </div>
 	</div>
 
 	<div class="col-sm-12">
 		<div class="mega-select-present mega-select-top mega-select--full">
-			<div class="mega-select-marker">
+			<div class="mega-select-marker text-center">
 				<div class="marker-indecator film-category">
 					<p class="select-marker">
-						<span>find movie due to </span> <br> your mood
+						<span> 영화 장르를 찾아보세요. </span> <br> 장르
 					</p>
 				</div>
 
 				<div class="marker-indecator actors">
 					<p class="select-marker">
-						<span> like particular stars</span> <br>find them
+						<span> 좋아하는 배우는 누구입니까? </span> <br> 영화배우
 					</p>
 				</div>
 
 				<div class="marker-indecator director">
 					<p class="select-marker">
-						<span>admire personalities - find </span> <br>by director
+						<span> 어떤 감독의 상영작이 궁금하신가요? </span> <br> 감독 
 					</p>
 				</div>
 
 				<div class="marker-indecator country">
 					<p class="select-marker">
-						<span>search for movie from certain </span> <br>country?
+						<span>어느 국가의 영화를 보고싶으신가요? </span> <br> 나라
 					</p>
 				</div>
 			</div>
 
 			<div class="mega-select pull-right">
-				<span class="mega-select__point">Search by</span>
+				<span class="mega-select__point"> 검색하기 </span>
 				<!-- search 메뉴  -->
 				<ul class="mega-select__sort">
 					<li class="filter-wrap"><a href="#"
 						class="mega-select__filter filter--active"
-						data-filter='film-category'>Category</a></li>
+						data-filter='film-category'>장르</a></li>
 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter" data-filter='actors'>Actors</a></li>
+						class="mega-select__filter" data-filter='actors'>배우</a></li>
 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter" data-filter='director'>Director</a></li>
+						class="mega-select__filter" data-filter='director'>감독</a></li>
 					<li class="filter-wrap"><a href="#"
-						class="mega-select__filter" data-filter='country'>Country</a></li>
+						class="mega-select__filter" data-filter='country'>국가</a></li>
 				</ul>
 
 				<input name="search-input" type='text' class="select__field"
@@ -394,13 +395,13 @@ img, .movie-beta__info{
 
 				<div class="select__btn">
 					<a href="#" class="btn btn-md btn--shine film-category"
-						onclick="filter(this,'category')">find </a> <a href="#"
+						onclick="filter(this,'category')">장르 search </a> <a href="#"
 						class="btn btn-md btn--shine actors"
-						onclick="filter(this,'actors')">find </a> <a href="#"
+						onclick="filter(this,'actors')">배우 search </a> <a href="#"
 						class="btn btn-md btn--shine director"
-						onclick="filter(this,'director')">find </a> <a href="#"
+						onclick="filter(this,'director')">감독 search </a> <a href="#"
 						class="btn btn-md btn--shine country"
-						onclick="filter(this,'country')">find </a>
+						onclick="filter(this,'country')">나라 search </a>
 
 				</div>
 
@@ -453,8 +454,7 @@ img, .movie-beta__info{
 
 	<div class="clearfix"></div>
 
-	<h2 id='target' class="page-heading heading--outcontainer">Today
-		Movie !!</h2>
+	<h2 id='target' class="page-heading heading--outcontainer"> 오늘의 상영작을 확인해 보세요!! </h2>
 
 	<div class="col-sm-12">
 		<div class="row">
