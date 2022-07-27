@@ -15,8 +15,7 @@
 	width: max-content;
 	-webkit-text-fill-color: transparent;
 	/* Will override color (regardless of order) */
-	-webkit-text-stroke-width: 1.3px;
-	-webkit-text-stroke-color: #2b2a29;
+	
 }
 
 .star-ratings-fill {
@@ -300,7 +299,7 @@ img, .movie-beta__info{
 <!-- Main content -->
 <section class="container">
 	<div class="movie-best">
-		<div class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
+		<div style="margin-top:100px;"class="col-sm-10 col-sm-offset-1 movie-best__rating">Best
 			choice</div>
 		<div class="col-sm-12 change--col" id="dropdown_movie_info">
 			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"

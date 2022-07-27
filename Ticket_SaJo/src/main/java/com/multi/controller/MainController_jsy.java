@@ -102,7 +102,7 @@ public class MainController_jsy {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/";
+		return "index";
 	}
 	
 	@RequestMapping("/mypage")
