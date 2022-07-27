@@ -102,18 +102,60 @@ public class MainController_jsy {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/";
+		return "index";
 	}
 	
 	@RequestMapping("/mypage")
 	public String mypage(Model m) {
-		m.addAttribute("center", "mypage");
+		m.addAttribute("center", "mypage/mypage");
 		return "index";
 	}
 	
+	@RequestMapping("/custdetail")
+	public String custdetail(Model m, CustVO cust) {
+		m.addAttribute("center", "mypage/custdetail");
+		return "index";
+	}
+	
+	@RequestMapping("/update")
+	public String update(Model m, CustVO cust, HttpSession session) {
+		try {			
+			CustVO cu = (CustVO) session.getAttribute("user");
+			cust.setBirth(cu.getBirth());
+			cust.setPoint(cu.getPoint());
+			cust.setSex(cu.getSex());
+			custbiz.modify(cust);
+			CustVO c = custbiz.get(cust.getId());
+			session.setAttribute("user", c);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:custdetail?id="+cust.getId();
+	}
+
 	@RequestMapping("custdelete")
 		public String custdelete(Model m, HttpSession session) {
-			m.addAttribute("center", "custdelete");
+		m.addAttribute("center", "mypage/custdelete");
 			return "index";
-		}
 	}
+	
+	@RequestMapping("custdeleteimpl")
+		public String custdeleteimpl(Model m, String now_pwd, HttpSession session) {
+		CustVO cust = (CustVO) session.getAttribute("user");
+		
+		if(!cust.getPwd().equals(now_pwd)) {
+			System.out.println("비밀번호가 다릅니다.");		
+		}else {
+			System.out.println("해당 id가 삭제되었습니다: " + cust);
+			try {
+				session.removeAttribute("user");
+				custbiz.remove(cust.getId());
+			}catch (Exception e) {
+				e.printStackTrace();
+			}		
+		}
+		m.addAttribute("center", "mypage/custbye");
+		return "index";
+	}
+}
