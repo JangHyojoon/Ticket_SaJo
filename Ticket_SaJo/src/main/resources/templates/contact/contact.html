@@ -7,6 +7,11 @@ margin: 20px 0px 20px;
 p{
 margin: 0px;
 }
+#btn1{
+background-color: gray;
+border: solid 1px gray;
+
+}
 </style>
 </head>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
@@ -28,7 +33,7 @@ margin: 0px;
         <div class="contact-form-wrapper">
             <div class="container">
                 <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                    <form id='contact-form' class="form row" action="https://script.google.com/macros/s/AKfycbzgoGkp4W2fwgmuyMIVzKUHhMJGeepA6um90CzH7SG6r_XmSco/exec" method="POST" data-email="qhflrnfl4324@gmail.com">
+                    <form id='contact-form' class="form row" action="https://script.google.com/macros/s/AKfycbzgoGkp4W2fwgmuyMIVzKUHhMJGeepA6um90CzH7SG6r_XmSco/exec" method="POST">
                         <p class="form__title">Drop us a line</p>
                         <div class="col-sm-6">
                             <input type='text' placeholder='Your name' name='user-name' class="form__name">
@@ -39,7 +44,7 @@ margin: 0px;
                         <div class="col-sm-12">
                             <textarea placeholder="Your message" name="user-message" class="form__message"></textarea>
                         </div>
-                        <button type="submit" class='btn btn-md btn--danger'>send message</button>
+                        <button type="submit" id="btn1" class='btn btn-md btn--danger'>send message</button>
                     </form>
                     <section class="email-me">
                      <div>

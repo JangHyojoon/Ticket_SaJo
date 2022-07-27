@@ -173,7 +173,8 @@ img{
 		
 		<script type="text/javascript">
 		function display(data){
-			if(data==''){
+			
+			if(data==''||data.info.faceCount==0){
 				$('#celeb').hide();
 				$('#celeb').fadeIn(3000);
 				$('#celeb').text("사진을 한번 더 확인해 주세요");
