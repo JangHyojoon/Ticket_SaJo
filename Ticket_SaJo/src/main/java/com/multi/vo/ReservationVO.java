@@ -28,6 +28,7 @@ public class ReservationVO {
 	private String title;
 	private String releasedate;
 	private String starttime;
+	private String endtime;
 
 	
 	

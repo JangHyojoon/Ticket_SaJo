@@ -16,7 +16,7 @@ class UpdateTest {
 	@Test
 	void contextLoads()  {
 	Date date = new Date();
-		CustVO v = new CustVO("id04","pwd04","주말숙",date,150000,"woman");
+		CustVO v = new CustVO("id04","pwd04","주말숙",date,0,"woman");
 		try {
 			biz.modify(v);
 		} catch (Exception e) {

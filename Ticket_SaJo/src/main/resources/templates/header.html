@@ -141,7 +141,7 @@ li {
                     <a href="/signin" class="btn btn--sign">로그인</a></li>
                     
                     <li th:unless="${session.user == null}">
-                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span>  로그아웃</a></li>
+                    <a href="/signout" class="btn btn--sign"><span th:text="${session.user.name}"></span></a> 로그아웃</li>
 
 		</div>
 	</div>
