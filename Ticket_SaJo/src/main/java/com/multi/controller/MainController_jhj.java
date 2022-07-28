@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,7 @@ import com.multi.vo.BookedVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.Detail_SchedulesVO;
 import com.multi.vo.MovieVO;
+import com.multi.vo.Msg;
 import com.multi.vo.MycouponVO;
 import com.multi.vo.ReservationVO;
 import com.multi.vo.SchedulesVO;
@@ -50,8 +53,9 @@ public class MainController_jhj {
 	@Autowired
 	MycouponBiz mycouponbiz;
 
-	
-	
+
+	@Autowired
+	SimpMessagingTemplate template;
 	@RequestMapping("/book1")
 	public String book1(Model m) {
 		
@@ -246,7 +250,18 @@ public class MainController_jhj {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 				return "redirect:book2?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
-			}                
+			} 
+		
+		//웹소켓 정보가 보내지는 순간
+		List<BookedVO> blist = null;
+		try {
+			blist =bookedbiz.selectseatlist(sid, mcnt);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Msg msg = new Msg(blist);
+		template.convertAndSend("/sends",msg);
+		
 		ReservationVO rv = new ReservationVO(uid,choosensit.length,price,totalprice);	
 		try {
 			reservationbiz.register(rv);
@@ -285,7 +300,8 @@ public class MainController_jhj {
 	}
 	
 	@RequestMapping("/websocket")
-	public String websocket() {
+	public String websocket(Model m) {
+
 		return "websocket";
 	}
 }
