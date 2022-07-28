@@ -40,17 +40,6 @@
 	height: 277px;
 }
 
-img, .movie-beta__info{
-
-	border-radius: 30px;
-
-}
-
-#starsortdiv{
-	border-radius: 10px;
-
-}
-
 </style>
 
 <script>
@@ -318,7 +307,7 @@ img, .movie-beta__info{
 					<li>
 						<p class="movie__time" th:text="${movie.runningtime}">min</p>
 						<p th:text="${movie.gname}"></p>
-						<p th:text="'Comments ' + ${movie.rcnt} + ' people review'"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
 					</li>
 					<li class="last-block"><a th:href="@{/movielist/detail(id=${movie.id})}"
 						class="slide__link">more</a></li>

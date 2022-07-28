@@ -32,27 +32,81 @@
         <script src="js/external/modernizr.custom.js"></script>
         <!-- Ajax -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        
-    	<script th:inline="javascript">
- 		
+    	<!-- Websocket -->
+    	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+		<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    		<!-- JavaScript-->	
+        <style>
+			#all{
+				width:400px;
+				height:200px;
+				overflow: auto;
+				border:2px solid red;
+			}
+			#me{
+				width:400px;
+				height:200px;
+				overflow: auto;
+				border:2px solid blue;
+			}
+			#to{
+				width:400px;
+				height:200px;
+				overflow: auto;
+				border:2px solid green;
+			}
+		</style>
+	
 		
+    	<script th:inline="javascript">
+    
+    	
+    	var stompClient = null;
+    
+    	// 서버소켓에 연결
+    	function connect() {
+    		var socket = new SockJS('/ws');
+    		stompClient = Stomp.over(socket);
+
+    		stompClient.connect({}, function(frame) { 
+    	
+    			console.log('Connected: ' + frame);
+    			stompClient.subscribe('/sends', function(msg) { 
+    				var tests = JSON.parse(msg.body).blist
+    				for(var i = 0; i<tests.length; i++){
+    	    			$("#"+tests[i].seatid).addClass("sits-state--not");
+    	    		}
+    			});
+
+    		});
+    	}
+
+    	// 서버소켓에 연결끊기
+    	function disconnect() {
+    		if (stompClient !== null) {
+    			stompClient.disconnect();
+    		}
     		
+    		console.log("Disconnected");
+    	}
+
 		function clickbtn(){
-			var cost = $('input[name=choosen_cost]').val();
-			
+			//좌석 선택 알람
+			var cost = $('input[name=choosen_cost]').val();			
 			if (cost == 0) {
 				alert("좌석을 선택해주세요")
 				return
-			}
-			
-			$('.book2').submit();
-			
-			
+			}	
+			disconnect();
+			$('.book2').submit();					
 		};
-    
-
 			var test = [[${blist}]];
 	    	$(document).ready(function(){
+	    		connect();
+	    	
+	    	
+	    	
+	    		
 	    		
 	    		for(var i = 0; i<test.length; i++){
 	    			$("#"+test[i].seatid).addClass("sits-state--not");
@@ -63,6 +117,7 @@
 	    		if(msg != null){
 	    			alert(msg);
 	    		}
+	    		
 	    	});  
 	    	
     	</script>
@@ -70,8 +125,8 @@
 </head>
  
 <body th:if="${session.user != null}">
-    
-        
+
+	     
         <!-- Main content -->
         <div class="place-form-area">
         <section class="container">
@@ -174,7 +229,7 @@
 
 
 
-	<!-- JavaScript-->
+
         <!-- jQuery 3.1.1--> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
@@ -205,7 +260,6 @@
 	    		
             });
 		</script>
-
 </body>
 
 <body th:unless="${session.user != null}">
