@@ -173,7 +173,7 @@
 
                  <div class="tags-area">
                     <div class="tags tags--unmarked">
-                        <span class="tags__label">Sorted by:</span>
+                        <span class="tags__label">정렬:</span>
                             <ul>                          	
                                 <li class="item-wrap">
                                 	<a id="1" th:href="@{/movielist(sort=0)}" th:if="${sort}==0" class="tags__item item-active" data-filter='all'>all</a>
@@ -328,15 +328,15 @@
 
                             <p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
-                            <p class="movie__option"><strong>Country: </strong><a href="#" th:text="${m.country}">USA</a></p>
-                            <p class="movie__option"><strong>Category: </strong><a href="#" th:text="${m.gname}">Comady</a></p>
-                            <p class="movie__option"><strong>Release date: </strong><a th:text="${#dates.format(m.releasedate,'yyyy-MM-dd')}">November 1, 2013</a></p>
-                            <p class="movie__option"><strong>Director: </strong><a href="#" th:text="${m.director}">Jon Turteltaub</a></p>
-                            <p class="movie__option"><strong>Actors: </strong><a href="#" th:text="${m.mainactor}">Robert De Niro</a></p>
-                            <p class="movie__option"><strong>Running time: </strong><a href="#" th:text="${m.runningtime}">13</a></p>
+                            <p class="movie__option"><strong>국가: </strong><a href="#" th:text="${m.country}">USA</a></p>
+                            <p class="movie__option"><strong>장르: </strong><a href="#" th:text="${m.gname}">Comady</a></p>
+                            <p class="movie__option"><strong>상영 날짜: </strong><a th:text="${#dates.format(m.releasedate,'yyyy-MM-dd')}">November 1, 2013</a></p>
+                            <p class="movie__option"><strong>감독: </strong><a href="#" th:text="${m.director}">Jon Turteltaub</a></p>
+                            <p class="movie__option"><strong>주연 배우: </strong><a href="#" th:text="${m.mainactor}">Robert De Niro</a></p>
+                            <p class="movie__option"><strong>러닝 타임: </strong><a href="#" th:text="${m.runningtime}">13</a></p>
 
                             <div class="movie__btns">
-                                <a href="#" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></a>
+                                <a href="#" class="btn btn-md btn--warning">지금 이 영화 예매하기<span class="hidden-sm"></span></a>
                             </div>
 
                             <div class="preview-footer">
@@ -350,9 +350,9 @@
 											<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 										</div>
 									</div>
-                                <span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span>
+                                <span class="movie__rate-number" th:text="${m.rcnt}+' 리뷰'">170 votes</span> <span class="movie__rating" th:text="${m.star}">5.0</span>
                                 </div>
-                                <a class="movie__show-btn" th:id="${m.id}" th:name="showtime">Showtime</a>
+                                <a class="movie__show-btn" th:id="${m.id}" th:name="showtime">상영 시간</a>
                             </div>
                     </div>
 
@@ -383,9 +383,9 @@
                 <!-- end movie preview item -->
                 <div class="coloum-wrapper">
                     <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/movielist(mnum=${mnum}-3,sort=${sort})}">prev</a>
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/movielist(mnum=${mnum}-3,sort=${sort})}">이전</a>
                             <a href='#' class="pagination__prev" th:if="${mnum}-1<=0">prev</a>
-                            <a href='#' class="pagination__next" th:href="@{/movielist(mnum=${mnum}+3,sort=${sort})}">next</a>
+                            <a href='#' class="pagination__next" th:href="@{/movielist(mnum=${mnum}+3,sort=${sort})}">다음</a>
                     </div>
                 </div>
 
