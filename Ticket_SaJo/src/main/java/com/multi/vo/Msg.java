@@ -1,6 +1,8 @@
 package com.multi.vo;
 
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,6 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Msg {
-	private String sendid;
-	private String receiveid;
-	private String content1;
-	private String content2;
+
+	private List<BookedVO> blist;
 }

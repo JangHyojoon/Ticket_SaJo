@@ -16,6 +16,11 @@ public class BookedVO {
 	
 	private String seatid;
 
+	public BookedVO(String seatid) {
+		super();
+		this.seatid = seatid;
+	}
+
 
 }
 
