@@ -87,7 +87,6 @@
 		</dependency>
 
 		<!-- json request -->
-		<!-- json request -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
