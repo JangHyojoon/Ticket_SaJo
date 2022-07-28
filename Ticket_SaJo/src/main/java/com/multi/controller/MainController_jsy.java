@@ -1,5 +1,7 @@
 package com.multi.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CustBiz;
+import com.multi.biz.ReservationBiz;
 import com.multi.vo.CustVO;
+import com.multi.vo.ReservationVO;
 
 
 @Controller
@@ -17,6 +21,9 @@ public class MainController_jsy {
 	
 	@Autowired
 	CustBiz custbiz;
+	
+	@Autowired
+	ReservationBiz rbiz;
 	
 	@RequestMapping("/signin")
 	public String signin(Model m, String msg, HttpServletRequest request) {
@@ -126,8 +133,7 @@ public class MainController_jsy {
 			cust.setSex(cu.getSex());
 			custbiz.modify(cust);
 			CustVO c = custbiz.get(cust.getId());
-			session.setAttribute("user", c);
-			
+			session.setAttribute("user", c);			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -156,6 +162,20 @@ public class MainController_jsy {
 			}		
 		}
 		m.addAttribute("center", "mypage/custbye");
+		return "index";
+	}
+	
+	@RequestMapping("/reservationlist")
+	public String reservationlist(Model m, HttpSession session) {
+		List<ReservationVO> list = null;
+		CustVO cust = (CustVO) session.getAttribute("user");
+		try {
+			list = rbiz.selectcust(cust.getId());
+			m.addAttribute("reservationlist", list);		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "mypage/reservationlist");
 		return "index";
 	}
 }

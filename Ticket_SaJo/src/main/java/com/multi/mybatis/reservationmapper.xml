@@ -16,7 +16,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN schedules s ON t.sid = s.id 
 		INNER JOIN movie m ON s.mid =m.id
 		INNER JOIN detail_schedules ds ON t.sid = ds.sid
-		WHERE r.id=#{id}
+		WHERE r.id= #{id}
+	</select>
+	<select id="selectcust" parameterType="String" resultType="reservationVO">
+		SELECT r.id, r.uid, t.sid, s.sdate, ds.starttime, ds.endtime, m.title from schedules s
+		INNER JOIN ticket t ON t.sid = s.id
+		INNER JOIN reservation r ON t.rid = r.id
+		INNER JOIN detail_schedules ds ON ds.sid = s.id
+		INNER JOIN movie m ON m.id = s.mid
+		WHERE r.uid = #{id}
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="rid" parameterType="reservationVO">
 		INSERT INTO reservation VALUES (NULL,#{uid},#{pcnt},#{price},#{totalprice})
