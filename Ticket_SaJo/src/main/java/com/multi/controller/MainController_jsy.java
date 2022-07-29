@@ -11,8 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CustBiz;
+import com.multi.biz.MycouponBiz;
+import com.multi.biz.PointlistBiz;
 import com.multi.biz.ReservationBiz;
 import com.multi.vo.CustVO;
+import com.multi.vo.MycouponVO;
+import com.multi.vo.PointlistVO;
 import com.multi.vo.ReservationVO;
 
 
@@ -24,6 +28,12 @@ public class MainController_jsy {
 	
 	@Autowired
 	ReservationBiz rbiz;
+	
+	@Autowired
+	PointlistBiz pbiz;
+	
+	@Autowired
+	MycouponBiz cbiz;
 	
 	@RequestMapping("/signin")
 	public String signin(Model m, String msg, HttpServletRequest request) {
@@ -165,8 +175,8 @@ public class MainController_jsy {
 		return "index";
 	}
 	
-	@RequestMapping("/reservationlist")
-	public String reservationlist(Model m, HttpSession session) {
+	@RequestMapping("/myreservationlist")
+	public String myreservationlist(Model m, HttpSession session) {
 		List<ReservationVO> list = null;
 		CustVO cust = (CustVO) session.getAttribute("user");
 		try {
@@ -175,7 +185,35 @@ public class MainController_jsy {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("center", "mypage/reservationlist");
+		m.addAttribute("center", "mypage/myreservationlist");
+		return "index";
+	}
+	
+	@RequestMapping("/mypointlist")
+	public String mypointlist(Model m, HttpSession session) {	
+		List<PointlistVO> list = null;
+		CustVO cust = (CustVO) session.getAttribute("user");	
+		try {
+			list = pbiz.selectpoint(cust.getId());
+			m.addAttribute("pointlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "mypage/mypointlist");
+		return "index";
+	}
+	
+	@RequestMapping("/mycouponlist")
+	public String mycouponlist(Model m, HttpSession session) {
+		List<MycouponVO> list = null;
+		CustVO cust = (CustVO) session.getAttribute("user");
+		try {
+			list = cbiz.selectmycoupon(cust.getId());
+			m.addAttribute("mycouponlist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "mypage/mycouponlist");
 		return "index";
 	}
 }

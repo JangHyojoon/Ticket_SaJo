@@ -39,5 +39,8 @@ public class PointlistBiz implements Biz<Integer,PointlistVO> {
 	public List<PointlistVO> get() throws Exception {
 		return dao.selectall();
 	}
-
+	
+	public List<PointlistVO> selectpoint(String id) throws Exception{
+		return dao.selectpoint(id)	;	
+	}
 }

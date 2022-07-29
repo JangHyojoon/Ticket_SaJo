@@ -46,5 +46,4 @@ public class MycouponVO {
 		this.udate = udate;
 	}
 	
-	
 }

@@ -31,23 +31,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ORDER BY c.sale DESC
 	</select>
 
+	<select id="selectmycoupon" parameterType="String" resultType="mycouponVO">
+		SELECT mc.id, mc.uid, mc.used, mc.udate, mc.rdate, cp.text from mycoupon mc
+		INNER JOIN coupon cp ON cp.id = mc.cid
+		INNER JOIN cust c ON c.id = mc.uid
+		WHERE mc.uid = #{id} AND mc.used = 1
+	</select>
 	<insert id="insert" parameterType="mycouponVO">
-		INSERT INTO mycoupon VALUES
-		(NULL,#{uid},#{cid},#{used},NULL,sysdate())
+		INSERT INTO mycoupon VALUES (NULL,#{uid},#{cid},#{used},NULL,sysdate())
 	</insert>
 	<update id="update" parameterType="mycouponVO">
-		UPDATE mycoupon SET
-		uid=#{uid}, cid=#{cid}, used=#{used}, udate=sysdate(), rdate=#{rdate}
+		UPDATE mycoupon SET uid=#{uid}, cid=#{cid}, used=#{used}, udate=sysdate(), rdate=#{rdate}
 		WHERE id=#{id}
 	</update>
 	<delete id="delete" parameterType="mycouponVO">
-		DELETE FROM mycoupon WHERE
-		id=#{id}
+		DELETE FROM mycoupon WHERE id=#{id}
 	</delete>
 </mapper>
-
-
-
-
-
-
