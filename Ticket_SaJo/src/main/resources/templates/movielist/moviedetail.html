@@ -51,18 +51,27 @@
 		}
 		p{
 		margin: 0px;
+		margin-left: 40px;
+		}
+		#detailcomment{
+		margin-left: 40px;
+		}
+		.share__marker{
+		margin-left: 40px;
 		}
 		#chartcontainer {
 			float : left;
 		    height: 400px;
 		    width : 400px;
 		    margin-top: 40px;
+		    background: #F6F6F6;
 		}
 		#circlecontainer {
 			float : right;
 		    height: 400px;
 		    width : 400px;
 		    margin-top: 40px;
+		    background: #F6F6F6;
 		}
 		
 		.highcharts-figure,
@@ -80,6 +89,7 @@
 		    text-align: center;
 		    width: 100%;
 		    max-width: 500px;
+		    background-color: #F6F6F6;
 		}
 		
 		.highcharts-data-table caption {
@@ -101,11 +111,11 @@
 		
 		.highcharts-data-table thead tr,
 		.highcharts-data-table tr:nth-child(even) {
-		    background: #f8f8f8;
+		    background: #F6F6F6;
 		}
 		
 		.highcharts-data-table tr:hover {
-		    background: #f1f7ff;
+		    background: #F6F6F6;
 		}
 		
 		.star-ratings {
@@ -126,7 +136,7 @@
 		  top: 0;
 		  left: 0;
 		  overflow: hidden;
-		  -webkit-text-fill-color: gold;
+		  -webkit-text-fill-color: #c0c0c0;
 		}
 		 
 		.star-ratings-base {
@@ -141,6 +151,7 @@
 		height: 50px;
 		width: 50px;
 		}
+		
 </style>
 <body>
         <!-- Main content -->
@@ -153,7 +164,7 @@
                         <div class="col-sm-4 col-md-3 movie-mobile">
                             <div class="movie__images">
                                 <span class="movie__rating" th:text="${movie.star}">5.0</span>
-                                <img alt='' th:src="'/images/movie/'+${movie.posterimg2}">
+                                <img class="detailimg" alt='' th:src="'/images/movie/'+${movie.posterimg2}">
                             </div>
                             <div class="movie__rate">평균 별점:
                             	<div class="star-ratings">
@@ -176,7 +187,7 @@
                             <p class="movie__option"><strong>감독: </strong><a href="#" th:text="${movie.director}">Peter Jackson</a></p>
                             <p class="movie__option"><strong>주연 배우: </strong><a href="#" th:text="${movie.mainactor}">...</a></p>
 
-                            <a href="#" class="comment-link">최근 리뷰:  <a href="#" class="comment-link" th:text="${movie.rcnt}">15</a></a>
+                            <a href="#" id="detailcomment" class="comment-link">최근 리뷰:  <a href="#" class="comment-link" th:text="${movie.rcnt}">15</a></a>
 
                             <div class="movie__btns movie__btns--full">
                                 <a href="#" class="btn btn-md btn--warning">지금 이 영화 예매하기</a>
