@@ -3522,6 +3522,9 @@ ul#navigation a:hover {
 }
 .btn--sign {
   font: 13px 'Noto Sans KR', sans-serif;
+  background: #5D5D5D;
+  border: solid 1px #5D5D5D;
+  margin-left: 10px;
   font-weight: bold;
   text-transform: uppercase;
   color: white;
