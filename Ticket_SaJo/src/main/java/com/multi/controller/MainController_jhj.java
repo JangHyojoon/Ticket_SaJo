@@ -7,16 +7,17 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.BookedBiz;
+import com.multi.biz.CustBiz;
 import com.multi.biz.Detail_SchedulesBiz;
 import com.multi.biz.MovieBiz;
 import com.multi.biz.MycouponBiz;
+import com.multi.biz.PointlistBiz;
 import com.multi.biz.ReservationBiz;
 import com.multi.biz.SchedulesBiz;
 import com.multi.biz.TheaterBiz;
@@ -27,6 +28,7 @@ import com.multi.vo.Detail_SchedulesVO;
 import com.multi.vo.MovieVO;
 import com.multi.vo.Msg;
 import com.multi.vo.MycouponVO;
+import com.multi.vo.PointlistVO;
 import com.multi.vo.ReservationVO;
 import com.multi.vo.SchedulesVO;
 import com.multi.vo.TheaterVO;
@@ -52,8 +54,10 @@ public class MainController_jhj {
 	BookedBiz bookedbiz;
 	@Autowired
 	MycouponBiz mycouponbiz;
-
-
+	@Autowired
+	CustBiz custbiz;
+	@Autowired
+	PointlistBiz pointlistbiz;
 	@Autowired
 	SimpMessagingTemplate template;
 	@RequestMapping("/book1")
@@ -147,7 +151,7 @@ public class MainController_jhj {
 			
 			// 사용가능 쿠폰 리스트 
 			clist = mycouponbiz.selectUsableCoupon(cust.getId());
-//			System.out.println("clist : " + clist);
+			//System.out.println("clist : " + clist);
 			m.addAttribute("mycouponlist", clist);
 			m.addAttribute("cust", cust);
 			//포스터 이미지 
@@ -211,7 +215,9 @@ public class MainController_jhj {
 
 	
 	@RequestMapping("/book3impl")
-	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist, String uid, int totalprice) {
+	public String book3mpl(Model m, int sid, int mcnt, String title, int price,String sdate, String seatlist, String uid, int totalprice,int usepoint, int cid) {
+
+		
 		//선택좌석 리스트		
 		seatlist =seatlist.substring(0,seatlist.length() -1);  
 		String sseatlist =seatlist.substring(1,seatlist.length()); 
@@ -269,8 +275,8 @@ public class MainController_jhj {
 			e.printStackTrace();
 			
 		}	
-		
-		rid = rv.getRid();//ticket테이블 INSERT
+		//ticket테이블 INSERT
+		rid = rv.getRid();
 	
 		for (int i = 0; i < choosensit.length; i++) {
 			TicketVO tv = new TicketVO(sid,rid,sdate,mcnt,choosensit[i]);				
@@ -282,7 +288,44 @@ public class MainController_jhj {
 	
 			}
 		}
-	
+		//포인트 사용시 차감 & 차감내역
+		
+		
+				
+			try {
+				PointlistVO plv = new PointlistVO(uid,-usepoint,"포인트사용 - 예매번호 : "+Integer.toString(rid));
+				custbiz.usepoint(uid, usepoint);
+				pointlistbiz.register(plv);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		
+		//예매시 포인트 적립 &적립내역
+		
+			double todouble = totalprice;
+			double  todivide= todouble *0.05;
+			int addpoint = (int) Math.floor(todivide);
+			
+		
+			try {
+				PointlistVO plv = new PointlistVO(uid,+addpoint,"포인트적립 - 예매번호 : "+Integer.toString(rid));	
+				custbiz.usepoint(uid, -addpoint);
+				pointlistbiz.register(plv);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		
+		//쿠폰 사용 처리
+		if (cid >0) {
+			try {
+				mycouponbiz.usecoupon(cid);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return "redirect:/book4?rid="+rid;
 		
 
@@ -299,9 +342,5 @@ public class MainController_jhj {
 		return "index";
 	}
 	
-	@RequestMapping("/websocket")
-	public String websocket(Model m) {
-
-		return "websocket";
-	}
+	
 }

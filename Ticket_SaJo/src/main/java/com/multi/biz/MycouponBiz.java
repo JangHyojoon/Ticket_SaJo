@@ -50,8 +50,15 @@ public class MycouponBiz implements Biz<Integer,MycouponVO> {
 		return dao.selectUsableCoupon(uid);
 	}
 
+	public void usecoupon(int id) throws Exception{
+		dao.usecoupon(id);
+	}
+
+
+
 	public List<MycouponVO> selectmycoupon(String id) throws Exception {
 		return dao.selectmycoupon(id);
 	}
+
 	
 }

@@ -44,86 +44,56 @@
 <script th:inline="javascript">
 
 
+	function point(object){
+		var mypoint = $("#mypoint").text();
 
-	   function selectCoupon() {
-	    	$("#usepoint").attr("value",0)
-	    	var coupon = $("#selectCoupon option:selected").val();
-	    	var coupon_id = $("#selectCoupon option:selected").attr('id');
-	    	coupon_cid = coupon_id.split(' ',2);
-			var price = [[${price}]];//쿠폰 적용 전 금액
-			$("#hiddentotal").text(price - Number(coupon));
-			var totalprice = 0;
-			totalprice = price - Number(coupon);		
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			$("#selectcid").val(coupon_cid[1]);// form-input 에 있는 cid - 쿠폰의 id를 넘겨서 결제시 mycoupon에 있는 해당 쿠폰의 used필드를 false로, udate를 현재시간으로 설정  
-	    }
-
-	function selectPoint(){
-		var coupon = $("#selectCoupon option:selected").val();
-		var coupon_id = $("#selectCoupon option:selected").attr('id');
-		var mypoint = Number($("#mypoint").text());
-		var limit = Number($("#hiddentotal").text())
-		var usepoint = $("#usepoint").val();
-		var point = 0;
-		var totalprice = 0;
-		var price = [[${price}]];//쿠폰 적용 전 금액
 		
-		if (usepoint > mypoint){
-			if (usepoint > limit) {
-				
-				$("#usepoint").attr("value",limit);
-				totalprice = price - Number(coupon) -limit;
-				$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-				
-				
-			}
-			$("#usepoint").attr("value",mypoint)			
-			totalprice = price - Number(coupon) -mypoint;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			
-		}else if (usepoint > limit) {
-			if (usepoint > mypoint){
-				
-				$("#usepoint").attr("value",mypoint)			
-				totalprice = price - Number(coupon) -mypoint;
-				$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-
-				
-			}
-			$("#usepoint").attr("value",limit);
-			totalprice = price - Number(coupon) -limit;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			
+		if (object.value.length > mypoint.length){
+		  object.value = object.value.slice(0, object.maxLength);
+		 
 		} 
-		else {
-			$("#usepoint").attr("value",usepoint)
-			point = usepoint;
-			totalprice = price - Number(coupon) -Number(point);
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
+		if (object.value > Number(mypoint)){
+			object.value = Number(mypoint)
 			
 		}
-    	
-
-		/*
-		else if (usepoint > mypoint){
-			$("#usepoint").attr("value",mypoint)			
-			totalprice = price - Number(coupon) -mypoint;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
+		if (object.value > Number(totalprice)){
+			object.value = Number(totalprice)
+		
 		}
-		*/
+		
 	}
 	
- 
+    function totalPrice(price) {
+    	var coupon = $("#selectCoupon option:selected").val();
+    	var coupon_id = $("#selectCoupon option:selected").attr('id');
+    	var real_price = price;//쿠폰 적용 전 금액
+    	var sale_price = coupon; // 할인금액 
+    	var total_price = 0// 쿠폰 적용 후 금액
+    	var coupon_cid;
+    	var mypoint = $("#mypoint").text();
+    	var usepoint = $("#usepoint").val();
+    	if(coupon != "선택"){// 쿠폰 적용했을 경우 실행 
+        	total_price = real_price - sale_price -usepoint;
+        	if(total_price < 0 ){// 할인 금액이 할인전 금액보다 클 경우 0으로 출력 
+        		total_price = 0;
+        	}
+        	coupon_cid = coupon_id.split(' ',2);// coupon cid 의 형태에서 cid만 추출하기 위해 사용 
+        	
+    	}else{// 쿠폰을 아무것도 적용하지 않았을 경우 실행 
+    		total_price = price;
+    	}
+
+    	//alert('coupon_id : ' + coupon_id);
+    	$("#totalPrice").text(total_price);// 쿠폰 적용 금액을 text() 에 표시 
+    	$("#totalprice").val(total_price);// form-input 에 있는 totalprice 
+    	$("#selectcid").val(coupon_cid[1]);// form-input 에 있는 cid - 쿠폰의 id를 넘겨서 결제시 mycoupon에 있는 해당 쿠폰의 used필드를 false로, udate를 현재시간으로 설정  
+    	
+
+
+    }
 
     $(document).ready(function(){
-		
+		 
  		
  		//버튼 클릭
 		$('#book3btn').click(function(){
@@ -177,8 +147,8 @@
                         <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
                       
                         <li class="book-result__item col-sm-3">사용할 쿠폰</li>	<li class="book-result__item">
-	                        <select th:onchange="selectCoupon()" id="selectCoupon" class="book-result__count booking-ticket"  >
-								<option value="0" id="coupon 0">선택</option>
+	                        <select th:onchange="totalPrice([[${price}]])" id="selectCoupon" class="book-result__count booking-ticket"  >
+								<option value="선택">선택</option>
 								<option th:each="mycoupon,index : ${mycouponlist}" th:if="${mycoupon.sale} < ${price}" 
 									th:value="${mycoupon?.sale}" th:id="'coupon '+${mycoupon.id}"
 									th:utext="${mycoupon?.text}+'( '+${mycoupon?.sale}+'원 )'"></option>
@@ -186,24 +156,9 @@
                         </li>
                         <li class="book-result__item col-sm-3">적립금</li>
                         <li class="book-result__item"> 
-                       		<form class="book3">
-								<input type='hidden' name='sid' th:value="${dsv.sid}" readonly>
-								<input type='hidden' name='mcnt' th:value="${dsv.mcnt}" readonly>
-						        <input type='hidden' name='title' th:value="${dsv.title}" readonly>
-						        <input type='hidden' name='price' th:value="${price}" readonly>
-						        <input type='hidden' name='seatlist' th:value="${seatlist}" readonly>
-								<input type='hidden' name='sdate' th:value="${dsv.sdate}" readonly>
-								<input type='hidden' name='uid' th:value="${session.user.id}" readonly>
-								<input type='hidden' name='totalprice' id="totalprice" th:value="${price}" readonly>
-								<input type='hidden' name='cid' id="selectcid" value="1" readonly>
-								
-							
-							
-							<input id="usepoint" name="usepoint" type="number" oninput="selectPoint()" min="0" value="0" style="width:100px;">
-							<span style="font-size:14px;">보유한 적립금 : </span>
-					
-							<span th:text="${cust.point}" id="mypoint" style="font-size:14px;"></span>
-							</form>
+							<input id="usepoint" name="usepoint" type="number" oninput="point(this);" style="width:100px;">
+							<span>보유한 적립금 : </span>
+							<span th:text="${cust.point}" id="mypoint"></span>
 						</li>
                     </ul>
                  </div> 
@@ -212,9 +167,22 @@
                   <ul class="book-result col-lg-8" style="display: block;margin-top:30px;">
                                 <li class="book-result__item col-sm-3">최종 금액: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}+'원'">가격</span></li>
         		  </ul>
-        		  <span id="hiddentotal"  style="display:none;" th:text="${price}">히든토탈</span>
+        		  
                    
-			
+					<form class="book3">
+						<input type='text' name='sid' th:value="${dsv.sid}">
+						<input type='text' name='mcnt' th:value="${dsv.mcnt}">
+				        <input type='text' name='title' th:value="${dsv.title}">
+				        <input type='text' name='price' th:value="${price}">
+				        <input type='text' name='seatlist' th:value="${seatlist}">
+						<input type='text' name='sdate' th:value="${dsv.sdate}">
+						<input type='text' name='uid' th:value="${session.user.id}">
+						<label>total price<input type='text' name='totalprice' id="totalprice" th:value="${price}"></label>
+						<label>total price2<input type='number' name='totalprice2' id="totalprice2" th:value="1000-200"></label>
+						<input type='text' name='cid' id="selectcid">
+						
+					
+					</form>
                     
 
 

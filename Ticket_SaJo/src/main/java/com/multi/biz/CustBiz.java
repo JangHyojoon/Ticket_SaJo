@@ -43,4 +43,8 @@ public class CustBiz implements Biz<String,CustVO> {
 	public void modifycust(CustVO v) throws Exception {
 		dao.updatecust(v);
 	}
+	public void usepoint(String id,int usepoint) throws Exception {
+		dao.usepoint(id, usepoint);
+	}
+
 }

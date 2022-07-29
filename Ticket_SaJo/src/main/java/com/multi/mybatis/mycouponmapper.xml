@@ -44,6 +44,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE mycoupon SET uid=#{uid}, cid=#{cid}, used=#{used}, udate=sysdate(), rdate=#{rdate}
 		WHERE id=#{id}
 	</update>
+	<update id="usecoupon" parameterType="mycouponVO">
+		UPDATE mycoupon SET used=0,udate=SYSDATE() WHERE id =#{id}; 
+	</update>
 	<delete id="delete" parameterType="mycouponVO">
 		DELETE FROM mycoupon WHERE id=#{id}
 	</delete>
