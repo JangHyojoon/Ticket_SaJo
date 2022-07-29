@@ -45,6 +45,14 @@ public class MycouponVO {
 		this.used = used;
 		this.udate = udate;
 	}
+	// mycoupon 쿠폰 사용시 처리
+	public MycouponVO(int id) {
+		super();
+		this.id = id;
+	}
+	
+	
+	
 	
 	
 }

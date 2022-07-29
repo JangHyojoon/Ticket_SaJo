@@ -19,6 +19,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="updatecust" parameterType="custVO">
 		UPDATE cust SET pwd=#{pwd},name=#{name} WHERE id=#{id}
 	</update>
+	<update id="usepoint" parameterType="custVO">
+		UPDATE cust SET point=point-#{usepoint} WHERE id =#{id}; 
+	</update>
+
 	<delete id="delete" parameterType="custVO">
 		DELETE FROM cust WHERE id=#{id}
 	</delete>

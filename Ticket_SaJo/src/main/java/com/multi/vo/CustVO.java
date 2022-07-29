@@ -27,10 +27,49 @@ public class CustVO {
 	private int point;
 	private String sex;
 	
+	private int usepoint;
+	
 	public CustVO(String id, String pwd, String name) {
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 	}
+	
+	
+	
+	
 
+
+	public CustVO(String id, String pwd, String name, Date birth, int point, String sex) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.birth = birth;
+		this.point = point;
+		this.sex = sex;
+	}
+
+
+
+
+
+
+	public CustVO(String id, int usepoint) {
+		super();
+		this.id = id;
+		this.usepoint = usepoint;
+	}
+
+
+
+
+
+
+
+
+
+
+	
+	
 }
