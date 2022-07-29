@@ -2,11 +2,14 @@
 
 <style>
 .starsortimg {
-	top: 0;
-	left: 0;
-	width: 185px;
-	height: 278px;
+	width: 100%;
+	height: 50vh;
 }
+.movie-beta__item{
+	width: 100%;
+	height: 100%;
+}
+
 
 .star-ratings {
 	color: #aaa9a9;
@@ -19,7 +22,7 @@
 }
 
 .star-ratings-fill {
-	color: #fff58c;
+	color: gray;
 	padding: 0;
 	position: absolute;
 	z-index: 1;
@@ -27,7 +30,7 @@
 	top: 0;
 	left: 0;
 	overflow: hidden;
-	-webkit-text-fill-color: gold;
+	-webkit-text-fill-color: gray;
 }
 
 .star-ratings-base {
@@ -54,22 +57,91 @@
 		var googlesearchtxt = $('#googletxt').val();
 
 	}
+
 </script>
 
 
 <!-- Slider -->
+
 <div class="bannercontainer rev_slider_wrapper">
 
 	<!-- the ID here will be used in the JavaScript below to initialize the slider -->
 	<div id="rev_slider_1" class="banner rev_slider" style="display: none">
 
 		<!-- BEGIN SLIDES LIST -->
-		<ul>
+		<ul style="display: block; overflow: hidden; width: 100%; height: 100%; max-height: 500px;">
+		 <!-- SLIDE 2 -->
+			<li data-transition="fade" class="slide"
+				data-title='영화 에티켓'>
+				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
+				alt='' src="/images/slides/theater4.jpg">
+				<div class="rs-background-video-layer" data-forcerewind="on" allow="autoplay"
+					data-volume="mute" data-videowidth="100%" data-videoheight="100%"
+					data-videomp4="video/movieTheater.mp4" data-videopreload="auto" 
+					data-videoloop="loop" data-forceCover="1" data-aspectratio="16:9"
+					data-autoplay="true" data-autoplayonlyfirsttime="false"></div>
+				<div class="tp-caption slide__name slide__name--smaller"
+					data-x="center" data-y="160" data-splitin="chars"
+					data-elementdelay="0.1" data-speed="700" data-start="1400"
+					data-easing="easeOutBack"
+					data-frames='[{
+                               "delay":1400,
+                               "speed":700,
+                               "split":"chars",
+                               "splitdelay":0.1,
+                               "frame":"0",
+                               "from":"opacity:0;",
+                               "to":"o:1;",
+                               "ease":"Power3.easeInOut"
+                               },{
+                               "delay":"wait",
+                               "speed":300,
+                               "frame":"999",
+                               "to":"opacity:0;",
+                               "ease":"Power3.easeInOut"
+                             }]'>
+					</div>
+				<div class="tp-caption slide__time" data-x="center"
+					data-hoffset='-30' data-y="242"
+					data-frames='[{
+                               "delay":1800,
+                               "speed":300,
+                               "frame":"0",
+                               "from":"x:[50%];opacity:0;",
+                               "to":"o:1;",
+                               "ease":"Power3.easeInOut"
+                               },{
+                               "delay":"wait",
+                               "speed":300,
+                               "frame":"999",
+                               "to":"opacity:0;",
+                               "ease":"Power3.easeInOut"
+                             }]'>
+					</div>
+				<div
+					class="tp-caption slide__date position-center postion-place--two lfb ltb"
+					data-x="center" data-hoffset='50' data-y="242"
+					data-frames='[{
+                               "delay":2200,
+                               "speed":500,
+                               "frame":"0",
+                               "from":"y:100px;opacity:0;",
+                               "to":"o:1;",
+                               "ease":"Power3.easeInOut"
+                               },{
+                               "delay":"wait",
+                               "speed":300,
+                               "frame":"999",
+                               "to":"opacity:0;",
+                               "ease":"Power3.easeInOut"
+                             }]'>
+					</div>	
+			</li>
 			<!-- SLIDE 1 -->
 			<li data-transition="fade" class="slide"
 				data-title='Gone With The Wind'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
-				alt='' src="/images/slides/windimg1.jpg">
+				alt='' src="/images/slides/wind.jpg">
 
 				<div class="tp-caption slide__name margin-slider" data-x="right"
 					data-y="80"
@@ -132,10 +204,10 @@
 			<li data-transition="fade" class="slide"
 				data-title='The Wizard Of Oz.'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
-				alt='' src="/images/movie/ozimg1.jpg">
-				<div class="rs-background-video-layer" data-forcerewind="on"
+				alt='' src="/images/slides/oz.jpg">
+				<div class="rs-background-video-layer" data-forcerewind="on" allow="autoplay"
 					data-volume="mute" data-videowidth="100%" data-videoheight="100%"
-					data-videomp4="video/The Wizard of Oz.mp4" data-videopreload="auto"
+					data-videomp4="video/The Wizard of Oz.mp4" data-videopreload="auto" data-videostartat="00:06"
 					data-videoloop="loop" data-forceCover="1" data-aspectratio="16:9"
 					data-autoplay="true" data-autoplayonlyfirsttime="false"></div>
 				<div class="tp-caption slide__name slide__name--smaller"
@@ -217,7 +289,7 @@
 			<!-- SLIDE 3 -->
 			<li data-transition="fade" class="slide" data-title='사이코'>
 				<!-- SLIDE'S MAIN BACKGROUND IMAGE --> <img class="rev-slidebg"
-				alt='' src="/images/slides/사이코.jpg">
+				alt='' src="/images/slides/psy.png">
 				<div
 					class="tp-caption slide__name slide__name--smaller slide__name--specific"
 					data-x="center" data-y="160"
@@ -284,13 +356,7 @@
 	<!-- END SLIDER CONTAINER -->
 
 </div>
-<!-- END SLIDER CONTAINER WRAPPER -->
-<!--end slider -->
-
-
-<!-- Main content -->
-<section class="container">
-	<div class="movie-best">
+<div class="movie-best">
 
 		<div style="margin-top:100px;"class="col-sm-10 col-sm-offset-1 movie-best__rating">평점이 높은 영화</div>
 		<div class="col-sm-12 change--col" id="dropdown_movie_info">
@@ -335,31 +401,37 @@
 		</div>
 		<div class="col-sm-10 col-sm-offset-1 movie-best__check" id="starsortdiv"> 오늘 상영작 확인하러 가기 </div>
 	</div>
+<!-- END SLIDER CONTAINER WRAPPER -->
+<!--end slider -->
+
+
+<!-- Main content -->
+<section class="container">
 
 	<div class="col-sm-12">
 		<div class="mega-select-present mega-select-top mega-select--full">
 			<div class="mega-select-marker text-center">
 				<div class="marker-indecator film-category">
 					<p class="select-marker">
-						<span> 영화 장르를 찾아보세요. </span> <br> 장르
+						<span> 영화 장르를 찾아보세요 </span> <br> 장르
 					</p>
 				</div>
 
 				<div class="marker-indecator actors">
 					<p class="select-marker">
-						<span> 좋아하는 배우는 누구입니까? </span> <br> 영화배우
+						<span> 좋아하는 배우는 누구입니까 </span> <br> 영화배우
 					</p>
 				</div>
 
 				<div class="marker-indecator director">
 					<p class="select-marker">
-						<span> 어떤 감독의 상영작이 궁금하신가요? </span> <br> 감독 
+						<span> 어떤 감독의 상영작이 궁금하신가요 </span> <br> 감독 
 					</p>
 				</div>
 
 				<div class="marker-indecator country">
 					<p class="select-marker">
-						<span>어느 국가의 영화를 보고싶으신가요? </span> <br> 나라
+						<span>어느 국가의 영화를 보고싶으신가요 </span> <br> 나라
 					</p>
 				</div>
 			</div>
@@ -443,7 +515,7 @@
 
 	<div class="clearfix"></div>
 
-	<h2 id='target' class="page-heading heading--outcontainer"> 오늘의 상영작을 확인해 보세요!! </h2>
+	<h2 id='target' class="page-heading heading--outcontainer"> 오늘의 상영작 </h2>
 
 	<div class="col-sm-12">
 		<div class="row">
