@@ -1,4 +1,4 @@
-package com.multi.mycoupon;
+package com.multi.pointlist;
 
 import java.util.List;
 
@@ -6,26 +6,27 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.MycouponBiz;
-import com.multi.vo.MycouponVO;
+import com.multi.biz.PointlistBiz;
+import com.multi.vo.PointlistVO;
 
 @SpringBootTest
-class SelectAllTest {
+class SelectPointTest {
+	
 	@Autowired
-	MycouponBiz biz;
+	PointlistBiz biz;
+	
 	@Test
 	void contextLoads() {
-		List<MycouponVO> list = null;
+		List<PointlistVO> list = null;
 		try {
-			list= biz.get();
+			list= biz.selectpoint("id01");
 			
-			System.out.println("SELECT ALL Success ... ");
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		for (MycouponVO vo : list) {
-			System.out.println(vo);
+		for (PointlistVO pl : list) {
+			System.out.println(pl);
 		}
 	}
 }
