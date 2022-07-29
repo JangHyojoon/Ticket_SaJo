@@ -1,0 +1,20 @@
+<meta charset="UTF-8">
+<div class="field-wrap">
+<h1></h1>
+	<strong><h4>아이디<span th:text="${session.user.id}"></span>님의 포인트 내역입니다.</h4></strong>
+	<br>
+	<br>
+<table>
+	<thead>
+		<tr><th>포인트 번호</th><th>금액</th><th>날짜</th><th>내용</th></tr>
+	</thead>
+	<tbody>
+		<tr th:each="p:${pointlist}">
+			<td><a href="" th:text="${p.id}">포인트 번호</a></td>
+			<td th:text="${p.price}">금액</td>
+			<td th:text="${p.regdate}">날짜</td>
+			<td th:text="${p.text}">내용</td>
+		</tr>
+	</tbody>
+</table>
+</div>

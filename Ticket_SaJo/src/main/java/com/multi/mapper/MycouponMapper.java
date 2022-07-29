@@ -21,6 +21,9 @@ public interface MycouponMapper {
 	// 0725 안원영 수정 - 티켓결제에 쿠폰 결합
 	public List<MycouponVO> selectUsableCoupon(String uid) throws Exception;
 	
-	
+
 	public void usecoupon(int id) throws Exception;
+
+	public List<MycouponVO> selectmycoupon(String id) throws Exception;	
+
 }

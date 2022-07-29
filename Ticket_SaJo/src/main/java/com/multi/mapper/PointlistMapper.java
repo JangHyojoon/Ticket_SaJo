@@ -16,5 +16,6 @@ public interface PointlistMapper {
 	public void update(PointlistVO point) throws Exception;
 	public PointlistVO select(int id) throws Exception;
 	public List<PointlistVO> selectall() throws Exception;
+	public List<PointlistVO> selectpoint(String id) throws Exception;
 
 }

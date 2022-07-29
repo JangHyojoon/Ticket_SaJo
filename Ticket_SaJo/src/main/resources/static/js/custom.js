@@ -222,7 +222,7 @@ function init_Home() {
 
 	//1. Init revolution slider and add arrows behaviour
 				var api = $('.banner').show().revolution({
-                    delay:9000,
+                    delay:3000,
                     startwidth:1170,
                     startheight:500,
 

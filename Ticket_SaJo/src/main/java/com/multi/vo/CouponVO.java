@@ -20,6 +20,4 @@ public class CouponVO {
 	private String icon;
 	private int sale;
 	private String text;
-	
-
 }

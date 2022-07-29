@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="pointlistVO">
 		SELECT * FROM pointlist
 	</select>
+	<select id="selectpoint" parameterType="String" resultType="pointlistVO">
+		SELECT p.id, p.uid, p.price, p.regdate, p.text from pointlist p
+		INNER JOIN cust c ON c.id = p.uid
+		WHERE p.uid = #{id}
+	</select>
 	<insert id="insert" parameterType="pointlistVO">
 		INSERT INTO pointlist VALUES (null,#{uid},#{price},sysdate(),#{text})
 	</insert>
