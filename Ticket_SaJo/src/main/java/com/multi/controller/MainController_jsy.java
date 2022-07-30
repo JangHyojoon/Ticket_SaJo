@@ -124,7 +124,8 @@ public class MainController_jsy {
 	
 	@RequestMapping("/mypage")
 	public String mypage(Model m) {
-		m.addAttribute("center", "mypage/mypage");
+		m.addAttribute("left", "mypage/left");
+		m.addAttribute("center", "mypage/center");	
 		return "index";
 	}
 	
@@ -185,6 +186,7 @@ public class MainController_jsy {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		m.addAttribute("left", "mypage/left");
 		m.addAttribute("center", "mypage/myreservationlist");
 		return "index";
 	}

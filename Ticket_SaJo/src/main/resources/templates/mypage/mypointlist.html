@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<div class="field-wrap">
+<div class="field-wrap" th:if="${not #lists.isEmpty(pointlist)}">
 <h1></h1>
 	<strong><h4>아이디<span th:text="${session.user.id}"></span>님의 포인트 내역입니다.</h4></strong>
 	<br>
@@ -18,3 +18,20 @@
 	</tbody>
 </table>
 </div>
+
+<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<strong>포인트 내역이 없습니다.</strong>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
