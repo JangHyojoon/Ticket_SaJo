@@ -32,7 +32,9 @@
         <script src="js/external/modernizr.custom.js"></script>
         
         <!-- Ajax -->
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>		
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
+    	
+
 </head>
 
 
@@ -42,9 +44,6 @@
 </script>
 
 <script th:inline="javascript">
-
-
-
 	   function selectCoupon() {
 	    	$("#usepoint").attr("value",0)
 	    	var coupon = $("#selectCoupon option:selected").val();
@@ -63,7 +62,7 @@
 		var coupon = $("#selectCoupon option:selected").val();
 		var coupon_id = $("#selectCoupon option:selected").attr('id');
 		var mypoint = Number($("#mypoint").text());
-		var limit = Number($("#hiddentotal").text())
+		var limit = Number($("#hiddentotal").text());
 		var usepoint = $("#usepoint").val();
 		var point = 0;
 		var totalprice = 0;
@@ -108,23 +107,15 @@
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 			
 		}
-    	
-
-		/*
-		else if (usepoint > mypoint){
-			$("#usepoint").attr("value",mypoint)			
-			totalprice = price - Number(coupon) -mypoint;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
-			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-		}
-		*/
 	}
-	
- 
 
+  	
+	
+    
+    
+	
     $(document).ready(function(){
-		
- 		
+
  		//버튼 클릭
 		$('#book3btn').click(function(){
 			$('.book3').attr({
@@ -134,12 +125,8 @@
 			$('.book3').submit();
 			
 		
-		});
-		
-	
-	
-		
-	 		
+		});	
+ 		
 	});
 </script>
 
@@ -168,13 +155,13 @@
 					 	<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${sv.posterimg1}}" style="width:260px; height:400px; margin:10px;justify-content: center;">
 					 </div>
                      <ul class="book-result col-lg-8" style="display: block;">
-                        <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}">영화</span></li>
+                        <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}" id='titletext'>영화</span></li>
                         <li class="book-result__item col-sm-3">날짜</li><li class="book-result__item"> <span class="book-result__count booking-price" th:text="${dsv.sdate}">날짜</span></li>
                         <li class="book-result__item col-sm-3">상영관</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.tid}">상영관</span></li>
                                       
                         <li class="book-result__item col-sm-3">시작시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
                         <li class="book-result__item col-sm-3">끝나는시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
-                        <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}">좌석</span></li>
+                        <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}" >좌석</span></li>
                       
                         <li class="book-result__item col-sm-3">사용할 쿠폰</li>	<li class="book-result__item">
 	                        <select th:onchange="selectCoupon()" id="selectCoupon" class="book-result__count booking-ticket"  >
@@ -189,9 +176,9 @@
                        		<form class="book3">
 								<input type='hidden' name='sid' th:value="${dsv.sid}" readonly>
 								<input type='hidden' name='mcnt' th:value="${dsv.mcnt}" readonly>
-						        <input type='hidden' name='title' th:value="${dsv.title}" readonly>
-						        <input type='hidden' name='price' th:value="${price}" readonly>
-						        <input type='hidden' name='seatlist' th:value="${seatlist}" readonly>
+						        <input type='hidden' name='title'  th:value="${dsv.title}" readonly>
+						        <input type='hidden' name='price' id='price' th:value="${price}" readonly>
+						        <input type='hidden' name='seatlist' id='seatlist' th:value="${seatlist}" readonly>
 								<input type='hidden' name='sdate' th:value="${dsv.sdate}" readonly>
 								<input type='hidden' name='uid' th:value="${session.user.id}" readonly>
 								<input type='hidden' name='totalprice' id="totalprice" th:value="${price}" readonly>

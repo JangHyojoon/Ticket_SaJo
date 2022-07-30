@@ -291,7 +291,7 @@ public class MainController_jhj {
 		//포인트 사용시 차감 & 차감내역
 		
 		
-				
+		if (usepoint >0) {		
 			try {
 				PointlistVO plv = new PointlistVO(uid,-usepoint,"포인트사용 - 예매번호 : "+Integer.toString(rid));
 				custbiz.usepoint(uid, usepoint);
@@ -300,9 +300,9 @@ public class MainController_jhj {
 				e.printStackTrace();
 			}
 
-		
+		}
 		//예매시 포인트 적립 &적립내역
-		
+		if (totalprice >19) {	
 			double todouble = totalprice;
 			double  todivide= todouble *0.05;
 			int addpoint = (int) Math.floor(todivide);
@@ -315,7 +315,7 @@ public class MainController_jhj {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+		}	
 		
 		//쿠폰 사용 처리
 		if (cid >0) {
@@ -332,10 +332,10 @@ public class MainController_jhj {
 	}
 	
 
-	@RequestMapping("/elements")
+	@RequestMapping("/success")
 	public String elements(Model m) {
 		
-		m.addAttribute("center", "elements");
+		m.addAttribute("center", "success");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		
