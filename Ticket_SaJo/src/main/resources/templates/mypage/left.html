@@ -1,0 +1,47 @@
+<meta charset="UTF-8">
+<style>
+	.wrapper{
+		text-align: left;
+		margin: 12px;
+	}
+	
+	#info {
+		margin:-15px;
+	}
+</style>
+   <div class="wrapper">
+<br>
+<br>
+<br>
+<br>
+      <div class="wrapper"> 
+         <img src = "/img/user.png" width="20">
+         <span th:text="${session.user.name}"></span>님
+      </div>
+      
+      <div class="wrapper">
+         <a href="/myreservationlist">내 예매 내역</a>
+      </div>
+      
+      <div class="wrapper">
+            <a href="/mypointlist">내 포인트 내역</a>
+      </div>
+         
+      <div class="wrapper">
+            <a href="/mycouponlist">내 쿠폰 내역</a>
+      </div>
+<br>
+	  <div class="wrapper">
+         <span id="info"> &nbsp &nbsp 개인정보</span>
+      </div>
+         
+      <div class="wrapper">
+         <a href="/custdetail">회원 정보 수정</a>
+     <br>
+      </div>
+     
+      <div class="wrapper">
+         <a href="/custdelete">회원탈퇴 </a>
+      </div>
+    
+    </div>

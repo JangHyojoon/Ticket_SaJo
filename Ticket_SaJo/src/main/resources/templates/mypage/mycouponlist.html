@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<div class="field-wrap">
+<div class="field-wrap" th:if="${not #lists.isEmpty(mycouponlist)}">
 <h1></h1>
 	<strong><h4>아이디<span th:text="${session.user.id}"></span>님의 쿠폰 내역입니다.</h4></strong>
 	<br>
@@ -19,3 +19,20 @@
 	</tbody>
 </table>
 </div>
+
+<div id="empty" th:unless="${not #lists.isEmpty(mycouponlist)}">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<strong>쿠폰 내역이 없습니다.</strong>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
