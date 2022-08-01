@@ -16,7 +16,7 @@ class DeleteTest {
 	void contextLoads() {
 		
 		try {
-			biz.remove("eventTest01");
+			biz.remove(8000);
 			System.out.println("Delete success ... ");
 		} catch (Exception e) {
 			e.printStackTrace();
