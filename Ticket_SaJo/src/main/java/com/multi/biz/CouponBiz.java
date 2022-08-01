@@ -12,7 +12,7 @@ import com.multi.mapper.CouponMapper;
 import com.multi.vo.CouponVO;
 
 @Service("couponbiz")
-public class CouponBiz implements Biz<String,CouponVO> {
+public class CouponBiz implements Biz<Integer,CouponVO> {
 
 	@Autowired
 	CouponMapper dao;
@@ -28,12 +28,12 @@ public class CouponBiz implements Biz<String,CouponVO> {
 	}
 
 	@Override
-	public void remove(String k) throws Exception {
+	public void remove(Integer k) throws Exception {
 		dao.delete(k);
 	}
 
 	@Override
-	public CouponVO get(String k) throws Exception {
+	public CouponVO get(Integer k) throws Exception {
 		return dao.select(k);
 	}
 

@@ -33,8 +33,10 @@
         
         <!-- Ajax -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>	
-    	
-
+    	<!-- toss 결제 API -->
+    	<script src="https://js.tosspayments.com/v1"></script>
+		<!-- iamport.payment.js -->
+		<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 </head>
 
 
@@ -109,25 +111,72 @@
 		}
 	}
 
-  	
-	
+	//import
+	/*
+	 function requestPay() {
+		var IMP = window.IMP; // 생략 가능
+	    IMP.init("imp74887828"); // 예: imp00000000
+	    var count = ($('#price').val())/10000;
+    	var title = $('#titletext').text()
+    	var seatlist = $('#seatlist').val();
+    	var total = $('#totalprice').val();
+    	var sdate = $('#sdate').val();
+    	var tid = $('#tidtext').text();
+    	var username=[[${session.user.name}]];
+ // IMP.request_pay(param, callback) 결제창 호출
+     IMP.request_pay({ // param
+         pg: "html5_inicis",
+         pay_method: "card",
+         merchant_uid: 'merchant_' + new Date().getTime(),
+         name: title,
+         amount: total,
+         buyer_email: "test@test.com",
+         buyer_name: username,
+         buyer_tel: "010-0000-0000",     
+     }, function (rsp) { // callback
+         if (rsp.success) {
+        	 $('.book3').attr({
+ 				'method':'post',
+ 				'action':'book3impl'
+ 			});
+ 			$('.book3').submit();
+             
+         } else {
+		        var msg = '결제에 실패하였습니다.';
+		        msg += '에러내용 : ' + rsp.error_msg;
+             	alert(msg);
+             
+	          }
+	      });
+	    }
+		*/
+		 function requestPay() {
+			 $('.book3').attr({
+ 				'method':'post',
+ 				'action':'book3impl'
+ 			});
+ 			$('.book3').submit();
+		}
+		
     
     
 	
-    $(document).ready(function(){
-
- 		//버튼 클릭
-		$('#book3btn').click(function(){
-			$('.book3').attr({
+	
+	
+    	//이전 버튼 클릭
+    	
+		$('#backbtn').click(function(){
+			$('book1impl').attr({
 				'method':'post',
-				'action':'book3impl'
+				'action':'book1impl'
 			});
-			$('.book3').submit();
+			$('book1impl').submit();
 			
 		
-		});	
+		});
+		
  		
-	});
+
 </script>
 
 
@@ -145,9 +194,9 @@
                     <div class="order-step third--step">3. 결제</div>
                 </div>
                 
-                
-		
-          
+               
+	
+          <button onclick="requestPay()">결제하기</button>
                
                     <h2 class="page-heading">예매정보</h2>
                  <div>
@@ -157,7 +206,7 @@
                      <ul class="book-result col-lg-8" style="display: block;">
                         <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}" id='titletext'>영화</span></li>
                         <li class="book-result__item col-sm-3">날짜</li><li class="book-result__item"> <span class="book-result__count booking-price" th:text="${dsv.sdate}">날짜</span></li>
-                        <li class="book-result__item col-sm-3">상영관</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.tid}">상영관</span></li>
+                        <li class="book-result__item col-sm-3">상영관</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.tid}" id='tidtext'>상영관</span></li>
                                       
                         <li class="book-result__item col-sm-3">시작시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket"th:text="${dsv.starttime}">시작시간</span></li>
                         <li class="book-result__item col-sm-3">끝나는시간</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.endtime}">끝나는시간</span></li>
@@ -179,7 +228,7 @@
 						        <input type='hidden' name='title'  th:value="${dsv.title}" readonly>
 						        <input type='hidden' name='price' id='price' th:value="${price}" readonly>
 						        <input type='hidden' name='seatlist' id='seatlist' th:value="${seatlist}" readonly>
-								<input type='hidden' name='sdate' th:value="${dsv.sdate}" readonly>
+								<input type='hidden' name='sdate' id='sdate' th:value="${dsv.sdate}" readonly>
 								<input type='hidden' name='uid' th:value="${session.user.id}" readonly>
 								<input type='hidden' name='totalprice' id="totalprice" th:value="${price}" readonly>
 								<input type='hidden' name='cid' id="selectcid" value="1" readonly>
@@ -200,6 +249,7 @@
                                 <li class="book-result__item col-sm-3">최종 금액: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}+'원'">가격</span></li>
         		  </ul>
         		  <span id="hiddentotal"  style="display:none;" th:text="${price}">히든토탈</span>
+           
                    
 			
                     
@@ -219,11 +269,11 @@
         <div class="clearfix"></div>
 
         <div class="booking-pagination">
-                <a href="book2.html" class="booking-pagination__prev">
+                <a th:href="@{book2}+'?mid='+${sv.mid}+'&date='+${sv.sdate}+'&time='+${dsv.starttime}+'&theater='+${sv.tid}" class="booking-pagination__prev" id="backbtn">
                     <p class="arrow__text arrow--prev">이전 페이지</p>
                     <span class="arrow__info">좌석 선택</span>
                 </a>
-                <a href="#" class="booking-pagination__next" id="book3btn">
+                <a href="#" class="booking-pagination__next" id="book3btn" onclick="requestPay()">
                     <p class="arrow__text arrow--next">결제하기</p>
                     <span class="arrow__info">&nbsp;</span>
                 </a>

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.BookedBiz;
+import com.multi.biz.CouponBiz;
 import com.multi.biz.CustBiz;
 import com.multi.biz.Detail_SchedulesBiz;
 import com.multi.biz.MovieBiz;
@@ -23,6 +24,7 @@ import com.multi.biz.SchedulesBiz;
 import com.multi.biz.TheaterBiz;
 import com.multi.biz.TicketBiz;
 import com.multi.vo.BookedVO;
+import com.multi.vo.CouponVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.Detail_SchedulesVO;
 import com.multi.vo.MovieVO;
@@ -54,6 +56,8 @@ public class MainController_jhj {
 	BookedBiz bookedbiz;
 	@Autowired
 	MycouponBiz mycouponbiz;
+	@Autowired
+	CouponBiz couponbiz;
 	@Autowired
 	CustBiz custbiz;
 	@Autowired
@@ -127,7 +131,7 @@ public class MainController_jhj {
 	
 	}
 	@RequestMapping("/book3")
-	public String book3(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
+	public String book3(Model m, int sid, int mcnt, String starttime, String endtime, int tid, int mid, String sdate,
 		    String choosen_cost, String choosen_sits, HttpSession session) {
 		
 		
@@ -135,15 +139,16 @@ public class MainController_jhj {
 		String[] bookedarr =choosen_sits.split(", ");
 		CustVO cust = (CustVO) session.getAttribute("user");// 유저 정보
 		List<MycouponVO> clist = null; // 사용 가능 쿠폰 저장할 변수 
-		
-		
 		HashSet<String> hashset = 
 				new HashSet<>(Arrays.asList(bookedarr));	
 		String[] choosensit = hashset.toArray(new String[0]);
 		List<String> seatlist = Arrays.asList(choosensit);
-		
 		m.addAttribute("seatlist", seatlist);
 		m.addAttribute("price", choosen_cost);
+		
+		//뒤로가기 정보
+		
+		
 		Detail_SchedulesVO dsv = null;
 		try {
 			dsv = detail_schedulesbiz.get(sid, mcnt);
@@ -326,19 +331,52 @@ public class MainController_jhj {
 			}
 		}
 		
-		return "redirect:/book4?rid="+rid;
+		return "redirect:/bookingsuccess?rid="+rid+"&usepoint="+usepoint+"&cid="+cid;
 		
 
 	}
 	
 
-	@RequestMapping("/success")
-	public String elements(Model m) {
+	@RequestMapping("/bookingsuccess")
+	public String bookingsuccess(Model m,int rid,int usepoint, int cid) {
+		System.out.println(cid);
+		ReservationVO rv = null;
+		List<TicketVO> tlist =null;
+		MycouponVO mcv = null;
+		CouponVO cv = null;
+		if(cid > 6999) {
+			try {
+				rv = reservationbiz.get(rid);
+				tlist = ticketbiz.selectrid(rid);
+				mcv =  mycouponbiz.get(cid);
+				int Cid = mcv.getCid();
+				cv = couponbiz.get(Cid);
+				m.addAttribute("usepoint", usepoint);
+				m.addAttribute("tlist", tlist);
+				m.addAttribute("rv", rv);
+				m.addAttribute("cv", cv);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				rv = reservationbiz.get(rid);
+				tlist = ticketbiz.selectrid(rid);
+				
+				m.addAttribute("usepoint", usepoint);
+				m.addAttribute("tlist", tlist);
+				m.addAttribute("rv", rv);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//포인트 적립 내용
 		
-		m.addAttribute("center", "success");
+		
+		m.addAttribute("center", "bookingsuccess" );
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
-		
 		return "index";
 	}
 	

@@ -16,7 +16,7 @@ class SelectTest {
 	void contextLoads() {
 		CouponVO v = null;
 		try {
-			v = biz.get("eventTest01");
+			v = biz.get(8000);
 			System.out.println(v);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -193,3 +193,12 @@ CREATE TABLE booked(
 );
 ALTER TABLE booked ADD CONSTRAINT PRIMARY KEY(sid,mcnt,seatid);
 
+
+-- 
+
+CREATE TABLE receipt(
+	id varchar(100),
+    regdate Date,
+    text varchar(100)
+);
+ALTER TABLE receipt ADD CONSTRAINT PRIMARY KEY(id);
