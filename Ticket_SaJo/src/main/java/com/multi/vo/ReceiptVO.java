@@ -1,24 +1,26 @@
 package com.multi.vo;
 
+
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CouponVO {
-	private int id;
-	private String name;
-	private Date sdate;
-	private Date edate;
-	private String icon;
-	private int sale;
+public class ReceiptVO {// 영수증 바코드 저장 테이블 
+	private String id;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date regdate;
 	private String text;
-	private String hascoupon;//0730 안원영 추가 - 쿠폰 가지고 있는지 확인 
+	
+	
 }

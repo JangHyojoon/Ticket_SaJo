@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="mycouponVO">
 		SELECT * FROM mycoupon
 	</select>
-
+	<!-- 07230 안원영 추가  - 유저 쿠폰만 출력 -->
+	<select id="selectuserall" resultType="mycouponVO">
+		SELECT * FROM mycoupon WHERE uid=#{uid}
+	</select>
 	<!-- 0722 안원영 추가 - 쿠폰 유무 확인 -->
 	<select id="selectKeepCoupon" parameterType="map"
 		resultType="mycouponVO">

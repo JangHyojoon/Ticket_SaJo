@@ -1,6 +1,5 @@
 package com.multi.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -9,17 +8,18 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.multi.biz.MycouponBiz;
+import com.multi.biz.ReceiptBiz;
 import com.multi.frame.Util;
 import com.multi.ncp.ORCAPI;
 import com.multi.vo.CustVO;
 import com.multi.vo.MycouponVO;
+import com.multi.vo.ReceiptVO;
 
 @RestController
 public class AjaxController_awy {
@@ -30,6 +30,9 @@ public class AjaxController_awy {
 	
 	@Autowired
 	MycouponBiz mcbiz;
+	
+	@Autowired
+	ReceiptBiz rebiz;
 	
 	@RequestMapping("/orcresult")//ORC 영수증 인식 이용 
 	public Object orcresult(MultipartHttpServletRequest filelist) {
@@ -88,7 +91,26 @@ public class AjaxController_awy {
 	}
 	
 	
-	
+	@RequestMapping("/orcBarcodeCheck")//영수증이 중복 사용되었는지 체크
+	public boolean orcBarcodeCheck(HttpSession session, String barcode) {
+		boolean result = false;
+		ReceiptVO receipt = null;
+		
+		try {
+			receipt = rebiz.get(barcode);
+			System.out.println("가져온 receipt : " + receipt);
+			
+			if(receipt != null) {// 만약 있다면 중복사용했다는 뜻임
+				result = false;
+			}else {// 적립 가능한 영수증 바코드일 경우 실행
+//				rebiz.register(new ReceiptVO(barcode,null,"영수증 적립 이벤트 : "));// 해당 영수증 바코드 저장 후 적립 가능으로 변경 
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 }

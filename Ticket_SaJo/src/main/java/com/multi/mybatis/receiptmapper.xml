@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReceiptMapper">
+	
+	<select id="select" parameterType="String" resultType="receiptVO">
+		SELECT * FROM receipt WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="receiptVO">
+		SELECT * FROM receipt
+	</select>
+
+	<insert id="insert" parameterType="receiptVO">
+		INSERT INTO receipt VALUES (#{id},sysdate(),#{text})
+	</insert>
+	<update id="update" parameterType="receiptVO">
+		UPDATE receipt SET id=#{id}, regdate=sysdate(), text=#{text} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="receiptVO">
+		DELETE FROM receipt WHERE id=#{id}
+	</delete>
+</mapper>
