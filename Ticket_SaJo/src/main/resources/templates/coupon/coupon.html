@@ -205,6 +205,11 @@ a { text-decoration:none; }
 						<p class="offer__full" th:text="${coupon.text}"></p>
 						<p class="offer__full"
 							th:text="${#dates.format(coupon.sdate,'yyyy-MM-dd')}+' ~ '+${#dates.format(coupon.edate,'yyyy-MM-dd')}"></p>
+						<p class="offer__full"  >
+						<span th:if="${coupon.hascoupon == '1'}" th:text="${'보유중'}" style="color:gray"></span>
+						<span th:unless="${coupon.hascoupon == '1'}" th:text="${'발급가능'}" style="color:white"></span>
+
+						</p>
 					</a>
 				</div>
 
