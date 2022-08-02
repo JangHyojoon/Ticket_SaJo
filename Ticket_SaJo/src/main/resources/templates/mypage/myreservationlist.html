@@ -1,48 +1,41 @@
 <meta charset="UTF-8">
 <style>
-	#empty{
-		text-align: center;
-	}
+   #empty{
+      text-align: center;
+   }
+   #h4{
+      text-align: center;
+   }
 </style>
-<div class="field-wrap" th:if="${not #lists.isEmpty(reservationlist)}"> 
-<h1></h1>
-	<strong><h4>아이디<span th:text="${session.user.id}"></span>님의 예매내역입니다.</h4></strong>
-	<br>
-	<br>
+
+<div class="wrapper" th:if="${not #lists.isEmpty(reservationlist)}">
+   <strong><h4 id="h4">아이디<span th:text="${session.user.id}"></span>님의 예매내역입니다.</h4></strong>
+   <br>
+   <br>
 <table>
-	<thead>
-		<tr><th>예매 번호</th><th>날짜</th><th>시작 시간</th><th>끝나는 시간</th><th>영화제목</th></tr>
-	</thead>
-	<tbody>
-		<tr th:each="r:${reservationlist}">
-			<td><a href="" th:text="${r.id}" th:href="@{book4(id=${r.id})}">예매번호</a></td>
-			<td th:text="${r.sdate}">날짜</td>
-			<td th:text="${r.starttime}">시작 시간</td>
-			<td th:text="${r.endtime}">끝나는 시간</td>
-			<td th:text="${r.title}">영화제목</td>
-		</tr>
-	</tbody>
+   <thead>
+      <tr><th>예매 번호</th><th>총 인원</th><th>총 가격</th><th>구매한 날짜</th><th>영화 제목</th></tr>
+   </thead>
+   <tbody>
+      <tr th:each="r:${reservationlist}">
+         <td><a href="" th:text="${r.id}" th:href="@{book4(rid=${r.id})}">예매번호</a></td>
+         <td th:text="${r.pcnt}">총 인원</td>
+         <td th:text="${r.totalprice}">총 가격</td>
+         <td th:text="${r.purchasedate}">구매한 날짜</td>
+         <td th:text="${r.title}">영화 제목</td>
+      </tr>
+   </tbody>
 </table>
 </div>
-
-<div id="empty" th:unless="${not #lists.isEmpty(reservationlist)}">
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<strong>예매 내역이 없습니다.</strong>
+<div id="empty" th:unless="${not #lists.isEmpty(reservationlist)}" >
+예매 내역이 없습니다. 
 </div>
-
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-
-
-<div id="left" class="wrapper">
-	<div th:insert="${left} ? ${left} : left"> </div>
-</div>

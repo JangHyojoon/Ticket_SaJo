@@ -50,7 +50,6 @@ public class MovieVO {
 		this.text = text;
 	}
 
-
 	public MovieVO(int id, int gid, String title, String director, String mainactor, Date releasedate,
 			String posterimg1, String posterimg2, String country, String runningtime, String text) {
 		this.id = id;
@@ -66,5 +65,5 @@ public class MovieVO {
 		this.text = text;
 	}
 
-	
+
 }

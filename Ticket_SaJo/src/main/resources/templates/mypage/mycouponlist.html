@@ -1,7 +1,15 @@
 <meta charset="UTF-8">
+<style>
+   #empty{
+      text-align: center;
+   }
+   #h4{
+      text-align: center;
+   }
+</style>
 <div class="field-wrap" th:if="${not #lists.isEmpty(mycouponlist)}">
 <h1></h1>
-	<strong><h4>아이디<span th:text="${session.user.id}"></span>님의 쿠폰 내역입니다.</h4></strong>
+	<strong><h4 id="h4">아이디<span th:text="${session.user.id}"></span>님의 쿠폰 내역입니다.</h4></strong>
 	<br>
 	<br>
 <table>

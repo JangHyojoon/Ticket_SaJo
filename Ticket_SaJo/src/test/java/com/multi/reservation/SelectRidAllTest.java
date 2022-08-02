@@ -28,7 +28,4 @@ class SelectRidAllTest {
 			System.out.println(vo);
 		}
 	}
-
-	
-
 }
