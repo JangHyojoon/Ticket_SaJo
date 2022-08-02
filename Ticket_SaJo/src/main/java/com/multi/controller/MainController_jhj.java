@@ -66,27 +66,31 @@ public class MainController_jhj {
 	SimpMessagingTemplate template;
 	@RequestMapping("/book1")
 	public String book1(Model m) {
-		
-		List<MovieVO> movielist = null;
-		List<SchedulesVO> scheduleslist = null;
-		List<Detail_SchedulesVO> detail_scheduleslist = null;
-		try {
-			movielist = moviebiz.get();
-			scheduleslist = schedulesbiz.selectmovieonschedules();
-			detail_scheduleslist = detail_schedulesbiz.get();
-		} catch (Exception e) {
-			e.printStackTrace();
 			
-		}
-		m.addAttribute("movielist", movielist);
-		m.addAttribute("scheduleslist", scheduleslist);
-		m.addAttribute("detail_scheduleslist", detail_scheduleslist);
+			List<MovieVO> movielist = null;
+			List<SchedulesVO> scheduleslist = null;
+			List<Detail_SchedulesVO> detail_scheduleslist = null;
+			try {
+				movielist = moviebiz.get();
+				scheduleslist = schedulesbiz.selectmovieonschedules();
+				detail_scheduleslist = detail_schedulesbiz.get();
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			}
+			
+			m.addAttribute("movielist", movielist);
+			m.addAttribute("scheduleslist", scheduleslist);
+			m.addAttribute("detail_scheduleslist", detail_scheduleslist);
+			
+			m.addAttribute("center", "book1");
+			m.addAttribute("header", "header");
+			m.addAttribute("footer", "footer");
+			
 		
-		m.addAttribute("center", "book1");
-		m.addAttribute("header", "header");
-		m.addAttribute("footer", "footer");
 		
 		return "index";
+		
 	}
 	@RequestMapping("/book2")
 	public String book2(Model m, int mid, String date,String time,int theater,String msg) {

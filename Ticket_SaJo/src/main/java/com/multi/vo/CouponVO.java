@@ -21,4 +21,16 @@ public class CouponVO {
 	private int sale;
 	private String text;
 	private String hascoupon;//0730 안원영 추가 - 쿠폰 가지고 있는지 확인 
+	public CouponVO(int id, String name, Date sdate, Date edate, String icon, int sale, String text) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sdate = sdate;
+		this.edate = edate;
+		this.icon = icon;
+		this.sale = sale;
+		this.text = text;
+	}
+
+
 }
