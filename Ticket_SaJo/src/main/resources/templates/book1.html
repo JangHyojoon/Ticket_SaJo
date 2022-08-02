@@ -54,7 +54,7 @@
 	</style>
 	
 	
-	<script>
+	<script th:inline="javascript">
 	
 	var tcnt;
 	var tid;
@@ -137,6 +137,7 @@
 	$(document).ready(function(){
 
 				$('#book1btn').hide();
+					
 				//영화 선택 
 				$(function() {
 					$('.film-images').click(function(){
@@ -193,7 +194,7 @@
               <div class="swiper-wrapper" >
                   <!--First Slide-->
 				
-
+					
 					<div class="swiper-slide" th:each = "s : ${scheduleslist}"> 
 						<div class="film-images"  th:id="${s.mid} ? ${s.mid}">
 							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${s.posterimg1}}" width="360" height="600">

@@ -72,9 +72,9 @@
     	
     			console.log('Connected: ' + frame);
     			stompClient.subscribe('/sends', function(msg) { 
-    				var tests = JSON.parse(msg.body).blist
-    				for(var i = 0; i<tests.length; i++){
-    	    			$("#"+tests[i].seatid).addClass("sits-state--not");
+    				var blists = JSON.parse(msg.body).blist
+    				for(var i = 0; i<blists.length; i++){
+    	    			$("#"+blists[i].seatid).addClass("sits-state--not");
     	    		}
     			});
 
@@ -100,24 +100,32 @@
 			disconnect();
 			$('.book2').submit();					
 		};
-			var test = [[${blist}]];
+			var blist = [[${blist}]];
+			
+			
+			
+			
 	    	$(document).ready(function(){
+	    	
+	    		var cnt = Number($("#cnt").val());
+	    		
+	    		var your = $('sits__place sits-price--cheap sits-state--your').length;
+	    		
+	    		$('.sits__place sits-price--cheap').click(function(){
+	    			
+	    				alert();
+	    			
+	    		});
+	    		
+	    		
 	    		connect();
-	    	
-	    	
-	    	
-	    		
-	    		
-	    		for(var i = 0; i<test.length; i++){
-	    			$("#"+test[i].seatid).addClass("sits-state--not");
-	    		}
-	    		
-	    		
+	    		for(var i = 0; i<blist.length; i++){
+	    			$("#"+blist[i].seatid).addClass("sits-state--not");
+	    		}    		
 	    		var msg = [[${msg}]];
 	    		if(msg != null){
 	    			alert(msg);
-	    		}
-	    		
+	    		}		
 	    	});  
 	    	
     	</script>
@@ -137,7 +145,11 @@
                     <div class="order-step first--step order-step--disable ">1. 영화 선택</div>
                     <div class="order-step second--step">2. 좌석 선택</div>
                 </div>
-            
+                
+         
+                
+			
+
             <div class="choose-sits">
 
 
