@@ -1,10 +1,14 @@
-<meta charset="utf-8">
-<style>
-	#h3{
-		margin: 50px;
-	}
-</style>
-<div class="wrapper">
-	<h2 id="h3">My Page입니다.</h2>
-</div>
+<meta charset="utf-8">>
 
+<div class="container">
+	<div class= "col-sm-3">
+		<div th:insert="${left} ? ${left} : left"> </div>
+	</div>
+	
+	<div class= "col-sm-6">
+		<div th:insert="${mypage_center} ? ${mypage_center} : mypage_center"> </div>
+	</div>
+</div>
+<br>
+<br>
+<br>

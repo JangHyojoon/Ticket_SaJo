@@ -25,7 +25,4 @@ class UpdateTest {
 			e.printStackTrace();
 		}
 	}
-
-	
-
 }

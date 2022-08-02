@@ -17,6 +17,7 @@ public class TicketVO {
 	private String purchasedate;
 	private int mcnt;
 	private String seatid;
+	
 	public TicketVO(int sid, int rid, String purchasedate, int mcnt, String seatid) {
 		super();
 		this.sid = sid;
@@ -40,8 +41,7 @@ public class TicketVO {
 		this.mcnt = mcnt;
 		this.seatid = seatid;
 	}
-
-	
-	
-	
+	public TicketVO(String purchasedate) {
+		this.purchasedate = purchasedate;
+	}
 }
