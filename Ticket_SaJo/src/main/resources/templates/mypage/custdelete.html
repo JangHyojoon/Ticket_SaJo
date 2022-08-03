@@ -1,7 +1,12 @@
 <meta charset="UTF-8">
 <style>
-#id{
-	color:#228B22;
+	#id{
+		color:#228B22;
+}
+
+	#h2{
+		text-align: center;
+	
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,11 +21,12 @@ function checknowpwd(delete_pwd) {
 			if(data == '1') {
 				$('#now_pwdspan').html('현재 비밀번호와 일치합니다.');
 				$('#now_pwdspan').css('color', 'green');
+				$('#deletebtnspan').hide();
 				nowpwd_ok = 1;
 			}else  {
 				$('#now_pwdspan').html('사용중인 비밀번호와 일치하지 않습니다.');
 				$('#now_pwdspan').css('color','red');
-				nowpwd_ok = 0;
+				$('#deletebtnspan').hide();
 			}
 		}
 	});
@@ -32,39 +38,48 @@ $(document).ready(function() {
 	});
 	
 	$('#deletebtn').click(function(){
-		if(nowpwd_ok){ 
+		if(nowpwd_ok) {
 			$('#custdelete_form').attr({
 				'action':'custdeleteimpl',
 				'method':'post'
-			})
-			
+			 })
+					
 			$('#custdelete_form').submit();
-		}
-	});	
-});
+		} else {
+			$('#deletebtnspan').html('비밀번호를 다시 확인해주세요.');
+			$('#deletebtnspan').css('color', 'red');
 
+		}
+	
+	  });
+   });
 
 </script>
-<div class="field-wrap">
-<h2>탈퇴 안내 </h2>
+<div class="wrapper">
+<h2 id="h2"> 탈퇴 안내 </h2>
        <h5>
        	<strong>사용하고 계신 아이디<span id="id" th:text="${session.user.id}"></span>는 탈퇴할 경우 재사용 및 복구가 불가능하오니 신중하게 선택하시기 바랍니다.</h5></strong>
 		<form class="form-horizontal" id="custdelete_form">
 				<div class="form-wrap">
-					비밀번호 : <span id="now_pwdspan"></span> <input id="now_pwd" type="text" name="now_pwd" placeholder="사용중인 비밀번호">
+					비밀번호 : 
+					<input id="now_pwd" type="text" name="now_pwd" placeholder="사용중인 비밀번호">
+					<span id="now_pwdspan"></span> 
 				</div>
 			<br>
 			<br>
 					탈퇴 사유 : <select>
+					<option>선택</option>
 					<option> 사용 빈도가 낮음</option>
 					<option> 볼 영화가 없음</option>
 					<option> 사이트 사용이 불편함</option>
 					</select> 
 	    </form>
 	    <br>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label>
-    </div>
+
+
+  	<div class="field-wrap">
 	    <br>
 		<button class="btn" id="deletebtn">회원탈퇴 </button><br>
+		<span id= "deletebtnspan"></span>
+    </div>
 </div>

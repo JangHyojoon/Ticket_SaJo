@@ -43,7 +43,7 @@ public class MainController_jsy {
       // ********** 0722 - 안원영 수정 **********
       String uri = request.getHeader("Referer");
 //      System.out.println("이전 url : " + uri);
-       if (uri != null && !uri.contains("/signinimpl")){// 이전페이지가 있으면 실행 
+       if (uri != null && !uri.contains("/signinimpl") && !uri.contains("/signin") && !uri.contains("/custdeleteimpl")){// 이전페이지가 있으면 실행 
            request.getSession().setAttribute("prevPage", uri);// session에 prevPage 변수에 이전페이지 url 기억 
        }
       
@@ -63,7 +63,6 @@ public class MainController_jsy {
 
    @RequestMapping("/signinimpl")
    public String signinimpl(Model m, String id, String pwd, HttpSession session) {
-      String next = "";
       CustVO cust = null;
 
       try {
@@ -99,8 +98,7 @@ public class MainController_jsy {
       } catch (Exception e) {   
          return "redirect:signin?msg=f";
       }
-      
-      return "redirect:/";
+      return "redirect:/";     
    }
    
    @RequestMapping("/signup")

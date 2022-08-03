@@ -17,7 +17,7 @@ class SelectCustTest {
 	void contextLoads() {
 		List<ReservationVO> list = null;
 		try {
-			list= biz.selectcust("jhj");
+			list= biz.selectcust("kms");
 			
 			System.out.println("SELECT CUST Success ... ");
 		} catch (Exception e) {
