@@ -75,14 +75,14 @@
 				
 				$("#usepoint").attr("value",limit);
 				totalprice = price - Number(coupon) -limit;
-				$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+				$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 				
 				
 			}
 			$("#usepoint").attr("value",mypoint)			
 			totalprice = price - Number(coupon) -mypoint;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 			
 		}else if (usepoint > limit) {
@@ -90,14 +90,14 @@
 				
 				$("#usepoint").attr("value",mypoint)			
 				totalprice = price - Number(coupon) -mypoint;
-				$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+				$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 
 				
 			}
 			$("#usepoint").attr("value",limit);
 			totalprice = price - Number(coupon) -limit;
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 			
 		} 
@@ -105,7 +105,7 @@
 			$("#usepoint").attr("value",usepoint)
 			point = usepoint;
 			totalprice = price - Number(coupon) -Number(point);
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 			
 		}
@@ -305,21 +305,19 @@
 <body th:unless="${session.user != null}">
 	<div class="wrapper">
 	       <div class="error-wrapper">
-	           <a href='/' class="logo logo--dark">
-	               <img alt='logo' src="images/logo-dark.png">
-	               <p class="slogan--dark">fun to search, fun to watch</p>
+	           <a th:href="@{/}" class="logo logo--dark">
+	               <img alt='logo' src="images/new logo dark.png">
+	               <p class="slogan--dark">Classic Movie Theater</p>
 	           </a>
 	
 	           <div class="error">
 	               <img alt='' src='images/error.png' class="error__image">
-	               <h1 class="error__text">sorry, but page can’t be found</h1>
-	               <a href="/" class="btn btn-md btn--warning">return to homepage</a>
+	               <h1 class="error__text">로그인이 만료되었습니다. 다시 로그인해주세요</h1>
+	               <a th:href="@{signin}" class="btn btn-md btn--warning">로그인</a>
 	           </div>
 	       </div>
 	
-	       <div class="copy-bottom">
-	           <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
-	       </div>
+	      
 	
 	</div>
 	</body>
