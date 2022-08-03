@@ -94,7 +94,15 @@
 			//좌석 선택 알람
 			var cost = $('input[name=choosen_cost]').val();			
 			if (cost == 0) {
-				alert("좌석을 선택해주세요")
+				Swal.fire({
+					  
+					  text: "좌석을 선택해주세요",
+					  icon: 'warning',
+					 
+					  confirmButtonColor: '#212121',
+					  confirmButtonText: '확인'
+					 
+					})
 				return
 			}	
 			disconnect();
@@ -107,24 +115,22 @@
 			
 	    	$(document).ready(function(){
 	    	
-	    		var cnt = Number($("#cnt").val());
-	    		
-	    		var your = $('sits__place sits-price--cheap sits-state--your').length;
-	    		
-	    		$('.sits__place sits-price--cheap').click(function(){
-	    			
-	    				alert();
-	    			
-	    		});
-	    		
-	    		
 	    		connect();
 	    		for(var i = 0; i<blist.length; i++){
 	    			$("#"+blist[i].seatid).addClass("sits-state--not");
 	    		}    		
 	    		var msg = [[${msg}]];
 	    		if(msg != null){
-	    			alert(msg);
+	    			
+	    			Swal.fire({
+						  
+						  text: msg,
+						  icon: 'warning',
+						 
+						  confirmButtonColor: '#212121',
+						  confirmButtonText: '확인'
+						 
+						})
 	    		}		
 	    	});  
 	    	
@@ -278,8 +284,8 @@
 	<div class="wrapper">
 	       <div class="error-wrapper">
 	           <a th:href="@{/}" class="logo logo--dark">
-	               <img alt='logo' src="images/logo-dark.png">
-	               <p class="slogan--dark">fun to search, fun to watch</p>
+	               <img alt='logo' src="images/new logo dark.png">
+	               <p class="slogan--dark">Classic Movie Theater</p>
 	           </a>
 	
 	           <div class="error">
@@ -289,9 +295,7 @@
 	           </div>
 	       </div>
 	
-	       <div class="copy-bottom">
-	           <p class="copy">&copy; A.Movie, 2013. All rights reserved. Done by Olia Gozha</p>
-	       </div>
+	      
 	
 	</div>
 </body>

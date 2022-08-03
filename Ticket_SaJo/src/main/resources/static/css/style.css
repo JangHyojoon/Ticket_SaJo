@@ -1093,7 +1093,7 @@ table {
   height: 50px;
 }
 .top-scroll a:hover {
-  background: url("../images/components/arrow.svg") repeat scroll center center rgba(254, 80, 90, 0.8);
+  background: url("../images/components/arrow.svg") repeat scroll center center rgba(0, 0, 0, 0.8);
 }
 .inv-em {
   top: -5px;
@@ -3149,8 +3149,7 @@ input[type="button"].btn-block {
   z-index: 101;
 }
 .footer-wrapper {
-  background-color: #fafafa;
-  background-image: url(../images/components/price-pattern.jpg);
+  background-color: #EEEEEE;
   background-repeat: repeat;
   overflow: hidden;
   margin-top: 60px;
@@ -3326,13 +3325,13 @@ input[type="button"].btn-block {
 }
 .logo {
   position: absolute;
-  top: 16px;
-  left: 15px;
+  top: 12px;
+  
   z-index: 2;
 }
 .logo img {
-  width: 111px;
-  height: 17px;
+  width: 180px;
+  height: 30px;
 }
 #navigation-box {
   background-color: transparent;
@@ -3456,15 +3455,15 @@ ul#navigation a:hover {
 }
 .btn--warning:hover {
   color: #4c4145;
-  background-color: #ffe08d;
+  background-color: #EEEEEE;
   border-color: transparent;
 }
 .btn--danger {
-  background-color: #FF5A5A;
-  border: solid 1px #f42a36;
+  background-color: gray;
+  border: solid 1px gray;
 }
 .btn--danger:hover {
-  background-color: #fd616a;
+  background-color: black;
   border-color: transparent;
 }
 .btn--success {
@@ -3480,7 +3479,7 @@ ul#navigation a:hover {
   border: solid 1px #5D5D5D;
 }
 .btn--shine:hover {
-  background-color: #ffb865;
+  background-color: #212121;
   border-color: transparent;
 }
 .btn--info {
@@ -3563,7 +3562,7 @@ ul#navigation a:hover {
 .watchlist {
   font-size: 13px;
   color: #4c4145;
-  border: 1px solid #FF5A5A;
+  border: 1px solid gray;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -3572,7 +3571,7 @@ ul#navigation a:hover {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-  background-color: #FF5A5A;
+  background-color: gray;
 }
 .watchlist:before {
   content: '\f055';
@@ -3605,7 +3604,7 @@ ul#navigation a:hover {
 }
 .read-more {
   font: 16px 'Noto Sans KR', sans-serif;
-  color: #fe505a;
+  color: gray;
   text-transform: uppercase;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -3618,7 +3617,7 @@ ul#navigation a:hover {
 .read-more:after {
   content: '\f054';
   font-family: "FontAwesome";
-  color: #fe505a;
+  color: gray;
   padding-left: 12px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
@@ -5728,8 +5727,8 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .booking-pagination .arrow__text {
   position: relative;
-  font: 16px 'aleoregular', sans-serif;
-  color: #fe505a;
+  font: 16px;
+  color: black;
   text-transform: uppercase;
   border-bottom: 1px solid #dbdee1;
   margin-bottom: 2px;
@@ -5742,7 +5741,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 .booking-pagination .arrow--prev:before {
   content: "\f053";
   font: 15px "FontAwesome";
-  color: #fe505a;
+  color: gray;
   position: absolute;
   top: 18px;
   left: -2px;
@@ -5753,7 +5752,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 .booking-pagination .arrow--next:before {
   content: "\f054";
   font: 15px "FontAwesome";
-  color: #fe505a;
+  color: gray;
   position: absolute;
   top: 18px;
   right: -2px;
@@ -5982,13 +5981,13 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   z-index: 10;
   display: inline-block;
   font-size: 12px;
-  background-color: #ffd564;
+  background-color: white;
   padding: 9px 15px 8px 14px;
   margin: 5px 16px 5px 0;
   cursor: pointer;
 }
 .time-select .time-select__item:hover {
-  background-color: #fe505a;
+  background-color: white;
 }
 .time-select .time-select__item:before {
   content: '';
@@ -6003,7 +6002,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   content: '';
   width: 64px;
   height: 34px;
-  background-image: url(../images/components/bg-time.png);
+  background-image: url(../images/components/bg-time2.png);
   background-repeat: no-repeat;
   -webkit-background-size: 64px 34px;
   background-size: 64px 34px;
@@ -6013,13 +6012,13 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   z-index: -1;
 }
 .time-select .time-select__item:hover:after {
-  background-image: url(../images/components/bg-time-hover.png);
+  background-image: url(../images/components/bg-time-hover2.png);
 }
 .time-select .time-select__item.active {
-  background-color: #fe505a;
+  background-color: white;
 }
 .time-select .time-select__item.active:after {
-  background-image: url(../images/components/bg-time-hover.png);
+  background-image: url(../images/components/bg-time-hover2.png);
 }
 .time-select .items-wrap {
   padding-top: 15px;
@@ -6349,7 +6348,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
 .rates .rates__result {
   text-align: center;
   font: 20px 'Noto Sans KR', sans-serif;
-  background-color: #C4DEFF;
+  background-color: #E0E0E0;
 }
 .rates .rates__stars .score {
   margin-left: 50px;
@@ -6370,7 +6369,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   display: none;
 }
 .rates--top {
-  background-color: #D6F0FF;
+  background-color: #EEEEEE;
 }
 .rates--top .rates__obj-name {
   font-weight: bold;
@@ -6440,7 +6439,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   color: #4c4145;
 }
 .offer-place {
-  color: #fe505a;
+  color: gray;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 18px;
   text-align: center;
@@ -6538,7 +6537,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   content: '';
   width: 40px;
   height: 28px;
-  background-color: #ffd564;
+  background-color: gray;
   position: absolute;
   top: 0;
   left: 0;
@@ -6835,10 +6834,10 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   margin-right: -3px;
 }
 .order-step-area .second--step:before {
-  border-color: transparent transparent #fe505a transparent;
+  border-color: transparent transparent gray transparent;
 }
 .order-step-area .second--step:after {
-  background-color: #fe505a;
+  background-color: gray;
 }
 .order-step-area .third--step:before {
   border-color: transparent transparent #4c4145 transparent;
@@ -6896,7 +6895,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   -moz-border-radius: 50px;
   border-radius: 50px;
   padding-top: 40px;
-  background-color: #ffd564;
+  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7256,7 +7255,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   text-align: left;
 }
 .book-result .booking-cost {
-  color: #fe505a;
+  color: black;
 }
 .reservation-message {
   position: relative;
@@ -7488,7 +7487,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
 .tparrows.tp-leftarrow.hebe .slider__info:before {
   content: 'back';
   font: 13px 'aleoitalic', sans-serif;
-  color: #ffd564;
+  color: white;
   position: absolute;
   bottom: 22px;
   right: 19px;
@@ -7574,7 +7573,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
 .tparrows.tp-rightarrow.hebe .slider__info:before {
   content: 'next';
   font: 13px 'aleoitalic', sans-serif;
-  color: #ffd564;
+  color: white;
   position: absolute;
   top: 67px;
   left: 19px;
@@ -7985,7 +7984,7 @@ background: linear-gradient(90deg, rgba(255,198,198,1) 0%, rgba(255,115,115,1) 1
   font-size: 13px;
 }
 .movie-best .movie-beta__info .slide__link {
-  color: #fe505a;
+  color: #EEEEEE;
   font: 16px 'aleoregular', sans-serif;
   padding-right: 20px;
   text-transform: uppercase;
@@ -8003,8 +8002,8 @@ background: linear-gradient(90deg, rgba(255,198,198,1) 0%, rgba(255,115,115,1) 1
   padding-right: 30px;
 }
 .movie-best .movie-beta__info .slide__link:before {
-  color: #fe505a;
-  content: "\f054";
+  color: #b4b1b2;
+  
   font: 16px "FontAwesome";
   position: absolute;
   right: 10px;
@@ -8014,7 +8013,7 @@ background: linear-gradient(90deg, rgba(255,198,198,1) 0%, rgba(255,115,115,1) 1
   transition: 0.3s;
 }
 .movie-best .movie-beta__info .slide__link:hover {
-  background-color: #fe505a;
+  background-color: #b4b1b2;
   color: #ffffff;
 }
 .movie-best .movie-beta__info .slide__link:hover:before {
@@ -8954,7 +8953,7 @@ background: linear-gradient(90deg, rgba(255,198,198,1) 0%, rgba(255,115,115,1) 1
   display: inline-block;
   text-align: center;
   font-size: 13px;
-  color: #ffffff;
+  color: white;
   font-weight: bold;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -9338,7 +9337,7 @@ border-radius: 10px 10px 10px 10px;
 }
 .gallery-item .gallery-item--video:before,
 .gallery-item .gallery-item--video-link:before {
-  background-color: #fe505a;
+  background-color: gray;
 }
 .choose-sits__info--first {
   border-right: 1px solid #4c4145;
@@ -10298,7 +10297,7 @@ border-radius: 10px 10px 10px 10px;
     margin: 0;
   }
   .ls-cat {
-    margi: 0;
+    margin: 0;
   }
   .mobile-category {
     width: 100%;
