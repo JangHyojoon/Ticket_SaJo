@@ -19,7 +19,7 @@ class SelectPointTest {
 	void contextLoads() {
 		List<PointlistVO> list = null;
 		try {
-			list= biz.selectpoint("id01");
+			list= biz.selectpoint("jsy");
 			
 		} catch (Exception e) {
 			

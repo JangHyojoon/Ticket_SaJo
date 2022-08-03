@@ -18,7 +18,7 @@
    </thead>
    <tbody>
       <tr th:each="r:${reservationlist}">
-         <td><a href="" th:text="${r.id}" th:href="@{book4(rid=${r.id})}">예매번호</a></td>
+         <td><a th:text="${r.id}" th:href="@{book4(rid=${r.id})}">예매번호</a></td>
          <td th:text="${r.pcnt}">총 인원</td>
          <td th:text="${r.totalprice}">총 가격</td>
          <td th:text="${r.purchasedate}">구매한 날짜</td>

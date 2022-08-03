@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT mc.id, mc.uid, mc.used, mc.udate, mc.rdate, cp.text from mycoupon mc
 		INNER JOIN coupon cp ON cp.id = mc.cid
 		INNER JOIN cust c ON c.id = mc.uid
-		WHERE mc.uid = #{id} AND mc.used = 1
+		WHERE mc.uid = #{uid} 
 	</select>
 	<insert id="insert" parameterType="mycouponVO">
 		INSERT INTO mycoupon VALUES (NULL,#{uid},#{cid},#{used},NULL,sysdate())

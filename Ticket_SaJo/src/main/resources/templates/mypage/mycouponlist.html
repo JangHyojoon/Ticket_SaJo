@@ -7,18 +7,18 @@
       text-align: center;
    }
 </style>
-<div class="field-wrap" th:if="${not #lists.isEmpty(mycouponlist)}">
+<div class="wrapper" th:if="${not #lists.isEmpty(mycouponlist)}">
 <h1></h1>
 	<strong><h4 id="h4">아이디<span th:text="${session.user.id}"></span>님의 쿠폰 내역입니다.</h4></strong>
 	<br>
 	<br>
 <table>
 	<thead>
-		<tr><th>쿠폰 번호</th><th>쿠폰 내용</th><th>발급 날짜</th><th>사용 가능 여부</th><th>사용한 날짜</th></tr>
+		<tr><th>쿠폰 번호</th><th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp쿠폰 내용</th><th>&nbsp &nbsp발급 날짜</th><th>사용 가능 여부</th><th>사용한 날짜</th></tr>
 	</thead>
 	<tbody>
 		<tr th:each="mc:${mycouponlist}">
-			<td><a href="" th:text="${mc.id}">쿠폰 번호</a></td>
+			<td><a th:text="${mc.id}">쿠폰 번호</a></td>
 			<td th:text="${mc.text}">쿠폰 내용</td>
 			<td th:text="${#dates.format(mc.rdate, 'yyy/MM/dd')}">발급 날짜</td>
 			<td th:text="${mc.used}">사용 가능 여부</td>

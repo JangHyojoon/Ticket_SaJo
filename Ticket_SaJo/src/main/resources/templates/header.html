@@ -127,7 +127,7 @@ li {
                
             </div>
             
-            <a href="#" class="btn btn--sign btn--singin"> me </a>
+            <a href="#" class="btn btn--sign btn--singin" th:if="${session.user !=null}"> me </a>
             <ul class="auth__function">
                <li><a href="/mypage" class="auth__function-item">회원정보</a></li>
                <li><a href="/signout" class="auth__function-item">로그아웃</a></li>
