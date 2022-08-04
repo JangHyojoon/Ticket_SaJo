@@ -1,0 +1,94 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+<script>
+	$(document).ready(function(){
+		$('#btn').click(function(){
+			 $('.check').attr({
+					'method':'post',
+					'action':'/schedule/addimpl'
+				});
+				$('.check').submit();
+		});
+		 
+	});
+</script>
+
+</head>
+<body>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            
+            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">상영 회차 선택</h4>
+                  <p class="card-description">
+                    2. 상영회차를 선택해 주세요.
+                  </p>
+                  <form class="check">
+                  <div class="form-group">
+                      <input type="hidden" class="form-control" name="id" id="exampleInputId" placeholder="ID" th:value="${sid}">
+                    </div>
+                      <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" name="check" class="form-check-input" value="1">
+                        1회차(13:00 ~ 15:00)
+                      </label>
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" name="check" class="form-check-input" value="2">
+                        2회차(16:00 ~ 18:00)
+                      </label>
+                    </div>
+                    <div class="form-check form-check-flat form-check-primary">
+                      <label class="form-check-label">
+                        <input type="checkbox" name="check" class="form-check-input" value="3">
+                        3회차(19:00 ~ 21:00)
+                      </label>
+                    </div>
+                    <button id="btn" type="submit" class="btn btn-primary mr-2">추가</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+         
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright 짤 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+

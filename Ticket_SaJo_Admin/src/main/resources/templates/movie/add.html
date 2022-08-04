@@ -1,0 +1,173 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+<script>
+
+function inputYMDNumber(obj) {
+  // @see DELETE 키버튼이 눌리지 않은 경우에만 실행
+    if(event.keyCode != 8) {
+        // @see 숫자와 하이픈(-)기호의 값만 존재하는 경우 실행
+        if(obj.value.replace(/[0-9 \-]/g, "").length == 0) {
+            // @see 하이픈(-)기호를 제거한다.
+            let number = obj.value.replace(/[^0-9]/g,"");
+            let ymd = "";
+            // @see 문자열의 길이에 따라 Year, Month, Day 앞에 하이픈(-)기호를 삽입한다.
+            if(number.length < 4) {
+                return number;
+            } else if(number.length < 6){
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4);
+            } else if(number.length >8){
+            	$(this).focusout();
+        	}else 	{
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4, 2);
+                ymd += "-";
+                ymd += number.substr(6);
+            }
+            obj.value = ymd;  
+    	}else {
+            alert("숫자 이외의 값은 입력하실 수 없습니다.");
+            //@see 숫자와 하이픈(-)기호 이외의 모든 값은 삭제한다.
+            obj.value = obj.value.replace(/[^0-9 ^\-]/g,"");
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+}
+	$(document).ready(function(){
+		$('#btn').click(function(){
+			 
+			var datatimeRegexp = /[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;
+			 if ( !datatimeRegexp.test($('#exampleInputReleasedate').val()) ) {
+			        alert("날짜를 다시 입력해주세요.");
+			        return false;
+			 }
+			 $('.movie').attr({
+					'method':'post',
+					'action':'/movie/addimpl'
+				});
+				$('.movie').submit();
+		});
+		 
+	});
+</script>
+
+</head>
+<body>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            
+            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">새로운 상영 영화 등록</h4>
+                  <p class="card-description">
+                    영화 정보 및 포스터를 추가해 주세요.
+                  </p>
+                  <form class="movie" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label for="exampleSelectGenre">장르</label>
+                        <select name="gid" class="form-control" id="exampleSelectGenre">
+                          <option th:each="g:${glist}"
+                          th:if="${g.tid != 0}" th:value="${g.id}" th:text="${g.name}"
+                          >man</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputTitle">제목</label>
+                      <input type="text" class="form-control" name="title" id="exampleInputTitle" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputDirector">감독</label>
+                      <input type="text" class="form-control" name="director" id="exampleInputDirector" placeholder="Director">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputMainactor">주연 배우</label>
+                      <input type="text" class="form-control" name="mainactor" id="exampleInputMainactor" placeholder="Mainactor">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputReleasedate">개봉연월일</label>
+                      <input type="text" onKeyup="inputYMDNumber(this);" maxlength="10" class="form-control" name="releasedate" id="exampleInputReleasedate" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group">
+                      <label>포스터 1</label>
+                      <input type="file" name="mf1" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" name="posterimg1" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>포스터 2</label>
+                      <input type="file"  name="mf2" class="file-upload-default">
+                      <div class="input-group col-xs-12">
+                        <input type="text" name="posterimg2" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputCountry">국가</label>
+                      <input type="text" class="form-control" name="country" id="exampleInputCountry" placeholder="Country">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputRunningtime">러닝타임 (형식/___m)</label>
+                      <input type="text" class="form-control" name="runningtime" id="exampleInputRunningtime" placeholder="___m">
+                    </div>
+                    <div class="form-group">
+                    	<label>줄거리</label>
+                      <textarea rows="6" class="form-control"  name="text" id="exampleInputPoint" placeholder="Text"></textarea>
+                    </div> 
+                    
+                    <button id="btn" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+         
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright 짤 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+

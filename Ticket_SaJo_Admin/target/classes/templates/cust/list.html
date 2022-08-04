@@ -1,0 +1,76 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">고객 목록</h4>
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table" >
+                      <thead>
+                        <tr>
+                          <th>
+                           	아이디
+                          </th>
+                          <th>
+                            이름
+                          </th>
+                          <th>
+                            생일
+                          </th>
+                          <th>
+                            포인트
+                          </th>
+                          <th>
+                            성별
+                          </th>
+                          <th>
+                            쿠폰 목록
+                          </th>
+                          <th>
+                            수정/삭제
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody th:each="c:${clist}">
+                        <tr>
+                          <td th:text="${c.id}">
+                            1
+                          </td>
+                          <td th:text="${c.name}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${#dates.format(c.birth,'yyyy-MM-dd')}">
+                            $ 77.99
+                          </td>
+                          <td th:text="${c.point}">
+                            May 15, 2015
+                          </td>
+                          <td th:text="${c.sex}">
+                            May 15, 2015
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-info btn-fw" th:href="@{/cust/coupon(id=${c.id})}">쿠폰함</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/cust/detail(id=${c.id})}">수정/삭제</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 
+</body>

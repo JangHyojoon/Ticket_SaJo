@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CouponMapper">
+	
+	<select id="select" parameterType="int" resultType="couponVO">
+		SELECT * FROM coupon WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="couponVO">
+		SELECT * FROM coupon
+	</select>
+	<!-- 0725 안원영 수정 - 쿠폰 정렬 -->
+	<select id="selectsortall" resultType="couponVO">
+		SELECT * FROM coupon 
+		WHERE <![CDATA[ date_format(sysdate(),'%Y%m%d') >= sdate ]]>
+		and <![CDATA[ date_format(sysdate(),'%Y%m%d') <= edate ]]>
+		ORDER BY sale;
+	</select>
+		
+	<insert id="insert" parameterType="couponVO">
+		INSERT INTO coupon VALUES (null,#{name},#{sdate},#{edate},#{icon},#{sale},#{text})
+	</insert>
+	<update id="update" parameterType="couponVO">
+		UPDATE coupon SET name=#{name},sdate=#{sdate},edate=#{edate},icon=#{icon},sale=#{sale},text=#{text} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="couponVO">
+		DELETE FROM coupon WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+

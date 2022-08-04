@@ -1,0 +1,75 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+
+<style>
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+<div class="main-panel">
+<div class="content-wrapper">
+<div class="col-lg-9 grid-margin stretch-card" style="margin:auto;">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" th:text="${mlist[0].uid}+'님의 쿠폰함'"></h4>
+        <p class="card-description">
+          쿠폰 목록
+        </p>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>쿠폰함 번호</th>
+                <th>쿠폰 번호</th>
+                <th>사용 여부</th>
+                <th>사용 날짜</th>
+                <th>받은 날짜</th>
+                <th>삭제</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="m:${mlist}">
+                <td th:text="${m.id}">Jacob</td>
+                <td th:text="${m.cid}">12 May 2017</td>
+                <td th:if="${m.used}==true">사용 가능</td>
+                <td th:if="${m.used}==false">사용 불가</td>
+                <td th:text="${#dates.format(m.udate,'yyyy-MM-dd')}"><label class="badge badge-danger">Pending</label></td>
+                <td th:text="${#dates.format(m.rdate,'yyyy-MM-dd')}"><label class="badge badge-danger">Pending</label></td>
+                <td><a th:href="@{/cust/cpdelete(id=${m.id},uid=${m.uid})}" class="btn btn-inverse-danger btn-fw">삭제하기</a></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+   </div>
+</div>
+</div>
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

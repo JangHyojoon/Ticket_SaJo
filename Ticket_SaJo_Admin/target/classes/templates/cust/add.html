@@ -1,0 +1,170 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+<script>
+
+function inputYMDNumber(obj) {
+  // @see DELETE 키버튼이 눌리지 않은 경우에만 실행
+    if(event.keyCode != 8) {
+        // @see 숫자와 하이픈(-)기호의 값만 존재하는 경우 실행
+        if(obj.value.replace(/[0-9 \-]/g, "").length == 0) {
+            // @see 하이픈(-)기호를 제거한다.
+            let number = obj.value.replace(/[^0-9]/g,"");
+            let ymd = "";
+            // @see 문자열의 길이에 따라 Year, Month, Day 앞에 하이픈(-)기호를 삽입한다.
+            if(number.length < 4) {
+                return number;
+            } else if(number.length < 6){
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4);
+            } else if(number.length >8){
+            	$(this).focusout();
+        	}else 	{
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4, 2);
+                ymd += "-";
+                ymd += number.substr(6);
+            }
+            obj.value = ymd;  
+    	}else {
+            alert("숫자 이외의 값은 입력하실 수 없습니다.");
+            //@see 숫자와 하이픈(-)기호 이외의 모든 값은 삭제한다.
+            obj.value = obj.value.replace(/[^0-9 ^\-]/g,"");
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+}
+function checkid(){
+	 var id = $('#exampleInputId').val();
+	 var rtn = true;
+		$.ajax({
+		 	url:'checkid',
+		 	async:false,
+		 	data:{'id':id},
+		 	success:function(data){
+		 		if(data==1){
+		 			rtn = false;
+		 			alert('이미 존재하는 ID입니다.');
+		 			event.preventDefault();
+		 		}else if(data==0){
+		 			rtn = true;
+		 			$('.cust').attr({
+						'method':'post',
+						'action':'/cust/addimpl'
+					});
+					$('.cust').submit();
+		 		}
+		 		
+		 	}
+		 	
+		 });
+		return rtn;
+}
+	$(document).ready(function(){
+		$('#btn').click(function(){
+			
+			var len = $('#exampleInputPassword4').val();
+			 if(len.length < 5){
+				 alert('비밀번호를 다시 확인해주세요.')
+				 return false;
+			 }
+			 
+			var datatimeRegexp = /[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;
+			 if ( !datatimeRegexp.test($('#exampleInputBirth').val()) ) {
+			        alert("날짜를 다시 입력해주세요.");
+			        return false;
+			 }
+			 checkid();
+		});
+		 
+	});
+</script>
+
+</head>
+<body>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            
+            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">새로운 고객 등록</h4>
+                  <p class="card-description">
+                    고객의 아이디와 인적사항을 적어주세요.
+                  </p>
+                  <form class="cust">
+                  <div class="form-group">
+                      <label for="exampleInputId">아이디</label>
+                      <input type="text" class="form-control" name="id" id="exampleInputId" placeholder="ID">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword4">비밀번호 (5자리 이상)</label>
+                      <input type="password" class="form-control" name="pwd" id="exampleInputPassword4" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">이름</label>
+                      <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputBirth">생년월일   (숫자 8자리 입력)</label>
+                      <input type="text" onKeyup="inputYMDNumber(this);" maxlength="10" class="form-control" name="birth" id="exampleInputBirth" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" class="form-control"  value="0" name="point" id="exampleInputPoint" placeholder="Point">
+                    </div> 
+                    <div class="form-group">
+                      <label for="exampleSelectGender">성별</label>
+                        <select name="sex" class="form-control" id="exampleSelectGender">
+                          <option>man</option>
+                          <option>woman</option>
+                        </select>
+                      </div>
+                    <button id="btn" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+         
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright 짤 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+

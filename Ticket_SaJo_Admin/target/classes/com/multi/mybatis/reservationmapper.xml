@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReservationMapper">
+	
+	<select id="select" parameterType="int" resultType="reservationVO">
+		SELECT * FROM reservation WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="reservationVO">
+		SELECT * FROM reservation
+	</select>
+	<select id="selectridall" parameterType="int" resultType="reservationVO">
+		SELECT r.id,r.uid,r.pcnt,r.price,r.totalprice,t.id AS ticketid,t.sid,t.seatid,s.mid,s.sdate,s.tid,m.title,m.releasedate,ds.starttime from reservation r
+		INNER JOIN ticket t ON r.id = t.rid
+		INNER JOIN schedules s ON t.sid = s.id 
+		INNER JOIN movie m ON s.mid =m.id
+		INNER JOIN detail_schedules ds ON t.sid = ds.sid
+		WHERE r.id= #{id}
+	</select>
+	<select id="selectcust" parameterType="String" resultType="reservationVO">
+		SELECT r.id, r.uid, t.sid, s.sdate, ds.starttime, ds.endtime, m.title from schedules s
+		INNER JOIN ticket t ON t.sid = s.id
+		INNER JOIN reservation r ON t.rid = r.id
+		INNER JOIN detail_schedules ds ON ds.sid = s.id
+		INNER JOIN movie m ON m.id = s.mid
+		WHERE r.uid = #{id}
+	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="rid" parameterType="reservationVO">
+		INSERT INTO reservation VALUES (NULL,#{uid},#{pcnt},#{price},#{totalprice})
+	</insert>
+	<update id="update" parameterType="reservationVO">
+		UPDATE reservation SET uid=#{uid}, pcnt=#{pcnt}, price=#{price}, totalprice=#{totalprice} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="reservationVO">
+		DELETE FROM reservation WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+

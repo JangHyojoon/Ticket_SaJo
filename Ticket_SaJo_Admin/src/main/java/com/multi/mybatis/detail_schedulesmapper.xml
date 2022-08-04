@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.Detail_SchedulesMapper">
+	
+	<select id="selectone" parameterType="int" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+		WHERE sid=#{sid} AND mcnt=#{mcnt}
+	</select>
+	<select id="selectall" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+	</select>
+	<select id="selectsid" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id		
+		INNER JOIN movie m ON s.mid = m.id
+		WHERE sid=#{sid}
+	</select>
+	<select id="selectmcnt" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+		WHERE mcnt=#{mcnt}
+	</select>
+	<select id="selectmiddate" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+        WHERE mid = #{mid} AND sdate = #{sdate}
+	</select>
+	<select id="selecttidmiddate" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+        WHERE mid = #{mid} AND sdate = #{sdate} AND tid=#{tid}
+	</select>
+	<select id="selectmidtidsdatetime" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, 
+		date_format(ds.starttime,'%H:%i') as starttime,
+        date_format(ds.endtime,'%H:%i') as endtime, 
+        s.tid, s.mid, s.sdate, m.title from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+        INNER JOIN movie m ON s.mid = m.id
+		WHERE mid=#{mid} AND tid=#{tid} AND sdate=#{sdate} AND starttime=#{starttime}
+	</select>
+	<insert id="insert" parameterType="detail_schedulesVO">
+		INSERT INTO detail_schedules VALUES (#{sid},#{mcnt},#{starttime},#{endtime})
+	</insert>
+	<update id="update" parameterType="detail_schedulesVO">
+		UPDATE detail_schedules SET mcnt=#{mcnt},starttime=#{starttime},endtime=#{endtime} WHERE sid=#{sid} AND mcnt=#{mcnt}
+	</update>
+	
+	
+	<delete id="delete" parameterType="detail_schedulesVO">
+		DELETE FROM detail_schedules WHERE sid=#{sid}
+	</delete>
+</mapper>
+
+
+
+
+
+

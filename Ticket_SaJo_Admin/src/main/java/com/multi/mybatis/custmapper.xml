@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CustMapper">
+	
+	<select id="select" parameterType="String" resultType="custVO">
+		SELECT * FROM cust WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="custVO">
+		SELECT * FROM cust
+	</select>
+	<insert id="insert" parameterType="custVO">
+		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex})
+	</insert>
+	<update id="update" parameterType="custVO">
+		UPDATE cust SET pwd=#{pwd},name=#{name},birth=#{birth},point=#{point},sex=#{sex} WHERE id=#{id}
+	</update>
+	<update id="updatecust" parameterType="custVO">
+		UPDATE cust SET pwd=#{pwd},name=#{name} WHERE id=#{id}
+	</update>
+	<update id="usepoint" parameterType="custVO">
+		UPDATE cust SET point=point-#{usepoint} WHERE id =#{id}; 
+	</update>
+
+	<delete id="delete" parameterType="custVO">
+		DELETE FROM cust WHERE id=#{id}
+	</delete>
+</mapper>

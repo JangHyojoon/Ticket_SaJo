@@ -1,0 +1,58 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">장르 목록</h4>
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table" >
+                      <thead>
+                        <tr>
+                          <th>
+                           	장르 번호
+                          </th>
+                          <th>
+                            장르명
+                          </th>
+                          <th>
+                            상위 장르번호
+                          </th>
+                          <th>
+                            수정/삭제
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody th:each="g:${glist}">
+                        <tr>
+                          <td th:text="${g.id}">
+                            1
+                          </td>
+                          <td th:text="${g.name}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${g.tid}">
+                            $ 77.99
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/genre/detail(id=${g.id})}">수정/삭제</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 
+</body>

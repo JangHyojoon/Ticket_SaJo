@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.SchedulesMapper">
+	
+	<select id="select" parameterType="int" resultType="schedulesVO">
+		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
+		INNER JOIN movie m ON s.mid = m.id 
+		WHERE s.id=#{id}
+	</select>
+	<select id="selectall" resultType="schedulesVO">
+		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
+		INNER JOIN movie m ON s.mid = m.id 
+		ORDER BY id
+	</select>
+	<select id="selectallpage" parameterType="Integer" resultType="schedulesVO">
+		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
+		INNER JOIN movie m ON s.mid = m.id 
+		ORDER BY id
+		LIMIT #{mnum},10
+	</select>
+	<select id="selectmiddate" resultType="schedulesVO">
+		SELECT s.id,s.tid,s.sdate,s.mid,m.title,m.posterimg1,m.posterimg2,m.runningtime FROM schedules s
+		INNER JOIN movie m ON s.mid = m.id
+
+		WHERE mid=#{mid} AND sdate=#{sdate}
+	</select>
+	<select id="selectmovieonschedules" resultType="schedulesVO">
+		select s.mid, m.title, m.posterimg1 from schedules s 
+		INNER JOIN movie m ON s.mid = m.id
+		Group BY m.id
+	</select>
+	
+	<insert id="insert" parameterType="schedulesVO">
+ 		INSERT INTO schedules (id,tid,mid,sdate)
+		VALUES (null,#{tid},#{mid},#{sdate})
+		<selectKey keyProperty="id" resultType="Integer">
+	    SELECT LAST_INSERT_ID()
+	  </selectKey>
+	</insert>
+	<update id="update" parameterType="schedulesVO">
+		UPDATE schedules SET tid=#{tid},mid=#{mid},sdate=#{sdate} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="schedulesVO">
+		DELETE FROM schedules WHERE id=#{id}
+	</delete>
+	<!-- 0725 김민식 추가 -->
+	<select id="movielistschedule" resultType="schedulesVO">
+		SELECT s.tid as tid, s.sdate as sdate, s.mid as mid, DATE_FORMAT(ds.starttime,'%H:%i') as starttime FROM schedules s
+		INNER JOIN detail_schedules ds ON ds.sid = s.id
+		WHERE mid = #{mid} AND sdate = #{sdate};
+	</select>
+</mapper>
+
+
+
+
+
+

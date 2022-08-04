@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.TheaterMapper">
+	
+	<select id="select" parameterType="int" resultType="theaterVO">
+		SELECT * FROM theater WHERE id=#{id}
+	</select>
+	<select id="selectone" parameterType="int" resultType="theaterVO">
+		SELECT * FROM theater WHERE id=#{id} AND seatid=#{seatid}
+	</select>
+	<select id="selectcnt" parameterType="int" resultType="theaterVO">
+		 SELECT id, COUNT(CASE WHEN c=2 THEN 1 END) AS rcnt, COUNT(CASE WHEN r=1 THEN 1 END) AS ccnt from theater
+    	 WHERE id=1
+	</select>
+	<select id="selectall" resultType="theaterVO">
+		SELECT * FROM theater
+	</select>
+	<select id="selectid" resultType="theaterVO">
+		SELECT * FROM theater WHERE id=#{id}
+	</select>
+	<select id="selectcolumns" resultType="theaterVO">
+		SELECT c FROM theater
+        WHERE id=#{id} AND r = "A"
+	</select>
+	<select id="selectrows" resultType="theaterVO">
+		SELECT r FROM theater
+        WHERE id=#{id} AND c =1
+	</select>
+	<select id="selectseatid" resultType="theaterVO">
+		SELECT * FROM theater 
+		WHERE id=#{id} AND r=#{r} AND c=#{c}
+	</select>
+	<insert id="insert" parameterType="theaterVO">
+		
+		INSERT INTO theater VALUES(#{id},#{r},#{c},CONCAT(r,c))
+	</insert>
+	<update id="updateone" parameterType="theaterVO">
+		UPDATE theater SET r=#{r}, c=#{c}, seatid=CONCAT(r,c)  WHERE id=#{id} AND seatid=#{seatid}
+	</update>
+	<delete id="delete" parameterType="theaterVO">
+		DELETE FROM theater WHERE id=#{id} AND seatid=#{seatid}
+	</delete>
+</mapper>
+
+
+
+
+
+

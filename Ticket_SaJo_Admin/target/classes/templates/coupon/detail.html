@@ -1,0 +1,154 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head>
+<script>
+
+function inputYMDNumber(obj) {
+  // @see DELETE 키버튼이 눌리지 않은 경우에만 실행
+    if(event.keyCode != 8) {
+        // @see 숫자와 하이픈(-)기호의 값만 존재하는 경우 실행
+        if(obj.value.replace(/[0-9 \-]/g, "").length == 0) {
+            // @see 하이픈(-)기호를 제거한다.
+            let number = obj.value.replace(/[^0-9]/g,"");
+            let ymd = "";
+            // @see 문자열의 길이에 따라 Year, Month, Day 앞에 하이픈(-)기호를 삽입한다.
+            if(number.length < 4) {
+                return number;
+            } else if(number.length < 6){
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4);
+            } else if(number.length >8){
+            	$(this).focusout();
+        	}else 	{
+                ymd += number.substr(0, 4);
+                ymd += "-";
+                ymd += number.substr(4, 2);
+                ymd += "-";
+                ymd += number.substr(6);
+            }
+            obj.value = ymd;  
+    	}else {
+            alert("숫자 이외의 값은 입력하실 수 없습니다.");
+            //@see 숫자와 하이픈(-)기호 이외의 모든 값은 삭제한다.
+            obj.value = obj.value.replace(/[^0-9 ^\-]/g,"");
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+}
+	$(document).ready(function(){
+		$('#btn').click(function(){
+			 
+			var datatimeRegexp = /[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;
+			 if ( !datatimeRegexp.test($('#exampleInputBirth1').val()) ) {
+			        alert("날짜를 다시 입력해주세요.");
+			        return false;
+			 }
+			 if ( !datatimeRegexp.test($('#exampleInputBirth2').val()) ) {
+			        alert("날짜를 다시 입력해주세요.");
+			        return false;
+			 }
+			 $('.coupon').attr({
+					'method':'post',
+					'action':'/coupon/update'
+				});
+				$('.coupon').submit();
+		});
+		 
+	});
+</script>
+
+</head>
+<body>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            
+            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">새로운 쿠폰 등록</h4>
+                  <p class="card-description">
+                    쿠폰 정보를 기입해주세요.
+                  </p>
+                  <form class="coupon">
+                  <div class="form-group">
+                      <input type="text" class="form-control" th:value="${coupon.id}" name="id" id="exampleInputId" placeholder="Name" readonly="readonly">
+                    </div>
+                  <div class="form-group">
+                      <label for="exampleInputId">쿠폰명</label>
+                      <input type="text" class="form-control" th:value="${coupon.name}" name="name" id="exampleInputId" placeholder="Name">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputBirth">쿠폰 적용 날짜   (숫자 8자리 입력)</label>
+                      <input type="text" onKeyup="inputYMDNumber(this);" th:value="${coupon.sdate}" maxlength="10" class="form-control" name="sdate" id="exampleInputBirth1" placeholder="yyyy-mm-dd">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputBirth">쿠폰 종료 날짜   (숫자 8자리 입력)</label>
+                      <input type="text" onKeyup="inputYMDNumber(this);" th:value="${coupon.edate}"  maxlength="10" class="form-control" name="edate" id="exampleInputBirth2" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleSelectGender">아이콘</label>
+                        <select name="icon" class="form-control" id="exampleSelectGender">
+                          <option th:selected="${coupon.icon}=='wizard'">wizard</option>
+                          <option th:selected="${coupon.icon}=='smile'">smile</option>
+                          <option th:selected="${coupon.icon}=='snow'">snow</option>
+                          <option th:selected="${coupon.icon}=='users'">users</option>
+                          <option th:selected="${coupon.icon}=='gift'">gift</option>
+                        </select>
+                      </div>
+                   
+                    <div class="form-group">
+                    <label for="exampleInputPoint">할인금액</label>
+                      <input type="text" class="form-control" th:value="${coupon.sale}"  name="sale" id="exampleInputPoint" placeholder="Number">
+                    </div> 
+                    <div class="form-group">
+                    <label for="exampleInputText">쿠폰 내용</label>
+                      <input type="text" class="form-control" th:value="${coupon.text}" name="text" id="exampleInputText" placeholder="Text">
+                    </div> 
+                    <button id="btn" type="submit" class="btn btn-primary mr-2">수정</button>
+                    <a th:href="@{/coupon/delete(id=${coupon.id})}" class="btn btn-light">삭제</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+         
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright 짤 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+

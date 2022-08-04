@@ -1,0 +1,126 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+<!-- Bootstrap 3-->
+   <script
+      src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<style>
+.container-scroller{
+	margin: auto;
+}
+.card{
+	margin: auto;
+	width: 100%;
+}
+</style>
+<script>
+</script>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">영화 목록</h4>
+                  <p class="card-description">
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table" >
+                      <thead>
+                        <tr>
+                          <th>
+                           	아이디
+                          </th>
+                          <th>
+                            장르
+                          </th>
+                          <th>
+                            제목
+                          </th>
+                          <th>
+                            감독
+                          </th>
+                          <th>
+                            주연 배우
+                          </th>
+                          <th>
+                            개봉연월일
+                          </th>
+                          <th>
+                            포스터 1
+                          </th>
+                          <th>
+                            포스터 2
+                          </th>
+                          <th>
+                            국가
+                          </th>
+                          <th>
+                            러닝 타임
+                          </th>
+                          <th>
+                            리뷰 관리
+                          </th>
+                          <th>
+                            수정/삭제
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody th:each="m:${mlist}">
+                        <tr>
+                          <td th:text="${m.id}">
+                            1
+                          </td>
+                          <td th:text="${m.gname}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.title}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.director}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.mainactor}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.releasedate}">
+                            $ 77.99
+                          </td>
+                          <td>
+                            <img th:src="'/images/'+${m.posterimg1}" alt="img">
+                          </td>
+                          <td>
+                            <img th:src="'/images/'+${m.posterimg2}" alt="img">
+                          </td>
+                          <td th:text="${m.country}">
+                            May 15, 2015
+                          </td>
+                          <td th:text="${m.runningtime}">
+                            May 15, 2015
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-info btn-fw" th:href="@{/movie/reviews(mid=${m.id})}">리뷰 관리</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/movie/detail(id=${m.id})}">수정/삭제</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    <div class="coloum-wrapper">
+                    <div class="pagination paginatioon--full">
+                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/movie/list(mnum=${mnum}-10)}">이전</a>
+                            <a style="text-align: right; margin-left:90%;" href='#' class="pagination__next" th:href="@{/movie/list(mnum=${mnum}+10)}">다음</a>
+                    </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 
+</body>

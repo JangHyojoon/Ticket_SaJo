@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.ReviewMapper">
+	
+	<select id="select" parameterType="int" resultType="reviewVO">
+		SELECT * FROM reviews WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="reviewVO">
+		SELECT * FROM reviews
+	</select>
+	<select id="selectmreviews" parameterType="int" resultType="reviewVO">
+		SELECT r.id as id, r.uid as uid , r.mid as mid, r.star as star, r.text as text, r.regdate as regdate,
+		abs(datediff(r.regdate,now())) as dday,c.name as name FROM reviews r
+		LEFT JOIN cust c ON c.id = r.uid
+		WHERE mid=#{mid}
+		ORDER BY regdate DESC
+	</select>
+	<select id="selectbyage" parameterType="int" resultType="reviewVO">
+		SELECT TRUNCATE((TO_DAYS(NOW()) - TO_DAYS(c.birth))/365,-1)as age,count(r.id) as rcnt FROM reviews r
+		LEFT JOIN cust c ON c.id = r.uid
+		WHERE mid = #{mid}
+		GROUP BY age
+	</select>
+	<select id="selectbysex" parameterType="int" resultType="reviewVO">
+		SELECT sex,ROUND((COUNT(r.id)/(SELECT COUNT(*)FROM reviews WHERE mid = #{mid})*100),1) AS rpercent FROM reviews r
+		LEFT JOIN cust c ON c.id = r.uid
+		WHERE mid = #{mid}
+		GROUP BY sex
+	</select>
+	<insert id="insert" parameterType="reviewVO">
+		INSERT INTO reviews VALUES (#{id},#{uid},#{mid},#{star},#{text},sysdate())
+	</insert>
+	<update id="update" parameterType="reviewVO">
+		UPDATE reviews SET uid=#{uid},mid=#{mid},star=#{star},text=#{text},regdate=sysdate() WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="reviewVO">
+		DELETE FROM reviews WHERE id=#{id}
+	</delete>
+</mapper>

@@ -120,7 +120,8 @@ CREATE TABLE detail_schedules(
     starttime TIME,
     endtime TIME
 );
-ALTER TABLE detail_schedules ADD CONSTRAINT FOREIGN KEY(sid) REFERENCES schedules(id);
+ALTER TABLE detail_schedules ADD CONSTRAINT FOREIGN KEY(sid) REFERENCES schedules(id) On Delete CASCADE;
+
 ALTER TABLE detail_schedules ADD CONSTRAINT PRIMARY KEY(sid,mcnt);
 
  -- detail_reservation
