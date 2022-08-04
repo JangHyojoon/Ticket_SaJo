@@ -20,8 +20,9 @@
 		<tr th:each="mc:${mycouponlist}">
 			<td><a th:text="${mc.id}">쿠폰 번호</a></td>
 			<td th:text="${mc.text}">쿠폰 내용</td>
-			<td th:text="${#dates.format(mc.rdate, 'yyy/MM/dd')}">발급 날짜</td>
-			<td th:text="${mc.used}">사용 가능 여부</td>
+			<td th:text="${#dates.format(mc.rdate, 'yyy/MM/dd')}">발급 날짜</td>	
+			<td th:if="${mc.used}==true">사용 전</td> 
+			<td th:unless="${mc.used}==true">사용 완료</td>		
 			<td th:text="${#dates.format(mc.udate, 'yyy/MM/dd')}">사용한 날짜</td>
 		</tr>
 	</tbody>
