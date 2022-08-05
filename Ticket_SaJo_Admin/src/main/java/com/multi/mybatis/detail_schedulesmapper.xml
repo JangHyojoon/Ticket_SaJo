@@ -48,6 +48,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         INNER JOIN movie m ON s.mid = m.id
 		WHERE mid=#{mid} AND tid=#{tid} AND sdate=#{sdate} AND starttime=#{starttime}
 	</select>
+	<select id="selectbookedcnt" resultType="detail_schedulesVO">
+		select ds.sid, ds.mcnt, date_format(ds.starttime,'%H:%i') as starttime, date_format(ds.endtime,'%H:%i') as endtime, s.tid, s.mid, s.sdate, m.title, COUNT(b.seatid) AS bookedcnt from detail_schedules ds
+		INNER JOIN schedules s ON ds.sid = s.id
+		INNER JOIN movie m ON s.mid = m.id
+        LEFT JOIN booked b ON ds.mcnt = b.mcnt
+        GROUP BY ds.sid,ds.mcnt
+        having ds.sid = #{sid};
+	</select>
+
 	<insert id="insert" parameterType="detail_schedulesVO">
 		INSERT INTO detail_schedules VALUES (#{sid},#{mcnt},#{starttime},#{endtime})
 	</insert>
