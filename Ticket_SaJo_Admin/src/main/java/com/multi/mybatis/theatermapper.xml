@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		 SELECT id, COUNT(CASE WHEN c=2 THEN 1 END) AS rcnt, COUNT(CASE WHEN r=1 THEN 1 END) AS ccnt from theater
     	 WHERE id=1
 	</select>
+	<select id="selectseatcnt" parameterType="int" resultType="int">
+		 SELECT COUNT(seatid) from theater
+		 WHERE id=#{id}
+	</select>
 	<select id="selectall" resultType="theaterVO">
 		SELECT * FROM theater
 	</select>

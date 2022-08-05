@@ -23,6 +23,7 @@ public class Detail_SchedulesVO {
 	private String sdate;
 	private String title;
 	
+	private int bookedcnt;
 	public Detail_SchedulesVO(int sid, int mcnt, String starttime, String endtime) {
 		super();
 		this.sid = sid;

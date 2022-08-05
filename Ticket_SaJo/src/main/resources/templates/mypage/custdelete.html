@@ -33,7 +33,7 @@ function checknowpwd(delete_pwd) {
 }
 
 $(document).ready(function() {
-	$('#now_pwd').blur(function(){
+	$('#now_pwd').keyup(function(){
 		checknowpwd($(this).val());
 	});
 	
@@ -46,8 +46,8 @@ $(document).ready(function() {
 					
 			$('#custdelete_form').submit();
 		} else {
-			$('#deletebtnspan').html('비밀번호를 다시 확인해주세요.');
-			$('#deletebtnspan').css('color', 'red');
+			$('#now_pwdspan').html('비밀번호를 다시 확인해주세요.');
+			$('#now_pwdspan').css('color', 'red');
 
 		}
 	

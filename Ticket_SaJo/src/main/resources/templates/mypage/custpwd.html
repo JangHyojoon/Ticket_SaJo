@@ -1,0 +1,135 @@
+
+<head>
+<meta charset="UTF-8">
+<style>
+	#h3{
+		text-align: center;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+var nowpwd_ok = 0;
+
+function checknowpwd(delete_pwd) {
+	$.ajax({
+		url:'/checkpwd',
+		data:{'delete_pwd' : delete_pwd},	
+		success:function(data) {
+			if(data == '1') {				
+				$('#now_pwdspan').html('현재 비밀번호와 일치합니다. 새로운 비밀번호를 설정해주세요.');
+				$('#now_pwdspan').css('color','green');
+				nowpwd_ok = 1;
+			}else {
+				$('#now_pwdspan').html('현재 비밀번호와 일치하지 않습니다.');
+				$('#now_pwdspan').css('color','red');
+				nowpwd_ok= 0;
+			}
+		}
+	});
+}
+
+$(document).ready(function() {
+	$('#now_pwd').keyup(function(){
+		checknowpwd($(this).val());
+	});
+	
+	$('#newpwd').blur(function(){
+		var now_pwd = $('#now_pwd').val();
+		var newpwd = $('#newpwd').val();
+		
+		if(now_pwd != newpwd){
+			$('#new_pwdspan').html('사용가능합니다.');
+			$('#new_pwdspan').css('color', 'green');		
+			checkpwd_ok= 1;
+		}else {
+			$('#new_pwdspan').html('기존의 비밀번호와 동일합니다. 다른 비밀번호를 입력해주세요');
+			$('#new_pwdspan').css('color', 'red');
+			checkpwd_ok= 0;
+		}
+		
+		$('input[name="newpwd"]').keyup(function(){
+		      var newpwd = $(this).val();
+		      if(newpwd.length > 5){
+		    	  $('#new_pwdspan').text('보안에 강합니다. 사용가능합니다.');
+			      $('#new_pwdspan').css('color','green');
+			      newpwd_ok=1;
+		      }else {
+			      $('#new_pwdspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
+			      $('#new_pwdspan').css('color', 'red');
+			      newpwd_ok=0;
+		      }
+		      
+		      $('input[name="new_pwdcheck"]').keyup(function(){
+			      var new_pwd = $('input[name="newpwd"]').val();
+			      var newpwdcheck = $('input[name="new_pwdcheck"]').val();
+			      if(new_pwd == newpwdcheck){
+			         $('#new_pwdcheckspan').text('일치합니다');
+			         $('#new_pwdcheckspan').css('color','green');
+			      }else {
+			         $('#new_pwdcheckspan').text('일치하지 않습니다. 비밀번호를 다시 확인해주세요');
+			         $('#new_pwdcheckspan').css('color', 'red');
+			      }
+			   });
+		  });	
+	});
+	
+	$('#modifybtn').click(function(){
+		if(nowpwd_ok && checkpwd_ok && newpwd_ok) {
+			$('#custpwd_form').attr({
+				'action':'custpwdimpl',
+				'method':'post'
+			 })
+					
+			$('#custpwd_form').submit();
+		} else {
+			$('#modifyspan').html('비밀번호를 다시 확인해주세요.');
+			$('#modifyspan').css('color', 'red');
+
+		}
+	
+	  });
+   });
+
+</script>
+</head>
+<body>
+<br>
+<br>
+<br>
+
+<div class="wrapper">
+	<h3 id="h3">비밀번호 변경</h3>
+</div>
+<form class="form-horizontal" id="custpwd_form">
+      <div class="wrapper"> 
+        현재 비밀번호:
+         <span id="now_pwdspan"></span> 
+        <input type="password" id="now_pwd" name="now_pwd">
+        
+      </div>
+        
+      <div class="wrapper">
+         새 비밀번호: 
+         <span id="new_pwdspan"></span> 
+         <input type="password" id="newpwd" name="newpwd">
+         
+      </div>
+      
+       <div class="wrapper">
+         새 비밀번호 확인: 
+         <span id="new_pwdcheckspan"></span> 
+         <input type="password" id="newpwdcheck" name="new_pwdcheck">
+       
+      </div>
+    
+      <div class="field-wrap">
+	    <br>
+		<button class="btn" id="modifybtn">비밀번호 수정</button><br>
+		<span id= "modifyspan"></span>
+    </div>
+  <br>
+  <br>
+ 
+</form>
+</body>
+</html>

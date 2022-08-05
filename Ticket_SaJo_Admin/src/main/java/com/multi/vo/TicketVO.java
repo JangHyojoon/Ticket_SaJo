@@ -39,6 +39,16 @@ public class TicketVO {
 		this.rid = rid;
 		this.mcnt = mcnt;
 		this.seatid = seatid;
+		
+		
+	}
+	public TicketVO(int id, int sid, int rid, String purchasedate, int mcnt) {
+		super();
+		this.id = id;
+		this.sid = sid;
+		this.rid = rid;
+		this.purchasedate = purchasedate;
+		this.mcnt = mcnt;
 	}
 
 	
