@@ -143,6 +143,7 @@ public class MainController_jsy {
          cust.setBirth(cu.getBirth());
          cust.setPoint(cu.getPoint());
          cust.setSex(cu.getSex());
+        cust.setPwd(cu.getPwd());
          custbiz.modify(cust);
          CustVO c = custbiz.get(cust.getId());
          session.setAttribute("user", c);         
@@ -151,8 +152,34 @@ public class MainController_jsy {
       }
       return "redirect:custdetail?id="+cust.getId();
    }
+   
+   @RequestMapping("/custpwd")
+   public String custpwd(Model m, String id) {
+	    m.addAttribute("left", "mypage/left");
+	    m.addAttribute("mypage_center", "mypage/custpwd");
+	    m.addAttribute("center", "mypage/mypage");
+	      return "index";
+   }
+   
+   @RequestMapping("/custpwdimpl")
+   public String custpwdimpl(Model m, String newpwd, HttpSession session) {
+	   CustVO cust = (CustVO) session.getAttribute("user");
+	   System.out.println("현재 비밀번호 : " + cust);
+	   cust.setPwd(newpwd);
+	   try {
+		custbiz.modify(cust);
+		session.setAttribute("user", cust);
+		System.out.println("변경된 비밀번호 : " + cust);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   m.addAttribute("left", "mypage/left");
+	   m.addAttribute("mypage_center", "mypage/mypage_center");
+	   m.addAttribute("center", "mypage/mypage");
+	      return "index";
+   }
 
-   @RequestMapping("custdelete")
+   @RequestMapping("/custdelete")
       public String custdelete(Model m, HttpSession session) {
       m.addAttribute("left", "mypage/left");
       m.addAttribute("mypage_center", "mypage/custdelete");
@@ -160,7 +187,7 @@ public class MainController_jsy {
          return "index";
    }
    
-   @RequestMapping("custdeleteimpl")
+   @RequestMapping("/custdeleteimpl")
       public String custdeleteimpl(Model m, String now_pwd, HttpSession session) {
       CustVO cust = (CustVO) session.getAttribute("user");
       

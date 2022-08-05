@@ -1,4 +1,9 @@
 <meta charset="UTF-8">
+<style>
+	#h3{
+		text-align: center;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -15,15 +20,14 @@ $(document).ready(function(){
 <br>
 <br>
 <div class="field-wrap">
-      <h3>회원정보 수정</h3>
+      <h3 id="h3">회원정보 수정</h3>
 <form class ="user">
       <div class="wrapper"> 
          아이디:<input type="text" name="id" th:value="${session.user.id}">
       </div>
 
-      <div class="wrapper">
-         비밀번호:<input type="text" name="pwd" th:value="${session.user.pwd}">
-      </div>
+    
+      
       
       <div class="wrapper">
          이름: <input type="text" name="name" th:value="${session.user.name}">
