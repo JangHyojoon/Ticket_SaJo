@@ -13,10 +13,10 @@
 <body>
 <div class="main-panel">
 <div class="content-wrapper">
-<div class="col-lg-9 grid-margin stretch-card" style="margin:auto;" th:if="${mlist}!=''">
+<div class="col-lg-9 grid-margin stretch-card" style="margin:auto;">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title" th:text="${mlist[0].uid}+'님의 쿠폰함'"></h4>
+        <h4 class="card-title" th:text="${tlist[0].rid}+'번의 예매상세'"></h4>
         <p class="card-description">
           쿠폰 목록
         </p>
@@ -24,23 +24,20 @@
           <table class="table">
             <thead>
               <tr>
-                <th>쿠폰함 번호</th>
-                <th>쿠폰 번호</th>
-                <th>사용 여부</th>
-                <th>사용 날짜</th>
-                <th>받은 날짜</th>
-                <th>삭제</th>
+                <th>티켓 번호</th>
+                <th>상영 번호</th>
+                <th>예매 날짜</th>
+                <th>상영 회차</th>
+                <th>좌석 번호</th>
               </tr>
             </thead>
             <tbody>
-              <tr th:each="m:${mlist}">
-                <td th:text="${m.id}">Jacob</td>
-                <td th:text="${m.cid}">12 May 2017</td>
-                <td th:if="${m.used}==true">사용 가능</td>
-                <td th:if="${m.used}==false">사용 불가</td>
-                <td th:text="${#dates.format(m.udate,'yyyy-MM-dd')}"><label class="badge badge-danger">Pending</label></td>
-                <td th:text="${#dates.format(m.rdate,'yyyy-MM-dd')}"><label class="badge badge-danger">Pending</label></td>
-                <td><a th:href="@{/cust/cpdelete(id=${m.id},uid=${m.uid})}" class="btn btn-inverse-danger btn-fw">삭제하기</a></td>
+              <tr th:each="t:${tlist}">
+                <td th:text="${t.id}">Jacob</td>
+                <td th:text="${t.sid}">12 May 2017</td>
+                <td th:text="${t.purchasedate}">사용 불가</td>
+                <td th:text="${t.mcnt}+'회차'"><label class="badge badge-danger">Pending</label></td>
+                <td th:text="${t.seatid}"><label class="badge badge-danger">Pending</label></td>            
               </tr>
               
             </tbody>
@@ -49,7 +46,6 @@
       </div>
     </div>
    </div>
-   
 </div>
 </div>
   <!-- plugins:js -->

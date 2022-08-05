@@ -28,6 +28,12 @@
   	padding-top: 10px;
   	border-top: 1px solid gray;
   }
+  #management2{
+  	font-size: xx-small;
+  	color: gray;
+  	padding-top: 10px;
+  	border-top: 1px solid gray;
+  }
   </style>
 </head>
 <body>
@@ -449,10 +455,11 @@
               </ul>
             </div>
           </li>
+          <span id="management2" class="menu-title">조회</span>
           <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" th:href="@{/reservation}">
               <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Documentation</span>
+              <span class="menu-title">예매내역 조회</span>
             </a>
           </li>
         </ul>

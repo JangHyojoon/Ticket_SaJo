@@ -1,0 +1,83 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">스케줄 목록</h4>
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-striped" >
+                      <thead>
+                        <tr>
+                          <th>
+                           	예매 번호
+                          </th>
+                          <th>
+                            사용자 아이디
+                          </th>
+                           <th>
+                            결제 영화
+                          </th>
+                          <th>
+                            인원
+                          </th>
+                          <th>
+                            결제예정금액
+                          </th>
+                          <th>
+                            결제금액 (할인 적용)
+                          </th>
+                          <th>
+                            결제일
+                          </th>
+                          <th>
+                            예매 상세
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="r:${rlist}">
+                          <td th:text="${r.id}">
+                            1
+                          </td>
+                          <td th:text="${r.uid}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${r.title}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${r.pcnt}">
+                            $ 77.99
+                          </td>
+                          <td th:text="${r.price}+'원'">
+                            $ 77.99
+                          </td>
+                          <td th:text="${r.totalprice}+'원'">
+                            
+                          </td>
+                          <td th:text="${r.sdate}">
+                            
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/reservation/detail(id=${r.id})}">예매 상세</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 
+</body>

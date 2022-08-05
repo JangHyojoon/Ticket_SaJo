@@ -13,7 +13,7 @@
 <body>
 <div class="main-panel">
 <div class="content-wrapper">
-<div class="col-lg-9 grid-margin stretch-card" style="margin:auto;">
+<div class="col-lg-9 grid-margin stretch-card" style="margin:auto;" th:if="${mlist}!=''">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title" th:text="${mlist[0].uid}+'님의 쿠폰함'"></h4>
@@ -49,6 +49,7 @@
       </div>
     </div>
    </div>
+   
 </div>
 </div>
   <!-- plugins:js -->

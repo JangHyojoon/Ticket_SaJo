@@ -90,7 +90,13 @@ public class CustController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("center", "cust/coupon");
+		
+		if(mlist.isEmpty()) {
+			m.addAttribute("center", "cust/zero");
+		}else{
+			m.addAttribute("center", "cust/coupon");
+		}
+		
 		m.addAttribute("mlist", mlist);
 		return "index";
 	}

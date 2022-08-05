@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.AdminMapper">
+	
+	<select id="select" parameterType="String" resultType="adminVO">
+		SELECT * FROM admin WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="adminVO">
+		SELECT * FROM admin
+	</select>
+	<insert id="insert" parameterType="adminVO">
+		INSERT INTO admin VALUES (#{id},#{pwd})
+	</insert>
+	<update id="update" parameterType="adminVO">
+		UPDATE admin SET id=#{id},pwd=#{pwd} WHERE id=#{id}
+	</update>
+	<delete id="delete" parameterType="adminVO">
+		DELETE FROM admin WHERE id=#{id}
+	</delete>
+</mapper>
+
+
+
+
+
+
