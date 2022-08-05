@@ -2,15 +2,22 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head>
-<script>
+<style>
+.stretch-card{
+margin:auto;
+}
+span{
+margin-bottom:10px;
+}
+</style>
+<script th:inline="javascript">
+	
 	$(document).ready(function(){
-		$('#btn').click(function(){
-			 $('.check').attr({
-					'method':'post',
-					'action':'/schedule/updatedetailimpl'
-				});
-				$('.check').submit();
-		});
+		var msg = [[${msg}]];
+		if(msg != null){
+			alert(msg)
+		}
+		
 		 
 	});
 </script>
@@ -22,41 +29,36 @@
         <div class="content-wrapper">
           <div class="row">
             
-            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+            <div class="grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title" th:text="${sid}+'번의 스케줄 상세'">스케줄 상세</h4>
-                  <p class="card-description">
-                    예정된 상영회차에는 체크가 되어있습니다. 변경 버튼을 누르면 스케줄 변경이 가능합니다.
-                  </p>
-                  <form class="check">
-                  <div class="form-group">
-                      <input type="hidden" class="form-control" name="id" id="exampleInputId" placeholder="ID" th:value="${sid}">
-                    </div>
-                      <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" checked="checked" value="1" th:if="${id1}=='1'">
-                        <input type="checkbox" name="check" class="form-check-input" value="1" th:if="${id1}=='0'">
-                        1회차(13:00 ~ 15:00)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" checked="checked" value="2" th:if="${id2}=='1'">
-                        <input type="checkbox" name="check" class="form-check-input" value="2" th:if="${id2}=='0'">
-                        2회차(16:00 ~ 18:00)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" checked="checked" value="3" th:if="${id3}=='1'">
-                        <input type="checkbox" name="check" class="form-check-input" value="3" th:if="${id3}=='0'">
-                        3회차(19:00 ~ 21:00)
-                      </label>
-                    </div>
-                    <button id="btn" type="submit" class="btn btn-primary mr-2">변경</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
+                  <h4 class="card-title" th:text="${sv.id}+'번의 스케줄 상세'">스케줄 상세</h4>
+                  <img alt='' th:src="@{'/images/'+${sv.posterimg1}}" width="180" height="300">
+                  <p class="card-description" th:text="${sv.title}"></p>
+                  <p class="card-description" th:text="'상영관 : '+${sv.tid}+'관'"></p>
+             	  <p class="card-description" th:text="'상영날짜 : '+${sv.sdate}"></p>
+            	  <div th:each="ds : ${dslist}" >
+            	  	
+            	  	<span class="card-description" th:text="${ds.mcnt}+'회차'"></span>
+            	  	<span class="card-description" th:text="'시작시간 : '+${ds.starttime}"></span>
+            	  	<span class="card-description" th:text="'끝나는시간 : '+${ds.endtime}"></span>
+            	  	
+            	  
+            	  	
+            	  	<span class="card-description" th:text="'좌석현황 : '+(${seatcnt}-${ds.bookedcnt})+'/'+${seatcnt}"></span>
+            	  	<span class="card-description" th:text="'예약좌석 : '+${ds.bookedcnt}"></span>
+            	  </div>
+                 
+             	
+            
+             		
+             		
+                     <a class="btn btn-light" style="display :inline-block;" th:href="@{update(id=${sv.id})}">스케줄 수정</a>
+                    <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sv.id})}">스케줄 삭제</a>
+                    
+                    <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sv.id})}">상세스케줄 수정</a>
+
+                   <a class="btn btn-light" style="display :inline-block;" th:href="@{calendar}">뒤로가기</a>
                 </div>
               </div>
             </div>

@@ -74,8 +74,10 @@ function inputYMDNumber(obj) {
                   	삭제시 스케줄 상세 정보까지 모두 삭제됩니다.
                   </p>
                   <form class="schedule">
-                  	<input type="hidden" name="id" th:value="${id}">
+                  	
                     <div class="form-group">
+                    <label for="exampleSelectGender">스케쥴 번호</label>
+                    <input type="text" name="id" th:value="${id}" class="form-control" readonly>
                     <label for="exampleSelectGender">상영관</label>
                         <select name="tid" class="form-control" id="exampleSelectGender">
                           <option th:selected="${schedule.tid}=='1'">1</option>
@@ -94,7 +96,7 @@ function inputYMDNumber(obj) {
                       <input type="text" onKeyup="inputYMDNumber(this);" maxlength="10" class="form-control" name="sdate" id="exampleInputBirth" th:value="${schedule.sdate}" placeholder="yyyy-mm-dd">
                     </div>
                     <button id="btn" type="submit" class="btn btn-primary mr-2">수정</button>
-                    <a th:href="@{/schedule/delete(id=${id})}" class="btn btn-light">삭제</a>
+                    <a th:href="@{/schedule/detail(sid=${id})}" class="btn btn-light">취소</a>
                   </form>
                 </div>
               </div>

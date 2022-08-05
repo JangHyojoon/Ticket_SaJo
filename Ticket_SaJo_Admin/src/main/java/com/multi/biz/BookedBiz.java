@@ -63,4 +63,7 @@ public class BookedBiz implements Biz<String,BookedVO> {
 	public List<BookedVO> selectseatlist(int sid, int mcnt) throws Exception {
 		return dao.selectseatlist(sid, mcnt);
 	}
+	public Integer selectseatcnt(String id) throws Exception {
+		return dao.selectseatcnt(id);
+	}
 }

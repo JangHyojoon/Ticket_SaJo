@@ -18,4 +18,6 @@ public interface BookedMapper {
 	public List<BookedVO> selectall() throws Exception;
 	
 	public List<BookedVO> selectseatlist(int sid, int mcnt) throws Exception;
+	
+	public Integer selectseatcnt(String id) throws Exception;
 }

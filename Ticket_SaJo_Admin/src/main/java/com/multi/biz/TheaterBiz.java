@@ -61,4 +61,7 @@ public class TheaterBiz implements Biz<Integer,TheaterVO> {
 	public void updateone(TheaterVO theater) throws Exception {
 		dao.updateone(theater);
 	}
+	public Integer selectseatcnt(int id) throws Exception {
+		return dao.selectseatcnt(id);
+	}
 }

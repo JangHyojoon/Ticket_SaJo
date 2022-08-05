@@ -2,15 +2,128 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8">
 <head>
-<script>
+<style>
+.stretch-card{
+margin:auto;
+}
+.btn-box{
+margin:auto;
+text-align: center;
+}
+
+</style>
+<script th:inline="javascript">
+
+	var runningtime = [[${runningtime}]]
+	var sid = [[${sid}]]
+	function inputTimeColon(time) {
+		
+        // 기존에 들어가 있는 (:)을 제거
+        var replaceTime = time.value.replace(/\:/g, "");
+
+        // 글자수가 4~5개 사이일때만 동작하게 조건 명시
+        if(replaceTime.length >= 4 && replaceTime.length < 5) {
+            var hours = replaceTime.substring(0, 2);  // 시간 추출
+            var minute = replaceTime.substring(2, 4);  // 분을 추출
+
+            if(hours + minute > 2400) {
+                alert("시간은 24시를 넘길 수 없습니다.");
+                time.value = "24:00";
+                return false;
+            }
+
+            if(hours + minute < 0) {
+                alert("잘못된 시간입니다.");
+                time.value = "00:00";
+                return false;
+            }
+
+            if(minute > 60) {
+                alert("분은 60분을 넘길 수 없습니다.");
+                time.value = hours + ":00";
+                return false;
+            }
+   
+            // 시간을 완성하고 반환한다.
+            time.value = hours + ":" + minute;
+            
+           
+        }
+	}
+	function addclick(num){
+		
+		var mcnt = $('#selmcnt'+num).val();
+		var starttime = $('#starttime'+num).val();
+		var endtime = $('#endtime'+num).val();
+		
+		
+		if(mcnt ==0 || mcnt ==''){
+			alert("회차를 선택해주세요");
+			return;
+		}
+		if(starttime ==0 || starttime ==''){
+			alert("시작시간을 입력해주세요");
+			return;
+		}
+		
+
+		$('#dv'+num).val(sid+','+mcnt+','+starttime+','+endtime);
+		$('#selmcnt'+num).attr("disabled",true);
+		$('#starttime'+num).attr("disabled",true);
+		$('#endtime'+num).attr("disabled",true);
+		$('.sel'+mcnt).hide();
+		$('#cancelmcnt'+num).show();
+		$('#addmcnt'+num).hide();
+	}
+	function cancelclick(num){
+		var mcnt = $('#selmcnt'+num).val();
+		$('.sel'+mcnt).attr("disabled",false);
+		$('#selmcnt'+num).attr("disabled",false);
+		$('#starttime'+num).attr("disabled",false);
+		$('#endtime'+num).attr("disabled",false);
+		$('.sel'+mcnt).show();
+		$('#dv'+num).val('');
+		$('#cancelmcnt'+num).hide();
+		$('#addmcnt'+num).show();
+	}
+	function adddetailimpl() {
+		 	$('.check').attr({
+				'method':'get',
+				'action':'adddetailimpl'
+					 
+			});
+			$('.check').submit();
+	}
+
 	$(document).ready(function(){
-		$('#btn').click(function(){
-			 $('.check').attr({
-					'method':'post',
-					'action':'/schedule/addimpl'
-				});
-				$('.check').submit();
+		$('.cancel').hide();
+		$('.starttime').keyup(function(){
+			var st = $(this).val();
+			var replaceTime = st.replace(/\:/g, "");
+			var hours = replaceTime.substring(0, 2);  // 시간 추출
+		    var minute = replaceTime.substring(2, 4);  // 분을 추출
+		    hours = hours * 60;
+		    var total = hours + Number(minute);
+		    total = total + runningtime
+		    var endhours;
+		    if(parseInt(total / 60) >=24) {
+		    	endhours = parseInt(total / 60) - 24;
+		    }else {
+		    	endhours = parseInt(total / 60)
+		    }
+		  
+	
+		    var endminute = total % 60; 
+		  
+			$(this).next().val(('00' + endhours).slice(-2)+':'+('00' + endminute).slice(-2));
 		});
+	
+			
+			
+	
+		
+		
+
 		 
 	});
 </script>
@@ -22,43 +135,44 @@
         <div class="content-wrapper">
           <div class="row">
             
-            <div style="margin:auto;"class="col-6 grid-margin stretch-card">
+            <div class="col-7 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">상영 회차 선택</h4>
+                  <h4 class="card-title">상영 회차 입력</h4>
                   <p class="card-description">
-                    2. 상영회차를 선택해 주세요.
+                    2. 상영회차와 시작시간을 입력해주세요
                   </p>
                   <form class="check">
-                  <div class="form-group">
-                      <input type="hidden" class="form-control" name="id" id="exampleInputId" placeholder="ID" th:value="${sid}">
-                    </div>
-                      <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" value="1">
-                        1회차(13:00 ~ 15:00)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" value="2">
-                        2회차(16:00 ~ 18:00)
-                      </label>
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" name="check" class="form-check-input" value="3">
-                        3회차(19:00 ~ 21:00)
-                      </label>
-                    </div>
-                    <button id="btn" type="submit" class="btn btn-primary mr-2">추가</button>
-                    <button class="btn btn-light">Cancel</button>
+	                  <div class="form-group">
+	               
+	                      <input type="hidden" class="form-control" th:each = "num:${#numbers.sequence(1,10)}" th:id="'dv'+${num}" th:name="'dv'+${num}">
+	                  </div>
                   </form>
+                 
+                    <div class='card-body'>
+	                   <div class ="form-group" th:each = "num:${#numbers.sequence(1,10)}" >
+	                   		<select th:class ="'form-control-sm selmcnt'+${num}" th:name="'selmcnt'+${num}" th:id="'selmcnt'+${num}" >
+	                   			<option value="0">회차</option>
+	                   			<option  th:each = "numsel:${#numbers.sequence(1,10)}" th:if ="!${#lists.contains(mlist,numsel)}" th:value="${numsel}" th:text="${numsel}" th:id="'sel'+${numsel}" th:class="'sel'+${numsel}"></option>
+	                   		</select>
+							<input type='text' th:id="'starttime'+${num}" class='form-control-sm starttime' onkeyup="inputTimeColon(this);" maxlength="5" placeholder="HH:MM" >
+							<input type='text' th:id="'endtime'+${num}" class='form-control-sm endtime' disabled>
+							<a href='#' th:class="'btn btn-primary '+${num}" th:id="'addmcnt'+${num}" th:onClick="addclick([[${num}]]); return false;">&nbsp&nbspADD&nbsp&nbsp</a>
+							<a href='#' th:class="'btn btn-light sm cancel '+${num}" th:id="'cancelmcnt'+${num}" th:onClick="cancelclick([[${num}]]); return false;">CANCEL</a>
+						
+	                   </div>
+					</div>
+					<div class="btn-box">
+		                  <button class="btn btn-primary mr-2" style="display :inline-block;" onclick="adddetailimpl()">추가</button>
+		                  <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sid})}">Cancel</a>
+	         		 </div>
+                  
+            
+                  </div>
                 </div>
               </div>
             </div>
-         
-          </div>
+           
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->

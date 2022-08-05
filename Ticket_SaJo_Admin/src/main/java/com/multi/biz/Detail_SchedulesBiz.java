@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.multi.frame.Biz;
 import com.multi.mapper.Detail_SchedulesMapper;
+import com.multi.mapper.SchedulesMapper;
 import com.multi.vo.Detail_SchedulesVO;
 
 @Service("detail_schedulebiz")
@@ -14,7 +16,8 @@ public class Detail_SchedulesBiz implements Biz<Integer,Detail_SchedulesVO> {
 
 	@Autowired
 	Detail_SchedulesMapper dao;
-	
+	@Autowired
+	SchedulesMapper sdao;
 	@Override
 	public void register(Detail_SchedulesVO v) throws Exception {
 		dao.insert(v);
@@ -59,5 +62,12 @@ public class Detail_SchedulesBiz implements Biz<Integer,Detail_SchedulesVO> {
 	public Detail_SchedulesVO selectmidtidsdatetime(Integer mid,Integer tid, String sdate, String starttime) throws Exception {
 		return dao.selectmidtidsdatetime(mid, tid, sdate, starttime);
 	}
-
+	@Transactional
+	public void deleteall(int sid) throws Exception {
+		dao.delete(sid);
+		sdao.delete(sid);
+	}
+	public List<Detail_SchedulesVO> selectbookedcnt(Integer sid) throws Exception{
+		return dao.selectbookedcnt(sid);
+	}
 }
