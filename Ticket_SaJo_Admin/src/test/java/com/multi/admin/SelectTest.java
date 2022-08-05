@@ -1,26 +1,22 @@
-package com.multi.movie;
+package com.multi.admin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.MovieBiz;
-import com.multi.vo.MovieVO;
+import com.multi.biz.AdminBiz;
+import com.multi.vo.AdminVO;
 
 @SpringBootTest
 class SelectTest {
 	@Autowired
-	MovieBiz biz;
+	AdminBiz biz;
 	@Test
 	void contextLoads() {
-		MovieVO v = null;
+		AdminVO v = null;
 		try {
-			int[] array1 = {1,2,3,4,5,6,7,8,9,10};
-			int[] array2 = {4,5};
-			
-			for (int i : array2) {
-				System.out.println(i);
-			}
+			v = biz.get("id01");
+			System.out.println(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
