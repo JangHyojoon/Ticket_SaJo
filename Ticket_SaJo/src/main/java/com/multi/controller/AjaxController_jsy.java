@@ -39,28 +39,6 @@ public class AjaxController_jsy {
 		return result;
 	}
 	
-	@RequestMapping("checkname")
-	public String checkname(String name) {
-		String result="";
-		CustVO cust = null;
-		
-		if(name.equals("") || name == null) {
-			return "1";
-		}
-		
-		try {
-			cust = custbiz.get(name);
-			if(cust == null) {
-				result = "0";
-			}else {
-				result = "1";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	
 	@RequestMapping("checkpwd")
 		public String checkpwd(String delete_pwd, HttpSession session) {
 			CustVO cust = null;
