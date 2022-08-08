@@ -66,6 +66,12 @@ public class CustVO {
 
 
 
+	public String getRole() {
+		return "ROLE_USER";
+	}
+
+
+
 
 
 
