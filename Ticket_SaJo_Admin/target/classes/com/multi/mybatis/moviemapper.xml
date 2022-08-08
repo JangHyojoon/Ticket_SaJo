@@ -173,6 +173,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM movie WHERE
 		id=#{id}
 	</delete>
+	<select id="searchall" parameterType="String" resultType="movieVO">
+		SELECT m.id as id,g.name as gname,m.title as title, m.director as director, m.mainactor as mainactor,
+		m.releasedate as releasedate, m.posterimg1 as posterimg1,m.posterimg2 as posterimg2, m.country as country,
+		m.runningtime as runningtime, m.text as text, COUNT(r.id) as rcnt,ROUND(AVG(r.star),1) as star FROM movie m
+		INNER JOIN genre g ON g.id = m.gid
+		INNER JOIN reviews r ON r.mid=m.id
+        WHERE (m.id LIKE CONCAT('%',#{text},'%') OR g.name LIKE CONCAT('%',#{text},'%') OR m.title LIKE CONCAT('%',#{text},'%') OR m.director LIKE CONCAT('%',#{text},'%')
+        OR m.mainactor LIKE CONCAT('%',#{text},'%') OR m.releasedate LIKE CONCAT('%',#{text},'%') OR 
+		 m.country LIKE CONCAT('%',#{text},'%') OR m.runningtime LIKE CONCAT('%',#{text},'%'))
+		GROUP BY id
+	</select>
 </mapper>
 
 

@@ -23,6 +23,10 @@
 	padding-bottom: 5px;
 	
 }
+.atag{
+	margin: auto;
+	text-align: center;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -116,12 +120,9 @@ $(document).ready(function(){
                        
                       </tbody>
                     </table>
-                    <div class="coloum-wrapper">
-	                    <div class="pagination paginatioon--full">
-	                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/cust/list(mnum=${mnum}-10)}">이전</a>
-	                            <a style="text-align: right; margin-left:90%;" href='#' class="pagination__next" th:href="@{/cust/list(mnum=${mnum}+10)}">다음</a>
-	                    </div>
-	                </div>
+                    <div class="atag">
+                    	<a class="btn btn-dark" id="listall" th:href="@{/cust/list}">전체보기</a>
+                    </div>
                   </div>
                 </div>
               </div>

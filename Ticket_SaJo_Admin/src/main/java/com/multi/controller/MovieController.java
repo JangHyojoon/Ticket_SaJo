@@ -2,6 +2,8 @@ package com.multi.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import com.multi.biz.GenreBiz;
 import com.multi.biz.MovieBiz;
 import com.multi.biz.ReviewBiz;
 import com.multi.frame.Util;
+import com.multi.vo.AdminVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.GenreVO;
 import com.multi.vo.MovieVO;
@@ -35,7 +38,11 @@ public class MovieController {
 	ReviewBiz rbiz;
 	
 	@RequestMapping("/add")
-	public String add(Model m) {
+	public String add(Model m, HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}
 		List<GenreVO> glist = null;
 		try {
 			glist = gbiz.get();
@@ -66,7 +73,11 @@ public class MovieController {
 		return "index";
 	}
 	@RequestMapping("/list")
-	public String list(Model m, Integer mnum) {
+	public String list(Model m, Integer mnum,HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}else {
 		int page = 0;
 		List<MovieVO> mlist = null;
 		
@@ -83,8 +94,25 @@ public class MovieController {
 		m.addAttribute("mnum", page);
 		m.addAttribute("center", "movie/list");
 		m.addAttribute("mlist", mlist);
-		return "index";
+		return "index";}
 	}
+	@RequestMapping("/search")
+	   public String search(Model m, String text,HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}else {
+		List<MovieVO> mlist = null;
+		
+		try {
+			mlist = mbiz.searchall(text);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "movie/search");
+		m.addAttribute("mlist", mlist);
+		return "index";}
+	   }
 	@RequestMapping("/detail")
 	public String detail(Model m, Integer id) {
 		MovieVO movie = null;
