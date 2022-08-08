@@ -51,15 +51,44 @@ $(document).ready(function(){
 	   });
    
    $('#signupbtn').click(function(){
-      $('#signup_form').attr({
-         'method' : 'post',
-          'action' : 'signupimpl'
-      });
-      $('#signup_form').submit();
-      alert('등록이 완료되었습니다');
-   });
-   
-   
+	   if($('#id').val() == '') {
+		   $('#ispan').text('필수항목입니다.');
+		   $('#ispan').css('color', 'red');
+		   $('#id').focus();
+	   }else{
+		   if($('#pwd').val() == '') {
+			   $('#pspan').text('필수항목입니다.');
+			   $('#pspan').css('color', 'red');
+			   $('#pwd').focus();
+		   }else{
+			   if($('#pwdcheck').val() == '') {
+				   $('#pspan2').text('필수항목입니다.');
+				   $('#pspan2').css('color', 'red');
+				   $('#pwdcheck').focus();			   			   
+		   }else {
+			   if($('#name').val() == '') {
+				   $('#nspan').text('필수항목입니다.');
+				   $('#nspan').css('color', 'red');
+				   $('#name').focus();
+		   }else{
+			   if($('#birth').val() == '') {
+				   $('#bspan').text('필수항목입니다.');
+				   $('#bspan').css('color', 'red');
+				   $('#birth').focus();
+		   }else{
+		      $('#signup_form').attr({
+		         'method' : 'post',
+		          'action' : 'signupimpl'
+		      });
+		      $('#signup_form').submit();
+		      alert('등록이 완료되었습니다');
+		    }
+	     }
+	   }
+	 }
+   }
+ });
+
    
    $('input[name="pwd"]').keyup(function(){
       var pwd = $(this).val();
@@ -101,11 +130,11 @@ $(document).ready(function(){
       </div>
       <br>
       <div class="field-wrap">
-         이름: <input id="name" type='text' name='name'> 
+         이름: <span id="nspan"></span><input id="name" type='text' name='name'> 
       </div>
       <br>
       <div class="field-wrap">
-         생년월일: <input id="birth" value=19930321 type='date'name='birth'> 
+         생년월일:  <span id="bspan"></span><input id="birth" value=19930321 type='date'name='birth'> 
       </div>
       <br>
       <div class="field-wrap">
@@ -113,7 +142,7 @@ $(document).ready(function(){
       </div>
       <br>
       <div class="field-wrap">
-         성별:
+         성별:  <span id="sspan"></span>
           <select name="sex">
             <option value="woman">여성</option>
             <option value="man">남성</option>        
@@ -121,7 +150,7 @@ $(document).ready(function(){
       </div>
       <br>
       <br>
+      </form>
      <div class="field-wrap">
          <button id="signupbtn" class="btn btn-md btn--warning btn--wider">회원가입</button>
       </div>
-   </form>
