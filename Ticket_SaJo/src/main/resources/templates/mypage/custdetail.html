@@ -3,9 +3,30 @@
 	#h3{
 		text-align: center;
 	}
+	#id, #name {
+   		border-radius: 20px;
+   		border-color: #B8860B;
+   		
+   }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+function checkname(name) {
+	   $.ajax({
+	      url:'/checkname',
+	      data:{'name':name},
+	      success:function(data){
+	         if(data == '1') {
+	            $('#namespan').text('이미 사용중인 이름입니다.');
+	            $('#namespan').css('color','red');
+	         }else {
+	            $('#namespan').text('사용가능한 아이디입니다');
+	            $('#namespan').css('color','#3CB371');
+	         }
+	      }
+	   });
+	};
+
 $(document).ready(function(){
 	$('#updatebtn').click(function(){
 		$('.user').attr({
@@ -23,14 +44,13 @@ $(document).ready(function(){
       <h3 id="h3">회원정보 수정</h3>
 <form class ="user">
       <div class="wrapper"> 
-         아이디:<input type="text" name="id" th:value="${session.user.id}">
+         아이디: <input type="text" id="id" name="id" readonly="readonly" th:value="${session.user.id}">
+         <span id="idspan"></span>
       </div>
-
     
-      
-      
       <div class="wrapper">
-         이름: <input type="text" name="name" th:value="${session.user.name}">
+         이름: <input type="text" id="name" name="name" th:value="${session.user.name}">
+          <span id="namespan"></span>
       </div>
     
   <br>
