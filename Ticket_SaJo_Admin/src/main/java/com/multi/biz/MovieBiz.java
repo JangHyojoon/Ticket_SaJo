@@ -88,5 +88,8 @@ public class MovieBiz implements Biz<Integer,MovieVO> {
 		return dao.sortbyonmovie(k);
 
 	}
-	
+	public List<MovieVO> searchall(String text) throws Exception {
+		return dao.searchall(text);
+
+	}
 }

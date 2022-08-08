@@ -2,6 +2,8 @@ package com.multi.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CustBiz;
 import com.multi.biz.MycouponBiz;
+import com.multi.vo.AdminVO;
 import com.multi.vo.CustVO;
+import com.multi.vo.MovieVO;
 import com.multi.vo.MycouponVO;
 
 @Controller
@@ -39,17 +43,46 @@ public class CustController {
 		return "index";
 	}
 	@RequestMapping("/list")
-	public String list(Model m) {
+	public String list(Model m, Integer mnum,HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}else {
+		int page = 0;
 		List<CustVO> clist = null;
+		
 		try {
-			clist = cbiz.get();
+			if (mnum != null) {
+				page= mnum;
+				clist = cbiz.selectallpage(page);
+			} else if(mnum == null) {
+				clist = cbiz.selectallpage(page);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		m.addAttribute("mnum", page);
 		m.addAttribute("center", "cust/list");
 		m.addAttribute("clist", clist);
-		return "index";
+		return "index";}
 	}
+	@RequestMapping("/search")
+	   public String search(Model m, String text,HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}else {
+		List<CustVO> clist = null;
+		
+		try {
+			clist = cbiz.searchall(text);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center", "cust/search");
+		m.addAttribute("clist", clist);
+		return "index";}
+	   }
 	@RequestMapping("/detail")
 	public String detail(Model m, String id) {
 		CustVO cust = null;
