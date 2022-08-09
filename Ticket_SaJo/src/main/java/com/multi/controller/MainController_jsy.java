@@ -195,7 +195,7 @@ public class MainController_jsy {
          System.out.println("해당 id가 삭제되었습니다: " + cust);
          try {
             session.removeAttribute("user");
-            custbiz.remove(cust.getId());
+            custbiz.updateremove(cust.getId());
          }catch (Exception e) {
             e.printStackTrace();
          }      
@@ -203,6 +203,7 @@ public class MainController_jsy {
       m.addAttribute("center", "mypage/custbye");
       return "index";
    }
+   
    
    @RequestMapping("/myreservationlist")
    public String myreservationlist(Model m, HttpSession session) {

@@ -26,6 +26,7 @@ public class CustVO {
 	private Date birth;	
 	private int point;
 	private String sex;
+	private boolean used;
 	
 	private int usepoint;
 	
@@ -34,11 +35,6 @@ public class CustVO {
 		this.pwd = pwd;
 		this.name = name;
 	}
-	
-	
-	
-	
-
 
 	public CustVO(String id, String pwd, String name, Date birth, int point, String sex) {
 		super();
@@ -50,32 +46,18 @@ public class CustVO {
 		this.sex = sex;
 	}
 
-
-
-
-
-
 	public CustVO(String id, int usepoint) {
 		super();
 		this.id = id;
 		this.usepoint = usepoint;
 	}
 
-
-
-
-
-
 	public String getRole() {
 		return "ROLE_USER";
 	}
 
-
-
-
-
-
-
-	
-	
+	public CustVO(String id, boolean used) {
+		this.id = id;
+		this.used = used;
+	}	
 }

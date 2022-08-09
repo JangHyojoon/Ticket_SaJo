@@ -45,12 +45,15 @@ $(document).ready(function() {
 			 })
 					
 			$('#custdelete_form').submit();
+		}else {
+			if(data="0") {
+				alert('비밀번호를 다시 확인해주세요.');	
 		} else {
 			$('#now_pwdspan').html('비밀번호를 다시 확인해주세요.');
 			$('#now_pwdspan').css('color', 'red');
 
+		 }
 		}
-	
 	  });
    });
 
