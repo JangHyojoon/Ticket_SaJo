@@ -6,13 +6,80 @@
 .stretch-card{
 margin:auto;
 }
-span{
-margin-bottom:10px;
+.mcntbox{
+margin-bottom:8px;
 }
+.span{
+margin-right:10px;
+}
+.card{
+margin:auto;
+text-align: center;
+}
+.removebtn {
+	background-color:#b81200;
+	border-radius:15px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 39px;
+	text-decoration:none;
+}
+.removebtn:hover {
+	background-color:#ff3838;
+}
+.removebtn:active {
+	position:relative;
+	top:1px;
+}
+.modifybtn {
+	background-color:#061873;
+	border-radius:15px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 39px;
+	text-decoration:none;
+}
+.modifybtn:hover {
+	background-color:#476e9e;
+}
+.modifybtn:active {
+	position:relative;
+	top:1px;
+}
+.cancel {
+	background-color:#ffffff;
+	border-radius:15px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 39px;
+	text-decoration:none;
+}
+.cancel:hover {
+	background-color:#f6f6f6;
+}
+.cancel:active {
+	position:relative;
+	top:1px;
+}
+        
 </style>
 <script th:inline="javascript">
+	var tlist= [[${tlist}]]
 	
 	$(document).ready(function(){
+	
 		var msg = [[${msg}]];
 		if(msg != null){
 			alert(msg)
@@ -20,6 +87,34 @@ margin-bottom:10px;
 		
 		 
 	});
+	function Update() {
+		if(tlist.length != 0){
+			alert("발권이 진행된 스케쥴입니다. 수정이 불가능합니다")
+			return
+		}
+	 	$('#formsid').attr({
+			'method':'get',
+			'action':'update'
+				 
+		});
+		$('#formsid').submit();
+	}
+	function Delete() {
+		if(tlist.length != 0){
+			alert("발권이 진행된 스케쥴입니다. 삭제가 불가능합니다")
+			return
+		}
+	 	$('#formsid').attr({
+			'method':'get',
+			'action':'delete'
+				 
+		});
+		$('#formsid').submit();
+	}
+	function Back() {
+		window.history.back()
+	}
+	
 </script>
 
 </head>
@@ -37,28 +132,32 @@ margin-bottom:10px;
                   <p class="card-description" th:text="${sv.title}"></p>
                   <p class="card-description" th:text="'상영관 : '+${sv.tid}+'관'"></p>
              	  <p class="card-description" th:text="'상영날짜 : '+${sv.sdate}"></p>
-            	  <div th:each="ds : ${dslist}" >
+            	  <div class = 'mcntbox' th:each="ds : ${dslist}" >
             	  	
-            	  	<span class="card-description" th:text="${ds.mcnt}+'회차'"></span>
-            	  	<span class="card-description" th:text="'시작시간 : '+${ds.starttime}"></span>
-            	  	<span class="card-description" th:text="'끝나는시간 : '+${ds.endtime}"></span>
+            	  	<span class="span" th:text="${ds.mcnt}+'회차'"></span>
+            	  	<span class="card-description span" th:text="'상영시간 : '+${ds.starttime}+'~'+${ds.endtime}"></span>
+            	
             	  	
             	  
             	  	
-            	  	<span class="card-description" th:text="'좌석현황 : '+(${seatcnt}-${ds.bookedcnt})+'/'+${seatcnt}"></span>
-            	  	<span class="card-description" th:text="'예약좌석 : '+${ds.bookedcnt}"></span>
+            	  	<span class="card-description span" th:text="'좌석현황 : '+(${seatcnt}-${ds.bookedcnt})+'/'+${seatcnt}"></span>
+            	  	
+            	  	<span class="card-description span" th:text="'예약좌석 : '+${ds.bookedcnt}"></span>
             	  </div>
                  
              	
             
+             		<form id="formsid">
+             		<input type="hidden" name="id" th:value="${sv.id}">
              		
+             		</form>
              		
-                     <a class="btn btn-light" style="display :inline-block;" th:href="@{update(id=${sv.id})}">스케줄 수정</a>
-                    <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sv.id})}">스케줄 삭제</a>
+                    <a class="modifybtn" style="display :inline-block;" onclick="Update()">스케줄 수정</a>              
+                    <a class="removebtn" style="display :inline-block;" onclick="Delete()">스케줄 삭제</a>
                     
-                    <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sv.id})}">상세스케줄 수정</a>
+                    <a class="modifybtn" style="display :inline-block;" th:href="@{updatedetail(sid=${sv.id})}">상세스케줄 수정</a>
 
-                   <a class="btn btn-light" style="display :inline-block;" th:href="@{calendar}">뒤로가기</a>
+                    <a class="cancel" style="display :inline-block;" onclick="Back()">뒤로가기</a>
                 </div>
               </div>
             </div>

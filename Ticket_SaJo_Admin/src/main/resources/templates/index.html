@@ -361,17 +361,10 @@
             </div><br>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" th:href="@{/schedule/calendar}" >
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">스케줄</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">스케줄</span>             
             </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" th:href="@{/schedule/add}">스케줄 추가</a></li>
-                <li class="nav-item"> <a class="nav-link" th:href="@{/schedule/list}">스케줄 목록</a></li>
-              </ul>
-            </div><br>
           </li>
            <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#coupon" aria-expanded="false" aria-controls="coupon">

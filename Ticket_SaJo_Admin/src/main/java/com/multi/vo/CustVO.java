@@ -28,6 +28,7 @@ public class CustVO {
 	private String sex;
 	
 	private int usepoint;
+	private boolean used;
 	
 	public CustVO(String id, String pwd, String name) {
 		this.id = id;

@@ -41,6 +41,16 @@ function inputYMDNumber(obj) {
 
 }
 	$(document).ready(function(){
+		
+		//캘린더로 들어왔을 때 날짜값 추가
+		var url = window.location.href
+		var urlcheck = url.indexOf('?')
+		if (urlcheck != -1) {
+			url = url.substr(urlcheck+1)
+			$('#exampleInputBirth').val(url);
+		}
+		
+		
 		$('#btn').click(function(){
 			 
 			var datatimeRegexp = /[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])/;

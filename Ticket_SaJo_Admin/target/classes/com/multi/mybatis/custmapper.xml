@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM cust 
 	</select>
 	<insert id="insert" parameterType="custVO">
-		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex})
+		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex},#{used})
 	</insert>
 	<update id="update" parameterType="custVO">
 		UPDATE cust SET pwd=#{pwd},name=#{name},birth=#{birth},point=#{point},sex=#{sex} WHERE id=#{id}
