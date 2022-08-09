@@ -39,7 +39,10 @@ public class TicketBiz implements Biz<Integer,TicketVO> {
 	public List<TicketVO> get() throws Exception {
 		return dao.selectall();
 	}
-	public List<TicketVO> selectrid(Integer k) throws Exception{
-		return dao.selectrid(k);
+	public List<TicketVO> selectrid(Integer rid) throws Exception{
+		return dao.selectrid(rid);
+	}
+	public List<TicketVO> selectsid(Integer sid) throws Exception{
+		return dao.selectsid(sid);
 	}
 }

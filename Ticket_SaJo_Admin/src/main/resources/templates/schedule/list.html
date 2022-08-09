@@ -2,16 +2,56 @@
 <meta charset="utf-8">
 
 <head>
+<style>
+.table{
+text-align: center;
+}
+.card-title{
+text-align: center;
+margin-top:10px;
+}
+.card-body{
+margin-top:10px;
+}
+.pagination{
+margin-top:30px;
+}
+.left{
+float:center;
+}
+.right{
+float:right;
+}
+.center{
+float:center;
+}
+</style>
 </head>
 
 <body>
+
+	
+	<div class="coloum-wrapper">
+		<div class="pagination paginatioon--full">
+			<div class="col-sm-4">
+				<a class="btn btn-primary mr-2 left" th:href="@{/schedule/calendar}">캘린더로 보기</a>
+			</div>
+			<div class="col-sm-4 center">
+				
+				<h3 class="card-title">스케줄 목록</h3>
+			</div>
+	        <div class="col-sm-4">
+				<a class="btn btn-primary mr-2 right" th:href="@{/schedule/add}">스케줄 추가</a>              
+			</div>                     
+		</div>
+	</div>
+
   <div class="container-scroller">
     <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">스케줄 목록</h4>
-                  <p class="card-description">
-                    
-                  </p>
+           
+                  
+
                   <div class="table-responsive pt-3">
                     <table class="table table" >
                       <thead>
@@ -31,9 +71,7 @@
                           <th>
                             상세보기
                           </th>
-                          <th>
-                            수정/삭제
-                          </th>
+             
                         </tr>
                       </thead>
                       <tbody th:each="s:${slist}">
@@ -53,17 +91,22 @@
                           <td>
                             <a class="btn btn-inverse-info btn-fw" th:href="@{/schedule/detail(sid=${s.id})}">상세보기</a>
                           </td>
-                          <td>
-                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/schedule/update(id=${s.id})}">수정/삭제</a>
-                          </td>
+
                         </tr>
                        
                       </tbody>
                     </table>
                     <div class="coloum-wrapper">
                     <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/schedule/list(mnum=${mnum}-10)}">이전</a>
-                            <a style="text-align: right; margin-left:90%;" href='#' class="pagination__next" th:href="@{/schedule/list(mnum=${mnum}+10)}">다음</a>
+                    	<div class="col-sm-6">
+                    		<a href='#' class="btn btn-primary mr-2" th:if="${mnum}-1>=0" th:href="@{/schedule/list(mnum=${mnum}-10)}">이전</a>
+                    	</div>
+                        <div class="col-sm-6">
+                        	<a  href='#' class="btn btn-primary mr-2 right" th:if="${#lists.size(slist)} == 10"  th:href="@{/schedule/list(mnum=${mnum}+10)}">다음</a>
+                        	
+                        
+                        </div>
+                           
                     </div>
                 </div>
                   </div>
