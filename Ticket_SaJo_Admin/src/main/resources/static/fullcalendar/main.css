@@ -200,8 +200,8 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-button-primary {
     color: #fff;
     color: var(--fc-button-text-color, #2C3E50);
-    background-color: #2C3E50;
-    background-color: var(--fc-button-bg-color, #2C3E50);
+    background-color: #fff;
+    background-color: var(--fc-button-bg-color, #fff);
 
   }
 .fc .fc-button-primary:hover {
@@ -326,11 +326,13 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc-theme-standard .fc-scrollgrid {
     border: 1px solid #ddd;
     border: 1px solid var(--fc-border-color, #ddd); /* bootstrap does this. match */
+    cursor:auto;
   }
 .fc .fc-scrollgrid,
     .fc .fc-scrollgrid table { /* all tables (self included) */
       width: 100%; /* because tables don't normally do this */
       table-layout: fixed;
+      
     }
 .fc .fc-scrollgrid table { /* inner tables */
       border-top-style: hidden;
@@ -697,9 +699,13 @@ A HORIZONTAL event
   content: "";
   clear: both;
   display: table; }
+
 .fc .fc-daygrid-body { /* a <div> that wraps the table */
     position: relative;
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
+  }
+  .fc .fc-daygrid-body:hover { /* a <div> that wraps the table */
+cursor:auto;
   }
 .fc .fc-daygrid-day.fc-day-today {
       background-color: rgba(255, 220, 40, 0.15);
@@ -709,6 +715,7 @@ A HORIZONTAL event
     position: relative;
     min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */
   }
+
 .fc {
 
   /* cell top */

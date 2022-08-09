@@ -15,7 +15,7 @@ text-align: center;
 <script th:inline="javascript">
 
 	var runningtime = [[${runningtime}]]
-	var sid = [[${sid}]]
+	var dslist = [[${dslist}]]
 	function inputTimeColon(time) {
 		
         // 기존에 들어가 있는 (:)을 제거
@@ -67,7 +67,7 @@ text-align: center;
 		}
 		
 
-		$('#dv'+num).val(sid+','+mcnt+','+starttime+','+endtime);
+		$('#dv'+num).val(mcnt+','+starttime+','+endtime);
 		$('#selmcnt'+num).attr("disabled",true);
 		$('#starttime'+num).attr("disabled",true);
 		$('#endtime'+num).attr("disabled",true);
@@ -76,6 +76,11 @@ text-align: center;
 		$('#addmcnt'+num).hide();
 	}
 	function cancelclick(num){
+		var bcnt = $("#bcnt"+num).text();
+		if (bcnt > 0) {
+			alert("예매가 진행된 스케줄입니다. 수정이 불가능합니다.")
+			return
+		}
 		var mcnt = $('#selmcnt'+num).val();
 		$('.sel'+mcnt).attr("disabled",false);
 		$('#selmcnt'+num).attr("disabled",false);
@@ -86,11 +91,10 @@ text-align: center;
 		$('#cancelmcnt'+num).hide();
 		$('#addmcnt'+num).show();
 	}
-	function adddetailimpl() {
-		
+	function updatedetailimpl() {
 		 	$('.check').attr({
 				'method':'get',
-				'action':'adddetailimpl'
+				'action':'updatedetailimpl'
 					 
 			});
 			$('.check').submit();
@@ -98,6 +102,35 @@ text-align: center;
 
 	$(document).ready(function(){
 		$('.cancel').hide();
+		for (var i = 1; i < dslist.length+1; i++) {
+			if(dslist[i-1] != null) {
+				var sttime = dslist[i-1].starttime;
+				var replaceTime = sttime.replace(/\:/g, "");
+				var hours = replaceTime.substring(0, 2);  // 시간 추출
+			    var minute = replaceTime.substring(2, 4);  // 분을 추출
+			    hours = hours * 60;
+			    var total = hours + Number(minute);
+			    total = total + runningtime
+			    var endhours;
+			    if(parseInt(total / 60) >=24) {
+			    	endhours = parseInt(total / 60) - 24;
+			    }else {
+			    	endhours = parseInt(total / 60)
+			    }
+			    var endminute = total % 60; 
+				$("#selmcnt"+dslist[i-1].mcnt).val(dslist[i-1].mcnt).prop("selected", true); //값이 1인 option 선택
+				$("#starttime"+dslist[i-1].mcnt).val(sttime);
+				$("#endtime"+dslist[i-1].mcnt).val(('00' + endhours).slice(-2)+':'+('00' + endminute).slice(-2));
+				$("#booked"+dslist[i-1].mcnt).text("예매된 좌석 : ");
+				$("#bcnt"+dslist[i-1].mcnt).text(dslist[i-1].bookedcnt);
+				addclick(dslist[i-1].mcnt);
+			}
+		}
+			
+		
+		
+		
+	
 		$('.starttime').keyup(function(){
 			var st = $(this).val();
 			var replaceTime = st.replace(/\:/g, "");
@@ -145,7 +178,7 @@ text-align: center;
                   </p>
                   <form class="check">
 	                  <div class="form-group">
-	               
+	               		  <input type="hidden" th:id = sid th:name= sid th:value="${sid}">
 	                      <input type="hidden" class="form-control" th:each = "num:${#numbers.sequence(1,10)}" th:id="'dv'+${num}" th:name="'dv'+${num}">
 	                  </div>
                   </form>
@@ -154,18 +187,19 @@ text-align: center;
 	                   <div class ="form-group" th:each = "num:${#numbers.sequence(1,10)}" >
 	                   		<select th:class ="'form-control-sm selmcnt'+${num}" th:name="'selmcnt'+${num}" th:id="'selmcnt'+${num}" >
 	                   			<option value="0">회차</option>
-	                   			<option  th:each = "numsel:${#numbers.sequence(1,10)}" th:if ="!${#lists.contains(mlist,numsel)}" th:value="${numsel}" th:text="${numsel}" th:id="'sel'+${numsel}" th:class="'sel'+${numsel}"></option>
+	                   			<option  th:each = "numsel:${#numbers.sequence(1,10)}"  th:value="${numsel}" th:text="${numsel}" th:id="'sel'+${numsel}" th:class="'sel'+${numsel}"></option>
 	                   		</select>
 							<input type='text' th:id="'starttime'+${num}" class='form-control-sm starttime' onkeyup="inputTimeColon(this);" maxlength="5" placeholder="HH:MM" >
 							<input type='text' th:id="'endtime'+${num}" class='form-control-sm endtime' disabled>
+							<span th:id="'booked'+${num}" ></span><span th:id="'bcnt'+${num}" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 							<a href='#' th:class="'btn btn-primary '+${num}" th:id="'addmcnt'+${num}" th:onClick="addclick([[${num}]]); return false;">&nbsp&nbspADD&nbsp&nbsp</a>
 							<a href='#' th:class="'btn btn-light sm cancel '+${num}" th:id="'cancelmcnt'+${num}" th:onClick="cancelclick([[${num}]]); return false;">CANCEL</a>
 						
 	                   </div>
 					</div>
 					<div class="btn-box">
-		                  <button class="btn btn-primary mr-2" style="display :inline-block;" onclick="adddetailimpl()">추가</button>
-		                  <a class="btn btn-light" style="display :inline-block;" th:href="@{delete(sid=${sid})}">Cancel</a>
+		                  <button class="btn btn-primary mr-2" style="display :inline-block;" onclick="updatedetailimpl()">업데이트</button>
+		                  <a class="btn btn-light" style="display :inline-block;" th:href="@{detail?(sid=${sid})}">취소</a>
 	         		 </div>
                   
             

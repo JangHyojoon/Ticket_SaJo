@@ -70,4 +70,8 @@ public class Detail_SchedulesBiz implements Biz<Integer,Detail_SchedulesVO> {
 	public List<Detail_SchedulesVO> selectbookedcnt(Integer sid) throws Exception{
 		return dao.selectbookedcnt(sid);
 	}
+	public void deletesidmcnt(Integer sid,Integer mcnt) throws Exception {
+		dao.deletesidmcnt(sid, mcnt);
+	}
+
 }

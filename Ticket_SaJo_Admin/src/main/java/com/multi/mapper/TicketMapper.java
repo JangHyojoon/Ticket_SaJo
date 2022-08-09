@@ -18,4 +18,6 @@ public interface TicketMapper {
 
 	
 	public List<TicketVO> selectrid(int rid) throws Exception;
+	
+	public List<TicketVO> selectsid(int sid) throws Exception;
 }
