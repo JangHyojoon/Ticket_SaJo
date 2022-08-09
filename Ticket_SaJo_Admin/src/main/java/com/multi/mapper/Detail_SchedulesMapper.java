@@ -25,4 +25,6 @@ public interface Detail_SchedulesMapper {
 	public Detail_SchedulesVO selectmidtidsdatetime(Integer mid,Integer tid, String sdate, String starttime) throws Exception;
 	public List<Detail_SchedulesVO> selectbookedcnt(Integer sid) throws Exception;
 	
+	public void deletesidmcnt(Integer sid,Integer mcnt) throws Exception;
+
 }

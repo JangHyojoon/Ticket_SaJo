@@ -40,7 +40,7 @@ public class AJAXControllerjhj {
 				JSONObject jo = new JSONObject();
 				jo.put("id", sv.getId());
 				jo.put("start", sv.getSdate());
-				jo.put("title", sv.getTitle()+" ("+sv.getTid()+"관)");
+				jo.put("title", "("+sv.getTid()+"관) "+sv.getTitle());
 				jo.put("url", "detail?sid="+sv.getId());
 				
 				ja.add(jo);

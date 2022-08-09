@@ -51,7 +51,8 @@ CREATE TABLE cust (
    name VARCHAR(20),
    birth DATE,
    point INT,
-   sex   VARCHAR(10)
+   sex   VARCHAR(10),
+   used BOOLEAN
 );
 ALTER TABLE cust ADD CONSTRAINT PRIMARY KEY(id);
 
@@ -188,13 +189,16 @@ ALTER TABLE mycoupon ADD CONSTRAINT FOREIGN KEY (cid) REFERENCES coupon (id);
 CREATE TABLE booked(
 	sid INT,
     mcnt INT,
-    seatid VARCHAR(100)
+    seatid VARCHAR(5)
    
 );
+
+
+
+
 ALTER TABLE booked ADD CONSTRAINT PRIMARY KEY(sid,mcnt,seatid);
 
-
--- 
+-- receipt
 
 CREATE TABLE receipt(
 	id varchar(100),
@@ -202,3 +206,13 @@ CREATE TABLE receipt(
     text varchar(100)
 );
 ALTER TABLE receipt ADD CONSTRAINT PRIMARY KEY(id);
+
+-- admin
+CREATE TABLE admin (
+   id   VARCHAR(100) PRIMARY KEY,
+   pwd   VARCHAR(20)
+);
+CREATE TABLE code (
+   id INT,
+   code VARCHAR(20)
+);
