@@ -46,5 +46,7 @@ public class CustBiz implements Biz<String,CustVO> {
 	public void usepoint(String id,int usepoint) throws Exception {
 		dao.usepoint(id, usepoint);
 	}
-
+	public void updateremove(String id) throws Exception{
+		dao.updateremove(id);
+	}
 }

@@ -58,7 +58,7 @@ $(document).ready(function() {
       
       $('input[name="newpwd"]').keyup(function(){
             var newpwd = $(this).val();
-            if(newpwd.length > 5){
+            if(newpwd.length >= 5){
                $('#new_pwdspan').text('보안에 강합니다. 사용가능합니다.');
                $('#new_pwdspan').css('color','green');
                newpwd_ok=1;
