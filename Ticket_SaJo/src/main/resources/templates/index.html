@@ -2,149 +2,205 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-   <!-- Basic Page Needs -->
-        <meta charset="utf-8">
-        <title>AMovie</title>
-        <meta name="description" content="A Template by Gozha.net">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Gozha.net">
-    
-    <!-- Mobile Specific Metas-->
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="telephone=no" name="format-detection">
-    
-    <!-- Fonts -->
-    	
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>티켓사조</title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
+
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
+
+<!-- Fonts -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-        <!-- Font awesome - icon font -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Roboto -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
-        <!-- Open Sans -->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
-    	
-    <!-- Stylesheets -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&family=Noto+Sans+KR:wght@500&display=swap"
+	rel="stylesheet">
+<!-- Font awesome - icon font -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700'
+	rel='stylesheet' type='text/css'>
+<!-- Open Sans -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic'
+	rel='stylesheet' type='text/css'>
 
-       <!-- jQuery UI 장효준 추가--> 
-        <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<!-- Stylesheets -->
 
-        <!-- Mobile menu -->
-        <link href="/css/gozha-nav.css" rel="stylesheet" />
-        <!-- Select -->
-        <link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
-      <!-- Swiper slider -->
-        <link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
-        <!-- Magnific-popup -->
-        <link href="/css/external/magnific-popup.css" rel="stylesheet" />
-        <!-- Slider Revolution CSS Files -->
-        <link rel="stylesheet" type="text/css" href="/revolution/css/settings.css">
-        <link rel="stylesheet" type="text/css" href="/revolution/css/layers.css">
-        <link rel="stylesheet" type="text/css" href="/revolution/css/navigation.css">
-    
-    
-        <!-- Custom -->
-        <link href="/css/style.css?v=1" rel="stylesheet" />
+<!-- jQuery UI 장효준 추가-->
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"
+	rel="stylesheet">
 
-        <!-- Modernizr --> 
-        <script src="/js/external/modernizr.custom.js"></script>
-		
-		<!-- SweetAlert -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <style>
-    .tp-caption.boxshadow,.boxshadow
-{      
-   box-shadow:0 0 0px rgba(0,0,0,0.0);
+<!-- Mobile menu -->
+<link href="/css/gozha-nav.css" rel="stylesheet" />
+<!-- Select -->
+<link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
+<!-- Swiper slider -->
+<link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
+<!-- Magnific-popup -->
+<link href="/css/external/magnific-popup.css" rel="stylesheet" />
+<!-- Slider Revolution CSS Files -->
+<link rel="stylesheet" type="text/css"
+	href="/revolution/css/settings.css">
+<link rel="stylesheet" type="text/css" href="/revolution/css/layers.css">
+<link rel="stylesheet" type="text/css"
+	href="/revolution/css/navigation.css">
+
+
+<!-- Custom -->
+<link href="/css/style.css?v=1" rel="stylesheet" />
+
+<!-- Modernizr -->
+<script src="/js/external/modernizr.custom.js"></script>
+
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<style>
+.tp-caption.boxshadow, .boxshadow {
+	box-shadow: 0 0 0px rgba(0, 0, 0, 0.0);
 }
-    </style>
+</style>
 </head>
 
 <body>
-<div class="wrapper">
-      <!-- Header start -->
-      <div th:insert="${header} ? ${header} : header"></div>
-      <!-- Header End -->
+	<div class="wrapper">
+	
+		<!-- Header start -->
+		<div th:insert="${header} ? ${header} : header"></div>
+		<!-- Header End -->
 
-      <!-- Center start -->
-      <div th:insert="${center} ? ${center} : center"></div>
-      <!-- Center End -->
+		<!-- Center start -->
+		<div th:insert="${center} ? ${center} : center"></div>
+		<!-- Center End -->
 
-      <!-- Footer start -->
-      <div th:insert="${footer} ? ${footer} : footer"></div>
-</div>
-    
-      
-   <!-- jQuery 3.1.1-->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')</script>
-   <!-- Migrate -->
-   <script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
-   
-   <!-- jQuery UI 장효준 추가-->
-   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-   <!-- Bootstrap 3-->
-   <script
-      src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+		<!-- Footer start -->
+		<div th:insert="${footer} ? ${footer} : footer"></div>
+	</div>
 
-   <!-- Slider Revolution core JavaScript files -->
-   <script type="text/javascript"
-      src="/revolution/js/jquery.themepunch.tools.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-   <!-- Slider Revolution extension scripts. -->
-   
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-   <script type="text/javascript"
-      src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="/js/external/jquery-3.1.1.min.js"><\/script>')
+	</script>
+	<!-- Migrate -->
+	<script src="/js/external/jquery-migrate-1.2.1.min.js"></script>
 
-   <!-- Mobile menu -->
-   <script src="/js/jquery.mobile.menu.js"></script>
-   <!-- Select -->
-   <script src="/js/external/jquery.selectbox-0.2.min.js"></script>
-   <!-- Swiper slider 장효준 추가-->
-   <script src="/js/external/idangerous.swiper.min.js"></script>
-   <!-- Magnific-popup -->
-   <script src="/js/external/jquery.magnific-popup.min.js"></script> 
-   <!-- Stars rate -->
-   <script src="/js/external/jquery.raty.js"></script>
-    
-   <!-- Form element -->
-   <script src="/js/external/form-element.js"></script>
-   <!-- Form validation -->
-   <script src="/js/form.js"></script>
-   
-   
-  <!-- Twitter feed -->
-  <!--  <script src="/js/external/twitterfeed.js"></script> -->
+	<!-- jQuery UI 장효준 추가-->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- Bootstrap 3-->
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-   <!-- Custom -->
-   <script src="/js/custom.js"></script>
+	<!-- Slider Revolution core JavaScript files -->
+	<script type="text/javascript"
+		src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-   <script type="text/javascript">
-              $(document).ready(function() {
-                init_Home();             
-                
-              });
-   </script>
+	<!-- Slider Revolution extension scripts. -->
+
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+ 	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript"
+		src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+	<!-- Mobile menu -->
+	<script src="/js/jquery.mobile.menu.js"></script>
+	<!-- Select -->
+	<script src="/js/external/jquery.selectbox-0.2.min.js"></script>
+	<!-- Swiper slider 장효준 추가-->
+	<script src="/js/external/idangerous.swiper.min.js"></script>
+	<!-- Magnific-popup -->
+	<script src="/js/external/jquery.magnific-popup.min.js"></script>
+	<!-- Stars rate -->
+	<script src="/js/external/jquery.raty.js"></script>
+
+	<!-- Form element -->
+	<script src="/js/external/form-element.js"></script>
+	<!-- Form validation -->
+	<script src="/js/form.js"></script>
+
+
+	<!-- Twitter feed -->
+	<!--  <script src="/js/external/twitterfeed.js"></script> -->
+
+	<!-- Custom -->
+	<script src="/js/custom.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			init_Home();
+			//cookiecheck();// 방문자 수 체크 하는 곳 
+
+		});
+		
+
+		function cookiecheck(){
+			//alert(boolCheckCookie('visible_cnt'));
+			
+			let val = getCookie('visible_cnt');
+		    if (val != '') {// cookie가 존재하면 실행 
+		      //return val;
+		    } else {
+/* 		      val = prompt(key+" 쿠키의 값을 입력해주세요:", "");
+		      if (val != "" && val != null) {
+		        setCookie(key, val, 365);
+		        return val;
+		      } */
+		    }
+
+		};
+		
+		function getCookie(key){ // 쿠키가 있는지 체크 
+			key = new RegExp(key + '=([^;]*)'); // 쿠키들을 세미콘론으로 구분하는 정규표현식 정의
+			
+			//document.cookie에 "a=123;b=456;c=789; 형식으로 들어가있다. 
+			return key.test(document.cookie) ? unescape(RegExp.$1) : ''; // 인자로 받은 키에 해당하는 키가 있으면 값을 반환
+		};
+		
+		
+		function boolCheckCookie(key) {//쿠키 체크 - 있으면 true 없으면 false
+		    return getCookie(key) != '' ? true : false;
+		};
+		
+		//쿠키 저장
+		// expiredays 는 일자 정수 - 
+		function setCookie(key, value, expiredays) {
+		    var todayDate = new Date();
+		    todayDate.setDate(todayDate.getDate() + expiredays); // 현재 시각 + 일 단위로 쿠키 만료 날짜 변경
+		    //todayDate.setTime(todayDate.getTime() + (expiredays * 24 * 60 * 60 * 1000)); // 밀리세컨드 단위로 쿠키 만료 날짜 변경
+		    //쿠키 값은 특수문자나 2바이트 문자 처리를 위해서 escape() 함수로 이스케이핑을 하는 것을 추천
+		    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+		};
+	</script>
+
 
 </body>
 </html>
