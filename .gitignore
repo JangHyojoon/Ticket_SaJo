@@ -19,3 +19,6 @@
 *.tar.gz
 *.rar
 
+# spring boot Security OAuth client-id,secret key
+application-oauth.properties
+

@@ -46,5 +46,11 @@ public class CustBiz implements Biz<String,CustVO> {
 	public void usepoint(String id,int usepoint) throws Exception {
 		dao.usepoint(id, usepoint);
 	}
-
+	public List<CustVO> selectallpage(Integer mnum) throws Exception {
+		return dao.selectallpage(mnum);
+	}
+	public List<CustVO> searchall(String text) throws Exception {
+		return dao.searchall(text);
+	}
+	
 }

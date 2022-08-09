@@ -43,4 +43,5 @@ public interface MovieMapper {
 	//0726 김민식 추가
 	public List<MovieVO> sortbyonmovie(int mnum) throws Exception;
 	
+	public List<MovieVO> searchall(String text) throws Exception;
 }

@@ -1,0 +1,176 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+<!-- Bootstrap 3-->
+   <script
+      src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<style>
+.container-scroller{
+	margin: auto;
+}
+.card{
+	margin: auto;
+	width: 100%;
+}
+#searchm{
+	width: 30%;
+	margin: auto;
+}
+#searcht{
+	margin: auto;
+	font-weight: bold;
+}
+#searcha{
+	border: 0.5px solid #EAEAEA ;
+	padding-bottom: 5px;
+	
+}
+.atag{
+	margin: auto;
+	text-align: center;
+}
+</style>
+<script>
+$(document).ready(function(){
+	$('#search').click(function(){
+		 $('.search').attr({
+				'method':'post',
+				'action':'/movie/search'
+			});
+			$('.search').submit();
+	});
+	function press(f){
+	    if(f.keyCode == 13){ //javascript에서는 13이 enter키를 의미함
+	    	$('.search').attr({
+				'method':'post',
+				'action':'/movie/search'
+			});
+	    	$('.search').submit();
+	    }
+	}
+	 
+});
+</script>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="card">
+    
+                <div class="card-body">
+                  <h4 class="card-title">영화 목록</h4>
+                  <ul id="searcha" class="navbar-nav mr-lg-2">
+				    <li id="searcht">검색하기</li>
+				         <li id="searchm" class="nav-item nav-search d-none d-lg-block">
+				          <form class="search" method="post" action="/movie/search">
+				           <div class="input-group">
+				             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+				               <span class="input-group-text" id="search">
+				                 <i class="icon-search"></i>
+				               </span>
+				             </div>
+				             <input type="text" name ="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+				           </div>
+				          </form>
+				         </li>
+				       </ul>
+                  <p class="card-description">
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table" >
+                      <thead>
+                        <tr>
+                          <th>
+                           	아이디
+                          </th>
+                          <th>
+                            장르
+                          </th>
+                          <th>
+                            제목
+                          </th>
+                          <th>
+                            감독
+                          </th>
+                          <th>
+                            주연 배우
+                          </th>
+                          <th>
+                            개봉연월일
+                          </th>
+                          <th>
+                            포스터 1
+                          </th>
+                          <th>
+                            포스터 2
+                          </th>
+                          <th>
+                            국가
+                          </th>
+                          <th>
+                            러닝 타임
+                          </th>
+                          <th>
+                            리뷰 관리
+                          </th>
+                          <th>
+                            수정/삭제
+                          </th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody th:each="m:${mlist}">
+                        <tr>
+                          <td th:text="${m.id}">
+                            1
+                          </td>
+                          <td th:text="${m.gname}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.title}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.director}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.mainactor}">
+                            Herman Beck
+                          </td>
+                          <td th:text="${m.releasedate}">
+                            $ 77.99
+                          </td>
+                          <td>
+                            <img th:src="'/images/'+${m.posterimg1}" alt="img">
+                          </td>
+                          <td>
+                            <img th:src="'/images/'+${m.posterimg2}" alt="img">
+                          </td>
+                          <td th:text="${m.country}">
+                            May 15, 2015
+                          </td>
+                          <td th:text="${m.runningtime}">
+                            May 15, 2015
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-info btn-fw" th:href="@{/movie/reviews(mid=${m.id})}">리뷰 관리</a>
+                          </td>
+                          <td>
+                            <a class="btn btn-inverse-warning btn-fw" th:href="@{/movie/detail(id=${m.id})}">수정/삭제</a>
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    <div class="atag">
+                    	<a class="btn btn-dark" id="listall" th:href="@{/movie/list}">전체보기</a>
+                    </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+ 
+</body>

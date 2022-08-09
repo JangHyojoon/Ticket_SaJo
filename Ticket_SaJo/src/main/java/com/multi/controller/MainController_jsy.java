@@ -43,7 +43,7 @@ public class MainController_jsy {
       // ********** 0722 - 안원영 수정 **********
       String uri = request.getHeader("Referer");
 //      System.out.println("이전 url : " + uri);
-       if (uri != null && !uri.contains("/signinimpl") && !uri.contains("/signin") && !uri.contains("/custdeleteimpl")){// 이전페이지가 있으면 실행 
+       if (uri != null && !uri.contains("/signinimpl") && !uri.contains("/signin") && !uri.contains("/custdeleteimpl") && !uri.contains("/custpwdimpl")){// 이전페이지가 있으면 실행 
            request.getSession().setAttribute("prevPage", uri);// session에 prevPage 변수에 이전페이지 url 기억 
        }
       
@@ -164,12 +164,10 @@ public class MainController_jsy {
    @RequestMapping("/custpwdimpl")
    public String custpwdimpl(Model m, String newpwd, HttpSession session) {
 	   CustVO cust = (CustVO) session.getAttribute("user");
-	   System.out.println("현재 비밀번호 : " + cust);
 	   cust.setPwd(newpwd);
 	   try {
 		custbiz.modify(cust);
 		session.setAttribute("user", cust);
-		System.out.println("변경된 비밀번호 : " + cust);
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

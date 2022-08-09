@@ -18,5 +18,6 @@ public interface CustMapper {
 	public void updatecust(CustVO users) throws Exception;
 
 	public void usepoint(String id,int usepoint) throws Exception;
-	
+	public List<CustVO> selectallpage(Integer mnum) throws Exception;
+	public List<CustVO> searchall(String text) throws Exception;
 }

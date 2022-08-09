@@ -2,12 +2,15 @@ package com.multi.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.GenreBiz;
+import com.multi.vo.AdminVO;
 import com.multi.vo.GenreVO;
 
 @Controller
@@ -18,7 +21,11 @@ public class GenreController {
 	GenreBiz gbiz;
 	
 	@RequestMapping("/add")
-	public String add(Model m) {
+	public String add(Model m, HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
+		if (admin==null) {
+			return "/login";
+		}else {
 		List<GenreVO> glist = null;
 		try {
 			glist = gbiz.get();
@@ -27,7 +34,7 @@ public class GenreController {
 		}
 		m.addAttribute("center", "genre/add");
 		m.addAttribute("glist", glist);
-		return "index";
+		return "index";}
 	}
 	@RequestMapping("addimpl")
 	public String addimpl(Model m, GenreVO obj) {

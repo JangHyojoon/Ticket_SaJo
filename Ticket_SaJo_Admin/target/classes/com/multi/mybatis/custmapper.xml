@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM cust WHERE id=#{id}
 	</select>
 	<select id="selectall" resultType="custVO">
-		SELECT * FROM cust
+		SELECT * FROM cust 
 	</select>
 	<insert id="insert" parameterType="custVO">
 		INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex})
@@ -26,4 +26,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="custVO">
 		DELETE FROM cust WHERE id=#{id}
 	</delete>
+	<select id="selectallpage" parameterType="Integer" resultType="custVO">
+		SELECT * FROM cust LIMIT #{mnum},10
+	</select>
+	<select id="searchall" parameterType="String" resultType="custVO">
+		SELECT * FROM cust
+        WHERE (id LIKE CONCAT('%',#{text},'%') OR name LIKE CONCAT('%',#{text},'%') OR birth LIKE CONCAT('%',#{text},'%')
+        OR sex LIKE CONCAT('%',#{text},'%'))
+	</select>
 </mapper>

@@ -5,6 +5,7 @@
 <!-- Bootstrap 3-->
    <script
       src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
 .container-scroller{
 	margin: auto;
@@ -13,16 +14,55 @@
 	margin: auto;
 	width: 100%;
 }
+#searchm{
+	width: 30%;
+	margin: auto;
+}
+#searcht{
+	margin: auto;
+	font-weight: bold;
+}
+#searcha{
+	border: 0.5px solid #EAEAEA ;
+	padding-bottom: 5px;
+	
+}
 </style>
 <script>
+$(document).ready(function(){
+	$('#search').click(function(){
+		 $('.search').attr({
+				'method':'post',
+				'action':'/movie/search'
+			});
+			$('.search').submit();
+	});
+	 
+});
 </script>
 </head>
 
 <body>
   <div class="container-scroller">
     <div class="card">
+    
                 <div class="card-body">
                   <h4 class="card-title">영화 목록</h4>
+                  <ul id="searcha" class="navbar-nav mr-lg-2">
+				    <li id="searcht">검색하기</li>
+				         <li id="searchm" class="nav-item nav-search d-none d-lg-block">
+				          <form class="search" method="post" action="/movie/search">
+				           <div class="input-group">
+				             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+				               <span class="input-group-text" id="search">
+				                 <i class="icon-search"></i>
+				               </span>
+				             </div>
+				             <input type="text" name ="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+				           </div>
+				          </form>
+				         </li>
+				       </ul>
                   <p class="card-description">
                   </p>
                   <div class="table-responsive pt-3">
@@ -110,6 +150,7 @@
                        
                       </tbody>
                     </table>
+                    
                     <div class="coloum-wrapper">
                     <div class="pagination paginatioon--full">
                             <a href='#' class="pagination__prev" th:if="${mnum}-1>=0" th:href="@{/movie/list(mnum=${mnum}-10)}">이전</a>
