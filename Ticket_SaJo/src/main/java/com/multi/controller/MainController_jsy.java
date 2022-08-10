@@ -121,16 +121,34 @@ public class MainController_jsy {
    }
    
    @RequestMapping("/mypage")
-   public String mypage(Model m) {
-      m.addAttribute("center", "mypage/mypage_center");
-      return "index";
-   }
-   
+   public String mypage(Model m, HttpSession session) {
+	   List<ReservationVO> list1 = null;	   
+	   List<PointlistVO> list2 = null; 
+	   List<MycouponVO> list3= null;	  
+	   MycouponVO couponcnt = null;
+	   PointlistVO pointprice = null;
+	   CustVO cust = (CustVO) session.getAttribute("user");
+	      try {
+	         list1 = rbiz.selectcust(cust.getId());
+	         list2 = pbiz.selectpoint(cust.getId());
+	         list3 = cbiz.selectmycoupon(cust.getId());
+	         couponcnt = cbiz.selectcnt(cust.getId());
+	         pointprice = pbiz.selectprice(cust.getId());
+	         m.addAttribute("reservationlist", list1);
+	         m.addAttribute("pointlist", list2);
+	         m.addAttribute("mycouponlist", list3);
+	         m.addAttribute("couponcnt", couponcnt);
+	         m.addAttribute("pointprice", pointprice);
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	       }
+	       m.addAttribute("center", "mypage/mypage_center");
+	       return "index";
+	    }
+  
    @RequestMapping("/custdetail")
    public String custdetail(Model m, CustVO cust) {
-      m.addAttribute("left", "mypage/left");
-      m.addAttribute("mypage_center", "mypage/custdetail");
-      m.addAttribute("center", "mypage/mypage");
+      m.addAttribute("center", "mypage/custdetail");
       return "index";
    }
    
@@ -153,9 +171,7 @@ public class MainController_jsy {
    
    @RequestMapping("/custpwd")
    public String custpwd(Model m, String id) {
-	    m.addAttribute("left", "mypage/left");
-	    m.addAttribute("mypage_center", "mypage/custpwd");
-	    m.addAttribute("center", "mypage/mypage");
+	    m.addAttribute("center", "mypage/custpwd");
 	      return "index";
    }
    
@@ -169,17 +185,13 @@ public class MainController_jsy {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
-	   m.addAttribute("left", "mypage/left");
-	   m.addAttribute("mypage_center", "mypage/mypage_center");
-	   m.addAttribute("center", "mypage/mypage");
+	   m.addAttribute("center", "mypage/mypage_center");
 	      return "index";
    }
 
    @RequestMapping("/custdelete")
       public String custdelete(Model m, HttpSession session) {
-      m.addAttribute("left", "mypage/left");
-      m.addAttribute("mypage_center", "mypage/custdelete");
-      m.addAttribute("center", "mypage/mypage");
+      m.addAttribute("center", "mypage/custdelete");
          return "index";
    }
    
@@ -213,9 +225,7 @@ public class MainController_jsy {
       } catch (Exception e) {
          e.printStackTrace();
       }
-      m.addAttribute("left", "mypage/left");
-      m.addAttribute("mypage_center", "mypage/myreservationlist");
-      m.addAttribute("center", "mypage/mypage");
+      m.addAttribute("center", "mypage/myreservationlist");
       return "index";
    }
 
@@ -229,9 +239,7 @@ public class MainController_jsy {
       } catch (Exception e) {
          e.printStackTrace();
       }
-      m.addAttribute("left", "mypage/left");
-      m.addAttribute("mypage_center", "mypage/mypointlist");
-      m.addAttribute("center", "mypage/mypage");
+      m.addAttribute("center", "mypage/mypointlist");
       return "index";
    }
    
@@ -245,9 +253,7 @@ public class MainController_jsy {
       } catch (Exception e) {
          e.printStackTrace();
       }
-      m.addAttribute("left", "mypage/left");
-      m.addAttribute("mypage_center", "mypage/mycouponlist");
-      m.addAttribute("center", "mypage/mypage");
+      m.addAttribute("center", "mypage/mycouponlist");
       return "index";
    }
 }

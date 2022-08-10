@@ -26,5 +26,6 @@ public interface MycouponMapper {
 
 	public List<MycouponVO> selectmycoupon(String id) throws Exception;	
 	// 0730 안원영 추가 - 사용자 id로된 쿠폰만 가져오기 
-	public List<MycouponVO> selectuserall(String uid) throws Exception;	
+	public List<MycouponVO> selectuserall(String uid) throws Exception;
+	public MycouponVO selectcnt(String id) throws Exception;
 }

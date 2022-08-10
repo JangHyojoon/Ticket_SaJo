@@ -17,5 +17,5 @@ public interface PointlistMapper {
 	public PointlistVO select(int id) throws Exception;
 	public List<PointlistVO> selectall() throws Exception;
 	public List<PointlistVO> selectpoint(String id) throws Exception;
-
+	public PointlistVO selectprice(String id) throws Exception;
 }

@@ -19,6 +19,7 @@ public class MycouponVO {
 	private boolean used;
 	private Date udate;
 	private Date rdate;
+	private int cnt;
 	
 	// 0725 안원영 추가
 	private String cname;

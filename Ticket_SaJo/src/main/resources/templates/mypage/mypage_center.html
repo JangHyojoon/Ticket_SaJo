@@ -39,19 +39,94 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
 </head>
-
+<style>
+	.box{
+	border: 1px solid; padding:10px;
+	width: 500px;
+	}
+	
+	.my-box{
+	border: 1px solid; padding:10px;
+	width: 500px;
+	}
+</style>
 <body th:if="${session.user != null}">  
 
         <!-- Main content -->
 
-        <section class="container" style="margin-top:100px;">
-           <h1>Mypage_center</h1>
+        <section class="field-wrap" style="margin-top:100px;">
+           <h1>Mypage_center</h1>         
         </section>
         
-        
+		<div class="box">
+			 <img src = "/img/user.png" width="50">
+			 <span th:text="${session.user.name}"></span>님  
+			
+		        <div class="field-wrapper">
+		            <a href="/mypointlist">내 포인트 내역</a>
+		        </div>
+		        
+		        <div class="wrapper" th:if="${not #lists.isEmpty(pointlist)}">
+					사용 가능 포인트 :&nbsp<span th:text="${pointprice.totalprice}"></span>점
+					</div>
 
-    
-
+					<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
+					포인트 내역이 없습니다.
+					</div>
+					         
+		        <div class="field-wrapper">
+		          	<a href="/mycouponlist">내 쿠폰 내역</a>
+		        </div>
+				        <div class="wrapper" th:if="${not #lists.isEmpty(mycouponlist)}">
+							사용 가능 쿠폰 :&nbsp<span th:text="${couponcnt.cnt}"></span>개
+						</div>
+						
+						<div id="empty" th:unless="${not #lists.isEmpty(mycouponlist)}">
+						쿠폰 내역이 없습니다.
+						</div>
+					</div>
+					<br>
+					<br>
+				<div class="my-box">
+					<div class="field-wrapper">
+			         	<a href="/myreservationlist">내 예매 내역</a>
+			        </div>
+		         		<div class="wrapper" th:if="${not #lists.isEmpty(reservationlist)}">					
+							<table>
+							   <thead>
+							      <tr><th>예매 번호</th><th>영화 제목</th></tr>
+							   </thead>
+							   <tbody>
+							      <tr th:each="r:${reservationlist}">
+							         <td><a th:text="${r.id}" th:href="@{book4(rid=${r.id})}">예매번호</a></td>
+							         <td><a th:text="${r.title}">영화제목</a></td>
+							      </tr>
+							   </tbody>
+							</table>
+						</div>
+						<div id="empty" th:unless="${not #lists.isEmpty(reservationlist)}">
+						고객님의 최근 예매내역이 없습니다. 
+						</div>
+					</div>
+					<br>
+					<br>
+				<div class="field-wrapper">
+		         <span id="info"> &nbsp &nbsp 개인정보</span>
+		      	</div>
+		         
+		      	<div class="field-wrapper">
+		         <a href="/custdetail">회원 정보 수정</a>
+		     <br>
+		      	</div>
+		      
+		       	<div class="field-wrapper">
+		         <a href="/custpwd">비밀번호 변경</a>
+		     <br>
+		      	</div>
+		     
+		      	<div class="field-wrapper">
+		         <a href="/custdelete">회원탈퇴 </a>
+		      	</div>
 
 
 	<!-- JavaScript-->
