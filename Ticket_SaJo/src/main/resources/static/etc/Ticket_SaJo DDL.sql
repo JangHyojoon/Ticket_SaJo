@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS detail_schedules;
 DROP TABLE IF EXISTS ticket;
 DROP TABLE IF EXISTS booked;
-
+DROP TABLE IF EXISTS visit;     
 CREATE TABLE genre(
    id INT,
    name VARCHAR(100),
@@ -216,3 +216,24 @@ CREATE TABLE code (
    id INT,
    code VARCHAR(20)
 );
+
+-- 방문자수 체크 
+  
+CREATE TABLE visit(
+   id VARCHAR(100),
+   count INT
+);
+
+
+-- mysql event schedular 사용 가능한지 확인 
+show variables LIKE 'event%';
+-- 등록된 event 목록
+SELECT * FROM information_schema.events;
+-- event 추가 
+CREATE EVENT today_visit_reset
+ON SCHEDULE EVERY 1 DAY
+COMMENT 'visit테이블 정보 삭제'
+DO
+TRUNCATE TABLE visit;
+-- 이벤트 삭제 
+-- DROP event today_visit_reset;
