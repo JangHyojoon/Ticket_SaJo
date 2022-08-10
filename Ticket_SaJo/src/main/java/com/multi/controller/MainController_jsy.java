@@ -122,7 +122,9 @@ public class MainController_jsy {
    
    @RequestMapping("/mypage")
    public String mypage(Model m) {
-      m.addAttribute("center", "mypage/mypage_center");
+      m.addAttribute("left", "mypage/left");
+      m.addAttribute("mypage_center", "mypage/mypage_center");
+      m.addAttribute("center", "mypage/mypage");
       return "index";
    }
    
