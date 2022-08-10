@@ -18,7 +18,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-var nowpwd_ok = 0;
+var nowpwd_ok, checkpwd_ok=0, newpwd_ok=0;
 
 function checknowpwd(delete_pwd) {
    $.ajax({
@@ -32,6 +32,7 @@ function checknowpwd(delete_pwd) {
          }else {
             $('#now_pwdspan').html('현재 비밀번호와 일치하지 않습니다.');
             $('#now_pwdspan').css('color','red');
+            nowpwd_ok = 0;
          }
       }
    });
@@ -53,6 +54,7 @@ $(document).ready(function() {
       }else {
          $('#new_pwdspan').html('사용불가: 비밀번호 재작성이 필요합니다.');
          $('#new_pwdspan').css('color', 'red');
+         checkpwd_ok= 0;
       }
    })
       
@@ -61,10 +63,11 @@ $(document).ready(function() {
             if(newpwd.length >= 5){
                $('#new_pwdspan').text('보안에 강합니다. 사용가능합니다.');
                $('#new_pwdspan').css('color','green');
-               newpwd_ok=1;
+               newpwd_ok= 1;
             }else {
                $('#new_pwdspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
                $('#new_pwdspan').css('color', 'red');
+               newpwd_ok= 0;
             }
                   
         });   
@@ -91,15 +94,20 @@ $(document).ready(function() {
  			if(newpwd!=newpwdcheck) {
  				alert('새로운 비밀번호와 비밀번호 확인이 일치하지 않습니다.');
  		}else{
+ 			if(nowpwd_ok && checkpwd_ok && newpwd_ok){
+ 		
 			 $('#custpwd_form').attr({
 		            'action':'custpwdimpl',
 		            'method':'post'
 		    });
 			   $('#custpwd_form').submit();
 			   alert('비밀번호가 정상적으로 변경되었습니다.');
+ 		      }else{
+ 		    	  alert('현재 비밀번호를 다시 확인해주세요.');
  		      }
  			}
  		  }
+ 		}
 		}
 	});
 });
