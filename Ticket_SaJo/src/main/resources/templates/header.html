@@ -124,34 +124,21 @@ li {
 				<li>
 				<a th:href="@{/contact}"> Contact</a>
 				</li>
-					
-					
+				<li>
+		            <a href="/mypage"  th:if="${session.user !=null}"> MyPage </a>
+		            <a href="/signup"  th:unless="${session.user !=null}"> 회원가입 </a>
+           		</li>	
+				<li>
+	                <a th:if="${session.user == null}" href="/signin">로그인</a>
+	                <a th:unless="${session.user == null}" href="/signout">로그아웃</a>
+                </li>
+                
+				
 					
 	
 			</ul>
 		</nav>
 
-		<!-- Additional header buttons / Auth and direct link to booking-->
-		<div class="control-panel">
-         <div class="auth auth--home">
-            <div class="auth__show">
-               
-            </div>
-            
-            <a href="#" class="btn btn--sign btn--singin" th:if="${session.user !=null}"> me </a>
-            <ul class="auth__function">
-               <li><a href="/mypage" class="auth__function-item">회원정보</a></li>
-               <li><a href="/signout" class="auth__function-item">로그아웃</a></li>
-            </ul>
-         </div>
-         
-            <ul>
-                <li th:if="${session.user == null}" >
-                <a href="/signin"  class="btn btn--sign">로그인</a></li>
-                    
-                <li th:unless="${session.user == null}">
-                <a href="#" class="btn btn--sign"><span th:text="${session.user.name}"></span> 님, 반갑습니다.</a></li>
-            </ul>
-      </div>
+
    </div>
 </header>

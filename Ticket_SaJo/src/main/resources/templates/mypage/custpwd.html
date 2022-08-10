@@ -1,24 +1,31 @@
-<head>
-<meta charset="UTF-8">
-<style>
-	#h3{
-		text-align: center;
-	}
-	
-	#now_pwd, #newpwd, #newpwdcheck {
-   		border-radius: 20px;
-   		border-color: #B8860B;
-   }
-   
-   #p{
-   		font-size: 12px;
-   		color:#696969;
-   		text-decoration: underline;
-   }
-</style>
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>AMovie - Login</title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
+
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
+
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700'
+	rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-var nowpwd_ok = 0;
+var nowpwd_ok, checkpwd_ok=0, new_pwd_ok=0;
 
 function checknowpwd(delete_pwd) {
    $.ajax({
@@ -32,6 +39,7 @@ function checknowpwd(delete_pwd) {
          }else {
             $('#now_pwdspan').html('현재 비밀번호와 일치하지 않습니다.');
             $('#now_pwdspan').css('color','red');
+            nowpwd_ok = 0;
          }
       }
    });
@@ -42,102 +50,145 @@ $(document).ready(function() {
       checknowpwd($(this).val());
    });
    
-   $('#newpwd').blur(function(){
+   $('#new_pwd').keyup(function(){
       var now_pwd = $('#now_pwd').val();
-      var newpwd = $('#newpwd').val();
+      var new_pwd = $('#new_pwd').val();
       
-      if(now_pwd != newpwd){
+      if(now_pwd != new_pwd){
          $('#new_pwdspan').html('사용가능합니다.');
          $('#new_pwdspan').css('color', 'green');      
          checkpwd_ok= 1;
       }else {
          $('#new_pwdspan').html('사용불가: 비밀번호 재작성이 필요합니다.');
          $('#new_pwdspan').css('color', 'red');
+         checkpwd_ok= 0;
       }
    })
       
-      $('input[name="newpwd"]').keyup(function(){
-            var newpwd = $(this).val();
-            if(newpwd.length >= 5){
+      $('input[name="new_pwd"]').keyup(function(){
+            var new_pwd = $(this).val();
+            if(new_pwd.length >= 5){
                $('#new_pwdspan').text('보안에 강합니다. 사용가능합니다.');
                $('#new_pwdspan').css('color','green');
-               newpwd_ok=1;
+               new_pwd_ok= 1;
             }else {
                $('#new_pwdspan').text('보안에 취약합니다. 5자리 이상이어야 합니다');
                $('#new_pwdspan').css('color', 'red');
+               new_pwd_ok= 0;
             }
                   
         });   
-
+	   $('input[name="new_pwdcheck"]').keyup(function(){
+	       var new_pwdcheck = $(this).val();
+	       var new_pwd =  $('#new_pwd').val();
+	       if(new_pwdcheck == new_pwd){
+	          $('#new_pwdcheckspan').text('비밀번호가 일치합니다.');
+	          $('#new_pwdcheckspan').css('color','green');
+	          new_pwd_ok= 1;
+	       }else {
+	          $('#new_pwdcheckspan').text('비밀번호가 일치하지 않습니다. 다시 확인해주세요');
+	          $('#new_pwdcheckspan').css('color', 'red');
+	          new_pwd_ok= 0;
+	       }
+	             
+	   });   
      $('#modifybtn').click(function(){
-    	  var newpwd = $('#newpwd').val();
-    	  var newpwdcheck = $('#newpwdcheck').val();
+    	  var new_pwd = $('#new_pwd').val();
+    	  var new_pwdcheck = $('#new_pwdcheck').val();
     	  
     	 if($('#now_pwd').val() == ''){
- 			$('#now_pwdspan').text('입력해주세요.');
+ 			$('#now_pwdspan').text('필수항목입니다.');
  			$('#now_pwdspan').css('color','red');
  			$('#now_pwd').focus();
- 		}else{	
- 			if($('#newpwd').val() == ''){
- 	 			$('#new_pwdspan').text('입력해주세요.');
+ 			return;
+ 		}	
+ 		if($('#new_pwd').val() == ''){
+ 	 			$('#new_pwdspan').text('필수항목입니다.');
  	 			$('#new_pwdspan').css('color','red')
- 	 			$('#newpwd').focus();
- 		}else{
- 			if($('#newpwdcheck').val() == ''){
- 				$('#new_pwdcheckspan').text('입력해주세요.');
+ 	 			$('#new_pwd').focus();
+ 	 			return;
+ 		}
+ 		if($('#new_pwdcheck').val() == ''){
+ 				$('#new_pwdcheckspan').text('필수항목입니다.');
  	 			$('#new_pwdcheckspan').css('color','red');
- 	 			$('#newpwdcheck').focus();
- 		}else {
- 			if(newpwd!=newpwdcheck) {
- 				alert('새로운 비밀번호와 비밀번호 확인이 일치하지 않습니다.');
- 		}else{
+ 	 			$('#new_pwdcheck').focus();
+ 	 			return;
+ 		}
+ 		if(new_pwd!=new_pwdcheck) {
+ 				alert('비밀번호를 변경할 수 없습니다. 입력정보를 확인해주세요');
+ 				return;
+ 		}
+ 		if(nowpwd_ok && checkpwd_ok && new_pwd_ok){
+ 		
 			 $('#custpwd_form').attr({
 		            'action':'custpwdimpl',
 		            'method':'post'
 		    });
 			   $('#custpwd_form').submit();
 			   alert('비밀번호가 정상적으로 변경되었습니다.');
+ 		      }else{
+ 	 				alert('비밀번호를 변경할 수 없습니다. 입력정보를 확인해주세요');
  		      }
- 			}
- 		  }
-		}
+ 	
 	});
 });
 </script>
+<style>
+#modifybtn{
+width:78px;
+height:30px;
+border-radius:5px;
+}
+</style>
 </head>
 <body>
 <br>
 <br>
 <br>
 
-<div class="wrapper">
+<div class="field-wrap">
    <h3 id="h3">비밀번호 변경</h3>
    <p id="p"> 안전한 비밀번호로 내 정보를 보호하세요</p>
    <p id="p"> 다른 아이디/사이트에서 사용한 적 없는 비밀번호</p>
    <p id="p"> 이전에 사용한 적 없는 비밀번호</p>
 </div>
 <form class="wrapper" id="custpwd_form">
-      <div class="field-wrap"> 
-       현재 비밀번호:
-         <span id="now_pwdspan"></span> 
-        <input type="password" id="now_pwd" name="now_pwd">        
+
+      
+      
+      
+      
+       <div class="form-inline form-group" >
+         <label for="now_pwd" class="col-sm-3 control-label">현재 비밀번호 </label> 
+         <div class="col-sm-9">
+         <input class="form-control" id="now_pwd" type='password' name='now_pwd' style="width:300px;height:30px;"> 
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="now_pwdspan">&nbsp</span></div>
+      </div>
+   
+ 	  <div class="form-inline form-group" >
+         <label for="new_pwd" class="col-sm-3 control-label">새 비밀번호</label> 
+         <div class="col-sm-9">
+        	 <input class="form-control" id="new_pwd" type='password' name='new_pwd' style="width:300px;height:30px;"> 
+
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="new_pwdspan">&nbsp</span></div>
+      </div>
+   
+   
+      <div class="form-inline form-group" >
+         <label for="new_pwdcheck" class="col-sm-3 control-label">비밀번호 확인 </label> 
+         <div class="col-sm-9">
+        	 <input class="form-control" id="new_pwdcheck" type='password' name='new_pwdcheck' style="width:300px;height:30px;"> 
+
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="new_pwdcheckspan">&nbsp</span></div>
       </div>
       
-       <br>
-       
-      <div class="field-wrap">
-        새 비밀번호: 
-         <span id="new_pwdspan"></span> 
-         <input type="password" id="newpwd" name="newpwd">       
-      </div>
       
-      <br>
-      
-       <div class="field-wrap">
-      새 비밀번호 확인: 
-         <span id="new_pwdcheckspan"></span> 
-         <input type="password" id="newpwdcheck" name="new_pwdcheck">
-      </div>
 </form>
     
       <div class="field-wrap">
