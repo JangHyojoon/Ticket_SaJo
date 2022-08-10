@@ -40,6 +40,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust c ON c.id = mc.uid
 		WHERE mc.uid = #{uid} 
 	</select>
+	<select id="selectcnt" parameterType="String" resultType="mycouponVO">
+		SELECT count(*)as cnt FROM mycoupon
+		WHERE uid=#{uid} and used=1
+	</select>
 	<insert id="insert" parameterType="mycouponVO">
 		INSERT INTO mycoupon VALUES (NULL,#{uid},#{cid},#{used},NULL,sysdate())
 	</insert>
