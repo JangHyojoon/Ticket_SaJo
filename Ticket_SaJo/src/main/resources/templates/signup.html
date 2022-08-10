@@ -15,6 +15,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+var one=0, two=0;
 function sendId(id) {
    $.ajax({
       url:'/checkid',
@@ -23,9 +24,11 @@ function sendId(id) {
          if(data == '1') {
             $('#ispan').text('이미 사용중이거나 탈퇴한 아이디입니다');
             $('#ispan').css('color','red');
+            one = 0;
          }else {
             $('#ispan').text('사용가능한 아이디입니다');
             $('#ispan').css('color','#3CB371');
+            one = 1;
          }
       }
    });
@@ -44,9 +47,11 @@ $(document).ready(function(){
 	      if(pwd == pwd2){
 	         $('#pspan2').text('일치합니다');
 	         $('#pspan2').css('color','#3CB371');
+	         two = 1;
 	      }else {
 	         $('#pspan2').text('일치하지 않습니다. 비밀번호를 다시 확인해주세요');
 	         $('#pspan2').css('color', 'red');
+	         two = 0;
 	      }
 	   });
    
@@ -75,14 +80,16 @@ $(document).ready(function(){
 				   $('#bspan').text('필수항목입니다.');
 				   $('#bspan').css('color', 'red');
 				   $('#birth').focus();
-		   }else{
+		   }if(one && two){						   
 		      $('#signup_form').attr({
 		         'method' : 'post',
 		          'action' : 'signupimpl'
 		      });
 		      $('#signup_form').submit();
 		      alert('등록이 완료되었습니다');
-		    }
+		   }else{
+			   alert('가입하려는 정보를 다시 입력해주세요.');
+		   }
 	     }
 	   }
 	 }
@@ -116,26 +123,33 @@ $(document).ready(function(){
       <br>
       <br>
          아이디: 
-         <span id="ispan"></span><input id="id" type='text' name='id'>
-         <input id="used" value="true" type='hidden' name='used'>
+         <input id="id" type='text' name='id'>
+         <input id="used" value="true" type='hidden' name='used'>       
+         <span id="ispan"></span>
          </div>
          <br>
       <div class="field-wrap">
          비밀번호: 
-         <span id="pspan"></span><input id="pwd" type='password' name='pwd'> 
+         <input id="pwd" type='password' name='pwd'> 
+         <span id="pspan"></span>
       </div>
       <br>	
       <div class="field-wrap">
          비밀번호 재확인: 
-         <span id="pspan2"></span><input id="pwdcheck" type='password' name='pwdcheck'> 
+         <input id="pwdcheck" type='password' name='pwdcheck'> 
+         <span id="pspan2"></span>
       </div>
       <br>
       <div class="field-wrap">
-         이름: <span id="nspan"></span><input id="name" type='text' name='name'> 
+         이름: 
+         <input id="name" type='text' name='name'> 
+         <span id="nspan"></span>
       </div>
       <br>
       <div class="field-wrap">
-         생년월일:  <span id="bspan"></span><input id="birth" value=19930321 type='date'name='birth'> 
+         생년월일: 
+         <input id="birth" value=19930321 type='date'name='birth'> 
+         <span id="bspan"></span>
       </div>
       <br>
       <div class="field-wrap">
