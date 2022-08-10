@@ -51,6 +51,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN detail_schedules ds ON ds.sid = s.id
 		WHERE mid = #{mid} AND sdate = #{sdate};
 	</select>
+	
+	<!--0810 안원영 추가 - 오늘 상영할 영화 수   -->
+	<select id="todayMovieCnt" resultType="int">
+		SELECT COUNT(mid) FROM schedules
+		WHERE sdate = '2022-08-10';
+	</select>
+	
 </mapper>
 
 

@@ -38,7 +38,7 @@ public class PrincipalDetailsCustVO implements UserDetails, OAuth2User{
 	
 	// OAuth2.0 플렛폼 로그인시 사용
 	public PrincipalDetailsCustVO(CustVO cust, Map<String, Object> attributes) {
-		System.out.println("principalDetails 생성자 user : " + cust);
+//		System.out.println("principalDetails 생성자 user : " + cust);
 		this.cust = cust;
 		this.attributes = attributes;
 	}

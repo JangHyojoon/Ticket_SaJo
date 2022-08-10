@@ -32,38 +32,63 @@ public class NaverUserInfo implements OAuth2UserInfo{
 		return "naver";
 	}
 	
+//	@Override
+//	public Date getBirthday() {
+////		return (String) attributes.get("birthday");
+//		//birthday=02-07, birthyear=1996}
+//		String day = (String) attributes.get("birthday");
+//		String year = (String) attributes.get("birthyear");
+//		//birthday=02-07, birthyear=1996}
+//
+////		String[] month_day_split = day.split("-");
+//		String myString = year + "-" + day;// yyyy-MM-dd 년월일 순으로 설정 
+//		Date mydate = new Date();
+////		String myString = year+month_day_split[0]+month_day_split[1];// 년월일 순으로 설정 
+//		
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		try {
+//			mydate = sdf.parse(myString);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return mydate;
+//	}
+//	
+//	@Override
+//	public String getGender() {
+//		String gender = (String) attributes.get("gender");
+//		if(gender.equals("M")) {
+//			return "men";
+//		}else {
+//			return "women";
+//		}
+//
+//	}
 	@Override
 	public Date getBirthday() {
 //		return (String) attributes.get("birthday");
-		//birthday=02-07, birthyear=1996}
-		String day = (String) attributes.get("birthday");
-		String year = (String) attributes.get("birthyear");
-		//birthday=02-07, birthyear=1996}
-
-//		String[] month_day_split = day.split("-");
-		String myString = year + "-" + day;// yyyy-MM-dd 년월일 순으로 설정 
-		Date mydate = new Date();
-//		String myString = year+month_day_split[0]+month_day_split[1];// 년월일 순으로 설정 
-		
+		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			mydate = sdf.parse(myString);
+			date = sdf.parse("1996-02-07");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		return mydate;
+		return date;
 	}
 	
 	@Override
 	public String getGender() {
-		String gender = (String) attributes.get("gender");
-		if(gender.equals("M")) {
-			return "men";
-		}else {
-			return "women";
-		}
-
+//		return (String) attributes.get("gender");
+		return "men";
 	}
+	
+
+	@Override
+	public boolean getUsed() {
+		return true;
+	}
+
 
 }

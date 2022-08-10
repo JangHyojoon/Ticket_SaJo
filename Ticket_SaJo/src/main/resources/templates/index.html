@@ -53,6 +53,9 @@
 <link rel="stylesheet" type="text/css"
 	href="/revolution/css/navigation.css">
 
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- Custom -->
 <link href="/css/style.css?v=1" rel="stylesheet" />
@@ -85,9 +88,7 @@
 	</div>
 
 
-	<!-- jQuery 3.1.1-->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
@@ -157,48 +158,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			init_Home();
-			//cookiecheck();// 방문자 수 체크 하는 곳 
+			//cookiecheck('visible_cnt');// 방문자 수 체크 하는 곳 
 
 		});
-		
 
-		function cookiecheck(){
-			//alert(boolCheckCookie('visible_cnt'));
-			
-			let val = getCookie('visible_cnt');
-		    if (val != '') {// cookie가 존재하면 실행 
-		      //return val;
-		    } else {
-/* 		      val = prompt(key+" 쿠키의 값을 입력해주세요:", "");
-		      if (val != "" && val != null) {
-		        setCookie(key, val, 365);
-		        return val;
-		      } */
-		    }
-
-		};
-		
-		function getCookie(key){ // 쿠키가 있는지 체크 
-			key = new RegExp(key + '=([^;]*)'); // 쿠키들을 세미콘론으로 구분하는 정규표현식 정의
-			
-			//document.cookie에 "a=123;b=456;c=789; 형식으로 들어가있다. 
-			return key.test(document.cookie) ? unescape(RegExp.$1) : ''; // 인자로 받은 키에 해당하는 키가 있으면 값을 반환
-		};
-		
-		
-		function boolCheckCookie(key) {//쿠키 체크 - 있으면 true 없으면 false
-		    return getCookie(key) != '' ? true : false;
-		};
-		
-		//쿠키 저장
-		// expiredays 는 일자 정수 - 
-		function setCookie(key, value, expiredays) {
-		    var todayDate = new Date();
-		    todayDate.setDate(todayDate.getDate() + expiredays); // 현재 시각 + 일 단위로 쿠키 만료 날짜 변경
-		    //todayDate.setTime(todayDate.getTime() + (expiredays * 24 * 60 * 60 * 1000)); // 밀리세컨드 단위로 쿠키 만료 날짜 변경
-		    //쿠키 값은 특수문자나 2바이트 문자 처리를 위해서 escape() 함수로 이스케이핑을 하는 것을 추천
-		    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
-		};
 	</script>
 
 

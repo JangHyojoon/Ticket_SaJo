@@ -1,5 +1,11 @@
 package com.multi.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,27 +15,82 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.AdminBiz;
 import com.multi.biz.CodeBiz;
+import com.multi.biz.SchedulesBiz;
+import com.multi.biz.VisitBiz;
 import com.multi.vo.AdminVO;
 import com.multi.vo.CodeVO;
+import com.multi.vo.VisitVO;
 
 @Controller
 public class MainController {
-	
+
 	@Autowired
 	AdminBiz abiz;
 	@Autowired
 	CodeBiz cbiz;
 	
+	@Autowired
+	VisitBiz vbiz;
+	
+	@Autowired
+	SchedulesBiz sbiz;
+	
+
+
 	@RequestMapping("/")
 	public String main(Model m, HttpSession session) {
 		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
-		if (admin==null) {
+		int today_visit = 0;
+		int today_movie = 0;
+		List<VisitVO> visitList = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Calendar cal = Calendar.getInstance(); 
+		cal.setTime(new Date());
+		
+		Date today = new Date();
+		try {
+			today = sdf.parse(sdf.format(cal.getTime()));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		System.out.println(today);
+		
+		cal.add(Calendar.DATE, -1); //1일 빼기 
+		
+		
+		if (admin==null) {// 로그인 안했을 경우 실행 
 			return "/login";
-		}else {
-		m.addAttribute("center", "center");
-		return "index";}
+		}else {// 로그인 했을경우 실행 
+			try {
+				// 방문자수 처리 
+				visitList = vbiz.get();
+				System.out.println("visitList : " + visitList );
+				if(visitList.isEmpty()) {// 아무 필드도 없을 경우 
+					vbiz.register(new VisitVO("Unknown", 0));// 필드 하나 추가 
+				}
+				today_visit = vbiz.SumCount();// 오늘 사이트 방문자 횟수
+				m.addAttribute("today_visit", today_visit);
+				
+				
+				// 현재 상영중인 영화 수 
+//				today_movie = sbiz.todayMovieCnt(today);
+//				System.out.println(today);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+
+
+			m.addAttribute("center", "center");
+			return "index";
+		}
 	}
-	
+
 	@RequestMapping("/login")
 	public String login(Model m, String msg) {
 		if(msg != null && msg.equals("f")) {
@@ -77,20 +138,20 @@ public class MainController {
 		} catch (Exception e) {
 			return "redirect:/register?msg=f";
 		}
-		
+
 		return "redirect:/";
 	}
 	@RequestMapping("/signout")
-	   public String signout(Model m, HttpSession session) {
-	      if(session !=null ) {
-	         session.invalidate();         
-	      }
-	      return "redirect:/";
-	   }
+	public String signout(Model m, HttpSession session) {
+		if(session !=null ) {
+			session.invalidate();         
+		}
+		return "redirect:/";
+	}
 	@RequestMapping("/master")
-	   public String master(Model m, HttpSession session) {
+	public String master(Model m, HttpSession session) {
 		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
-		
+
 		CodeVO code1 = null;
 		try {
 			cbiz.autoupdate();
@@ -103,7 +164,7 @@ public class MainController {
 		}else {
 			m.addAttribute("code", code1);
 		}
-	      return "master";
-	   }
-	
+		return "master";
+	}
+
 }

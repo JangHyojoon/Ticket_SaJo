@@ -10,4 +10,5 @@ public interface OAuth2UserInfo {
 	String getName();
 	Date getBirthday();
 	String getGender();
+	boolean getUsed();
 }

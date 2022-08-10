@@ -52,4 +52,9 @@ public class FaceBookUserInfo implements OAuth2UserInfo{
 		return "men";
 	}
 
+	@Override
+	public boolean getUsed() {
+		return true;
+	}
+
 }
