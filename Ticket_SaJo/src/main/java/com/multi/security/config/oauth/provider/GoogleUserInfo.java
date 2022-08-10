@@ -49,5 +49,12 @@ public class GoogleUserInfo implements OAuth2UserInfo{
 //		return (String) attributes.get("gender");
 		return "men";
 	}
+	
+
+	@Override
+	public boolean getUsed() {
+		return true;
+	}
+
 
 }
