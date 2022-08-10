@@ -20,13 +20,12 @@ function checknowpwd(delete_pwd) {
 		success:function(data) {
 			if(data == '1') {
 				$('#now_pwdspan').html('현재 비밀번호와 일치합니다.');
-				$('#now_pwdspan').css('color', 'green');
-				$('#deletebtnspan').hide();
+				$('#now_pwdspan').css('color', 'green');				
 				nowpwd_ok = 1;
 			}else  {
 				$('#now_pwdspan').html('사용중인 비밀번호와 일치하지 않습니다.');
 				$('#now_pwdspan').css('color','red');
-				$('#deletebtnspan').hide();
+				nowpwd_ok = 0;
 			}
 		}
 	});
@@ -42,17 +41,11 @@ $(document).ready(function() {
 			$('#custdelete_form').attr({
 				'action':'custdeleteimpl',
 				'method':'post'
-			 })
-					
+			 })					
 			$('#custdelete_form').submit();
 		}else {
-			if(data="0") {
-				alert('비밀번호를 다시 확인해주세요.');	
-		} else {
-			$('#now_pwdspan').html('비밀번호를 다시 확인해주세요.');
+			$('#now_pwdspan').text('비밀번호를 다시 확인해주세요.');
 			$('#now_pwdspan').css('color', 'red');
-
-		 }
 		}
 	  });
    });
