@@ -1,5 +1,6 @@
 package com.multi.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -21,5 +22,9 @@ public interface SchedulesMapper {
 	public List<SchedulesVO> selectmovieonschedules() throws Exception;
 	public List<SchedulesVO> movielistschedule(Integer mid,String sdate) throws Exception;
 	public List<SchedulesVO> selectallpage(Integer mnum) throws Exception;
+	
+	
+	// 0810 안원영 추가 - 오늘 상영영화 수 
+	public int todayMovieCnt(Date date) throws Exception;
 }
 

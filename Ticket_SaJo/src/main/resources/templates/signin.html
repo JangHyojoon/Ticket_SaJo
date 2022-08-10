@@ -29,9 +29,8 @@
 <script async defer crossorigin="anonymous"
 	src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v14.0&appId=472038770954521&autoLogAppEvents=1"
 	nonce="4tbS3KCl"></script>
-<p>
-	<br> <br>
-	<style>
+
+<style>
 
 /* 
 
@@ -46,93 +45,106 @@
 	color: red;
 	text-align: center;
 }
-
-.social--colored {
-	text-align: center;
-	background-color: #f5f5f5;
-	padding-top: 34px;
-	padding-bottom: 41px;
+img {
+ width: 270px;
+ height: 54px;
 }
-
-.social--colored .social__variant {
-	color: #ffffff;
-	margin-right: 13px;
-	margin-left: 13px;
-}
-
-.social--colored .social__variant.fa-facebook {
-	background-color: #3b5998;
-}
-
-.social--colored .social__variant.fa-facebook:after {
-	border-color: #3b5998;
-}
-
-.social--colored .social__variant.fa-google {
-	background-color: #3b5998;
-}
-
-.social--colored .social__variant.fa-google:after {
-	border-color: #3b5998;
-}
-
-.social--colored .social__variant.fa-twitter {
-	background-color: #00acee;
-}
-
-.social--colored .social__variant.fa-twitter:after {
-	border-color: #00acee;
-}
-
-.social--colored .social__variant.fa-tumblr {
-	background-color: #34526f;
-}
-
-.social--colored .social__variant.fa-tumblr:after {
-	border-color: #34526f;
-}
-
-.social--colored .social__variant.fa:hover {
-	background-color: #4c4145;
-}
-
-.social--colored .social__variant.fa:hover:after {
-	border-color: #4c4145;
-}
-
-.login img {
-	width: 240px;
-	height: 40px;
-	border-radius: 10px;
-	margin-bottom: 10px;
-}
-
 .div-margin {
 	margin-bottom: 20px;
 }
+.form-control {
+  width:250px;
+  height:30px;
+  font-size:15px;
+  margin:5px;
+}
+.text-center{
 
-.div-padding{
- 	border: 1px solid lightgray;
- 	padding : 50px;
-
+width:500px;
+height:180px;
+margin:auto;
+padding:50px;
+float: center;
+text-align: center;
+}
+.social social--colored{
+max-width:280px;
+margin:auto;
+padding:50px;
+float: center;
+text-align: center;
+}
+.login__title{
+font-size:45px;
+text-align: center;
+margin-bottom:50px;
 }
 
+.longinbt{
+width:78px;
+height:80px;
+border-radius:15px;
+}
+.longinbt{
+width:70px;
+height:70px;
+border-radius:5px;
+}
+.registerbt{
+width:78px;
+height:30px;
+border-radius:5px;
+}
+h1, h2, h3{
+text-align: center;
+}
 </style>
 	<!-- Main content -->
-<form class="login">
-	<p class="login__title">
-		sign in <br> <span class="login-edition">welcome to 티켓사조</span>
-	</p>
 
+
+<div class="container" style="margin-top:150px;">
+	<h1 >Welcome to</h1>
+	<h1 class="login__title">티켓사조</h1>
+
+	
+	<h3>일반 로그인</h3>
+	<div class="text-center">
+	
+		<div>
+			<form class="login-form" id="signin_form">
+				<div class="col-sm-8">
+					<input type="text"  id="id" class="form-control"  placeholder="ID" name="id">
+						
+						<input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd">
+				</div>
+				<div class="col-sm-4">
+						<button id="signinbtn" class="btn btn-md btn--warning longinbt">로그인</button>
+				</div>	
+
+			</form>
+		</div>
+	
+	</div>
+	<h5 id="msg" th:text="${msg}"></h5>
+</div>
+<div style="margin-top:10px;text-align: center;" >
+	
+		<h3 style="margin:auto;">아직 회원이 아니신가요?<a th:href="@{/signup}" class="btn btn-md btn--warning registerbt">회원가입</a></h3>
+	</div>	
+<div>
 	<div class="social social--colored">
 		<h2 class="div-margin">SNS 로그인</h2>
-		<a href='/oauth2/authorization/naver'> <img
-			src="/images/login/naver.png">
-		</a><br> <a href='/oauth2/authorization/google'> <img
-			src="/images/login/google.png">
-		</a><br> <a href='/oauth2/authorization/facebook'> <img
-			src="/images/login/facebook.png">
-		</a><br>
+		<a href='/oauth2/authorization/naver'> 
+			<img src="/images/login/naver_bt.png">
+		</a> 
+		<br>
+		<a href='/oauth2/authorization/google'> 
+			<img src="/images/login/google_bt.png">
+		</a> 
+		<br>
+		<a href='/oauth2/authorization/facebook'> 
+			<img src="/images/login/facebook_bt.png">
+		</a>
 
 
 		<!-- <a class="fb-login-button" href="/oauth2/authorization/facebook" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></a> -->
@@ -140,50 +152,12 @@
                             <a href='/oauth2/authorization/google' class="social__variant fa fa-google"></a>
                             <a href='/oauth2/authorization/google' class="social__variant fa fa-naver"></a> -->
 	</div>
-
-	<p class="login__tracker">or</p>
-</form>
-
-<div class="container">
-	<div class="col-sm-3 text-center"></div>
-	<div class="col-sm-6 text-center">
-		<div class="div-padding"> 
-					<form id="signin_form">
-
-			<h2 class="div-margin">일반 로그인</h2>
-
-			<div class="form-group">
-				<input type="text" class="form-control" id="id" placeholder="ID"
-					name="id">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" id="pwd"
-					placeholder="Password" name="pwd">
-			</div>
-
-			<!-- 			<div class="field-wrap">
-				<input id="id" type='text' placeholder='아이디' name='id'
-					class="login__input"> <br> <br> <input id="pwd"
-					type='password' placeholder='비밀번호' name='pwd' class="login__input">
-			</div> -->
-			<h5 id="msg" th:text="${msg}"></h5>
-
-			<div>아직 회원이 아니신가요?<a href="/signup" class="btn btn--sign">회원가입</a></div>
-
-		</form>
-		<button id="signinbtn" class="btn btn-md btn--warning btn--wider">로그인</button>
-		
-		</div>
-	</div>
 </div>
-
 
 
 <script>
 	$(document).ready(function() {
-		$('#signinbtn').click(function() {
-			
-			
+		$('#signinbtn').click(function() {		
 			$('#signin_form').attr({
 				'method' : 'post',
 				'action' : '/signinimpl'

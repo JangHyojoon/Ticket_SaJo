@@ -15,6 +15,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cust c ON c.id = p.uid
 		WHERE p.uid = #{id}
 	</select>
+	<select id="selectprice" resultType="pointlistVO">
+		SELECT sum(price) as totalprice FROM pointlist
+		WHERE uid=#{uid}
+	</select>
 	<insert id="insert" parameterType="pointlistVO">
 		INSERT INTO pointlist VALUES (null,#{uid},#{price},sysdate(),#{text})
 	</insert>

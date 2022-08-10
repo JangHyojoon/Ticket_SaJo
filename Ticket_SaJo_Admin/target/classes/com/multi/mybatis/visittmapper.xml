@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.VisitMapper">
+	
+	<select id="select" parameterType="String" resultType="visitVO">
+		SELECT * FROM visit WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="visitVO">
+		SELECT * FROM visit
+	</select>
+	<!-- 0810 안원영 추가 - 방문자수 모두 더하기  -->
+	<select id="SumCount" resultType="int">
+		SELECT SUM(count) FROM visit
+	</select>
+
+	<insert id="insert" parameterType="visitVO">
+		INSERT INTO visit VALUES (#{id},#{count})
+	</insert>
+	<update id="update" parameterType="visitVO">
+		UPDATE visit SET count=#{count} WHERE id=#{id}
+	</update>
+	<!--  0810 안원영 추가 - 방문자수 증가  -->
+	<update id="updateCount" parameterType="String">
+		UPDATE visit SET count=count+1 WHERE id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="visitVO">
+		DELETE FROM visit WHERE id=#{id}
+	</delete>
+</mapper>

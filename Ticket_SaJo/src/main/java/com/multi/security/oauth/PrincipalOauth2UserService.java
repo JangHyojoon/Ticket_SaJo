@@ -52,8 +52,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 //			    .setPersonFields("names,emailAddresses")
 //			    .execute();
 		
-		System.out.println("getClientRegistration : " + userRequest.getClientRegistration()); // registrationId로 어떤 플렛폼으로 로그인 했는지 알 수 있다. ex) 'google'
-		System.out.println("getAccessToken : " + userRequest.getAccessToken().getTokenValue());//이게 google 서버로부터 받은 access Token이다. 
+//		System.out.println("getClientRegistration : " + userRequest.getClientRegistration()); // registrationId로 어떤 플렛폼으로 로그인 했는지 알 수 있다. ex) 'google'
+//		System.out.println("getAccessToken : " + userRequest.getAccessToken().getTokenValue());//이게 google 서버로부터 받은 access Token이다. 
 		
 		OAuth2User oAuth2User = super.loadUser(userRequest); // google의 회원 프로필 조회
 		System.out.println("getAttributes : " + oAuth2User.getAttributes());
@@ -107,6 +107,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			CustVO cust = cbiz.get(email);// 이메일 찾기 
 			if(cust == null) {// 일치하는 cust가 없을경우 회원가입
 				//INSERT INTO cust VALUES (#{id},#{pwd},#{name},#{birth},#{point},#{sex})
+				c.setUsed(true);
 				cbiz.register(c);// 데이터베이스에 유저정보 저장 
 				//session에 정보 저장 
 				

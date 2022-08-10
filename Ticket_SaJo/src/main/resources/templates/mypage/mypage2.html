@@ -53,9 +53,6 @@
 <link rel="stylesheet" type="text/css"
 	href="/revolution/css/navigation.css">
 
-	<!-- jQuery 3.1.1-->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- Custom -->
 <link href="/css/style.css?v=1" rel="stylesheet" />
@@ -70,215 +67,21 @@
 	box-shadow: 0 0 0px rgba(0, 0, 0, 0.0);
 }
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-<script src="/webjars/stomp-websocket/stomp.min.js"></script>
-<style>
-	#chatbotimg{
-		width: 45px;
-		height: auto;
-	}
-	#sentimg{
-		width: 26px;
-		height: 26px;
-	}
-	#sendme{
-		width : 10%;
-		height: 66px;
-		margin: auto;
-		text-align: center;
-		float: right;
-		border: solid 1px #D1B2FF;
-		background-color: #E8D9FF;
-		border-radius: 5px;
-	}
-	#modalchat{
-		background-color: #D9E5FF;
-		
-	}
-	#chatbottitle{
-		text-align: center;
-		border-bottom: solid 1px #D1B2FF;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#me{
-		width:auto;
-		height:auto;
-		overflow: auto;
-		margin:auto;
-		background-color: #D9E5FF;
-		padding: 50px;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#btnsend{
-		margin:auto;
-		text-align: center;
-	}
-	#question{
-		text-align: right;
-		font-size: small;
-		background-color: #D9E5FF;
-	}
-	#answer{
-		font-size: small;
-		background-color: #D9E5FF;
-	}
-	#ina{
-		background: #C7C6FF;
-		width: 40%;
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 2px 2px 2px 2px #BDBDBD;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#inq{
-		float: right;
-		background: white;
-		text-align:right;
-		width: 40%;
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 2px 2px 2px 2px #BDBDBD;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#chatinform{
-		margin: auto;
-	    text-align: center;
-		background: #E8D9FF;
-		padding: 10px;
-		border-radius: 10px;
-		box-shadow: 2px 2px 2px 2px #BDBDBD;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#metext{
-		border: #D9E5FF solid 1px;
-		border-radius: 5px;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
-	#answerchat{
-		width: auto;
-		height: 30px;
-		display: inline;
-	}
-	#quser{
-		width: auto;
-		height: 30px;	
-		border-radius: 50%;
-		
-	}
-	#quserimg{
-		text-align: right;
-		margin-bottom: 0px;
-		margin-top: 10px;
-		background-color: #D9E5FF;
-		
-	}
-</style>
-
-<script th:inline="javascript">
-	var stompClient = null;
-	var id = "Q";
-	// 서버소켓에 연결
-	function connect() {
-		var socket = new SockJS('/ws');
-		stompClient = Stomp.over(socket);
-
-		stompClient.connect({}, function(frame) { 
-			setConnected(true);
-			console.log('Connected: ' + frame);
-			stompClient.subscribe('/sends/'+id, function(msg) { 
-				$("#me").append(
-						"<div id='quserimg'><img id='quser' src='/images/icons/user.png'></div><div id='question'><div id='inq'>" + JSON.parse(msg.body).sendid +" : "+
-						JSON.parse(msg.body).content1+"</div></div><br> <div id='answer'><img id='answerchat' src='/images/icons/chatbot.png'><div id='ina'>"+
-						"챗봇 : "+JSON.parse(msg.body).content2
-								+ "</div></div>");
-			});
-			stompClient.subscribe('/send/serversend', function(msg) { 
-				$("#servermsg1").text(JSON.parse(msg.body).content1);
-				$("#servermsg2").text(JSON.parse(msg.body).content2);
-			});
-		});
-	}
-
-	// 서버소켓에 연결끊기
-	function disconnect() {
-		if (stompClient !== null) {
-			stompClient.disconnect();
-		}
-		setConnected(false);
-		console.log("Disconnected");
-	}
-
-	// connect&disconnect버턴 활성화/비활성화
-	function setConnected(connected) {
-		if (connected) {
-			$("#status").text("Connected");
-		} else {
-			$("#status").text("Disconnected");
-		}
-		
-	}
-
-	function sendMe() {
-		var msg = JSON.stringify({
-			'sendid' : id,
-			'content1' : $('#metext').val()
-		});
-		stompClient.send("/receiveme", {}, msg);
-	}
-	
-	$(document).ready(function() {
-		$("#openmodal").click(function() {
-			connect();
-		});
-		$("#modalclose").click(function() {
-			
-		});
-		$("#sendme").click(function() {
-			sendMe();
-		    $('#metext').val('');
-		});
-		$('#metext').keypress(function(event){
-		     if ( event.which == 13 ) {
-		         $('#sendme').click();
-		         return false;
-		     }
-		});
-		$('#myModal').on('hidden.bs.modal', function () {
-			 disconnect();
-			});
-	});
-</script>
 </head>
 
 <body>
-	<div class="wrapper">
+
+<div class="container">
+	<div class= "col-sm-3">
+		<div th:insert="${left} ? ${left} : left"> </div>
+	</div>
+	
+	<div class="col-sm-3">
 	
 		<!-- Header start -->
 		<div th:insert="${header} ? ${header} : header"></div>
 		<!-- Header End -->
-		<!-- Modal -->
-					  <div class="modal fade" id="myModal" role="dialog">
-					    <div class="modal-dialog">
-					    
-					      <!-- Modal content-->
-					      <div id="modalchat">
-					        <div class="modal-header">
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-					          <h4 id="chatbottitle" class="modal-title"><img id="chatbotimg" src="/images/icons/chatbot.png">Chat Bot</h4>
-					        </div>
-								
-								<div id="me"><div id="chatinform">챗봇에게 질문하세요</div></div>
-								<div id="btnsend"><textarea id="metext" style="width:90%;" rows="3"></textarea><button id="sendme"><img id="sentimg" src="/images/icons/sent.png" ></button></div>
-								
-					        <div class="modal-footer">
-					          <button id="modalclose" type="button" class="btn btn--sign" data-dismiss="modal">Close</button>
-					        </div>
-					      </div>
-					      
-					    </div>
-					  </div>
+
 		<!-- Center start -->
 		<div th:insert="${center} ? ${center} : center"></div>
 		<!-- Center End -->
@@ -286,9 +89,12 @@
 		<!-- Footer start -->
 		<div th:insert="${footer} ? ${footer} : footer"></div>
 	</div>
+</div>
 
 
-
+	<!-- jQuery 3.1.1-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
@@ -358,10 +164,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			init_Home();
-			//cookiecheck('visible_cnt');// 방문자 수 체크 하는 곳 
+			//cookiecheck();// 방문자 수 체크 하는 곳 
 
 		});
-
+	
+		
 	</script>
 
 

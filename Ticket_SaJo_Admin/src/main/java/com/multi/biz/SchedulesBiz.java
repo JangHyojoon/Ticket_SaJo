@@ -1,5 +1,6 @@
 package com.multi.biz;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class SchedulesBiz implements Biz<Integer,SchedulesVO> {
 	@Override
 	public SchedulesVO get(Integer id) throws Exception {
 		return dao.select(id);
+	}
+	
+	// 0810 안원영 추가 - 오늘 상영영화 수 
+	public int todayMovieCnt(Date date) throws Exception {
+		return dao.todayMovieCnt(date);
 	}
 
 	@Override
