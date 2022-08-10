@@ -58,6 +58,7 @@
            <h1>Mypage_center</h1>         
         </section>
         
+
 		<div class="box">
 			 <img src = "/img/user.png" width="50">
 			 <span th:text="${session.user.name}"></span>님  
@@ -69,6 +70,7 @@
 		        <div class="wrapper" th:if="${not #lists.isEmpty(pointlist)}">
 					사용 가능 포인트 :&nbsp<span th:text="${pointprice.totalprice}"></span>점
 					</div>
+
 
 					<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
 					포인트 내역이 없습니다.

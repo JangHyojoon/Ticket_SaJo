@@ -121,6 +121,7 @@ public class MainController_jsy {
    }
    
    @RequestMapping("/mypage")
+
    public String mypage(Model m, HttpSession session) {
 	   List<ReservationVO> list1 = null;	   
 	   List<PointlistVO> list2 = null; 
@@ -146,6 +147,7 @@ public class MainController_jsy {
 	       return "index";
 	    }
   
+
    @RequestMapping("/custdetail")
    public String custdetail(Model m, CustVO cust) {
       m.addAttribute("center", "mypage/custdetail");
