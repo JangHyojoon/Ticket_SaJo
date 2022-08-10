@@ -1,18 +1,27 @@
-<meta charset="UTF-8">
-<style>
-   #signup_form{
-         font-family: 고딕;
-     	 font-size: twayair;
-      	 color: #8B4513;
-   }
-   
-   #id, #pwd, #pwdcheck, #name, #birth, #point {
-   		border-radius: 20px;
-   		border-color: #B8860B;
-   		
-   }
-</style>
+<!-- Basic Page Needs -->
+<meta charset="utf-8">
+<title>AMovie - Login</title>
+<meta name="description" content="A Template by Gozha.net">
+<meta name="keywords" content="HTML, CSS, JavaScript">
+<meta name="author" content="Gozha.net">
 
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
+
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700'
+	rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 var one=0, two=0;
@@ -22,19 +31,18 @@ function sendId(id) {
       data:{'id':id},
       success:function(data){
          if(data == '1') {
-            $('#ispan').text('이미 사용중이거나 탈퇴한 아이디입니다');
+            $('#ispan').text('사용 불가능한 아이디입니다');
             $('#ispan').css('color','red');
             one = 0;
          }else {
-            $('#ispan').text('사용가능한 아이디입니다');
+            $('#ispan').text('사용 가능한 아이디입니다');
             $('#ispan').css('color','#3CB371');
             one = 1;
          }
       }
    });
 };
-
-
+	
 $(document).ready(function(){
    $('input[name="id"]').keyup(function(){
       var id = $(this).val();
@@ -60,40 +68,59 @@ $(document).ready(function(){
 		   $('#ispan').text('필수항목입니다.');
 		   $('#ispan').css('color', 'red');
 		   $('#id').focus();
-	   }else{
-		   if($('#pwd').val() == '') {
-			   $('#pspan').text('필수항목입니다.');
-			   $('#pspan').css('color', 'red');
-			   $('#pwd').focus();
-		   }else{
-			   if($('#pwdcheck').val() == '') {
-				   $('#pspan2').text('필수항목입니다.');
-				   $('#pspan2').css('color', 'red');
-				   $('#pwdcheck').focus();			   			   
-		   }else {
-			   if($('#name').val() == '') {
-				   $('#nspan').text('필수항목입니다.');
-				   $('#nspan').css('color', 'red');
-				   $('#name').focus();
-		   }else{
-			   if($('#birth').val() == '') {
-				   $('#bspan').text('필수항목입니다.');
-				   $('#bspan').css('color', 'red');
-				   $('#birth').focus();
-		   }if(one && two){						   
-		      $('#signup_form').attr({
+		   return;
+	   }
+	   if($('#pwd').val() == '') {
+		   $('#pspan').text('필수항목입니다.');
+		   $('#pspan').css('color', 'red');
+		   $('#pwd').focus();
+		   return
+	   }
+	   if($('#pwdcheck').val() == '') {
+		   $('#pspan2').text('필수항목입니다.');
+	       $('#pspan2').css('color', 'red');
+	       $('#pwdcheck').focus();	
+	       return
+	   }
+	   if($('#name').val() == '') {
+		   $('#nspan').text('필수항목입니다.');
+		   $('#nspan').css('color', 'red');
+		   $('#name').focus();
+		   return
+	   }
+	   if($('#birth').val() == '') {
+		   $('#bspan').text('필수항목입니다.');
+		   $('#bspan').css('color', 'red');
+		   $('#birth').focus();
+		   return
+	   }
+	   if($('#sex option:selected').val() == 0) {
+		   $('#sspan').text('성별을 선택해주세요');
+		   $('#sspan').css('color', 'red');
+		   $('#sex').focus();
+		   return
+	   }
+	   if($('#pwd').val() != $('#pwdcheck').val()) {
+		   $('#pspan2').text('일치하지 않습니다. 비밀번호를 다시 확인해주세요');
+	       $('#pspan2').css('color', 'red');
+	       $('#pwdcheck').focus();	
+	       return
+	   }
+	   if(one && two){
+		   $('#signup_form').attr({
 		         'method' : 'post',
 		          'action' : 'signupimpl'
 		      });
 		      $('#signup_form').submit();
 		      alert('등록이 완료되었습니다');
-		   }else{
-			   alert('가입하려는 정보를 다시 입력해주세요.');
-		   }
-	     }
+	   }else{
+		   alert('가입하려는 정보를 다시 입력해주세요.');
 	   }
-	 }
-   }
+
+   
+  
+	 
+
  });
 
    
@@ -107,65 +134,119 @@ $(document).ready(function(){
          $('#pspan').css('color','#3CB371');
       }
    });
+   $('input[name="name"]').keyup(function(){
+	      var name = $(this).val();
+	      if(name.length > 0){
+	         $('#nspan').text("\u00A0");
+	       
+	      }
+	   });
    
    $("select[name=sex]").change(function(){
-      console.log($(this).val());
-      console.log($("select[name=sex] option:selected").text());
+	   var sex = $(this).val();
+	   if(sex != 0)
+	   		$('#sspan').text("\u00A0");
    });
 
 });
 
 </script>
-<br>
-<br>
-   <form id="signup_form" class="form-horizontal">
-      <div class="field-wrap">
-      <br>
-      <br>
-         아이디: 
-         <input id="id" type='text' name='id'>
+<style>
+.text-center{
+
+width:700px;
+margin:auto;
+padding:50px;
+float: center;
+text-align: center;
+}
+h1, h2, h3{
+text-align: center;
+}
+#signupbtn{
+width:78px;
+height:30px;
+border-radius:5px;
+}
+</style>
+<div class="container" style="margin-top:130px;">
+	<h1 >회원가입</h1>
+	
+	
+	<div class="text-center">
+    <form id="signup_form" class="form-horizontal">
+      
+      
+      <div class="form-inline form-group" >
+         <label for="id" class="col-sm-3 control-label">아이디 </label> 
+         <div class="col-sm-9">
+         <input class="form-control input" id="id" type='text' name='id' style="width:300px;height:30px;">
          <input id="used" value="true" type='hidden' name='used'>       
-         <span id="ispan"></span>
          </div>
-         <br>
-      <div class="field-wrap">
-         비밀번호: 
-         <input id="pwd" type='password' name='pwd'> 
-         <span id="pspan"></span>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="ispan">&nbsp</span></div>
+         
       </div>
-      <br>	
-      <div class="field-wrap">
-         비밀번호 재확인: 
-         <input id="pwdcheck" type='password' name='pwdcheck'> 
-         <span id="pspan2"></span>
+     
+      <div class="form-inline form-group" >
+         <label for="pwd" class="col-sm-3 control-label">비밀번호 </label> 
+         <div class="col-sm-9">
+         <input class="form-control" id="pwd" type='password' name='pwd' style="width:300px;height:30px;"> 
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="pspan">&nbsp</span></div>
       </div>
-      <br>
-      <div class="field-wrap">
-         이름: 
-         <input id="name" type='text' name='name'> 
-         <span id="nspan"></span>
+   
+      <div class="form-inline form-group" >
+         <label for="pwdcheck" class="col-sm-3 control-label">비밀번호 확인 </label> 
+         <div class="col-sm-9">
+        	 <input class="form-control" id="pwdcheck" type='password' name='pwdcheck' style="width:300px;height:30px;"> 
+
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="pspan2">&nbsp</span></div>
       </div>
-      <br>
-      <div class="field-wrap">
-         생년월일: 
-         <input id="birth" value=19930321 type='date'name='birth'> 
-         <span id="bspan"></span>
+   
+   
+   
+   
+      <div class="form-inline form-group" >
+         <label for="name" class="col-sm-3 control-label">이름 </label> 
+         <div class="col-sm-9">
+        	 <input class="form-control" id="name" type='text' name='name' style="width:300px;height:30px;"> 
+
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="nspan">&nbsp</span></div>
       </div>
-      <br>
-      <div class="field-wrap">
-         포인트: <input id="point" value=0 readonly="readonly">
+      
+  	  <div class="form-inline form-group" >
+         <label for="birth" class="col-sm-3 control-label">생년월일 </label> 
+         <div class="col-sm-9">
+        	 <input class="form-control" id="birth" type="date" name='birth' style="width:300px;height:30px;"> 
+
+
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="bspan">&nbsp</span></div>
       </div>
-      <br>
-      <div class="field-wrap">
-         성별:  <span id="sspan"></span>
-          <select name="sex">
-            <option value="woman">여성</option>
-            <option value="man">남성</option>        
-         </select> 
+      <input type="hidden" id="point" value=0 readonly="readonly">
+      <div class="form-inline form-group" >
+         <label for="sex" class="col-sm-3 control-label">성별 </label> 
+         <div class="col-sm-9">
+        	 <select class="form-control" id="sex" name="sex" style="width:300px;height:30px;">
+	          	 <option value="0">선택</option>
+	          	 <option value="woman">여성</option>
+	             <option value="man">남성</option>       
+        	 </select> 
+         </div>
+         <div class="col-sm-3"></div>
+         <div class="col-sm-9"><span id="sspan">&nbsp</span></div>
       </div>
-      <br>
-      <br>
+
       </form>
      <div class="field-wrap">
          <button id="signupbtn" class="btn btn-md btn--warning btn--wider">회원가입</button>
       </div>
+	</div>
+</div>
