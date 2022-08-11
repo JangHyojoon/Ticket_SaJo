@@ -178,9 +178,9 @@ public class MainController_jsy {
    }
    
    @RequestMapping("/custpwdimpl")
-   public String custpwdimpl(Model m, String newpwd, HttpSession session) {
+   public String custpwdimpl(Model m, String new_pwd, HttpSession session) {
 	   CustVO cust = (CustVO) session.getAttribute("user");
-	   cust.setPwd(newpwd);
+	   cust.setPwd(new_pwd);
 	   try {
 		custbiz.modify(cust);
 		session.setAttribute("user", cust);
