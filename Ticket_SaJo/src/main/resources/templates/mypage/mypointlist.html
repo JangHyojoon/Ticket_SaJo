@@ -1,24 +1,69 @@
-<meta charset="UTF-8">
+<!doctype html>
+<html  lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Basic Page Needs -->
+        <meta charset="utf-8">
+        <title>AMovie - Booking final</title>
+        <meta name="description" content="A Template by Gozha.net">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Gozha.net">
+    
+    <!-- Mobile Specific Metas-->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="telephone=no" name="format-detection">
+    
+    <!-- Fonts -->
+        <!-- Font awesome - icon font -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Mono font -->
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+        <!-- Roboto -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    
+    <!-- Stylesheets -->
+    <!-- jQuery UI --> 
+        <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+        <!-- Mobile menu -->
+        <link href="css/gozha-nav.css" rel="stylesheet" />
+        <!-- Select -->
+        <link href="css/external/jquery.selectbox.css" rel="stylesheet" />
+    
+        <!-- Custom -->
+        <link href="css/style.css?v=1" rel="stylesheet" />
+
+        <!-- Modernizr --> 
+        <script src="js/external/modernizr.custom.js"></script>
+       
+        <!-- Ajax -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
 <style>
    #empty{
       text-align: center;
    }
+   
    #h4{
       text-align: center;
    }
+   
+   #table{
+   	margin-left: 150px;
+   	margin-right: 50px;
+   }
 </style>
-<div class="wrapper" th:if="${not #lists.isEmpty(pointlist)}">
-<h1></h1>
-	<strong><h4 id="h4">아이디<span th:text="${session.user.id}"></span>님의 포인트 내역입니다.</h4></strong>
-	<br>
-	<br>
-<table>
+
+<div class="container" th:if="${not #lists.isEmpty(pointlist)}" style="margin-top:40px">
+   <strong><h4 id="h4"><span th:text="${session.user.name}"></span>님의 포인트 내역입니다.</h4></strong>
+  <br>
+  <br>
+<table id="table">
 	<thead>
-		<tr><th>포인트 번호</th><th>금액</th><th>&nbsp &nbsp 날짜</th><th>내용</th></tr>
+		<tr><th>포인트 번호</th><th>금액</th><th>&nbsp &nbsp 날짜</th><th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 내용</th></tr>
 	</thead>
 	<tbody>
 		<tr th:each="p:${pointlist}">
-			<td><a href="" th:text="${p.id}">포인트 번호</a></td>
+			<td th:text="${p.id}">포인트 번호</td>
 			<td th:text="${p.price}">금액</td>
 			<td th:text="${p.regdate}">날짜</td>
 			<td th:text="${p.text}">내용</td>
@@ -26,19 +71,50 @@
 	</tbody>
 </table>
 </div>
-
-<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-포인트 내역이 없습니다.
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}" style="margin-top:200px">
+포인트 내역이 없습니다. 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<!-- JavaScript-->
+        <!-- jQuery 3.1.1--> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/external/jquery-3.1.1.min.js"><\/script>')</script>
+        <!-- Migrate --> 
+        <script src="js/external/jquery-migrate-1.2.1.min.js"></script>
+        <!-- jQuery UI -->
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <!-- Bootstrap 3--> 
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+        <!-- Mobile menu -->
+        <script src="js/jquery.mobile.menu.js"></script>
+        <!-- Select -->
+        <script src="js/external/jquery.selectbox-0.2.min.js"></script>
+
+        <!-- Form element -->
+        <script src="js/external/form-element.js"></script>
+        <!-- Form validation -->
+        <script src="js/form.js"></script>
+		
+        <!-- Custom -->
+        <script src="js/custom.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.top-scroll').parent().find('.top-scroll').remove();
+            });
+        </script>
+
+</body>
+</html>

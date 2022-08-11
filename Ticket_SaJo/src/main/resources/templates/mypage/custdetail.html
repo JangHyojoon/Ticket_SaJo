@@ -40,16 +40,18 @@ $(document).ready(function(){
 <br>
 <br>
 <br>
-<div class="field-wrap">
+<div class="field-wrap" style="margin-top:70px">
       <h3 id="h3">회원정보 수정</h3>
+      <br>
 <form class ="user">
       <div class="wrapper"> 
-         아이디: <input type="text" id="id" name="id" readonly="readonly" th:value="${session.user.id}">
+      &nbsp &nbsp &nbsp &nbsp   아이디 <input type="text" id="id" name="id" readonly="readonly" th:value="${session.user.id}">
          <span id="idspan"></span>
-      </div>
-    
+      </div>    
+      
+    <br>
       <div class="wrapper">
-         이름: <input type="text" id="name" name="name" th:value="${session.user.name}">
+         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 이름 <input type="text" id="name" name="name" th:value="${session.user.name}">
           <span id="namespan"></span>
       </div>
     
@@ -57,7 +59,16 @@ $(document).ready(function(){
   <br>
   
   <div class="field-wrap">
-  	<button id="updatebtn" class="btn btn-md btn--warning btn--wider">회원정보 수정</button>
+  	<button id="updatebtn" class="btn btn-md btn--warning btn--wider" style="margin-left:60px">회원정보 수정</button>
   </div>
 </form>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

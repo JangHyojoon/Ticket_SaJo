@@ -51,11 +51,12 @@ $(document).ready(function() {
    });
 
 </script>
-<div class="wrapper">
+<div class="wrapper" style="margin-top:115px">
 <h2 id="h2"> 탈퇴 안내 </h2>
-       <h5>
-       	<strong>사용하고 계신 아이디<span id="id" th:text="${session.user.id}"></span>는 탈퇴할 경우 재사용 및 복구가 불가능하오니 신중하게 선택하시기 바랍니다.</h5></strong>
-		<form class="form-horizontal" id="custdelete_form">
+       	<strong  style="margin-left:450px">사용하고 계신 아이디<span id="id" th:text="${session.user.id}"></span>는 탈퇴할 경우 재사용 및 복구가 불가능하오니 신중하게 선택하시기 바랍니다.</h5></strong>
+		<br>
+		<br>
+		<form class="form-horizontal" id="custdelete_form"  style="margin-left:600px">
 				<div class="form-wrap">
 					비밀번호 : 
 					<input id="now_pwd" type="text" name="now_pwd" placeholder="사용중인 비밀번호">
@@ -75,7 +76,14 @@ $(document).ready(function() {
 
   	<div class="field-wrap">
 	    <br>
-		<button class="btn" id="deletebtn">회원탈퇴 </button><br>
+		<button class="btn" id="deletebtn"  style="margin-left:100px">회원탈퇴 </button><br>
 		<span id= "deletebtnspan"></span>
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
