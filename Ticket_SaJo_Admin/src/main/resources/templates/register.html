@@ -7,28 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../vendors/feather/feather.css">
-  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}">
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
   $(document).ready(function(){
 		$('#btn').click(function(){
 			 
 			 $('.pt-3').attr({
-					'method':'post',
-					'action':'/registerimpl'
+					'method':'post'
 				});
 				$('.pt-3').submit();
 		});
-		 
 	});
   </script>
   <style>
@@ -62,8 +60,8 @@
               </div>
               <h4>관리자 가입</h4>
               <h6 class="font-weight-light">전달받은 코드와 아이디, 비밀번호를 입력하세요</h6>
-              <form class="pt-3">
-                <div class="form-group">
+              <form th:action="@{/registerimpl}" class="pt-3">
+                <div class="form-group" >
                   <input type="text" class="form-control form-control-lg" name="code" id="exampleInputUsername1" placeholder="CODE">
                 </div>
                 <div class="form-group">
@@ -77,7 +75,7 @@
                   <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id ="btn">회원가입</a>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
-                  이미 회원가입을 하셨나요 <a href="/login" class="text-primary">Login</a>
+                  이미 회원가입을 하셨나요 <a th:href="@{/login}" class="text-primary">Login</a>
                 </div>
               </form>
               <h5 th:text="${msg}"></h5>
@@ -91,16 +89,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script th:src="@{/js/off-canvas.js}"></script>
+  <script th:src="@{/js/hoverable-collapse.js}"></script>
+  <script th:src="@{/js/template.js}"></script>
+  <script th:src="@{/js/settings.js}"></script>
+  <script th:src="@{/js/todolist.js}"></script>
   <!-- endinject -->
 </body>
 

@@ -32,7 +32,7 @@ public class ORCAPI {
 		
 		
 		String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","receipt").toString();//이미지 저장 경로
-//		String imgpath = "/root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/receipt";// ncp 서버경로로 변경 
+		//String imgpath = "/root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/receipt";// ncp 서버경로로 변경 
 		System.out.println("ORCAPI imgpath : "+ imgpath);
 		String imageFile = imgpath +"/" + imgname;//이미지 이름 
 		System.out.println("ORCAPI imageFile : " + imageFile);
