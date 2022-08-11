@@ -66,8 +66,8 @@
 						<div class="col-md-6 mb-4 stretch-card transparent">
 							<div class="card card-tale">
 								<div class="card-body">
-									<p class="mb-4"> Today's 방문자 수 </p>
-									<p class="fs-30 mb-2" th:text="${today_visit}">4006</p>
+									<p class="mb-5"> Today's 방문자 수 </p>
+									<p class="fs-30 mb-2 text-center" th:text="${today_visit}+' 명'">0</p>
 									<!-- <p>10.00% (30 days)</p> -->
 								</div>
 							</div>
@@ -75,9 +75,9 @@
 						<div class="col-md-6 mb-4 stretch-card transparent">
 							<div class="card card-dark-blue">
 								<div class="card-body">
-									<p class="mb-4">오늘 내일 상영할 영화 수</p>
-									<p class="fs-30 mb-2">61344</p>
-									<p>22.00% (30 days)</p>
+									<p class="mb-4">오늘 상영할 영화 </p>
+									<p class="fs-30 mb-3 text-center" th:text="${today_movie_cnt}+' 편'">0</p>
+									<p class="text-center" th:text="'( 내일 상영할 영화 '+${tomorrow_movie_cnt}+' 편 )'">0</p>
 								</div>
 							</div>
 						</div>
@@ -87,17 +87,16 @@
 							<div class="card card-light-blue">
 								<div class="card-body">
 									<p class="mb-4">누적 회원 수 </p>
-									<p class="fs-30 mb-2">34040</p>
-									<p>2.00% (30 days)</p>
+									<p class="fs-30 mb-3 text-center" th:text="${custCnt}+' 명'">0</p>
+									<p class="text-center" th:text="'( 탈퇴 회원 수 '+${custExitCnt}+' 명 )'">0</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-6 stretch-card transparent">
 							<div class="card card-light-danger">
 								<div class="card-body">
-									<p class="mb-4"> 당일 예약 수 </p>
-									<p class="fs-30 mb-2">47033</p>
-									<p>0.22% (30 days)</p>
+									<p class="mb-5"> 당일 예약 수 </p>
+									<p class="fs-30 mb-2 text-center" th:text="${today_ticketBuy_cnt}+' 명'">0</p>
 								</div>
 							</div>
 						</div>

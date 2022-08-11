@@ -20,4 +20,10 @@ public interface CustMapper {
 	public void usepoint(String id,int usepoint) throws Exception;
 	public List<CustVO> selectallpage(Integer mnum) throws Exception;
 	public List<CustVO> searchall(String text) throws Exception;
+	
+	//0811 안원영 추가 - 회원수 출력 
+	public int selectCustCnt() throws Exception;
+	
+	//0811 안원영 추가 - 탈퇴 회원수 출력 
+	public int selectExitCnt() throws Exception;
 }

@@ -1,5 +1,6 @@
 package com.multi.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -136,7 +137,7 @@ public class AjaxController_awy {
 					// Unknown 에 카운드 1증가 
 					vbiz.updateCount("Unknown");// unknown으로 카운트 1 증가 
 				}else {// Unknown이 처음일 경우 테이블에 Unkown 값 추가 
-					vbiz.register(new VisitVO("Unknown",1));// 새로 Unknown 생성 
+					vbiz.register(new VisitVO("Unknown",1,new Date()));// 새로 Unknown 생성 
 				}
 				
 				
@@ -147,7 +148,7 @@ public class AjaxController_awy {
 				if(today_visit != null) { // 오늘 방문했을 경우 
 					vbiz.updateCount(cust.getId());// 기존 방문횟수에서 1증가 
 				}else {// 오늘 처음 방문한 경우
-					vbiz.register(new VisitVO(cust.getId(),1));// 테이블에 로그인한 ID로 새로 추가 
+					vbiz.register(new VisitVO(cust.getId(),1,new Date()));// 테이블에 로그인한 ID로 새로 추가 
 				}
 			}
 			

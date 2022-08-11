@@ -53,4 +53,12 @@ public class CustBiz implements Biz<String,CustVO> {
 		return dao.searchall(text);
 	}
 	
+	//0811 안원영 추가 - 회원수 출력 
+	public int selectCustCnt() throws Exception {
+		return dao.selectCustCnt();
+	}
+	//0811 안원영 추가 - 탈퇴 회원수 출력 
+	public int selectExitCnt() throws Exception {
+		return dao.selectExitCnt();
+	}
 }

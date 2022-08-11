@@ -27,6 +27,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="ticketVO">
 		DELETE FROM ticket WHERE id=#{id}
 	</delete>
+	
+		
+	<!--0811 안원영 추가 - 오늘 예약 수    -->
+	<select id="todayticketBuyCnt" parameterType="Date" resultType="int">
+	SELECT count(id) FROM ticket where purchasedate=#{date}
+	</select>
+	
+	
 </mapper>
 
 

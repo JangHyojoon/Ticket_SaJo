@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.AdminBiz;
 import com.multi.biz.CodeBiz;
+import com.multi.biz.CustBiz;
 import com.multi.biz.SchedulesBiz;
+import com.multi.biz.TicketBiz;
 import com.multi.biz.VisitBiz;
 import com.multi.vo.AdminVO;
 import com.multi.vo.CodeVO;
@@ -35,39 +37,51 @@ public class MainController {
 	@Autowired
 	SchedulesBiz sbiz;
 	
+	@Autowired
+	CustBiz cubiz;
+	
+	@Autowired
+	TicketBiz tbiz;
+	
 
 
 	@RequestMapping("/")
 	public String main(Model m, HttpSession session) {
 		AdminVO admin = (AdminVO) session.getAttribute("loginadmin");
 		int today_visit = 0;
-		int today_movie = 0;
+		int today_movie_cnt = 0;
+		int today_ticketBuy_cnt = 0;
+		int tomorrow_movie_cnt = 0;
+		int custCnt = 0; // 누적 회원수 
+		int custExitCnt = 0; // 탈퇴 회원수 
 		List<VisitVO> visitList = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Calendar cal = Calendar.getInstance(); 
+		Calendar cal = Calendar.getInstance(); // 오늘 상영할 영화에서 사용할 변수 
 		cal.setTime(new Date());
+		Date today = null;
+		Date tomorrow = null;
+
 		
-		Date today = new Date();
 		try {
-			today = sdf.parse(sdf.format(cal.getTime()));
+			today = sdf.parse(sdf.format(cal.getTime()));// 오늘 날짜
+			cal.add(Calendar.DATE, +1); //1일 더하기 
+			tomorrow = sdf.parse(sdf.format(cal.getTime()));// 내일날짜 
+//			System.out.println(today);
+//			System.out.println(tomorrow);
+			
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		System.out.println(today);
 		
-		cal.add(Calendar.DATE, -1); //1일 빼기 
-		
-		
+
 		if (admin==null) {// 로그인 안했을 경우 실행 
 			return "/login";
 		}else {// 로그인 했을경우 실행 
 			try {
 				// 방문자수 처리 
 				visitList = vbiz.get();
-				System.out.println("visitList : " + visitList );
+//				System.out.println("visitList : " + visitList );
 				if(visitList.isEmpty()) {// 아무 필드도 없을 경우 
 					vbiz.register(new VisitVO("Unknown", 0));// 필드 하나 추가 
 				}
@@ -76,8 +90,22 @@ public class MainController {
 				
 				
 				// 현재 상영중인 영화 수 
-//				today_movie = sbiz.todayMovieCnt(today);
-//				System.out.println(today);
+				today_movie_cnt = sbiz.todayMovieCnt(today);
+				tomorrow_movie_cnt = sbiz.todayMovieCnt(tomorrow);
+				m.addAttribute("today_movie_cnt", today_movie_cnt);
+				m.addAttribute("tomorrow_movie_cnt", tomorrow_movie_cnt);
+				
+				
+				// 누적 회원 수 
+				custCnt = cubiz.selectCustCnt();
+				custExitCnt = cubiz.selectExitCnt();
+				m.addAttribute("custCnt", custCnt);
+				m.addAttribute("custExitCnt", custExitCnt);
+				
+				// 당일 예약 수 
+				today_ticketBuy_cnt = tbiz.todayticketBuyCnt(today);
+				m.addAttribute("today_ticketBuy_cnt", today_ticketBuy_cnt);
+				
 				
 				
 			} catch (Exception e) {
