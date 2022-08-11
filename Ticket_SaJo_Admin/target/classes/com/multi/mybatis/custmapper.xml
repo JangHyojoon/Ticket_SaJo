@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE cust SET pwd=#{pwd},name=#{name} WHERE id=#{id}
 	</update>
 	<update id="usepoint" parameterType="custVO">
-		UPDATE cust SET point=point-#{usepoint} WHERE id =#{id}; 
+		UPDATE cust SET point=point-#{usepoint} WHERE id =#{id}
 	</update>
 
 	<delete id="delete" parameterType="custVO">
@@ -34,4 +34,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         WHERE (id LIKE CONCAT('%',#{text},'%') OR name LIKE CONCAT('%',#{text},'%') OR birth LIKE CONCAT('%',#{text},'%')
         OR sex LIKE CONCAT('%',#{text},'%'))
 	</select>
+	
+	<!-- 0811 안원영 추가 - 회원수 출력  -->
+	<select id="selectCustCnt" resultType="int">
+		SELECT COUNT(id) FROM cust 
+	</select>
+	
+	<!-- 0811 안원영 추가 - 탈퇴 회원수 출력  -->
+	<select id="selectExitCnt" resultType="int">
+		SELECT COUNT(id) FROM cust where used=0;
+	</select>
+	
+	
+	
 </mapper>

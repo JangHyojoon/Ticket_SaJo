@@ -1,5 +1,6 @@
 package com.multi.biz;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,10 @@ public class TicketBiz implements Biz<Integer,TicketVO> {
 	}
 	public List<TicketVO> selectsid(Integer sid) throws Exception{
 		return dao.selectsid(sid);
+	}
+	
+	//0811 안원영 추가 - 오늘 예약 수
+	public int todayticketBuyCnt(Date date) throws Exception {
+		return dao.todayticketBuyCnt(date);
 	}
 }
