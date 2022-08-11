@@ -7880,7 +7880,7 @@ background: radial-gradient(circle, rgba(187,186,186,1) 14%, rgba(177,177,177,1)
   height: 100%;
 }
 .movie-best .movie-best__rating {
-	width :100%;
+
 	background: rgb(187,186,186);
 background: linear-gradient(90deg, rgba(187,186,186,1) 14%, rgba(150,149,149,1) 50%, rgba(177,177,177,1) 85%);
 	/*
@@ -7897,6 +7897,10 @@ background: linear-gradient(90deg, rgba(255,198,198,1) 0%, rgba(255,115,115,1) 1
   padding-bottom: 20px;
   padding-top: 20px;
   position: relative;
+  
+  
+  
+  
 }
 
 .movie-best .movie-best__rating:before {
