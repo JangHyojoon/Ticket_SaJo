@@ -59,8 +59,7 @@ function inputYMDNumber(obj) {
 			        return false;
 			 }
 			 $('.schedule').attr({
-					'method':'post',
-					'action':'/schedule/addimpl'
+					'method':'post'
 				});
 				$('.schedule').submit();
 		});
@@ -82,7 +81,7 @@ function inputYMDNumber(obj) {
                   <p class="card-description">
                     1. 상영관과 상영 영화, 날짜를 선택해 주세요. (다음 버튼을 누르면 상세 스케줄 페이지로 이동합니다)
                   </p>
-                  <form class="schedule">
+                  <form class="schedule" th:action="@{/schedule/addimpl}">
                     <div class="form-group">
                     <label for="exampleSelectGender">상영관 선택</label>
                         <select name="tid" class="form-control" id="exampleSelectGender">

@@ -16,14 +16,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insert" parameterType="visitVO">
-		INSERT INTO visit VALUES (#{id},#{count})
+		INSERT INTO visit VALUES (#{id},#{count},sysdate())
 	</insert>
 	<update id="update" parameterType="visitVO">
-		UPDATE visit SET count=#{count} WHERE id=#{id}
+		UPDATE visit SET count=#{count}, date=sysdate() WHERE id=#{id}
 	</update>
 	<!--  0810 안원영 추가 - 방문자수 증가  -->
 	<update id="updateCount" parameterType="String">
-		UPDATE visit SET count=count+1 WHERE id=#{id}
+		UPDATE visit SET count=count+1, date=sysdate() WHERE id=#{id}
 	</update>
 	
 	<delete id="delete" parameterType="visitVO">
