@@ -62,13 +62,14 @@
 </style>
 
 	<div class="container" th:if="${not #lists.isEmpty(pointlist)}" style="margin-top:40px; margin-bottom:500px;">
+
 	   <strong><h4 id="h4"><span th:text="${session.user.name}"></span>님의 포인트 내역입니다.</h4></strong>
 	  <br>
 	  <br>
 	  <div style="overflow-x:auto;">
 	<table>
 		<thead>
-			<tr><th>포인트 번호</th><th>금액</th><th>&nbsp &nbsp 날짜</th><th>내용</th></tr>
+			<tr><th>포인트 번호</th><th>금액</th><th>날짜</th><th>내용</th></tr>
 		</thead>
 		<tbody>
 			<tr th:each="p:${pointlist}">
@@ -79,7 +80,7 @@
 			</tr>
 		</tbody>
 	</table>
-		</div>
+	</div>
 	</div>	
 	<br>
 	<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}" style="margin-top:200px">
