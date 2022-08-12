@@ -51,12 +51,27 @@
    	margin-left: 50px;
    	margin-right: 50px;
    }
+   
+   table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+  }
+	
+   th, td {
+  text-align: center;
+  padding: 8px;
+   }
+   
+   tr:nth-child(even){background-color: #f2f2f2}
+
 </style>
 <body>
-<div class="container" th:if="${not #lists.isEmpty(mycouponlist)}" style="margin-top:10px">
+<div class="container" th:if="${not #lists.isEmpty(mycouponlist)}" style="margin-top:10px; margin-bottom:100px;">
 	<strong><h4 id="h4"><span th:text="${session.user.name}"></span>님의 쿠폰 내역입니다.</h4></strong>
 	<br>
 	<br>
+	<div style="overflow-x:auto;">
 <table id="table">
 	<thead>
 		<tr><th>쿠폰 번호</th><th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 쿠폰 내용</th><th>발급 날짜</th><th>사용 가능 여부</th><th>사용한 날짜</th></tr>
@@ -73,6 +88,12 @@
 	</tbody>
 </table>
 </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
