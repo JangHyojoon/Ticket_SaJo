@@ -143,7 +143,8 @@
 		font-family: 'Noto Sans KR', sans-serif;
 	}
 	#chatinform{
-		margin: auto;
+		margin-bottom: 10px;
+		
 	    text-align: center;
 		background: #E8D9FF;
 		padding: 10px;
@@ -177,7 +178,7 @@
 	#center{
 	
     min-height: 100%;
-	padding-bottom: 200px;
+	padding-bottom: 400px;
 	}
 	
 	#footer{
@@ -189,6 +190,7 @@
     width: 100%;
     
 	}
+
 
 
 </style>
@@ -248,13 +250,13 @@
 	$(document).ready(function() {
 		$("#openmodal").click(function() {
 			connect();
+			$("#me").append("<div id='answer'><img id='answerchat' src='/images/icons/chatbot.png'><div id='ina'>챗봇 : 티켓 사조의 챗봇입니다. 궁금한 사항을 말씀해주세요. (ex. 상영관 위치, 좋아하는 영화가 뭐야? ... 등등)</div></div>")
 		});
-		$("#modalclose").click(function() {
-			
-		});
+		
 		$("#sendme").click(function() {
 			sendMe();
 		    $('#metext').val('');
+		    
 		});
 		$('#metext').keypress(function(event){
 		     if ( event.which == 13 ) {

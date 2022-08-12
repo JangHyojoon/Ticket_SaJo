@@ -37,7 +37,8 @@ import com.multi.vo.TheaterVO;
 import com.multi.vo.TicketVO;
 
 @Controller
-public class MainController_jhj {
+
+public class BookController {
 	@Autowired
 	BookedBiz seatbiz;
 	@Autowired
@@ -83,7 +84,7 @@ public class MainController_jhj {
 			m.addAttribute("scheduleslist", scheduleslist);
 			m.addAttribute("detail_scheduleslist", detail_scheduleslist);
 			
-			m.addAttribute("center", "book1");
+			m.addAttribute("center", "/book/book1");
 			m.addAttribute("header", "header");
 			m.addAttribute("footer", "footer");
 			
@@ -128,7 +129,7 @@ public class MainController_jhj {
 			e.printStackTrace();
 		
 		}
-		m.addAttribute("center", "book2");
+		m.addAttribute("center", "/book/book2");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
@@ -171,13 +172,13 @@ public class MainController_jhj {
 			e.printStackTrace();
 	
 		}
-		m.addAttribute("center", "book3");
+		m.addAttribute("center", "/book/book3");
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
 	
 	}
-	@RequestMapping("/book4")
+	@RequestMapping("/ticket")
 	public String book4(Model m,int rid) {
 		
 		List<TicketVO> tlist;
@@ -197,28 +198,25 @@ public class MainController_jhj {
 			e.printStackTrace();
 		
 		}
-		m.addAttribute("center", "book4" );
+		m.addAttribute("center", "/book/ticket" );
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";
 	}
 	
-	@RequestMapping("/fail")
-	public String fail(Model m) {
-		return "fail";
-	}
+
 	
 	@RequestMapping("/book1impl")
 	public String book1impl(Model m, int mid, String date,String time,int theater,String msg) {
 	
-		return "redirect:book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater;
+		return "redirect:/book2?mid="+mid+"&date="+date+"&time="+time+"&theater="+theater;
 	}
 	
 	@RequestMapping("/book2impl")
 	public String book2impl(Model m, int sid, int mcnt, String starttime, String endtime, String tid, String mid, String sdate,
 		    String choosen_cost, String choosen_sits) {
 
-		return "redirect:book3?sid="+sid+"&mcnt="+mcnt+"&starttime="+starttime+"&endtime="+endtime+"&tid="+tid+"&mid="+mid+"&sdate="+sdate
+		return "redirect:/book3?sid="+sid+"&mcnt="+mcnt+"&starttime="+starttime+"&endtime="+endtime+"&tid="+tid+"&mid="+mid+"&sdate="+sdate
 				+"&choosen_cost="+choosen_cost+"&choosen_sits="+choosen_sits;
 	}
 
@@ -264,7 +262,7 @@ public class MainController_jhj {
 			bookedbiz.insertseat(sid,mcnt, seatlist);//book테이블 INSERT
 			} catch (Exception e2) {
 				e2.printStackTrace();
-				return "redirect:book2?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
+				return "redirect:/book2?mid="+mid+"&date="+sdate+"&time="+time+"&theater="+theater+"&msg=f";
 			} 
 		
 		//웹소켓 정보가 보내지는 순간
@@ -378,7 +376,7 @@ public class MainController_jhj {
 		//포인트 적립 내용
 		
 		
-		m.addAttribute("center", "bookingsuccess" );
+		m.addAttribute("center", "/book/bookingsuccess" );
 		m.addAttribute("header", "header");
 		m.addAttribute("footer", "footer");
 		return "index";

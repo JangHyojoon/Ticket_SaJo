@@ -183,7 +183,7 @@ a { text-decoration:none; }
 	</div>
  -->
 	<!-- Main content -->
-	<section class="container">
+	<section class="container" style="margin-top:50px;">
 		<div class="col-sm-12">
 			<h2 class="page-heading">진행중인 쿠폰 이벤트 !!</h2>
 
@@ -292,8 +292,7 @@ a { text-decoration:none; }
 	</div>
 </div>
 <!-- End Modal -->
-<div class="modal fade" id="Loginerror" role="dialog"
-	>
+<div class="modal fade" id="Loginerror" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content text-center">
@@ -330,7 +329,11 @@ a { text-decoration:none; }
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD:Ticket_SaJo/src/main/resources/templates/event/coupon.html
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
+=======
+				<button type="button" class="btn btn-default" data-dismiss="modal" data-target="#couponOk" data-backdrop="false">Close</button>
+>>>>>>> d704c45d301350c8342c18a37aae73cba545dcc5:Ticket_SaJo/src/main/resources/templates/coupon/coupon.html
 			</div>
 		</div>
 	</div>
@@ -352,7 +355,11 @@ a { text-decoration:none; }
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD:Ticket_SaJo/src/main/resources/templates/event/coupon.html
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
+=======
+				<button type="button" class="btn btn-default" data-dismiss="modal" data-target="#couponFail" data-backdrop="false">Close</button>
+>>>>>>> d704c45d301350c8342c18a37aae73cba545dcc5:Ticket_SaJo/src/main/resources/templates/coupon/coupon.html
 			</div>
 		</div>
 	</div>
@@ -369,7 +376,11 @@ function logingo(){
 	window.location.href ="/signin";
 	
 }
-
+function coupongo(){
+	
+	window.location.href ="/coupon";
+	
+}
 
 
 function addcoupon(couponid, user) {

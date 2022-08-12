@@ -3,32 +3,32 @@
 <meta charset="utf-8">
 <head>
 <!-- plugins:js -->
-<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
-<script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
-<script src="../../vendors/select2/select2.min.js"></script>
+<script th:src="@{/vendors/typeahead.js/typeahead.bundle.min.js}"></script>
+<script th:src="@{/vendors/select2/select2.min.js}"></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../../js/off-canvas.js"></script>
-<script src="../../js/hoverable-collapse.js"></script>
-<script src="../../js/template.js"></script>
-<script src="../../js/settings.js"></script>
-<script src="../../js/todolist.js"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/hoverable-collapse.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/todolist.js}"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
-<script src="../../js/file-upload.js"></script>
-<script src="../../js/typeahead.js"></script>
-<script src="../../js/select2.js"></script>
+<script th:src="@{/js/file-upload.js}"></script>
+<script th:src="@{/js/typeahead.js}"></script>
+<script th:src="@{/js/select2.js}"></script>
 <!-- End custom js for this page-->
 <!-- fullcalender -->
- 	<link href='/fullcalendar/main.css' rel='stylesheet' />
-	<script src='/fullcalendar/main.js'></script>
-	<script src='fullcalendar/core/locales/ko.js'></script>
+ 	<link th:href="@{/fullcalendar/main.css}" rel="stylesheet" />
+	<script th:src="@{/fullcalendar/main.js}"></script>
+	<script th:src="@{/fullcalendar/core/locales/ko.js}"></script>
     <script th:inline="javascript">
     $(document).ready(function(){
     	getCalendarDataInDB()
-
+		
     });
 	function display(data){
        	var calendarEl = document.getElementById('calendar');
@@ -39,7 +39,7 @@
 				  myCustomButton: {
 				    text: '리스트로 보기',
 				    click: function() {
-				    	location.href= origin+'/schedule/list';
+				    	location.href= origin+'/Ticket_SaJo_Admin/schedule/list';
 				    }
 				  }
 				},
@@ -59,7 +59,7 @@
            calendar.render();
            calendar.on('dateClick', function(info) {
         	   console.log('clicked on ' + info.dateStr);
-        	   location.href= origin+'/schedule/add?'+ info.dateStr;
+        	   location.href= origin+'/Ticket_SaJo_Admin/schedule/add?'+ info.dateStr;
         	 });
 
     	}; 
@@ -69,7 +69,8 @@
 	    $.ajax({
 	        
 	        dataType:'json',
-	        url:'/calendar',
+	        url:'/Ticket_SaJo_Admin/calendar', // NCP
+	        //url:'/calendar', // 로컬PC
 	        type:'post',
 	        
 	        success:function(data){

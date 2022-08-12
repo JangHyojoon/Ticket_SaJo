@@ -54,8 +54,7 @@ function inputYMDNumber(obj) {
 			 }
 			 
 			$('.cust').attr({
-				'method':'post',
-				'action':'/cust/update'
+				'method':'post'
 			});
 			$('.cust').submit();
 		});
@@ -77,7 +76,7 @@ function inputYMDNumber(obj) {
                   <p class="card-description">
                     수정할 내용을 적고 버튼을 눌러주세요.
                   </p>
-                  <form class="cust">
+                  <form class="cust" th:action="@{/cust/update}">
                   <div class="form-group">
                       <label for="exampleInputId">아이디</label>
                       <input type="text" class="form-control" th:value="${cust.id}" name="id" id="exampleInputId" placeholder="ID" readonly="readonly">
@@ -124,25 +123,7 @@ function inputYMDNumber(obj) {
         </footer>
         <!-- partial -->
       </div>
-  <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
-  <script src="../../vendors/select2/select2.min.js"></script>
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
-  <script src="../../js/typeahead.js"></script>
-  <script src="../../js/select2.js"></script>
-  <!-- End custom js for this page-->
+  
 </body>
 
 

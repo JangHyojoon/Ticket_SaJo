@@ -53,8 +53,7 @@ function inputYMDNumber(obj) {
 			        return false;
 			 }
 			 $('.coupon').attr({
-					'method':'post',
-					'action':'/coupon/update'
+					'method':'post'
 				});
 				$('.coupon').submit();
 		});
@@ -76,7 +75,7 @@ function inputYMDNumber(obj) {
                   <p class="card-description">
                     쿠폰 정보를 기입해주세요.
                   </p>
-                  <form class="coupon">
+                  <form class="coupon" th:action="@{/coupon/update}">
                   <div class="form-group">
                       <input type="text" class="form-control" th:value="${coupon.id}" name="id" id="exampleInputId" placeholder="Name" readonly="readonly">
                     </div>
