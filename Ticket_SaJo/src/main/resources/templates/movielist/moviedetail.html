@@ -11,7 +11,9 @@
     <!-- Mobile Specific Metas-->
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="telephone=no" name="format-detection">
-    
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Fonts -->
         <!-- Font awesome - icon font -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -224,7 +226,7 @@
                               
                               <!--Second Slide-->
                               <div class="swiper-slide media-video" >
-                                <a th:href="'/video/'+${movie.id}+'.mp4'" class="movie__media-item">
+                                <a type="button" href="#" class="movie__feature-item movie__feature--video" data-toggle="modal" th:data-target="'#'+${movie.id}+'2'">
                                     <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'2.jpg'">
                                 </a>
                               </div>
@@ -314,7 +316,25 @@
 							</div>                          
                         </div>
                         </div>
-
+							<!-- Modal -->
+								  <div class="modal fade" th:id="${movie.id}+'2'" role="dialog">
+								    <div class="modal-dialog">
+								    
+								      <!-- Modal content-->
+								      <div class="modal-content">
+								        <div class="modal-body">
+			                                <video id="modalvideo" controls width="570" >
+											    <source  th:src="'/video/'+${movie.id}+'.mp4'"
+											            >
+											</video>
+								        </div>
+								        <div class="modal-footer">
+								          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        </div>
+								      </div>
+								      
+								    </div>
+								  </div>
                         
 
                     </div>
@@ -335,7 +355,7 @@
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <!-- Bootstrap 3--> 
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
+		
         <!-- Mobile menu -->
         <script src="/js/jquery.mobile.menu.js"></script>
          <!-- Select -->
@@ -483,6 +503,9 @@
              	});
                 var id = $('#id').val();  
                 var title = $('#title').text();
+                $('#'+id+'2').on('hidden.bs.modal', function () {
+       			 $('#modalvideo').trigger('pause');
+       			});
                 getData(id);
                 getData2(id);
                 document.getElementById('plain').addEventListener('click', () => {
