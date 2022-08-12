@@ -175,7 +175,7 @@ text-align: center;
                   <p class="card-description">
                     2. 상영회차와 시작시간을 입력해주세요
                   </p>
-                  <form class="check" th:action="@{/updatedetailimpl}">
+                  <form class="check" th:action="@{/schedule/updatedetailimpl}">
 	                  <div class="form-group">
 	               		  <input type="hidden" th:id = sid th:name= sid th:value="${sid}">
 	                      <input type="hidden" class="form-control" th:each = "num:${#numbers.sequence(1,10)}" th:id="'dv'+${num}" th:name="'dv'+${num}">
