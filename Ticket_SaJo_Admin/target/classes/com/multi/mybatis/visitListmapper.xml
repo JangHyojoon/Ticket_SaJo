@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.VisitListMapper">
+
+	<select id="select" parameterType="Date"
+		resultType="visitListVO">
+		SELECT * FROM visitList WHERE id=#{id}
+	</select>
+	<select id="selectall" resultType="visitListVO">
+		SELECT * FROM visitList
+	</select>
+
+	<!-- 0812 안원영 추가 - 7일간의 방문객 정보 가져오기 -->
+	<select id="VisitList7Days" resultType="visitListVO">
+		SELECT * FROM visitList
+		WHERE date >= adddate(sysdate(), interval -8 DAY)
+		ORDER BY date
+		LIMIT 0, 7
+	</select>
+	
+	<!-- 0812 안원영 추가 - 7일간의 방문객 합가져오기 -->
+	<select id="VisitListAvg" resultType="int">
+		SELECT CONVERT(AVG(count),SIGNED) FROM visitList
+	</select>
+
+	<insert id="insert" parameterType="visitListVO">
+		INSERT INTO visitList VALUES
+		(#{date},#{count})
+	</insert>
+	<update id="update" parameterType="visitListVO">
+		UPDATE visitList SET
+		count=#{count} WHERE date=#{date}
+	</update>
+
+	<delete id="delete" parameterType="visitListVO">
+		DELETE FROM visitList WHERE
+		date=#{date}
+	</delete>
+	
+	
+</mapper>

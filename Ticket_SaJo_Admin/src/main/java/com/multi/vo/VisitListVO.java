@@ -15,11 +15,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class VisitVO {
-	private String id;
-	private int count; 
-	
+public class VisitListVO {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date date;
+	private int count; 
+	
 	
 }
