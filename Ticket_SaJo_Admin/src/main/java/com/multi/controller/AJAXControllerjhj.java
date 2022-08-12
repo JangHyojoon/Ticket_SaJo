@@ -27,7 +27,7 @@ public class AJAXControllerjhj {
 	SchedulesBiz sbiz;
 	@Autowired
 	ScheduleController sc;
-	@RequestMapping("calendar")
+	@RequestMapping("/calendar")
 	public Object checkid() {
 		List<SchedulesVO> slist = null;
 		List<Detail_SchedulesVO> dslist = null;

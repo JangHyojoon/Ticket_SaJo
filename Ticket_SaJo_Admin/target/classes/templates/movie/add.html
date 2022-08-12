@@ -49,8 +49,7 @@ function inputYMDNumber(obj) {
 			        return false;
 			 }
 			 $('.movie').attr({
-					'method':'post',
-					'action':'/movie/addimpl'
+					'method':'post'
 				});
 				$('.movie').submit();
 		});
@@ -72,7 +71,7 @@ function inputYMDNumber(obj) {
                   <p class="card-description">
                     영화 정보 및 포스터를 추가해 주세요.
                   </p>
-                  <form class="movie" enctype="multipart/form-data">
+                  <form class="movie" enctype="multipart/form-data" th:action="@{/movie/addimpl}">
                     <div class="form-group">
                       <label for="exampleSelectGenre">장르</label>
                         <select name="gid" class="form-control" id="exampleSelectGenre">
@@ -150,7 +149,7 @@ function inputYMDNumber(obj) {
         <!-- partial -->
       </div>
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
@@ -164,7 +163,7 @@ function inputYMDNumber(obj) {
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
+  <script th:src="@{/js/file-upload.js}"></script>
   <script src="../../js/typeahead.js"></script>
   <script src="../../js/select2.js"></script>
   <!-- End custom js for this page-->

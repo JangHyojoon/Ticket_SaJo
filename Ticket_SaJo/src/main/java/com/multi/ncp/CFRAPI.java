@@ -22,8 +22,8 @@ public class CFRAPI {
  	 String clientSecret = "5D8Q8uZffMeO4tqndjAaSOIscimr6QC9YOxRygiL";// 애플리케이션 클라이언트 시크릿값";
  	 
  	 public Object cfrapi (String imgname) {
- 		String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","cfr").toString(); //내 컴퓨터
- 		//String imgpath = "/root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/cfr"; //ncp
+ 		//String imgpath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static","images","cfr").toString(); //내 컴퓨터
+ 		String imgpath = "/root/apache-tomcat-8.5.27/webapps/ROOT/WEB-INF/classes/static/images/cfr"; //ncp
  		Object obj = null;
       
         try {
