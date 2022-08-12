@@ -1,5 +1,6 @@
 package com.multi.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +15,13 @@ import com.multi.biz.CustBiz;
 import com.multi.biz.MycouponBiz;
 import com.multi.biz.PointlistBiz;
 import com.multi.biz.ReservationBiz;
+import com.multi.biz.TicketBiz;
+import com.multi.vo.CouponVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.MycouponVO;
 import com.multi.vo.PointlistVO;
 import com.multi.vo.ReservationVO;
+import com.multi.vo.TicketVO;
 
 
 @Controller
@@ -35,6 +39,8 @@ public class MypageController {
    @Autowired
    MycouponBiz cbiz;
    
+   @Autowired
+   TicketBiz tbiz;
  
    @RequestMapping("/mypage")
 
@@ -47,6 +53,7 @@ public class MypageController {
 	   CustVO cust = (CustVO) session.getAttribute("user");
 	      try {
 	         list1 = rbiz.selectcust(cust.getId());
+	         Collections.reverse(list1);
 	         list2 = pbiz.selectpoint(cust.getId());
 	         list3 = cbiz.selectmycoupon(cust.getId());
 	         couponcnt = cbiz.selectcnt(cust.getId());
@@ -174,4 +181,32 @@ public class MypageController {
       m.addAttribute("center", "mypage/mycouponlist");
       return "index";
    }
+   @RequestMapping("/reservation")
+	public String reservation(Model m,int rid) {
+		
+		ReservationVO rv = null;
+		List<TicketVO> tlist =null;
+	
+		
+			try {
+				rv = rbiz.get(rid);
+				tlist = tbiz.selectrid(rid);
+				
+				
+				
+				m.addAttribute("tlist", tlist);
+				m.addAttribute("rv", rv);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+
+		
+		
+		m.addAttribute("center", "/mypage/reservation" );
+		m.addAttribute("header", "header");
+		m.addAttribute("footer", "footer");
+		return "index";
+	}
 }
