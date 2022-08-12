@@ -908,13 +908,13 @@ select * from ticket;
 
 
 -- coupon Insert
-INSERT INTO coupon VALUES (null,'event01','2022-06-01','2022-09-30','snow', 1000,'모든 고객에게 제공되는 쿠폰 입니다. ');
-INSERT INTO coupon VALUES (null,'event02','2022-06-01','2022-07-30','users', 2000,'여름기념 쿠폰 입니다. ');
-INSERT INTO coupon VALUES (null,'event03','2022-07-20','2022-08-20','wizard', 3000,'깜짝 할인 이벤트 쿠폰 입니다.');
-INSERT INTO coupon VALUES (null,'event04','2022-07-20','2022-08-20','smile', 4000,'반짝 할인 이벤트 쿠폰 입니다.');
-INSERT INTO coupon VALUES (null,'event05','2022-06-20','2022-08-20','users', 2000,'봄 기념 쿠폰 입니다. ');
-INSERT INTO coupon VALUES (null,'event06','2022-07-25','2022-08-20','wizard', 30000,'코로나 기원 쿠폰 입니다.');
-INSERT INTO coupon VALUES (null,'event07-BIG sale','2022-06-25','2022-07-25','gift', 10000,'Big Sale 쿠폰입니다. ');
+INSERT INTO coupon VALUES (null,'event01','2022-06-01','2022-09-30','snow', 1000,'모든 고객에게 제공되는 쿠폰');
+INSERT INTO coupon VALUES (null,'event02','2022-06-01','2022-07-30','users', 2000,'여름기념 쿠폰');
+INSERT INTO coupon VALUES (null,'event03','2022-07-20','2022-08-20','wizard', 3000,'깜짝 할인 이벤트 쿠폰');
+INSERT INTO coupon VALUES (null,'event04','2022-07-20','2022-08-20','smile', 4000,'반짝 할인 이벤트 쿠폰');
+INSERT INTO coupon VALUES (null,'event05','2022-06-20','2022-08-20','users', 2000,'봄 기념 쿠폰');
+INSERT INTO coupon VALUES (null,'event06','2022-07-25','2022-08-20','wizard', 30000,'코로나 기원 쿠폰');
+INSERT INTO coupon VALUES (null,'event07-BIG sale','2022-06-25','2022-07-25','gift', 10000,'Big Sale');
 SELECT * FROM coupon;
 
 
@@ -932,6 +932,16 @@ SELECT * FROM mycoupon;
 INSERT INTO admin VALUES('master','111111');
 INSERT INTO code VALUES(1,LEFT(UUID(),8));
 
+
+-- visitList
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -1 DAY),55);
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -2 DAY),73);
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -3 DAY),22);
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -4 DAY),104);
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -5 DAY),126);
+INSERT INTO visitList VALUES(adddate(sysdate(), interval -6 DAY),43);
+
+SELECT * FROM visitList;
 
 
 

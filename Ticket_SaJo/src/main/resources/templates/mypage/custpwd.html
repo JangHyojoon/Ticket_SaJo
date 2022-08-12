@@ -164,17 +164,13 @@ padding:50px;
 float: center;
 text-align: center;
 }
-h1, h2, h3{
+h1, h2, h3, h4{
 text-align: center;
 }
 .field-wrap{
 margin-top:100px;
 }
-p{
-font-size:13px;
-text-align: center;
-margin-right: 400px;
-}
+
 .btn-box{
 margin:auto;
 text-align: center;
@@ -217,10 +213,10 @@ color: #4C4145;
 
    <h3 id="h3">비밀번호 변경</h3>
    <br>
-   <p id="p"> 안전한 비밀번호로 내 정보를 보호하세요</p>
-   <p id="p">다른 아이디/사이트에서 사용한 적 없는 비밀번호</p>
-   <p id="p"> 이전에 사용한 적 없는 비밀번호</p>
-</div>
+   <h4> 안전한 비밀번호로 내 정보를 보호하세요</h4>
+   <h4>다른 아이디/사이트에서 사용한 적 없는 비밀번호</h4>
+   <h4> 이전에 사용한 적 없는 비밀번호</h4>
+	
 
 
 
@@ -265,14 +261,14 @@ color: #4C4145;
 	      
 	      
 	</form>
-</div>   
+</div>  
       <div class="btn-box">
        
       <a href="#" class="btn btn-md btn--warning btn--wider" id="modifybtn">비밀번호 수정</a>
       <a href="#"  class="btn btn-md btn--warning btn--wider" onclick="Back()">뒤로 가기</a>
       <span id= "modifyspan"></span>
      </div>
-     
+</div>     
 
 </body>
 <body th:unless="${session.user != null}">
