@@ -11,7 +11,46 @@
 <!-- Mobile Specific Metas-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="telephone=no" name="format-detection">
+<!-- Mobile Specific Metas-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="telephone=no" name="format-detection">
 
+<!-- Fonts -->
+<!-- Font awesome - icon font -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Roboto -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700'
+	rel='stylesheet' type='text/css'>
+
+<!-- Stylesheets -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- jQuery UI -->
+<link
+	href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"
+	rel="stylesheet">
+
+<!-- Mobile menu -->
+<link href="/css/gozha-nav.css" rel="stylesheet" />
+<!-- Select -->
+<link href="/css/external/jquery.selectbox.css" rel="stylesheet" />
+<!-- Swiper slider -->
+<link href="/css/external/idangerous.swiper.css" rel="stylesheet" />
+
+<!-- Custom -->
+<link href="/css/style.css?v=1" rel="stylesheet" />
+
+<!-- Modernizr -->
+<script src="/js/external/modernizr.custom.js"></script>
+<!-- Ajax -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 <style>
@@ -64,7 +103,8 @@
 								<tr class="rates rates--top"
 									th:each="movie,index : ${starSortList}">
 									<td class="rates__obj"><a href="#" class="rates__obj-name"
-										th:text="(${index.index}+1+${mnum})+'. '+${movie.title}" th:href="@{/movielist/detail(id=${movie.id})}"></a></td>
+										th:text="(${index.index}+1+${mnum})+'. '+${movie.title}"
+										th:href="@{/movielist/detail(id=${movie.id})}"></a></td>
 									<td class="rates__vote" th:text="'실관람평 : '+ ${movie.rcnt}+' 명'">
 										reviews</td>
 									<td class="rates__result" th:text="${movie.star}">5.0</td>
@@ -89,7 +129,6 @@
 								</tr>
 							</table>
 						</div>
-
 						<div class="pagination paginatioon--full coloum-wrapper">
 							<a th:href="@{/reviewrank(mnum=${mnum}-5)}"
 								th:if="${mnum}-5 >= 0" class="pagination__prev">이전</a> <a

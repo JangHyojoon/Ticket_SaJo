@@ -22,8 +22,14 @@
 <!-- Modernizr -->
 <script src="js/external/modernizr.custom.js"></script>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+	
+ 
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	
 
 <style>
 a { text-decoration:none; }
@@ -98,8 +104,11 @@ a { text-decoration:none; }
 }
 
 
-
-
+@media (max-width: 560px) {
+  .offers-wrap {
+    width: 100%;
+  }
+ }
 
 .search {
   position: relative;
@@ -329,7 +338,7 @@ a { text-decoration:none; }
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="couponOk_redirect()">Close</button>
 			</div>
 		</div>
 	</div>
@@ -352,7 +361,7 @@ a { text-decoration:none; }
 			
 			<div class="modal-footer">
 
-				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo(couponFail)">Close</button>
 
 
 			</div>
@@ -371,8 +380,12 @@ function logingo(){
 	window.location.href ="/signin";
 	
 }
-function coupongo(){
+function coupongo(name){
+	$('.modal-backdrop').remove();
+	//$('#'+name).modal('hide');
 	
+}
+function couponOk_redirect(name){
 	window.location.href ="/coupon";
 	
 }
@@ -382,9 +395,11 @@ function addcoupon(couponid, user) {
 	if(user == null){// 유저 정보가 없을경우 실행 
 		$('#Loginerror').modal('show'); 
 		$('#modal'+couponid).modal('hide');
+		$('.modal-backdrop').remove();// 수정 
 		
 	}else{// 유저 정보가 있을경우 실행 
 		$('#modal'+couponid).modal('hide');
+		$('.modal-backdrop').remove();// 수정 
 		userCouponCheck(couponid);
 	}
 }
@@ -404,6 +419,7 @@ function userCouponCheck(couponid){
 function keepcoupon(data){
 	if(data == "1"){// 발급 성공
 		$('#couponOk').modal('show'); 
+		
 	}else if(data == "0"){// 발급 실패
 		$('#couponFail').modal('show'); 
 	}else{// 오류 났을 경우 
