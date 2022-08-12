@@ -3152,7 +3152,7 @@ input[type="button"].btn-block {
   background-color: #EEEEEE;
   background-repeat: repeat;
   overflow: hidden;
-  margin-top: 60px;
+
 }
 .select-area {
   background-color: #f5f5f5;
@@ -3339,7 +3339,7 @@ input[type="button"].btn-block {
   min-height: 55px;
 }
 ul#navigation {
-  margin-right: 280px;
+
 }
 ul#navigation a {
   font: 13px 'Noto Sans KR', sans-serif;
