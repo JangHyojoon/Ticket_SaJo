@@ -9,7 +9,12 @@
 	width: 100%;
 	height: 100%;
 }
+@media (max-width: 767px) {
+  .hidden-xs {
+    /* display: none !important; */
 
+  }
+}
 
 .star-ratings {
 	color: #aaa9a9;
@@ -362,8 +367,27 @@
 
 		<div style="margin-top:100px;"class="col-sm-10 col-sm-offset-1 movie-best__rating">평점이 높은 영화</div>
 		<div class="col-sm-12 change--col" id="dropdown_movie_info">
+<!-- 			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"
+				th:if="${index.index}<2" id="starsortimgdiv">
+				<a th:href="@{/movielist/detail(id=${movie.id})}"> <img
+					class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"></a> <span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+					</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
+					</li>
+					<li class="last-block"><a th:href="@{/movielist/detail(id=${movie.id})}"
+						class="slide__link">more</a></li>
+				</ul>
+			</div> -->
 			<div class="movie-beta__item" th:each="movie,index : ${starSortList}"
-				th:if="${index.index}<3" id="starsortimgdiv">
+				th:if="${index.index}==0" id="starsortimgdiv">
 				<a th:href="@{/movielist/detail(id=${movie.id})}"> <img
 					class="starsortimg" alt=''
 					th:src="'/images/movie/' + ${movie.posterimg1}"></a> <span
@@ -381,8 +405,46 @@
 						class="slide__link">more</a></li>
 				</ul>
 			</div>
-			<div class="movie-beta__item hidden-xs hidden-sm"
-				th:each="movie,index : ${starSortList}" th:unless="${index.index}<3">
+			<div class="movie-beta__item second--item" th:each="movie,index : ${starSortList}"
+				th:if="${index.index}==1" id="starsortimgdiv">
+				<a th:href="@{/movielist/detail(id=${movie.id})}"> <img
+					class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"></a> <span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+					</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
+					</li>
+					<li class="last-block"><a th:href="@{/movielist/detail(id=${movie.id})}"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item third--item" th:each="movie,index : ${starSortList}"
+				th:if="${index.index}==2" id="starsortimgdiv">
+				<a th:href="@{/movielist/detail(id=${movie.id})}"> <img
+					class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"></a> <span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+					</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
+					</li>
+					<li class="last-block"><a th:href="@{/movielist/detail(id=${movie.id})}"
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+			<div class="movie-beta__item hidden-xs"
+				th:each="movie,index : ${starSortList}" th:if="${index.index}==3">
 				<a th:href="@{/movielist/detail(id=${movie.id})}"><img
 					class="starsortimg" alt=''
 					th:src="'/images/movie/' + ${movie.posterimg1}"> </a><span
@@ -400,6 +462,44 @@
 						class="slide__link">more</a></li>
 				</ul>
 			</div>
+			<div class="movie-beta__item hidden-xs hidden-sm"
+				th:each="movie,index : ${starSortList}" th:if="${index.index}>3">
+				<a th:href="@{/movielist/detail(id=${movie.id})}"><img
+					class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"> </a><span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+					</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
+					</li>
+					<li class="last-block"><a th:href=@{/movielist/detail(id=${movie.id})}
+						class="slide__link">more</a></li>
+				</ul>
+			</div>
+<!-- 			<div class="movie-beta__item hidden-xs"
+				th:each="movie,index : ${starSortList}" th:unless="${index.index}<2">
+				<a th:href="@{/movielist/detail(id=${movie.id})}"><img
+					class="starsortimg" alt=''
+					th:src="'/images/movie/' + ${movie.posterimg1}"> </a><span
+					class="best-rate" th:text="${movie.star}">5.0</span>
+
+				<ul class="movie-beta__info">
+					<li><span class="best-voted" th:text="${movie.title}">
+					</span></li>
+					<li>
+						<p class="movie__time" th:text="${movie.runningtime}">min</p>
+						<p th:text="${movie.gname}"></p>
+						<p th:text="'실관람평 : ' + ${movie.rcnt} + ' 명의 리뷰가 있습니다!'"></p>
+					</li>
+					<li class="last-block"><a th:href=@{/movielist/detail(id=${movie.id})}
+						class="slide__link">more</a></li>
+				</ul>
+			</div> -->
 		</div>
 		<div class="col-sm-10 col-sm-offset-1 movie-best__check" id="starsortdiv"> 오늘 상영작 확인하러 가기 </div>
 	</div>
