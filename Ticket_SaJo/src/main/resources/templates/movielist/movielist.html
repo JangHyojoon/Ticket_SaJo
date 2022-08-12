@@ -98,9 +98,14 @@
 
   		console.log(dateString);
   		var mid;
+
+  		$('[name=modalmodal]').on('hidden.bs.modal', function (e) {
+  			$('[name=modalvideo]').trigger('pause');
+  		});
   		$('input[name=datepicker]').click(function(){
   			mid = $(this).attr('placeholder');
   		});
+  		
 		$('.movie__show-btn').one('click',function(){
 			mid = $(this).attr('id');
 			$('#datepicker'+mid).datepicker('setDate', 'today');
@@ -252,7 +257,7 @@
 							    </div>
                                 <button type="button" class="movie__feature-item movie__feature--video" data-toggle="modal" th:data-target="'#'+${m.id}+'2'">&nbsp;</button>
                                 <!-- Modal -->
-								  <div class="modal fade" th:id="${m.id}+'2'" role="dialog">
+								  <div class="modal fade" name="modalmodal" th:id="${m.id}+'2'" role="dialog">
 								    <div class="modal-dialog">
 								    
 								      <!-- Modal content-->
@@ -262,13 +267,13 @@
 								          <h4 class="modal-title" align="center" th:text="${m.title}+'의 동영상'"></h4>
 								        </div>
 								        <div class="modal-body">
-			                                <video controls width="570" >
-											    <source autoplay="autoplay" th:src="'/video/'+${m.id}+'.mp4'"
+			                                <video controls width="570" name="modalvideo" >
+											    <source th:src="'/video/'+${m.id}+'.mp4'"
 											            >
 											</video>
 								        </div>
 								        <div class="modal-footer">
-								          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="">Close</button>
 								        </div>
 								      </div>
 								      

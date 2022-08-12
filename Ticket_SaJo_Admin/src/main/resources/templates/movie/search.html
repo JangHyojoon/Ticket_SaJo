@@ -141,10 +141,10 @@ $(document).ready(function(){
                             $ 77.99
                           </td>
                           <td>
-                            <img th:src="'/images/'+${m.posterimg1}" alt="img">
+                            <img th:src="@{'/images/'+${m.posterimg1}}" alt="img">
                           </td>
                           <td>
-                            <img th:src="'/images/'+${m.posterimg2}" alt="img">
+                            <img th:src="@{'/images/'+${m.posterimg2}}" alt="img">
                           </td>
                           <td th:text="${m.country}">
                             May 15, 2015
