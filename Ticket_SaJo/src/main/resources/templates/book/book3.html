@@ -135,10 +135,7 @@
          buyer_tel: "010-0000-0000",     
      }, function (rsp) { // callback
          if (rsp.success) {
-        	 $('.book3').attr({
- 				'method':'post',
- 				'action':'book3impl'
- 			});
+
  			$('.book3').submit();
              
          } else {
@@ -151,10 +148,7 @@
 	    }
 		*/
 		 function requestPay() {
-			 $('.book3').attr({
- 				'method':'post',
- 				'action':'book3impl'
- 			});
+
  			$('.book3').submit();
 		}
 		
@@ -166,11 +160,7 @@
     	//이전 버튼 클릭
     	
 		$('#backbtn').click(function(){
-			$('book1impl').attr({
-				'method':'post',
-				'action':'book1impl'
-			});
-			$('book1impl').submit();
+			window.history.back()
 			
 		
 		});
@@ -178,7 +168,24 @@
  		
 
 </script>
+<style>
+#usepoint,#selectCoupon{
+width: 100%;
+max-width:200px;
+font-size:12px;
+padding:0px;
+height: 30px;
+outline: none;
+margin: 0;
+box-sizing: border-box;
+display: inline-block;     
+vertical-align: middle;
+border: 1px solid #dddddd;    
+color: #333333;
+border-radius: 5px;
 
+}
+</style>
 
  
 <body th:if="${session.user != null}">
@@ -196,12 +203,12 @@
                 
                
 	
-          <button onclick="requestPay()">결제하기</button>
+   
                
                     <h2 class="page-heading">예매정보</h2>
                  <div>
 	                 <div class="film-images col-lg-3"  th:id="${sv.mid} ? ${sv.mid}" >
-					 	<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${sv.posterimg1}}" style="width:260px; height:400px; margin:10px;justify-content: center;">
+					 	<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'../images/movie/'+${sv.posterimg1}}" style="width:260px; height:400px; margin:10px;justify-content: center;">
 					 </div>
                      <ul class="book-result col-lg-8" style="display: block;">
                         <li class="book-result__item col-sm-3">영화</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:text="${dsv.title}" id='titletext'>영화</span></li>
@@ -213,7 +220,7 @@
                         <li class="book-result__item col-sm-3">좌석</li><li class="book-result__item"> <span class="book-result__count booking-ticket" th:each="s:${seatlist}"th:text="${s}" >좌석</span></li>
                       
                         <li class="book-result__item col-sm-3">사용할 쿠폰</li>	<li class="book-result__item">
-	                        <select th:onchange="selectCoupon()" id="selectCoupon" class="book-result__count booking-ticket"  >
+	                        <select th:onchange="selectCoupon()" id="selectCoupon" class="book-result__count booking-ticket">
 								<option value="0" id="coupon 0">선택</option>
 								<option th:each="mycoupon,index : ${mycouponlist}" th:if="${mycoupon.sale} < ${price}" 
 									th:value="${mycoupon?.sale}" th:id="'coupon '+${mycoupon.id}"
@@ -222,7 +229,7 @@
                         </li>
                         <li class="book-result__item col-sm-3">적립금</li>
                         <li class="book-result__item"> 
-                       		<form class="book3">
+                       		<form class="book3" method='post' th:action="@{/book3impl}">
 								<input type='hidden' name='sid' th:value="${dsv.sid}" readonly>
 								<input type='hidden' name='mcnt' th:value="${dsv.mcnt}" readonly>
 						        <input type='hidden' name='title'  th:value="${dsv.title}" readonly>
@@ -235,19 +242,23 @@
 								
 							
 							
-							<input id="usepoint" name="usepoint" type="number" oninput="selectPoint()" min="0" value="0" style="width:100px;">
-							<span style="font-size:14px;">보유한 적립금 : </span>
+							<input id="usepoint" name="usepoint" type="number" oninput="selectPoint()" min="0" value="0" style="width:100%;max-width:80px;height:30px">
+							<span style="font-size:12px;">보유한 적립금 : </span>
 					
-							<span th:text="${cust.point}" id="mypoint" style="font-size:14px;"></span>
+							<span th:text="${cust.point}" id="mypoint" style="font-size:12px;"></span>
 							</form>
 						</li>
                     </ul>
                  </div> 
                  
                      
-                  <ul class="book-result col-lg-8" style="display: block;margin-top:30px;">
-                                <li class="book-result__item col-sm-3">최종 금액: </li><li class="book-result__item"> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}+'원'">가격</span></li>
-        		  </ul>
+                  <div >
+                  
+                 
+	                  <ul class="book-result col-lg-8" style="display: block;margin-top:30px;">
+	                                <li class="book-result__item col-sm-3">최종 금액: </li><li class="book-result__item "> <span class="book-result__count booking-cost" id="totalPrice" th:text="${price}+'원'">가격</span></li>
+	        		  </ul>
+        		  </div>
         		  <span id="hiddentotal"  style="display:none;" th:text="${price}">히든토탈</span>
            
                    

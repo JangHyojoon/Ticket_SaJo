@@ -130,7 +130,7 @@
 				  cancelButtonText: '취소'
 				}).then((result) => {
 				  if (result.isConfirmed) {
-					  location.replace('signin');
+					  location.replace('/signin');
 				  }
 				})
 		}else {
@@ -201,7 +201,7 @@
 					
 					<div class="swiper-slide" th:each = "s : ${scheduleslist}"> 
 						<div class="film-images"  th:id="${s.mid} ? ${s.mid}">
-							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'images/movie/'+${s.posterimg1}}" width="360" height="600">
+							<img alt='' src="images/movie/movie-sample1.jpg" th:src="@{'../images/movie/'+${s.posterimg1}}" width="360" height="600">
 						</div>
 						<p class="choose-film__title" th:text="${s.title}">The Fifth Estate</p>
 
@@ -232,7 +232,7 @@
                    </div>
 			</div>
 		</section>
-       <form class="book1" method='post' action='book1impl' id="book1">
+       <form class="book1" method='post' th:action='@{/book1impl}' id="book1">
 						<input type='hidden' name='mid' class="mid" value="">
 						<input type='hidden' name='date' class="date" value="">
 						<input type='hidden' name='time' class="time" value="">

@@ -108,6 +108,10 @@
 			disconnect();
 			$('.book2').submit();					
 		};
+		function backbtn(){
+			window.history.back()
+
+		}
 			var blist = [[${blist}]];
 			
 			
@@ -216,7 +220,7 @@
                 
  		</section>
        </div>
-            <form class="book2" id="book2" method='post' action='book2impl'>
+            <form class="book2" id="book2" method='post' th:action="@{/book2impl}">
 	            <input type='hidden' name='sid' th:value="${book1info.sid}">
 				<input type='hidden' name='mcnt' th:value="${book1info.mcnt}">
 		        <input type='hidden' name='starttime' th:value="${book1info.starttime}">
@@ -231,7 +235,7 @@
         <div class="clearfix"></div>
 
             <div class="booking-pagination booking-pagination--margin">
-                    <a th:href="@{book1}" class="booking-pagination__prev" id="prevbtn">
+                    <a href="#" onclick="backbtn();" class="booking-pagination__prev" id="prevbtn">
                         <span class="arrow__text arrow--prev">이전 페이지</span>
                         <span class="arrow__info">영화 선택</span>
                     </a>

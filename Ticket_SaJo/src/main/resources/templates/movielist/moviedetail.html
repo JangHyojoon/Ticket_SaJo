@@ -155,7 +155,7 @@
 </style>
 <body>
         <!-- Main content -->
-        <section class="container">
+        <section class="container" style="margin-top:50px">
             <div class="col-lg-12">
                 <div class="movie">
                     <h2 class="page-heading" id="title" th:text="${movie.title}">The Hobbit: An Unexpected Journey</h2>
@@ -223,7 +223,7 @@
                               </div>
                               
                               <!--Second Slide-->
-                              <div class="swiper-slide media-video">
+                              <div class="swiper-slide media-video" >
                                 <a th:href="'/video/'+${movie.id}+'.mp4'" class="movie__media-item">
                                     <img alt='' class="mvitem" th:src="'/images/movie/'+${movie.id}+'2.jpg'">
                                 </a>

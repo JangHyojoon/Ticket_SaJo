@@ -171,8 +171,8 @@ $(document).ready(function(){
 </script>
 <style>
 .text-center{
-
-width:700px;
+width:100%;
+max-width:500px;
 margin:auto;
 padding:50px;
 float: center;
@@ -194,6 +194,23 @@ line-height: 20px;
 color:#4C4145;
 
 }
+.input{
+width: 100%;
+height: 30px;
+outline: none;
+margin: 0;
+box-sizing: border-box;
+display: inline-block;     
+vertical-align: middle;
+border: 1px solid #dddddd;    
+color: #999999;
+border-radius: 5px;
+}
+.control-label{
+ width: 100%;
+color: #4C4145;
+
+}
 </style>
 
 <body th:if="${session.user == null}">
@@ -206,71 +223,81 @@ color:#4C4145;
 	      
 	      
 	      <div class="form-inline form-group" >
-	         <label for="id" class="col-sm-3 control-label">아이디 </label> 
-	         <div class="col-sm-9">
-	         <input class="form-control input" id="id" type='text' name='id' style="width:300px;height:30px;">
+	      	 <div class="col-xs-3">
+	      		 <label for="id" class="control-label">아이디</label> 
+	      	 </div>
+	         <div class="col-xs-9">
+	         <input class="input" id="id" type='text' name='id'>
 	         <input id="used" value="true" type='hidden' name='used'>       
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="ispan">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="ispan">&nbsp</span></div>
 	         
 	      </div>
 	     
 	      <div class="form-inline form-group" >
-	         <label for="pwd" class="col-sm-3 control-label">비밀번호 </label> 
-	         <div class="col-sm-9">
-	         <input class="form-control" id="pwd" type='password' name='pwd' style="width:300px;height:30px;"> 
+	      	 <div class="col-xs-3">
+	      		 <label for="pwd" class="control-label">비밀번호</label> 
+	      	 </div>
+	         
+	         <div class="col-xs-9">
+	         <input class="input" id="pwd" type='password' name='pwd'> 
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="pspan">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="pspan">&nbsp</span></div>
 	      </div>
 	   
 	      <div class="form-inline form-group" >
-	         <label for="pwdcheck" class="col-sm-3 control-label">비밀번호 확인 </label> 
-	         <div class="col-sm-9">
-	        	 <input class="form-control" id="pwdcheck" type='password' name='pwdcheck' style="width:300px;height:30px;"> 
+	         <div class="col-xs-3">
+	      		 <label for="pwdcheck" class="control-label">비밀번호 확인</label> 
+	      	 </div>
+	         <div class="col-xs-9">
+	        	 <input class="input" id="pwdcheck" type='password' name='pwdcheck'> 
 
 	
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="pspan2">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="pspan2">&nbsp</span></div>
 	      </div>
 	   
 	   
 	   
 	   
 	      <div class="form-inline form-group" >
-	         <label for="name" class="col-sm-3 control-label">이름 </label> 
-	         <div class="col-sm-9">
-	        	 <input class="form-control" id="name" type='text' name='name' style="width:300px;height:30px;"> 
+	         <div class="col-xs-3">
+	      		 <label for="name" class="control-label">이름</label> 
+	      	 </div>	         <div class="col-xs-9">
+	        	 <input class="input" id="name" type='text' name='name'> 
 	
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="nspan">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="nspan">&nbsp</span></div>
 	      </div>
 	      
 	  	  <div class="form-inline form-group" >
-	         <label for="birth" class="col-sm-3 control-label">생년월일 </label> 
-	         <div class="col-sm-9">
-	        	 <input class="form-control" id="birth" type="date" name='birth' style="width:300px;height:30px;"> 
+	         <div class="col-xs-3">
+	      		 <label for="birth" class="control-label">생년월일</label> 
+	      	 </div>	         <div class="col-xs-9">
+	        	 <input class="input" id="birth" type="date" name='birth'> 
 	
 	
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="bspan">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="bspan">&nbsp</span></div>
 	      </div>
 	      <input type="hidden" id="point" value=0 readonly="readonly">
 	      <div class="form-inline form-group" >
-	         <label for="sex" class="col-sm-3 control-label">성별 </label> 
-	         <div class="col-sm-9">
-	        	 <select class="form-control" id="sex" name="sex" style="width:300px;height:30px;">
+	         <div class="col-xs-3">
+	      		 <label for="sex" class="control-label">성별</label> 
+	      	 </div>	         <div class="col-xs-9">
+	        	 <select class="input" id="sex" name="sex">
 		          	 <option value="0">선택</option>
 		          	 <option value="woman">여성</option>
 		             <option value="man">남성</option>       
 	        	 </select> 
 	         </div>
-	         <div class="col-sm-3"></div>
-	         <div class="col-sm-9"><span id="sspan">&nbsp</span></div>
+	         <div class="col-xs-3"></div>
+	         <div class="col-xs-9"><span id="sspan">&nbsp</span></div>
 	      </div>
 	
 	      </form>
