@@ -44,18 +44,32 @@
    }
    
    #h4{
-      text-align: center;
+     text-align: center;
    }
    
-   #table{
-   	margin-left: 150px;
+    #table{
+   	margin-left: 90px;
    	margin-right: 50px;
    }
+   
+   table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   width: 80%;
+	}
+	
+   th, td {
+  text-align: center;
+  padding: 8px;
+   }
+   
+   tr:nth-child(even){background-color: #f2f2f2}
 </style>
 <div class="container" th:if="${not #lists.isEmpty(reservationlist)}" style="margin-top:20px">
-   <strong><h4 id="h4">아이디<span th:text="${session.user.id}"></span>님의 예매내역입니다.</h4></strong>
+   <strong><h4 id="h4"><span th:text="${session.user.name}"></span>님의 예매내역입니다.</h4></strong>
    <br>
    <br>
+   <div style="overflow-x:auto">
 <table id="table">
    <thead>
       <tr><th>예매 번호</th><th>총 인원</th><th>총 가격</th><th>구매한 날짜</th><th>영화 제목</th></tr>
@@ -71,6 +85,11 @@
    </tbody>
 </table>
 </div>
+</div>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

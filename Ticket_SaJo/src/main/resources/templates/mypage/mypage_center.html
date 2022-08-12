@@ -48,12 +48,15 @@
 	#mybox{
 	border: 1px solid; padding:10px;
 	}
+	
+	#myinfo{
+	border: 1px solid; padding:10px;
+	}
 
 </style>
 <body th:if="${session.user != null}">  
 
         <!-- Main content -->
-
 		<div class="field-wrap" id="box" style="margin-top:135px">
 			 <img src = "/img/user.png" width="50"  style="margin-left:120px">
 			 <span th:text="${session.user.name}"></span>님  
@@ -70,7 +73,8 @@
 					<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
 					포인트 내역이 없습니다.
 					</div>
-					         
+
+					<br>     
 		        <div class="wrapper">
 		          	<strong><a href="/mycouponlist">내 쿠폰 내역</a></strong>
 		        </div>
@@ -85,10 +89,10 @@
 					<br>
 					<br>
 				<div class="field-wrap" id="mybox">
-					<div class="field-wrapper">
+					<div class="wrapper">
 			         	<strong><a href="/myreservationlist">내 예매 내역</a></strong>
 			        </div>
-		         		<div class="wrapper" th:if="${not #lists.isEmpty(reservationlist)}" style="margin-left:100px">					
+		         		<div class="wrapper" th:if="${not #lists.isEmpty(reservationlist)}">					
 							<table>
 							   <thead>
 							      <tr><th>예매 번호</th><th>영화 제목</th></tr>
@@ -107,9 +111,10 @@
 					</div>
 					<br>
 					<br>
-					<div class="field-wrap"  style="margin-left:680px">
+
+					<div id="myinfo" class="field-wrap">
 						<div class="wrapper">
-				         <span id="info"> &nbsp &nbsp 개인정보</span>
+				         <span id="info">개인정보</span>
 				      	</div>
 				         
 				      	<div class="wrapper">
@@ -123,10 +128,10 @@
 				      	</div>
 				     
 				      	<div class="field-wrapper">
-				         <a href="/custdelete">&nbsp &nbsp 회원탈퇴 </a>
+				         <a href="/custdelete">회원탈퇴 </a>
 				      	</div>
                   </div>
-
+                  
 	<!-- JavaScript-->
         <!-- jQuery 3.1.1--> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
