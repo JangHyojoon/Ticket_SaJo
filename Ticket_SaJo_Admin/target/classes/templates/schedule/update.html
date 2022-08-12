@@ -49,8 +49,7 @@ function inputYMDNumber(obj) {
 			        return false;
 			 }
 			 $('.schedule').attr({
-					'method':'post',
-					'action':'/schedule/updateimpl'
+					'method':'post'
 				});
 				$('.schedule').submit();
 		});
@@ -73,7 +72,7 @@ function inputYMDNumber(obj) {
                   	수정시 스케줄 상세 정보는 그대로 유지 됩니다.<br>
                  
                   </p>
-                  <form class="schedule">
+                  <form class="schedule" th:action="@{/schedule/updateimpl}">
                   	
                     <div class="form-group">
                     <label for="exampleSelectGender">스케쥴 번호</label>

@@ -7,18 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../../vendors/feather/feather.css">
-  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}">
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <style>
+  .brand-logo{
+  	text-align: center;
+  	
+  }
+  	#title{
+  	    color: #27367f;
+    font-size: 1.5rem;
+    margin-right: 0;
+    padding: 0.25rem 0;
+    font-weight: bolder;
+    margin-right: 0px;
+  	}
   	h4{
   	text-align: center;
   	font: bolder;
@@ -41,7 +53,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="../../images/logo.svg" alt="logo">
+                <a id="title" th:href="@{/}">티켓 사조</a>
               </div>
               <h4>마스터 코드 보기</h4>
               
@@ -68,16 +80,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script th:src="@{/js/off-canvas.js}"></script>
+  <script th:src="@{/js/hoverable-collapse.js}"></script>
+  <script th:src="@{/js/template.js}"></script>
+  <script th:src="@{/js/settings.js}"></script>
+  <script th:src="@{/js/todolist.js}"></script>
   <!-- endinject -->
 </body>
 

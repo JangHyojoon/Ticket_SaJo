@@ -49,8 +49,7 @@ function inputYMDNumber(obj) {
 			        return false;
 			 }
 			 $('.movie').attr({
-					'method':'post',
-					'action':'/movie/update'
+					'method':'post'
 				});
 				$('.movie').submit();
 		});
@@ -72,7 +71,7 @@ function inputYMDNumber(obj) {
                   <p class="card-description">
                     영화 정보 및 포스터를 추가해 주세요.
                   </p>
-                  <form class="movie" enctype="multipart/form-data">
+                  <form class="movie" enctype="multipart/form-data" th:action="@{/movie/update}">
                   	<div class="form-group">
                       <label for="exampleInputTitle">아이디</label>
                       <input type="text" class="form-control" name="id" id="exampleInputTitle" placeholder="Title" th:value="${movie.id}" readonly="readonly">
@@ -174,7 +173,7 @@ function inputYMDNumber(obj) {
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
+  <script th:src="@{/js/file-upload.js}"></script>
   <script src="../../js/typeahead.js"></script>
   <script src="../../js/select2.js"></script>
   <!-- End custom js for this page-->
