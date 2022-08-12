@@ -83,7 +83,7 @@ public class MainController {
 				visitList = vbiz.get();
 //				System.out.println("visitList : " + visitList );
 				if(visitList.isEmpty()) {// 아무 필드도 없을 경우 
-					vbiz.register(new VisitVO("Unknown", 0));// 필드 하나 추가 
+					vbiz.register(new VisitVO("Unknown", 0,new Date()));// 필드 하나 추가 
 				}
 				today_visit = vbiz.SumCount();// 오늘 사이트 방문자 횟수
 				m.addAttribute("today_visit", today_visit);
