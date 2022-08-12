@@ -60,7 +60,7 @@
 		<div class="field-wrap" id="box" style="margin-top:135px">
 			 <img src = "/img/user.png" width="50"  style="margin-left:120px">
 			 <span th:text="${session.user.name}"></span>님  
-			
+			<div class="col-sm-6">
 		        <div class="wrapper">
 		           <strong><a href="/mypointlist">내 포인트 내역</a></strong> 
 		        </div>
@@ -73,8 +73,8 @@
 					<div id="empty" th:unless="${not #lists.isEmpty(pointlist)}">
 					포인트 내역이 없습니다.
 					</div>
-
-					<br>     
+			</div>
+ 
 		        <div class="wrapper">
 		          	<strong><a href="/mycouponlist">내 쿠폰 내역</a></strong>
 		        </div>

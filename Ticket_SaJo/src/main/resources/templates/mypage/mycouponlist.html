@@ -71,10 +71,10 @@
 	<strong><h4 id="h4"><span th:text="${session.user.name}"></span>님의 쿠폰 내역입니다.</h4></strong>
 	<br>
 	<br>
-	<div style="overflow-x:auto;">
+	<div style="overflow-x:auto">
 <table id="table">
 	<thead>
-		<tr><th>쿠폰 번호</th><th>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 쿠폰 내용</th><th>발급 날짜</th><th>사용 가능 여부</th><th>사용한 날짜</th></tr>
+		<tr><th>쿠폰 번호</th><th>쿠폰 내용</th><th>발급 날짜</th><th>사용 가능 여부</th><th>사용한 날짜</th></tr>
 	</thead>
 	<tbody>
 		<tr th:each="mc:${mycouponlist}">
