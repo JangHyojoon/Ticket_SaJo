@@ -79,31 +79,17 @@ color: #4C4145;
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-function checkname(name) {
-	   $.ajax({
-	      url:'/checkname',
-	      data:{'name':name},
-	      success:function(data){
-	         if(data == '1') {
-	            $('#namespan').text('이미 사용중인 이름입니다.');
-	            $('#namespan').css('color','red');
-	         }else {
-	            $('#namespan').text('사용가능한 아이디입니다');
-	            $('#namespan').css('color','#3CB371');
-	         }
-	      }
-	   });
-	};
 function Back() {
 	window.history.back()
 }
 $(document).ready(function(){
-	$('#updatebtn').click(function(){
+	$('#modifybtn').click(function(){
 		$('.user').attr({
 			'method':'post',
 			'action':'update'
 		})
 		$('.user').submit();
+		alert('회원정보 수정이 완료되었습니다.');
 	});
 });
 </script>

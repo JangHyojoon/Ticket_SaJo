@@ -39,7 +39,9 @@
 				  myCustomButton: {
 				    text: '리스트로 보기',
 				    click: function() {
-				    	location.href= origin+'/Ticket_SaJo_Admin/schedule/list';
+				    	//location.href= origin+'/schedule/list'; // PC
+				    	location.href= origin+'/Ticket_SaJo_Admin/schedule/list'; // NCP
+				    	
 				    }
 				  }
 				},
@@ -59,7 +61,9 @@
            calendar.render();
            calendar.on('dateClick', function(info) {
         	   console.log('clicked on ' + info.dateStr);
-        	   location.href= origin+'/Ticket_SaJo_Admin/schedule/add?'+ info.dateStr;
+        	   //location.href= origin+'/schedule/add?'+ info.dateStr; // PC
+        	   location.href= origin+'/Ticket_SaJo_Admin/schedule/add?'+ info.dateStr; // NCP
+        	   
         	 });
 
     	}; 
