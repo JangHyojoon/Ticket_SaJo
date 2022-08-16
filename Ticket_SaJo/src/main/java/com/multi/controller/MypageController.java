@@ -3,7 +3,6 @@ package com.multi.controller;
 import java.util.Collections;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import com.multi.biz.MycouponBiz;
 import com.multi.biz.PointlistBiz;
 import com.multi.biz.ReservationBiz;
 import com.multi.biz.TicketBiz;
-import com.multi.vo.CouponVO;
 import com.multi.vo.CustVO;
 import com.multi.vo.MycouponVO;
 import com.multi.vo.PointlistVO;
@@ -84,7 +82,7 @@ public class MypageController {
          cust.setBirth(cu.getBirth());
          cust.setPoint(cu.getPoint());
          cust.setSex(cu.getSex());
-        cust.setPwd(cu.getPwd());
+         cust.setPwd(cu.getPwd());
          custbiz.modify(cust);
          CustVO c = custbiz.get(cust.getId());
          session.setAttribute("user", c);         

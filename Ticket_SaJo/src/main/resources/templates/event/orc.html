@@ -153,7 +153,7 @@ var barcode = ""; // 영수증의 바코드 저장할 변수 - 같은 바코드�
 				$('#UploadResult')[0].scrollIntoView();
 			}
 		}else{
-			window.location.href ="/orc/orcimpl?paymoney="+paymoney+"&barcode="+barcode;
+			window.location.href ="/orcimpl?paymoney="+paymoney+"&barcode="+barcode;
 		}
 	}
 	
@@ -162,7 +162,7 @@ var barcode = ""; // 영수증의 바코드 저장할 변수 - 같은 바코드�
 		var result; 
 		$.ajax({
 			type : "POST",
-			url : 'orcBarcodeCheck',
+			url : '/orcBarcodeCheck',
 			async: false, 
 		 	data: {'barcode':bc},
 			success : function(data) {

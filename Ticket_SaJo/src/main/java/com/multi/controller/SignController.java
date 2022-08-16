@@ -9,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.multi.biz.CustBiz;
-import com.multi.biz.MycouponBiz;
-import com.multi.biz.PointlistBiz;
-import com.multi.biz.ReservationBiz;
 import com.multi.vo.CustVO;
 
 
@@ -84,7 +81,7 @@ public class SignController {
             throw new Exception();
          }
       } catch (Exception e) {   
-         return "redirect:/sign/signin?msg=f";
+         return "redirect:/signin?msg=f";
       }
       return "redirect:/";     
    }
@@ -106,7 +103,5 @@ public class SignController {
          e.printStackTrace();
       }
       return "index";
-   }
-   
-   
+   } 
 }

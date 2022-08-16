@@ -65,6 +65,9 @@ function inputYMDNumber(obj) {
 		});
 		 
 	});
+	function Back() {
+		window.history.back()
+	}
 </script>
 
 </head>
@@ -101,7 +104,7 @@ function inputYMDNumber(obj) {
                       <input type="text" onKeyup="inputYMDNumber(this);" maxlength="10" class="form-control" name="sdate" id="exampleInputBirth" placeholder="yyyy-mm-dd">
                     </div>
                     <button id="btn" type="submit" class="btn btn-primary mr-2">다음</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <button class="btn btn-light" id="cancel" onclick="Back()">Cancel</button>
                   </form>
                 </div>
               </div>

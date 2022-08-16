@@ -316,7 +316,7 @@ a { text-decoration:none; }
 			
 			<div class="modal-footer">
                 <button type="button"  id="login_go" class="btn btn-default" th:onclick="logingo()">로그인</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
 			</div>
 		</div>
 	</div>
@@ -361,7 +361,7 @@ a { text-decoration:none; }
 			
 			<div class="modal-footer">
 
-				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo(couponFail)">Close</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" th:onclick="coupongo()">Close</button>
 
 
 			</div>
@@ -380,7 +380,7 @@ function logingo(){
 	window.location.href ="/signin";
 	
 }
-function coupongo(name){
+function coupongo(){
 	$('.modal-backdrop').remove();
 	//$('#'+name).modal('hide');
 	
@@ -395,7 +395,6 @@ function addcoupon(couponid, user) {
 	if(user == null){// 유저 정보가 없을경우 실행 
 		$('#Loginerror').modal('show'); 
 		$('#modal'+couponid).modal('hide');
-		$('.modal-backdrop').remove();// 수정 
 		
 	}else{// 유저 정보가 있을경우 실행 
 		$('#modal'+couponid).modal('hide');
