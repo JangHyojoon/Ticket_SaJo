@@ -78,7 +78,7 @@ public class EventController {
 
 		m.addAttribute("msg", msg);
 
-		return "redirect:/event/orc";
+		return "redirect:/orc";
 	}
 	@RequestMapping("/coupon")
 	public String coupon(Model m, HttpSession session ) {

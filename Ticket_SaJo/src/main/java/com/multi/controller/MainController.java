@@ -64,6 +64,7 @@ public class MainController {
 		m.addAttribute("center", "/search/movielist");
 		m.addAttribute("movie", mlist);
 		m.addAttribute("searchtxt", searchtxt);
+		m.addAttribute("theme", "장르");
 		return "index";
 	}
 	
@@ -88,6 +89,7 @@ public class MainController {
 		m.addAttribute("center", "/search/movielist");
 		m.addAttribute("movie", mlist);
 		m.addAttribute("searchtxt", searchtxt);
+		m.addAttribute("theme", "배우");
 		return "index";
 	}
 	
@@ -112,6 +114,7 @@ public class MainController {
 		m.addAttribute("center", "/search/movielist");
 		m.addAttribute("movie", mlist);
 		m.addAttribute("searchtxt", searchtxt);
+		m.addAttribute("theme", "감독");
 		return "index";
 	}
 	
@@ -136,6 +139,7 @@ public class MainController {
 		m.addAttribute("center", "/search/movielist");
 		m.addAttribute("movie", mlist);
 		m.addAttribute("searchtxt", searchtxt);
+		m.addAttribute("theme", "나라");
 		return "index";
 	}
 	
