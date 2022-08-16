@@ -77,14 +77,14 @@
 				totalprice = price - Number(coupon) -limit;
 				$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-				
+				return
 				
 			}
 			$("#usepoint").attr("value",mypoint)			
 			totalprice = price - Number(coupon) -mypoint;
 			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			
+			return
 		}else if (usepoint > limit) {
 			if (usepoint > mypoint){
 				
@@ -92,14 +92,14 @@
 				totalprice = price - Number(coupon) -mypoint;
 				$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 				$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-
+				return
 				
 			}
 			$("#usepoint").attr("value",limit);
 			totalprice = price - Number(coupon) -limit;
 			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			
+			return
 		} 
 		else {
 			$("#usepoint").attr("value",usepoint)
@@ -107,7 +107,7 @@
 			totalprice = price - Number(coupon) -Number(point);
 			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
-			
+			return
 		}
 	}
 
@@ -148,7 +148,6 @@
 	    }
 		*/
 		 function requestPay() {
-
  			$('.book3').submit();
 		}
 		
