@@ -32,8 +32,7 @@
 $(document).ready(function(){
 	$('#search').click(function(){
 		 $('.search').attr({
-				'method':'post',
-				'action':'/cust/search'
+				'method':'post'
 			});
 			$('.search').submit();
 	});
@@ -53,7 +52,7 @@ $(document).ready(function(){
                   <ul id="searcha" class="navbar-nav mr-lg-2">
 				    <li id="searcht">검색하기</li>
 				         <li id="searchm" class="nav-item nav-search d-none d-lg-block">
-				          <form class="search" method="post" action="/cust/search">
+				          <form class="search" method="post" th:action="@{/cust/search}">
 				           <div class="input-group">
 				             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
 				               <span class="input-group-text" id="search">

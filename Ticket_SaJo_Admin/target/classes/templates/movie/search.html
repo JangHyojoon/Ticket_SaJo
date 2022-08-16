@@ -35,16 +35,14 @@
 $(document).ready(function(){
 	$('#search').click(function(){
 		 $('.search').attr({
-				'method':'post',
-				'action':'/movie/search'
+				'method':'post'
 			});
 			$('.search').submit();
 	});
 	function press(f){
 	    if(f.keyCode == 13){ //javascript에서는 13이 enter키를 의미함
 	    	$('.search').attr({
-				'method':'post',
-				'action':'/movie/search'
+				'method':'post'
 			});
 	    	$('.search').submit();
 	    }
@@ -63,7 +61,7 @@ $(document).ready(function(){
                   <ul id="searcha" class="navbar-nav mr-lg-2">
 				    <li id="searcht">검색하기</li>
 				         <li id="searchm" class="nav-item nav-search d-none d-lg-block">
-				          <form class="search" method="post" action="/movie/search">
+				          <form class="search" method="post" th:action="@{/movie/search}">
 				           <div class="input-group">
 				             <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
 				               <span class="input-group-text" id="search">
