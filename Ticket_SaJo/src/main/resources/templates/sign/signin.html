@@ -44,6 +44,7 @@
 #msg {
 	color: red;
 	text-align: center;
+	
 }
 img {
  width: 270px;
@@ -105,7 +106,6 @@ text-align: center;
 <div class="container" style="margin-top:150px;">
 	<h1 >Welcome to</h1>
 	<h1 class="login__title">티켓사조</h1>
-
 	
 	<h3>일반 로그인</h3>
 	<div class="text-center">
@@ -113,26 +113,27 @@ text-align: center;
 		<div>
 			<form class="login-form" id="signin_form">
 				<div class="col-sm-8">
-					<input type="text"  id="id" class="form-control"  placeholder="ID" name="id">
-						
-						<input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd">
+					<input type="text"  id="id" class="form-control"  placeholder="ID" name="id">	
+					<input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd">
 				</div>
+				
 				<div class="col-sm-4">
 						<button id="signinbtn" class="btn btn-md btn--warning longinbt">로그인</button>
-				</div>	
-
+				</div>				
 			</form>
 		</div>
-	
+		<div class="col-sm-12">
+		<h5 id="msg" th:text="${msg}"></h5>
+		</div>
 	</div>
-	<h5 id="msg" th:text="${msg}"></h5>
-</div>
-<div style="margin-top:10px;text-align: center;" >
 	
-		<h3 style="margin:auto;">아직 회원이 아니신가요?<a th:href="@{/signup}" class="btn btn-md btn--warning registerbt">회원가입</a></h3>
+</div>
+	<div style="margin-top:20px; text-align:center;">
+	
+		<h4>아직 회원이 아니신가요? &nbsp<a th:href="@{/signup}" class="btn btn-md btn--warning registerbt"> &nbsp회원가입</a></h4>
 	</div>	
 <div>
-	<div class="social social--colored">
+	<div class="social social--colored" style="margin-top:50px">
 		<h2 class="div-margin">SNS 로그인</h2>
 		<a href='/oauth2/authorization/naver'> 
 			<img src="/images/login/naver_bt.png">
