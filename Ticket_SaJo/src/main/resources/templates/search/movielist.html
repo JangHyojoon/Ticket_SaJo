@@ -48,7 +48,6 @@ style>.starsortimg {
 	width: max-content;
 	-webkit-text-fill-color: transparent;
 	/* Will override color (regardless of order) */
-	-webkit-text-stroke-width: 1.3px;
 	-webkit-text-stroke-color: #2b2a29;
 }
 
@@ -61,7 +60,7 @@ style>.starsortimg {
 	top: 0;
 	left: 0;
 	overflow: hidden;
-	-webkit-text-fill-color: gold;
+	-webkit-text-fill-color: #c0c0c0;
 }
 
 .star-ratings-base {
@@ -73,14 +72,13 @@ style>.starsortimg {
 	width: 277px;
 	height: 277px;
 }
-
 </style>
 </head>
 <body>
 	<!-- Main content -->
 	<section class="container">
 		<div class="col-sm-12">
-			<h2 class="page-heading">Movies</h2>
+			<h2 class="page-heading" th:text="'< '+${theme}+' > 카테고리에 대한 < '+${searchtxt}+' > 의 검색결과 입니다. '"> </h2>
 
 			<!-- Movie preview item -->
 			<div th:if="${not #lists.isEmpty(movie)}" th:each="m:${movie}"
@@ -105,32 +103,30 @@ style>.starsortimg {
 					<p class="movie__time" th:text="${m.runningtime}">105 min</p>
 
 					<p class="movie__option">
-						<strong>Country: </strong><a href="#" th:text="${m.country}">USA</a>
+						<strong>국가 : </strong><a href="#" th:text="${m.country}">USA</a>
 					</p>
 					<p class="movie__option">
-						<strong>Category: </strong><a href="#" th:text="${m.gname}">Comady</a>
+						<strong>장르 : </strong><a href="#" th:text="${m.gname}">Comady</a>
 					</p>
 					<p class="movie__option">
-						<strong>Release date: </strong><a
+						<strong>상영 날짜 : </strong><a
 							th:text="${#dates.format(m.releasedate,'yyyy-MM-dd')}">November
 							1, 2013</a>
 					</p>
 					<p class="movie__option">
-						<strong>Director: </strong><a href="#" th:text="${m.director}">Jon
+						<strong>감독 : </strong><a href="#" th:text="${m.director}">Jon
 							Turteltaub</a>
 					</p>
 					<p class="movie__option">
-						<strong>Actors: </strong><a href="#" th:text="${m.mainactor}">Robert
+						<strong>주연 배우 : </strong><a href="#" th:text="${m.mainactor}">Robert
 							De Niro</a>
 					</p>
 					<p class="movie__option">
-						<strong>Running time: </strong><a href="#"
-							th:text="${m.runningtime}">13</a>
+						<strong>러닝 타임 : </strong><a href="#" th:text="${m.runningtime}">13</a>
 					</p>
 
 					<div class="movie__btns">
-						<a href="#" class="btn btn-md btn--warning">book a ticket <span
-							class="hidden-sm">for this movie</span></a>
+						<a th:href="@{book1}" class="btn btn-md btn--warning">지금 이 영화 예매하기</a>
 					</div>
 
 					<div class="preview-footer">
@@ -145,30 +141,15 @@ style>.starsortimg {
 									<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 								</div>
 							</div>
-							<span class="movie__rate-number" th:text="${m.rcnt}+'votes'">170
-								votes</span><span class="movie__rating" th:text="${m.star}">4.1</span>
+							<span class="movie__rate-number" th:text="${m.rcnt}+' 리뷰 '">0
+							</span><span class="movie__rating" th:text="${m.star}">0</span>
 						</div>
-						<a class="movie__show-btn">Showtime</a>
+
 					</div>
 				</div>
 
 				<div class="clearfix"></div>
-				<!-- Time table (choose film start time)-->
-				<div class="time-select">
-					<div class="time-select__group group--first">
-						<div class="col-sm-4">
-							<p class="time-select__place">Cineworld</p>
-						</div>
-						<ul class="col-sm-8 items-wrap">
-							<li class="time-select__item" data-time='09:40'>09:40</li>
-							<li class="time-select__item" data-time='13:45'>13:45</li>
-							<li class="time-select__item active" data-time='15:45'>15:45</li>
-							<li class="time-select__item" data-time='19:50'>19:50</li>
-							<li class="time-select__item" data-time='21:50'>21:50</li>
-						</ul>
-					</div>
-				</div>
-				<!-- end time table-->
+
 
 			</div>
 
@@ -179,14 +160,6 @@ style>.starsortimg {
 						<span th:text="${searchtxt}"> </span> 에 대한 정보가 없습니다. 다른 검색어로 검색해
 						주세요!
 					</h3>
-				</div>
-			</div>
-
-			<!-- end movie preview item -->
-			<div class="coloum-wrapper">
-				<div class="pagination paginatioon--full">
-					<a href='#' class="pagination__prev">prev</a> <a href='#'
-						class="pagination__next">next</a>
 				</div>
 			</div>
 
