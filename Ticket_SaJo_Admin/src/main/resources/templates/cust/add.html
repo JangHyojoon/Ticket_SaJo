@@ -50,9 +50,9 @@ function checkid(){
 		 	data:{'id':id},
 		 	success:function(data){
 		 		if(data==1){
-		 			rtn = false;
+		 			rtn = 'false';
 		 			alert('이미 존재하는 ID입니다.');
-		 			event.preventDefault();
+		 			e.stopPropagation();
 		 		}else if(data==0){
 		 			rtn = true;
 		 			$('.cust').attr({
