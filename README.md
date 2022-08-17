@@ -183,7 +183,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 장르 선택했을 경우 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009448-55d2d0e7-8952-4d19-8669-f7682d1490b4.png">
+  <img src= https://user-images.githubusercontent.com/103159709/185009448-55d2d0e7-8952-4d19-8669-f7682d1490b4.png>
 
   <img src= https://user-images.githubusercontent.com/103159709/185009455-6f9a56ba-07f8-4191-a995-e383dffef0b0.png>
 
