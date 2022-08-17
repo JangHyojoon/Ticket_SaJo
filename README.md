@@ -413,11 +413,14 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 # 김민식
  ### 1. 영화 목록 페이지
-사진첨부---<img src= mlist.png>
 
-사진첨부---<img src= mlist2.png>
+![mlist](https://user-images.githubusercontent.com/103174607/185018349-a8b287b2-8950-4fe1-84dd-c24b9cd05a91.png)
 
-사진첨부---<img src= mlist1.png> 사진첨부---<img src= modaltotal.png>
+
+
+![mlist2](https://user-images.githubusercontent.com/103174607/185018420-8dafb69d-7fb8-45e9-9901-ed8f99900548.png)
+
+![mlist1](https://user-images.githubusercontent.com/103174607/185018375-c0ea07cb-d555-447b-b304-52f7c8cafdc2.png) ![modaltotal](https://user-images.githubusercontent.com/103174607/185018395-ca0d43aa-6917-4aef-bf53-12d30ae932d7.png)
 
 - 상영 영화 데이터 연동, 화면에 노출
 - AJAX로 각 예약 스케쥴 날짜 선택 시 날짜별 표시 (해당 영화의 날짜별 상영관, 스케줄 등 비동기식 정보 가져와서 노출) 
@@ -431,9 +434,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 2-1 영화 상세 정보 (정보, 차트)
 
-사진첨부---<img src = detail.png>
+![detail](https://user-images.githubusercontent.com/103174607/185018505-21f513a4-b839-4162-8afe-85e628dc138e.png)
 
-사진첨부---<img src= detail1.png>
+![detail1](https://user-images.githubusercontent.com/103174607/185018530-67ff1ae4-052d-415b-aab5-85d51aae4b13.png)
 
 - 해당 영화에 대한 정보 및 리뷰와 사진 및 동영상 등 상세정보 표시 기능 구현
 - 차트 기능 구현 (연령별, 성별별 차트 기능 구현)
@@ -442,28 +445,28 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 2-2 첫번째 슬라이드
 
-사진첨부---<img src= slide1.png>
+![slide1](https://user-images.githubusercontent.com/103174607/185018583-7fb6ee2d-50e6-44cc-a4bb-1767971bd3d8.png)
 
 - 첫번째 슬라이드를 클릭할 때 발생하는 이벤트
 - 데이터 속 영화 제목과 유튜브를 연동하여 유튜브에서 해당 영화 제목으로 검색 한다.
 
 #### 2-3 두번째 슬라이드
 
-사진첨부---<img src= slide2.png>
+![slide2](https://user-images.githubusercontent.com/103174607/185018595-2b6104ed-9053-4cf2-8fd9-b0677c956c4d.png)
 
 - 각 영화들 마다 티저 영상이나, 예고편을 보여준다.
 - 모달이 닫히면 영상도 자동으로 정지된다.
 
 #### 2-4 그외 슬라이드
 
-사진첨부---<img src= slide3.png>
+![slide3](https://user-images.githubusercontent.com/103174607/185018613-520aba9a-c667-47dd-84cb-5feb5203977b.png)
 
 - 포스터 이미지와 그 외의 해당 영화의 관련된 이미지 정보들을 노출
 - 슬라이드, carousel 기능으로 화살표 클릭시 돌아가면서 이미지 노출
 
-#### 2-5 리뷰 표시 및 리뷰 남기기 기능 사진첨부---<img src = detail2.png>
+#### 2-5 리뷰 표시 및 리뷰 남기기 기능 ![detail2](https://user-images.githubusercontent.com/103174607/185018868-42c3faa2-4207-4059-a346-46a726ce5ff1.png)
 
-사진첨부---<img src= detail3.png>
+![detail3](https://user-images.githubusercontent.com/103174607/185018637-84e9c1f2-3860-4588-af82-648432deeda4.png)
 
 - 리뷰 표시 (n일전, 날짜 및 요일, 이름(아이디), 리뷰 내용, 별점 개수)
 - 로그인 비활성화시 리뷰 남기기란 표시 X (리뷰 작성 불가)
@@ -471,7 +474,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 2-6 구글맵 연동 및 토글 기능 추가 (영화관 위치 표시)
 
-사진첨부---<img src= detail4.png>
+![detail4](https://user-images.githubusercontent.com/103174607/185018718-2957c959-f836-4c3a-bf5d-4a6e45a4cfaf.png)
 
 - 구글맵 연동 및 영화관 위치 표시
 - 영화 상세 페이지 안에서 토글로 구글맵을 열고 닫을 수 있는 기능 구현
@@ -480,11 +483,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 3-1 연락처 표시 및 문의사항 접수(폼으로 이메일 전송)
 
-사진첨부---<img src= contact1.png>
+![contact1](https://user-images.githubusercontent.com/103174607/185018745-475fdb46-8e4b-4587-a928-2563a54b5572.png)
 
-사진첨부---<img src= contact2.png>
+![contact2](https://user-images.githubusercontent.com/103174607/185018758-ac9c9bf0-9178-4efc-9969-a59561030f25.png)
 
-사진첨부---<img src= contact3.png>
+![contact3](https://user-images.githubusercontent.com/103174607/185018797-5c8e6e3f-ebea-403b-874c-14575cfac060.png)
 
 - 컨택트 (사용자 문의 및 편의 기능 위주) 페이지 기능 구현
 - 정적 HTML form태그에서 메일 보내기 : Google Apps Mail 
@@ -494,11 +497,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 3-2 구글맵 연동
 
-사진첨부---<img src= contact4.png>
+![contact4](https://user-images.githubusercontent.com/103174607/185018905-2bb7b3e9-5aff-4209-b0b2-a80819b100d2.png)
 
-사진첨부---<img src= contact5.png>
+![contact5](https://user-images.githubusercontent.com/103174607/185018929-bd24184e-7b35-48e2-a7cc-8faed5292f43.png)
 
-사진첨부---<img src= contact6.png>
+![contact6](https://user-images.githubusercontent.com/103174607/185018954-241ecd78-e243-4748-9c5c-bef2703d4675.png)
 
 - 컨택트 페이지 하단에 구글맵 연동하여 표시
 - 해당 영화관위치가 마커 아이콘으로 표시 (BOUNCE 애니메이션 효과 추가)
@@ -509,24 +512,24 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 4-1 유명배우 사진,영상 팝업으로 표시 기능 구현
 
-사진첨부---<img src= cfr.png>
+![cfr](https://user-images.githubusercontent.com/103174607/185018989-c9fce63f-556b-42a9-ac82-0e1620a7e56a.png)
 
-사진첨부---<img src= cfr1.png>
+![cfr1](https://user-images.githubusercontent.com/103174607/185019012-79edefb0-4036-4b71-a528-1a003f38e77f.png)
 
-사진첨부---<img src= cfr2.png>
+![cfr2](https://user-images.githubusercontent.com/103174607/185019036-e1606e13-7690-4296-abfb-b6e1fd93f7ea.png)
 
 - 페이지가 심심하지 않기위해 유명 배우 사진을 나열
 - 해당 이미지를 클릭할시 사진 아이콘은 해당 배우의 사진이, 영상 아이콘은 해당 배우 관련 유튜브 영상을 볼 수 있는 기능 구현
 
 #### 4-2 Naver AI CLOVA를 활용 얼굴 인식 및 닮은꼴 찾기 기능 구현
 
-사진첨부---<img src= cfr3.png>
+![cfr3](https://user-images.githubusercontent.com/103174607/185019059-0fe6e0dc-a33d-43eb-b5a2-ce37dae1b2fa.png)
 
-사진첨부---<img src= cfr4.png>
+![cfr4](https://user-images.githubusercontent.com/103174607/185019093-d31f7a84-785d-48c0-a48b-a0993d48b580.png)
 
-사진첨부---<img src= cfr5.png>
+![cfr5](https://user-images.githubusercontent.com/103174607/185019111-2babc821-0c82-4b32-abe3-48ec5e468d90.png)
 
-사진첨부---<img src= cfr6.png>
+![cfr6](https://user-images.githubusercontent.com/103174607/185019140-95da7759-f4dc-4948-b85b-7a1724097412.png)
 
 - Naver CLOVA Face Recognition API(이하 CFR API) 활용 기능 구현
 - 입력한 이미지 데이터의 얼굴 인식 결과를 json 형태로 반환하는 서비스를 제공
@@ -537,11 +540,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 5. ChatBot
 
-사진첨부---<img src= chatbot.png>
+![chatbot](https://user-images.githubusercontent.com/103174607/185019157-8ffbb16c-ead7-4ba9-af79-d7d70b556fcd.png)
 
-사진첨부---<img src= chatbot1.png>
+![chatbot1](https://user-images.githubusercontent.com/103174607/185019182-57479a37-ba3c-420b-877d-99da39335085.png)
 
-사진첨부---<img src= chatbot2.png>
+![chatbot2](https://user-images.githubusercontent.com/103174607/185019207-d0215f2c-dbcb-4e4a-bc44-1171dbdd00d4.png)
 
 - Naver CLOVA ChatBot을 활용 고객 편의 기능 구현
 - 헤더에 챗봇문의 버튼 추가, 버튼 클릭시 모달로 챗봇 이벤트 발생(클릭시 웹소켓 커넥트)
@@ -552,14 +555,14 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 6. 사용자 화면 UI 1차 변경 및 정리, 구성
 
-사진첨부---<img src= UI2.png>
+![UI2](https://user-images.githubusercontent.com/103174607/185019262-0f1ebc6d-7c6d-4660-a159-6b5e2b9efdca.png)
 
-사진첨부---<img src= UI3.png>
+![UI3](https://user-images.githubusercontent.com/103174607/185019297-bff50282-367a-41b3-95fc-e1c8c76cdecc.png)
 
 - 기존 프로젝트의 테마 UI
-사진첨부---<img src= UI.png>
+![UI](https://user-images.githubusercontent.com/103174607/185019238-27979e34-7238-4b0c-b592-9c716b5d4cb1.png)
 
-사진첨부---<img src= UI4.png>
+![UI4](https://user-images.githubusercontent.com/103174607/185019321-0efc6cdc-6e9b-44dc-ac28-6dcc7da54616.png)
 
 - 1차적으로 포스터 위치, 크기, 전체 주제에 맞는 컬러 선정, 폰트 선정
 
