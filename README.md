@@ -71,8 +71,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
  <p align="center"><img src= https://user-images.githubusercontent.com/103159709/184589362-0eacb31c-ea22-45c7-b38c-cb2f8c03ad15.png></p>
 
 * 어느 한 조건이라도 미충족 시 회원가입 불가
-<p align="center"><img src= https://user-images.githubusercontent.com/103159709/184760219-bd68774e-0b20-482f-8555-91dcf2e6568c.png></p>
-<p align="center><img src= https://user-images.githubusercontent.com/103159709/184760297-f6981d67-44bb-4f9f-88c2-919dcfcd3897.png></p>
+<img src= https://user-images.githubusercontent.com/103159709/185042614-e94fe022-7868-4350-81a3-13fadf2cceb3.gif>
 
 ### 2. 로그인 화면 
 
@@ -143,11 +142,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-
-
-
-
-# 안
 ## 메인 Page
 
 ### 상단 슬라이드
@@ -413,7 +407,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   principalDetails : CustVO(id=xxx@gmail.com, pwd=0000, name=안원영, birth=Wed Feb 07 00:00:00 KST 1996, point=0, sex=men, used=true, usepoint=0)
   ```
 
-# 김민식
+
 ### 1. 영화 목록 페이지
 
 ![ezgif.com-gif-maker](https://user-images.githubusercontent.com/103159709/185034941-8fafdfd6-3eab-43bc-a117-25c23f8159e9.gif)
@@ -561,9 +555,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 # 예매 시스템
 
-## 페이지 구성
-
-### 스케줄 선택 --> 좌석 선택 -->결제 -->발권
+## 페이지 구성:스케줄 선택 --> 좌석 선택 -->결제 -->발권
 
 
 
