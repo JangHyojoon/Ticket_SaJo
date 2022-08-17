@@ -558,7 +558,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   
 
 
-예매 페이지
 
 # 예매 시스템
 
