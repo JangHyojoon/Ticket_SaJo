@@ -690,7 +690,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 1) 결제 페이지 개요
 
-![book3](https://user-images.githubusercontent.com/103174607/185021177-931f5115-88ef-4663-874d-12e58751ccb5.gif)
+![book3-1](https://user-images.githubusercontent.com/103174607/185022469-30373bc1-0677-4f23-bded-bbf16ce03b85.gif)
+ ![book3-2](https://user-images.githubusercontent.com/103174607/185022532-90d855c0-505a-4d3b-81c8-79996d2e350e.gif)
 
 결제페이지에선 영화, 날짜, 상영관, 상영시간, 좌석이 표시되며 사용자가 보유한 쿠폰과 적립금을 사용할 수 있도록 구현했습니다.
 
