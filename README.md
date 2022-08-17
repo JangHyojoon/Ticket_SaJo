@@ -755,4 +755,4 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-![ticket](https://user-images.githubusercontent.com/103174607/185021303-bfb1c140-ea6b-44db-8347-d1b6f88f9689.gif)
+![ticket](https://user-images.githubusercontent.com/103174607/185021720-1a78df65-e442-4910-8c52-ab87eaf136de.gif)
