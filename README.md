@@ -397,11 +397,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 소셜 API 콘솔에 들어가면 만든 TicketSajo 어플리케이션이 존재한다. 
 
-  <img src="../images/FinalProject/login_social4.png">
+ ![login_social4](https://user-images.githubusercontent.com/103174607/185018052-da7020a8-970b-4181-8f49-6b04d8709e3f.png)
 
-  <img src="../images/FinalProject/login_social5.png">
+ ![login_social5](https://user-images.githubusercontent.com/103174607/185018091-382410ab-ffba-4de4-8ce6-4e05a08152c0.png)
 
-  <img src="../images/FinalProject/login_social6.png">
+![login_social6](https://user-images.githubusercontent.com/103174607/185018119-d9d31bec-d062-49e1-9481-98c6bea2e887.png)
 
 - 로그인이 완료되면 다음 데이터를 받아와 세션에 사용자 정보를 저장한다. 
 
@@ -410,3 +410,159 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   getAttributes : {sub=xxx, name=안원영, given_name=원영, family_name=안, picture=https://xxx, email=xxx@gmail.com, email_verified=true, locale=ko}
   principalDetails : CustVO(id=xxx@gmail.com, pwd=0000, name=안원영, birth=Wed Feb 07 00:00:00 KST 1996, point=0, sex=men, used=true, usepoint=0)
   ```
+
+# 김민식
+ ### 1. 영화 목록 페이지
+사진첨부---<img src= mlist.png>
+
+사진첨부---<img src= mlist2.png>
+
+사진첨부---<img src= mlist1.png> 사진첨부---<img src= modaltotal.png>
+
+- 상영 영화 데이터 연동, 화면에 노출
+- AJAX로 각 예약 스케쥴 날짜 선택 시 날짜별 표시 (해당 영화의 날짜별 상영관, 스케줄 등 비동기식 정보 가져와서 노출) 
+- 각 전체, 개봉일 오래된 순, 별점 순, 리뷰많은 순, 상영중인 영화 기준으로 정렬 기능 구현
+- 페이징 기능 구현 (최초의 페이지에선 이전 버튼을 표시하지 않음, 정렬마다도 페이징 가능)
+
+- 리뷰 별점 데이터 연동해서 CSS활용 별점 퍼센트로 채우기 기능 구현
+- 각 영화당 리뷰, 동영상, 포스터 이미지 아이콘 클릭시 모달로 정보 표시 기능 구현
+
+### 2. 영화 상세 페이지
+
+#### 2-1 영화 상세 정보 (정보, 차트)
+
+사진첨부---<img src = detail.png>
+
+사진첨부---<img src= detail1.png>
+
+- 해당 영화에 대한 정보 및 리뷰와 사진 및 동영상 등 상세정보 표시 기능 구현
+- 차트 기능 구현 (연령별, 성별별 차트 기능 구현)
+- 슬라이드를 이용 영화 포스터를 노출, 드래그시 이동 가능
+- 각 슬라이드 마다 클릭시 이벤트 다르게 기능 구현
+
+#### 2-2 첫번째 슬라이드
+
+사진첨부---<img src= slide1.png>
+
+- 첫번째 슬라이드를 클릭할 때 발생하는 이벤트
+- 데이터 속 영화 제목과 유튜브를 연동하여 유튜브에서 해당 영화 제목으로 검색 한다.
+
+#### 2-3 두번째 슬라이드
+
+사진첨부---<img src= slide2.png>
+
+- 각 영화들 마다 티저 영상이나, 예고편을 보여준다.
+- 모달이 닫히면 영상도 자동으로 정지된다.
+
+#### 2-4 그외 슬라이드
+
+사진첨부---<img src= slide3.png>
+
+- 포스터 이미지와 그 외의 해당 영화의 관련된 이미지 정보들을 노출
+- 슬라이드, carousel 기능으로 화살표 클릭시 돌아가면서 이미지 노출
+
+#### 2-5 리뷰 표시 및 리뷰 남기기 기능 사진첨부---<img src = detail2.png>
+
+사진첨부---<img src= detail3.png>
+
+- 리뷰 표시 (n일전, 날짜 및 요일, 이름(아이디), 리뷰 내용, 별점 개수)
+- 로그인 비활성화시 리뷰 남기기란 표시 X (리뷰 작성 불가)
+- 로그인 활성화시 별점 체크 후 리뷰 작성 가능 (남은 글자 수 표시)
+
+#### 2-6 구글맵 연동 및 토글 기능 추가 (영화관 위치 표시)
+
+사진첨부---<img src= detail4.png>
+
+- 구글맵 연동 및 영화관 위치 표시
+- 영화 상세 페이지 안에서 토글로 구글맵을 열고 닫을 수 있는 기능 구현
+
+### 3. Contact 페이지
+
+#### 3-1 연락처 표시 및 문의사항 접수(폼으로 이메일 전송)
+
+사진첨부---<img src= contact1.png>
+
+사진첨부---<img src= contact2.png>
+
+사진첨부---<img src= contact3.png>
+
+- 컨택트 (사용자 문의 및 편의 기능 위주) 페이지 기능 구현
+- 정적 HTML form태그에서 메일 보내기 : Google Apps Mail 
+- 해당 폼에 문의 내용과 이름, 이메일을 기입하여 전송 버튼을 누를시, 구글 스프레드시트를 통하여 직접적으로 설정된 이메일로 정보들이 전송
+- 설정된 이메일에서 전송된 정보 확인 가능
+- 성공시 성공메시지 Fade In 표시 기능 구현
+
+#### 3-2 구글맵 연동
+
+사진첨부---<img src= contact4.png>
+
+사진첨부---<img src= contact5.png>
+
+사진첨부---<img src= contact6.png>
+
+- 컨택트 페이지 하단에 구글맵 연동하여 표시
+- 해당 영화관위치가 마커 아이콘으로 표시 (BOUNCE 애니메이션 효과 추가)
+- 마커 아이콘 클릭시 맵이 축소되며 상세 위치정보 표시 이벤트 추가
+- 해당 a태그를 클릭하면 직접적인 구글 맵으로 이동하여 정보 확인 가능
+
+### 4.  닮은꼴 찾기 이벤트 페이지
+
+#### 4-1 유명배우 사진,영상 팝업으로 표시 기능 구현
+
+사진첨부---<img src= cfr.png>
+
+사진첨부---<img src= cfr1.png>
+
+사진첨부---<img src= cfr2.png>
+
+- 페이지가 심심하지 않기위해 유명 배우 사진을 나열
+- 해당 이미지를 클릭할시 사진 아이콘은 해당 배우의 사진이, 영상 아이콘은 해당 배우 관련 유튜브 영상을 볼 수 있는 기능 구현
+
+#### 4-2 Naver AI CLOVA를 활용 얼굴 인식 및 닮은꼴 찾기 기능 구현
+
+사진첨부---<img src= cfr3.png>
+
+사진첨부---<img src= cfr4.png>
+
+사진첨부---<img src= cfr5.png>
+
+사진첨부---<img src= cfr6.png>
+
+- Naver CLOVA Face Recognition API(이하 CFR API) 활용 기능 구현
+- 입력한 이미지 데이터의 얼굴 인식 결과를 json 형태로 반환하는 서비스를 제공
+- 사진파일 입력과 동시에 화면에 표시
+- 반환된 json 형태의 데이터를 정제하여 표시된 이미지 하단에 정보 표시
+- a링크 클릭시 해당 관련인물 구글 이미지 검색 페이지로 이동
+- 얼굴이 아닌 사진, 너무 많은 얼굴이 많은 사진 등 입력된 사진 데이터가 불안정하다면 '사진을 한번 더 확인해 주세요'라는 문구 'Fade In'으로 노출
+
+### 5. ChatBot
+
+사진첨부---<img src= chatbot.png>
+
+사진첨부---<img src= chatbot1.png>
+
+사진첨부---<img src= chatbot2.png>
+
+- Naver CLOVA ChatBot을 활용 고객 편의 기능 구현
+- 헤더에 챗봇문의 버튼 추가, 버튼 클릭시 모달로 챗봇 이벤트 발생(클릭시 웹소켓 커넥트)
+- 모달 발생시 자동으로 메세지 발생, 질문 유도
+- 질문 입력시 챗봇에게 받은 데이터를 화면에서 출력
+- 챗봇 대화 빌드 작성 및 공통메시지(실패메시지) 작성
+- 모달 닫힐 시 웹소켓 디스커넥트 이벤트 발생
+
+### 6. 사용자 화면 UI 1차 변경 및 정리, 구성
+
+사진첨부---<img src= UI2.png>
+
+사진첨부---<img src= UI3.png>
+
+- 기존 프로젝트의 테마 UI
+사진첨부---<img src= UI.png>
+
+사진첨부---<img src= UI4.png>
+
+- 1차적으로 포스터 위치, 크기, 전체 주제에 맞는 컬러 선정, 폰트 선정
+
+- 화면을 효과적으로 구성하기 위해 그라데이션, div 크기 재설정, 이미지 및 영상 추가 등 시도
+
+- 테마의 CSS 변경 (버튼 컬러, 폰트 컬러 및 크기,  백그라운드 이미지 재설정 등)
