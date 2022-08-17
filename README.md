@@ -341,11 +341,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 또한 같은 영수증을 연속적으로 사용할 수 있는 문제를 방지하여 바코드 번호를 관리하는 테이블을 만들어 중복 적립을 피할 수 있다. 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010604-631dd809-35f9-4ba2-8ba9-a524a65fa21b.png>
+  <img src= https://user-images.githubusercontent.com/103159709/185036870-75e1801e-f843-47ed-a887-49c7f1255642.png>
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010609-d2dc491f-5412-48eb-9441-a197c217dd82.png>
+  <img src= https://user-images.githubusercontent.com/103159709/185036878-8eb9da08-1427-49c9-b9ae-b2c8a3e9fd82.png>
 
-
+  <img src = https://user-images.githubusercontent.com/103159709/185036996-00e3264a-081c-4afc-8af4-b32c916348a9.gif>
 
 ## 로그인 - 플랫폼 로그인 Page
 
@@ -402,6 +402,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
  ![login_social5](https://user-images.githubusercontent.com/103174607/185018091-382410ab-ffba-4de4-8ce6-4e05a08152c0.png)
 
 ![login_social6](https://user-images.githubusercontent.com/103174607/185018119-d9d31bec-d062-49e1-9481-98c6bea2e887.png)
+ 
+ <img src= https://user-images.githubusercontent.com/103159709/185037004-9c127f86-e115-4344-b354-692f6d876406.gif>
 
 - 로그인이 완료되면 다음 데이터를 받아와 세션에 사용자 정보를 저장한다. 
 
