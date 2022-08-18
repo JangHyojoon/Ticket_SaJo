@@ -8,6 +8,8 @@
 
 팀원: 안원영, 장효준, 정세연
 
+[![Video Label](http://img.youtube.com/vi/'skBFttYIcyo&ab'/0.jpg)]
+
 ## 프로젝트 정보
 
 ### 1. 프로젝트 주제
