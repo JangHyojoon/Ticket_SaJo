@@ -827,7 +827,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/5b985a0f1dbaa63c29fd9b5bb987bdc7
 
 ### 8. 스케줄 관리 페이지
 
-#### 8-1 스케줄 표시
+#### [8-1 스케줄 표시](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/calendar.html)
 
 
 ![KakaoTalk_20220817_092123868](Images/KakaoTalk_20220817_092123868-166079638411615.gif)
@@ -839,12 +839,14 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/5b985a0f1dbaa63c29fd9b5bb987bdc7
 - 캘린더의 해당날짜에 등록된 스케줄이 표시됩니다.
 
 - 데이터는 Ajax로 데이터베이스에서 받아오며 데이터 형식은 JSON으로 정제하였습니다.
+https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437965aadd8/Ticket_SaJo_Admin/src/main/java/com/multi/controller/AJAXControllerjhj.java#L19-L58
 
 - 스케줄을 클릭하면 스케줄을 수정할 수 있는 상세페이지로 이동합니다.
 
 - 리스트 버튼을 누르면 스케줄을 리스트 형식으로 열람할 수 있습니다.
 
-#### 8-2 스케줄 등록
+
+#### [8-2 스케줄 등록](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/add.html)
 
 ![sadd](Images/sadd-16607107666993-166079638411613.gif)
 
@@ -854,7 +856,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/5b985a0f1dbaa63c29fd9b5bb987bdc7
 
 - 상영관과 상영영화, 상영날짜를 입하여 다음 버튼을 클릭하면 상세 스케줄 등록 페이지로 이동합니다.
 
-#### 8-3 상세 스케줄 등록
+#### [8-3 상세 스케줄 등록](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/adddetail.html)
 
 ![dsadd](Images/dsadd-16607107838515-166079638411614.gif)
 
@@ -872,23 +874,25 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/5b985a0f1dbaa63c29fd9b5bb987bdc7
 
 - 등록상태가 된 회차는 다른 칸의 회차 선택창에서 나타나지 않습니다.
 
-#### 8-4 스케줄 수정
+#### [8-4 스케줄 수정]
 
 ![sdelete](Images/sdelete-16607109415639-166079638411720.gif)
 
 - 스케줄 캘린더에서 스케줄을 클릭하거나 스케줄 리스트에서 상세보기를 클릭했을 때 스케줄 상세를 볼 수 있습니다.
 
-
 - 스케줄 상세에서 해당 스케줄의 영화 타이틀, 상영관, 상영날짜, 회차, 상영시간과 좌석 현황을 열람할 수 있습니다.
 
 - 스케줄 수정과 삭제를 할 수 있습니다.
+- 
 
 
 ![sdelete2](Images/sdelete2-16607107981837-166079638411618.gif)
 
 - 해당 스케줄에 예약된 좌석이 있다면 수정과 삭제가 불가능합니다.
+- 스케줄 삭제시 하위의 상세스케줄들도 삭제되기 때문에 상세스케줄의 삭제가 실패하면 스케줄 삭제가 롤백되도록 트랜잭션을 설정하였습니다.
+https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437965aadd8/Ticket_SaJo_Admin/src/main/java/com/multi/biz/Detail_SchedulesBiz.java#L65-L75
 
-#### 8-5 상세 스케줄 수정
+#### 8-5 상세 스케줄 수정(https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/detail.html)
 
 ![dsupdate](Images/dsupdate-166071101420311-166079638411616.gif)
 
