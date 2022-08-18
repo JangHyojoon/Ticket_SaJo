@@ -11,7 +11,7 @@
 - [웹 개발 포트폴리오-영화관 사이트 시연 영상](https://youtu.be/skBFttYIcyo?t=0s) 
 - [웹 개발 포트폴리오-영화관 관리자 사이트 시연 영상](https://youtu.be/F5A4TkfZtxM?t=0s) 
 
-  {% Images youtube.html F5A4TkfZtxM="https://youtu.be/F5A4TkfZtxM?t=0" %}  
+  {% youtube F5A4TkfZtxM %}
 
 ## 프로젝트 정보
 
