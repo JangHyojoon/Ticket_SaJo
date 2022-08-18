@@ -152,7 +152,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 영화관에서 필요한 규칙이나 현재 상영하고 있는 인기있는 영화들의 포스터와 영상을 이용해 손쉽게 흥미를 가질 수 있도록 구현
 
-  <p align="center"><img src="images/main_slide.gif"></p>
+  <p align="center"><img src="Images/main_slide.gif"></p>
 
 #### 평점 높은영화 순 정렬 6개. 
 
@@ -164,7 +164,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - "오늘의 상영작 확인하러가기" 를 누르게되면 포커스가 "오늘 상영 영화"로 이동 
 
-  <img src="/images/main_bestmovie.gif">
+  <img src="/Images/main_bestmovie.gif">
 
   
 
@@ -175,7 +175,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   - 각 검색기능에 따라 이미지, 추천 키워드, 버튼내용을 다르게 적용 
   - 검색을 누르게 되면 동적 SQL 문을 이용하여 선택한 태마에 따른 검색 결과를 보여짐 
 
-  <img src="images/main_search.gif">
+  <img src="Images/main_search.gif">
 
   
 
@@ -191,7 +191,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 반응형 웹을 이용해 포스터를 표시. -> 모바일 말고 화면 줄이는것도 다른화면 됨
 
-  <img src="images/main_todaymovie.gif">
+  <img src="Images/main_todaymovie.gif">
 
   
 
@@ -201,7 +201,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 새창을 띄워 검색한 키워드를 google에 검색
 
-  <img src="images/main_googlesearch.gif">
+  <img src="Images/main_googlesearch.gif">
 
 
 
@@ -220,7 +220,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 첫번째 페이지에서는 "이전" 버튼이 활성화되지 않도록 하였고, 마지막 페이지에서도 "다음" 버튼의 활성화를 막음
 
-  <img src="images/reviewrank.gif">
+  <img src="Images/reviewrank.gif">
 
 ### 3. 이벤트 - 쿠폰발급 Page
 
@@ -235,7 +235,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   - 로그인이 되어있으면 해당 아이디로 쿠폰발급을 진행하고 만약 비로그인이라면 로그인을 할것인지 물어보는 모달창을 보여짐 
   - 로그인 버튼을 누르면 로그인 페이지로 넘어가게 되고, 이때 **_request.getHeader("Referer")_**  를 이용하여 모든 페이지에서 로그인페이지로 들어갔을 경우 이전 페이지를 기억하여 돌아갈 수 있도록 구현했다. 
 
-  <img src="images/coupon_nologin.gif">
+  <img src="Images/coupon_nologin.gif">
 
 #### 로그인 후 
 
@@ -245,9 +245,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 반응형 웹으로 제작 
 
-  <img src="images/coupon_login.gif">
+  <img src="Images/coupon_login.gif">
 
-  <img src="images/coupon_move.gif">
+  <img src="Images/coupon_move.gif">
 
   
 
@@ -259,13 +259,13 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 해당 페이지에서는 NCP 에서 제공하는 CLOVE OCR 기능을 이용
 
-  <img src="images/ocr8.png">
+  <img src="Images/ocr8.png">
 
-  <img src="images/ocr9.png">
+  <img src="Images/ocr9.png">
 
-  <img src="images/ocr10.png">
+  <img src="Images/ocr10.png">
 
-  <img src="images/ocr_recipt.png" width="200" height="400">
+  <img src="Images/ocr_recipt.png" width="200" height="400">
 
 #### 영수증 검사
 
@@ -275,11 +275,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 이용할 수 있는 영수증이라면 적립가능하도록 하였고, 만약 조건에 맞지않는 영수증 (영수증 상단 이름, 발급일이 7일이상 지난 날짜) 이라면 적립버튼을 활성화 되지 않음 
 
-  <img src="images/receipt_fail.gif">
+  <img src="Images/receipt_fail.gif">
 
-  <img src="images/receipt_ok.gif">
+  <img src="Images/receipt_ok.gif">
 
-  <img src="images/ocr5.png">
+  <img src="Images/ocr5.png">
 
   
 
@@ -290,7 +290,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 또한 같은 영수증을 연속적으로 사용할 수 있는 문제를 방지하여 바코드 번호를 관리하는 테이블을 만들어 중복 적립을 피할 수 있음 
 
-  <img src="images/ocr7.png" width="600" height="600">
+  <img src="Images/ocr7.png" width="600" height="600">
 
   
 
@@ -314,7 +314,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### Spring boot Security 구조
 
-<img src="images/oauth구조.png">
+<img src="Images/oauth구조.png">
 
 1. **_사용자( Owner )_** 가 client 와 연결
    - client는 내가 개발하는 web, app 
@@ -336,15 +336,15 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 로그인은 **"google 로그인 버튼 클릭 -> 계정 선택 -> 데이터 정보 요구 동의 -> 로그인"**  순서로 진행 
 
-  <img src="images/socailLogin.gif">
+  <img src="Images/socailLogin.gif">
 
 - 소셜 API 콘솔에 들어가면 만든 TicketSajo 어플리케이션이 존재 
 
-  <img src="images/login_social4.png">
+  <img src="Images/login_social4.png">
 
-  <img src="images/login_social5.png">
+  <img src="Images/login_social5.png">
 
-  <img src="images/login_social6.png">
+  <img src="Images/login_social6.png">
 
   
 
