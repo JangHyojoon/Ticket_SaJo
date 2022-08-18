@@ -877,7 +877,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437
 
 - 등록상태가 된 회차는 다른 칸의 회차 선택창에서 나타나지 않음
 
-#### [8-4 스케줄 수정]
+#### [8-4 스케줄 수정](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/add.html)
 
 ![sdelete](Images/sdelete-16607109415639-166079638411720.gif)
 
