@@ -151,9 +151,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 영화관에서 필요한 규칙이나 현재 상영하고 있는 인기있는 영화들의 포스터와 영상을 이용해 손쉽게 흥미를 가질 수 있도록 구현
 
-  <p align="center"><img src= https://user-images.githubusercontent.com/103159709/185009011-8d5de0a7-22c3-40e8-bfa0-e3b626435146.png></p>
-
-  <p align="center"><img src= https://user-images.githubusercontent.com/103159709/185009103-b6e67171-0fcd-4be8-b4b9-ed19a16fb38d.png></p>
+  <p align="center"><img src="images/main_slide.gif"></p>
 
 #### 평점 높은영화 순 정렬 6개. 
 
@@ -165,11 +163,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - "오늘의 상영작 확인하러가기" 를 누르게되면 포커스가 "오늘 상영 영화"로 이동 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009156-c509dd9d-5c01-4e03-8405-db73d7f52f11.png>
+  <img src="images/main_bestmovie.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009168-fd3303ea-e791-45e8-a214-ab8d60ca95e8.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009173-30cd1730-0780-4459-a88a-dd09f58e4bb8.png width="400" height="600">
+  
 
 #### 영화 검색기능
 
@@ -178,21 +174,10 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   - 각 검색기능에 따라 이미지, 추천 키워드, 버튼내용을 다르게 적용 
   - 검색을 누르게 되면 동적 SQL 문을 이용하여 선택한 태마에 따른 검색 결과를 보여짐 
 
-- 장르 선택했을 경우 
+  <img src="images/main_search.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009448-55d2d0e7-8952-4d19-8669-f7682d1490b4.png>
+  
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009455-6f9a56ba-07f8-4191-a995-e383dffef0b0.png>
-
-- 나라 선택했을 경우 
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009461-bf0a4a46-0121-40cb-83ff-bc5a7561963f.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009463-7360b3a8-3042-4144-967c-57ccb3220ae9.png>
-
-- 만약 아무런 정보가 없을경우 정보없다고 띄워주는 페이지
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009610-cb92f866-259f-45c1-ac3c-138150d6376e.png>
 
 #### 오늘의 상영작
 
@@ -205,23 +190,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 반응형 웹을 이용해 포스터를 표시. -> 모바일 말고 화면 줄이는것도 다른화면 됨
 
-- 오늘 상영 영화가 없는 경우 
+  <img src="images/main_todaymovie.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009651-51d2db94-5a0a-4459-b964-34246d254ed8.png>
-
-- 오늘 상영영화가 있는 경우 
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009655-7132871c-c241-4ea3-8d1e-ab992485c55a.png>
-
-- 영화 상세 페이지 이동
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009656-60469e37-8616-4667-894c-06a9686c562b.png>
-
-- 반응형 웹 적용
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009756-ae330481-17d4-499e-b009-2f1ec6081bbf.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009661-94da6b13-3c1e-4ee1-bd48-1020fe252df5.png>
+  
 
 #### 영화에 대해 궁금한 것 검색
 
@@ -229,9 +200,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 새창을 띄워 검색한 키워드를 google에 검색
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009814-bd79a949-f1e4-48ad-bca9-91387cc0bdc9.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009817-b220e094-0541-48bd-b30b-ec87cbe43f50.png>
+  <img src="images/main_googlesearch.gif">
 
 
 
@@ -243,7 +212,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 영화를 클릭하면 해당 영화 detail 페이지로 넘어감
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009891-57a65569-6905-44b8-9c8e-115b2de3f1c0.png>
 
 #### 페이징 기법 사용
 
@@ -251,11 +219,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 첫번째 페이지에서는 "이전" 버튼이 활성화되지 않도록 하였고, 마지막 페이지에서도 "다음" 버튼의 활성화를 막음
 
-  <img src= https://user-images.githubusercontent.com/103159709/185009892-5273f7f8-d0af-4a79-aaff-2aea81674dcf.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185009896-4b489197-1937-430d-abb1-53a6a6c408b6.png>
-
-
+  <img src="images/reviewrank.gif">
 
 ### 3. 이벤트 - 쿠폰발급 Page
 
@@ -270,13 +234,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   - 로그인이 되어있으면 해당 아이디로 쿠폰발급을 진행하고 만약 비로그인이라면 로그인을 할것인지 물어보는 모달창을 보여짐 
   - 로그인 버튼을 누르면 로그인 페이지로 넘어가게 되고, 이때 **_request.getHeader("Referer")_**  를 이용하여 모든 페이지에서 로그인페이지로 들어갔을 경우 이전 페이지를 기억하여 돌아갈 수 있도록 구현했다. 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010057-658c5ea0-7a44-42f9-9873-362c98680923.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010062-c9f13cc7-ff07-427c-b531-5fdd1c624daa.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010020-06251a55-afc2-4963-a7e5-e3a3813bbb32.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010025-bbaa007f-0e56-410d-83ea-9d8fd9d4cb62.png>
+  <img src="images/coupon_nologin.gif">
 
 #### 로그인 후 
 
@@ -286,13 +244,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 반응형 웹으로 제작 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010026-8f677e88-925a-4620-aef1-ec52c39804a5.png>
+  <img src="images/coupon_login.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010027-81cfff2f-b954-460e-86fd-e5e47607bcad.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010029-ffa6318c-3ade-4519-af8d-abd529d5f6be.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010032-97ba5ae0-cee3-4354-a6aa-1ad90a15706c.png>
+  <img src="images/coupon_move.gif">
 
   
 
@@ -304,13 +258,13 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 해당 페이지에서는 NCP 에서 제공하는 CLOVE OCR 기능을 이용
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010324-e7c83b51-2eb8-4da2-ac75-8a53ea414066.png>
+  <img src="images/ocr8.png">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010277-243bfb0b-ce99-42ee-b2b1-b0332d3cc0be.png>
+  <img src="images/ocr9.png">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010280-610b5d8e-3de3-4235-b600-4df997289867.png>
+  <img src="images/ocr10.png">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010553-f1bb103c-4d89-44c6-9054-6fc1bd0eb913.png width="200px" hight="500">
+  <img src="images/ocr_recipt.png" width="200" height="400">
 
 #### 영수증 검사
 
@@ -320,15 +274,13 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 이용할 수 있는 영수증이라면 적립가능하도록 하였고, 만약 조건에 맞지않는 영수증 (영수증 상단 이름, 발급일이 7일이상 지난 날짜) 이라면 적립버튼을 활성화 되지 않음 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010294-f48b9c9b-4597-4db8-b65d-96bba0414c75.png>
+  <img src="images/receipt_fail.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010260-38d5d478-c29f-4eea-874b-6c321f1b8ed8.png>
+  <img src="images/receipt_ok.gif">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010269-c80b142b-8c5a-4f2c-ab45-8e7207bb03c9.png>
+  <img src="images/ocr5.png">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010271-49d4ce0a-ae64-43b2-9d27-bd3bbcbb63cf.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010273-53fa136e-f9e1-4eab-b86f-f29b7da17c6e.png>
+  
 
 
 #### 포인트 지급 
@@ -337,11 +289,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 또한 같은 영수증을 연속적으로 사용할 수 있는 문제를 방지하여 바코드 번호를 관리하는 테이블을 만들어 중복 적립을 피할 수 있음 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185036870-75e1801e-f843-47ed-a887-49c7f1255642.png>
+  <img src="images/ocr7.png" width="600" height="600">
 
-  <img src= https://user-images.githubusercontent.com/103159709/185036878-8eb9da08-1427-49c9-b9ae-b2c8a3e9fd82.png>
-
-  <img src = https://user-images.githubusercontent.com/103159709/185036996-00e3264a-081c-4afc-8af4-b32c916348a9.gif>
+  
 
 ### 4. 로그인 - 플랫폼 로그인 Page
 
@@ -363,7 +313,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### Spring boot Security 구조
 
-<img src= https://user-images.githubusercontent.com/103159709/185010683-078b8b8a-c0f4-4594-9427-b80bb8a0147c.png>
+<img src="images/oauth구조.png">
 
 1. **_사용자( Owner )_** 가 client 와 연결
    - client는 내가 개발하는 web, app 
@@ -385,21 +335,17 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 로그인은 **"google 로그인 버튼 클릭 -> 계정 선택 -> 데이터 정보 요구 동의 -> 로그인"**  순서로 진행 
 
-  <img src= https://user-images.githubusercontent.com/103159709/185010724-fe27b407-0b5d-4700-aa55-4b5fee720a69.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010726-9aaa8b2a-3002-4991-93a9-9f415352f6b3.png>
-
-  <img src= https://user-images.githubusercontent.com/103159709/185010730-98bb987b-8483-42a7-bb88-641540594f3f.png>
+  <img src="images/socailLogin.gif">
 
 - 소셜 API 콘솔에 들어가면 만든 TicketSajo 어플리케이션이 존재 
 
- ![login_social4](https://user-images.githubusercontent.com/103174607/185018052-da7020a8-970b-4181-8f49-6b04d8709e3f.png)
+  <img src="images/login_social4.png">
 
- ![login_social5](https://user-images.githubusercontent.com/103174607/185018091-382410ab-ffba-4de4-8ce6-4e05a08152c0.png)
+  <img src="images/login_social5.png">
 
-![login_social6](https://user-images.githubusercontent.com/103174607/185018119-d9d31bec-d062-49e1-9481-98c6bea2e887.png)
+  <img src="images/login_social6.png">
 
- <img src= https://user-images.githubusercontent.com/103159709/185037004-9c127f86-e115-4344-b354-692f6d876406.gif>
+  
 
 - 로그인이 완료되면 다음 데이터를 받아와 세션에 사용자 정보를 저장 
 
