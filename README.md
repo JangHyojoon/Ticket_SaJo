@@ -128,7 +128,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 * 새 비밀번호와 새 비밀번호 확인이 불일치 시 alert창 띄우기
 
-<p align="center"><img src= https://user-images.githubusercontent.com/103159709/184757465-499668ef-deb9-4f82-aa23-6bb433971f93.png></p>
+<p align="center"><img src= https://user-images.githubusercontent.com/103159709/185041021-5279bc27-1410-460f-a706-89e8d06db6f7.gif></p>
 
 #### 회원탈퇴
 * 비밀번호 입력 안하고 탈퇴 버튼 누를 시 '비밀번호를 다시 확인해주세요' 메세지 띄우기
@@ -327,7 +327,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185010273-53fa136e-f9e1-4eab-b86f-f29b7da17c6e.png>
 
-  
 
 ### 포인트 지급 
 
@@ -406,7 +405,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   getAttributes : {sub=xxx, name=안원영, given_name=원영, family_name=안, picture=https://xxx, email=xxx@gmail.com, email_verified=true, locale=ko}
   principalDetails : CustVO(id=xxx@gmail.com, pwd=0000, name=안원영, birth=Wed Feb 07 00:00:00 KST 1996, point=0, sex=men, used=true, usepoint=0)
   ```
-
 
 ### 1. 영화 목록 페이지
 
@@ -549,14 +547,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 테마의 CSS 변경 (버튼 컬러, 폰트 컬러 및 크기,  백그라운드 이미지 재설정 등)
 
-  
-
 
 
 # 예매 시스템
 
-## 페이지 구성:스케줄 선택 --> 좌석 선택 -->결제 -->발권
-
+## 페이지 구성: 스케줄 선택 --> 좌석 선택 --> 결제 --> 발권
 
 
 #### 1. 스케줄 선택
