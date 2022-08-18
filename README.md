@@ -63,7 +63,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 ## 프로젝트 결과 
 ### 1. 회원가입 화면
 
-<img src= https://user-images.githubusercontent.com/103159709/185320035-abd3713f-1465-4fb8-b6a8-3441bc83c208.gif>
+<img src= https://user-images.githubusercontent.com/103159709/185327163-5e81ac55-dcc5-440b-a315-a99857aca44e.gif>
 
 * 어느 한 칸이라도 빈칸일 시 '필수황목입니다.' 메세지 띄우기
 
@@ -74,7 +74,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 * 비밀번호 확인: 위 비밀번호와 일치하지 않을 시 '일치하지 않습니다. 비밀번호를 다시 입력해주세요.' 메세지 띄우기
 
 * 어느 한 조건이라도 미충족 시 회원가입 불가
-<img src= https://user-images.githubusercontent.com/103159709/185042614-e94fe022-7868-4350-81a3-13fadf2cceb3.gif>
+<img src= https://user-images.githubusercontent.com/103159709/185326970-5d4d37c2-20b1-4b37-bea1-7a66c41086d7.gif>
 
 ### 2. 로그인 화면 
 
