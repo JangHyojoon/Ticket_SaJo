@@ -164,7 +164,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - "오늘의 상영작 확인하러가기" 를 누르게되면 포커스가 "오늘 상영 영화"로 이동 
 
-  <img src="images/main_bestmovie.gif">
+  <img src="/images/main_bestmovie.gif">
 
   
 
