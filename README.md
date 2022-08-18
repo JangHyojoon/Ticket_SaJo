@@ -558,7 +558,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 1. 스케줄 선택
 
-(요약)
+코드 보러가기(https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book1.html)
 
 현재 상영중인 영화의 목록을 보여주고 영화와 날짜 시간을 선택하면 해당 날짜의 상영시간 표시
 
