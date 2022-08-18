@@ -43,7 +43,7 @@ Spring boot를 활용한 클래식 영화관 티켓팅 서비스 및 NCP AI 플�
 ![화면 캡처 2022-08-01 114948](https://user-images.githubusercontent.com/103159709/182062696-fb7c4078-a73f-46af-97bc-cb2e0dcefc03.png)
 
 언어 | 웹 | 개발도구 | DataBase | 협업도구 | FrameWork
----- | ---- | ---- | ---- | ---- | ---- |
+:----: | :----: | :----: | :----: | :----: | :----: |
 JAVA<br />SQL &nbsp; &nbsp; &nbsp;| HTML5<br />CSS3<br />JS<br />jQuery<br />Ajax<br />Bootstrap<br />Thymeleaf | Eclipse<br />NCP &nbsp; &nbsp; &nbsp;| Mysql | Zoom<br />Google Docs<br />Github<br />ERD Cloud<br />Padlet<br />Notion | Spring Boot<br />Mybatis |
 
 ### 6. 데이터베이스 설계
