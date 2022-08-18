@@ -44,7 +44,7 @@ Spring boot를 활용한 클래식 영화관 티켓팅 서비스 및 NCP AI 플�
 
 언어 | 웹 | 개발도구 | DataBase | 협업도구 | FrameWork
 ---- | ---- | ---- | ---- | ---- | ---- |
-JAVA, SQL &nbsp; &nbsp; &nbsp;| HTML5, CSS3, JS, jQuery, Ajax, Bootstrap, Thymeleaf | Eclipse, NCP &nbsp; &nbsp; &nbsp;| Mysql | Zoom, Google Docs, Github, ERD Cloud,Padlet, Notion | Spring Boot, Mybatis |
+JAVA<br />SQL &nbsp; &nbsp; &nbsp;| HTML5<br />CSS3<br />JS<br />jQuery<br />Ajax<br />Bootstrap<br />Thymeleaf | Eclipse<br />NCP &nbsp; &nbsp; &nbsp;| Mysql | Zoom<br />Google Docs<br />Github<br />ERD Cloud<br />Padlet<br />Notion | Spring Boot<br />Mybatis |
 
 ### 6. 데이터베이스 설계
 ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
