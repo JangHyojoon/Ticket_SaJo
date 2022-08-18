@@ -697,7 +697,6 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 문제를 해결하기 위해서 해당 반복문을 트랜잭션 어노테이션을 사용해 하나의 트랜잭션 단위로 설정
 
 이 덕분에 만약 반복문이 진행되는 도중 실패하게 된다면 해당 반복문 전체가 롤백되도록 함
-![book3-tranjection](https://user-images.githubusercontent.com/103174607/185021254-05e8e2e1-a627-42ff-9c9e-2c53d6f9e5c7.png)
 https://github.com/JangHyojoon/Ticket_SaJo/blob/5b985a0f1dbaa63c29fd9b5bb987bdc7914eb9ad/Ticket_SaJo/src/main/java/com/multi/biz/BookedBiz.java#L45-L62
 
 
