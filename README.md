@@ -32,7 +32,7 @@ Spring boot를 활용한 클래식 영화관 티켓팅 서비스 및 NCP AI 플�
 5. 영화 필터 검색 기능
 6. 성별, 나이 정보를 바탕으로 통계표 기능
 7. 리뷰, 평점 기능
-8. CLOVA Face Recognition(CFR)을 이용한 닮은 꼴 배루 찾지 이벤트 페이지 구현
+8. CLOVA Face Recognition(CFR)을 이용한 닮은 꼴 배우 찾 이벤트 페이지 구현
 
 ### 4. 프로젝트 역할 분담 
 | 이름 | 역할 |
