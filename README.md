@@ -405,7 +405,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   getAttributes : {sub=xxx, name=안원영, given_name=원영, family_name=안, picture=https://xxx, email=xxx@gmail.com, email_verified=true, locale=ko}
   principalDetails : CustVO(id=xxx@gmail.com, pwd=0000, name=안원영, birth=Wed Feb 07 00:00:00 KST 1996, point=0, sex=men, used=true, usepoint=0)
   ```
-
+https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd5211e1bc33/Ticket_SaJo/src/main/java/com/multi/security/config/SecurityConfig.java#L23-L59
 ---
 
 ### 1. 영화 목록 페이지
