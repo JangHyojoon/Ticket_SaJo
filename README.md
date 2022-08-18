@@ -63,6 +63,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 ### 1. 회원가입 화면
 
 <img src= https://user-images.githubusercontent.com/103159709/185320035-abd3713f-1465-4fb8-b6a8-3441bc83c208.gif>
+
 * 어느 한 칸이라도 빈칸일 시 '필수황목입니다.' 메세지 띄우기
 
 * Ajax를 이용해 데이터베이스에 동일한 아이디가 존재하는지 비교
