@@ -893,7 +893,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437
 - 스케줄 삭제시 하위의 상세스케줄들도 삭제되기 때문에 상세스케줄의 삭제가 실패하면 스케줄 삭제가 롤백되도록 트랜잭션을 설정
 https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437965aadd8/Ticket_SaJo_Admin/src/main/java/com/multi/biz/Detail_SchedulesBiz.java#L65-L75
 
-#### 8-5 상세 스케줄 수정(https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/detail.html)
+#### [8-5 상세 스케줄 수정](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/detail.html)
 
 ![dsupdate](Images/dsupdate-166071101420311-166079638411616.gif)
 
