@@ -1,7 +1,7 @@
 # 티켓사조
 ![바탕화면](https://user-images.githubusercontent.com/103159709/184810334-a816ed71-3eb4-4f15-bc84-ca7898fe1de0.png)
 
-- [웹 개발 포트폴리오-영화관 사이트 시연 영상](https://youtu.be/-Cxn4lc1Zk0) 
+- [웹 개발 포트폴리오-영화관 사이트 시연 영상](https://youtu.be/nv4Ajon3jRM) 
 - [웹 개발 포트폴리오-영화관 관리자 사이트 시연 영상](https://youtu.be/F5A4TkfZtxM?t=0s) 
 
 팀명: 티켓 사조  
