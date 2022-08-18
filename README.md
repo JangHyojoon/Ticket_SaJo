@@ -47,7 +47,7 @@ Spring boot를 활용한 클래식 영화관 티켓팅 서비스 및 NCP AI 플�
 ### 5. 프로젝트 개발 환경 및 수행 도구
 ![화면 캡처 2022-08-01 114948](https://user-images.githubusercontent.com/103159709/182062696-fb7c4078-a73f-46af-97bc-cb2e0dcefc03.png)
 
-|   <span style="bgcolor:lightgray">**언어**</span>    |                            **웹**                            |   **개발도구**   | **DataBase** |                         **협업도구**                         |      **FrameWork**       |                           **API**                            |
+|   **언어**    |                            **웹**                            |   **개발도구**   | **DataBase** |                         **협업도구**                         |      **FrameWork**       |                           **API**                            |
 | :-----------: | :----------------------------------------------------------: | :--------------: | :----------: | :----------------------------------------------------------: | :----------------------: | :----------------------------------------------------------: |
 | JAVA<br />SQL | HTML5<br />CSS3<br />JS<br />jQuery<br />Ajax<br />Bootstrap<br />Thymeleaf | Eclipse<br />NCP |    Mysql     | Zoom<br />Google Docs<br />Github<br />ERD Cloud<br />Padlet<br />Notion | Spring Boot<br />Mybatis | FullCalendar<br />Google Map <br />Naver CFR<br />Naver ChatBot<br />Naver OCR<br />Spring Boot OAuth 2.0 <br />Import |
 
@@ -842,7 +842,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437
 - 해당 스케줄에 예약된 좌석이 있다면 수정과 삭제가 불가능
 
 - 스케줄 삭제시 하위의 상세스케줄들도 삭제되기 때문에 상세스케줄의 삭제가 실패하면 스케줄 삭제가 롤백되도록 트랜잭션을 설정
-https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437965aadd8/Ticket_SaJo_Admin/src/main/java/com/multi/biz/Detail_SchedulesBiz.java#L65-L75
+https://github.com/JangHyojoon/Ticket_SaJo/blob/eebaf0a771c1636ebb414f8b62ca2437965aadd8/Ticket_SaJo_Admin/src/main/java/com/multi/biz/Detail_SchedulesBiz.java#L65-L69
 
 #### [8-5 상세 스케줄 수정](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo_Admin/src/main/resources/templates/schedule/detail.html)
 
