@@ -8,7 +8,7 @@
 
 팀원: 안원영, 장효준, 정세연
 
-- [웹 개발 포트폴리오-영화관 사이트 시연 영상](https://youtu.be/skBFttYIcyo?t=0s) 
+- [웹 개발 포트폴리오-영화관 사이트 시연 영상](https://youtu.be/-Cxn4lc1Zk0) 
 - [웹 개발 포트폴리오-영화관 관리자 사이트 시연 영상](https://youtu.be/F5A4TkfZtxM?t=0s) 
 
 
