@@ -556,9 +556,9 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd52
 ## 페이지 구성: 스케줄 선택 --> 좌석 선택 --> 결제 --> 발권
 
 
-### 1. 스케줄 선택
+### 1. [스케줄 선택](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book2.html)
 
-[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book1.html)
+
 내용 요약
 
 현재 상영중인 영화의 목록을 보여주고 영화와 날짜 시간을 선택하면 해당 날짜의 상영시간 표시
@@ -595,9 +595,9 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd52
 
 
 
-### 2. 좌석 선택
+### 2. [좌석 선택](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book2.html)
 
-[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book2.html)
+
 내용 요약
 
 선택한 스케줄의 좌석정보를 표시 
@@ -635,9 +635,9 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd52
 
 
 
-### 3. 결제
+### 3. [결제](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book3.html)
 
-[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book3.html)
+
 내용 요약
 
 사용자가 선택한 스케줄과 좌석의 정보가 출력
