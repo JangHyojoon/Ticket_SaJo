@@ -146,7 +146,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 상단 슬라이드
 
-- 영화관에서 필요한 규칙이나 현재 상영하고 있는 인기있는 영화들의 포스터와 영상을 이용해 손쉽게 흥미를 가질 수 있도록 구현했습니다. 
+- 영화관에서 필요한 규칙이나 현재 상영하고 있는 인기있는 영화들의 포스터와 영상을 이용해 손쉽게 흥미를 가질 수 있도록 구현
 
   <p align="center"><img src= https://user-images.githubusercontent.com/103159709/185009011-8d5de0a7-22c3-40e8-bfa0-e3b626435146.png></p>
 
@@ -154,7 +154,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 #### 평점 높은영화 순 정렬 6개. 
 
-- 평점순으로 영화를 정렬하여 상위 6개의 영화를 추려 보여줍니다. 
+- 평점순으로 영화를 정렬하여 상위 6개의 영화를 추려 보여줌
 
   - 평점과 간단한 영화 정보를 볼 수 있으며 해당 포스터를 클릭했을 경우 해당 영화의 상세 페이지로 연결 
 
@@ -195,7 +195,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 해당 요일에 상영되는 영화정보를 가져와 출력
 
-  - 상영 영화가 없으면 없다고 표시.
+  - 상영 영화가 없으면 없다고 표시
   - 상영 영화가 있다면  간단한 영화 정보,별점과 포스터를 표시해 직관적으로 볼 수 있도록 함
 
 - 영화 포스터나 제목을 눌렀을 경우 해당 영화의 상세 페이지로 넘어감 
@@ -299,7 +299,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 표를 현장발권했을 경우 추가적으로 적립할 수 있도록 영수증 적립 이벤트를 구현 
 
-- 해당 페이지에서는 NCP 에서 제공하는 CLOVE OCR 기능을 이용했다. 
+- 해당 페이지에서는 NCP 에서 제공하는 CLOVE OCR 기능을 이용
 
   <img src= https://user-images.githubusercontent.com/103159709/185010324-e7c83b51-2eb8-4da2-ac75-8a53ea414066.png>
 
@@ -313,7 +313,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 영수증 검사 버튼을 눌러 OCR 기능을 이용해 업로드된 사진의 영수증 텍스트들을 인식하여 이용할 수 있는 영수증인지 판별 
 
-- 이때 판별이 끝나면 결과를 알려주는 텍스트로 자동 스크롤 되도록 구현. 
+- 이때 판별이 끝나면 결과를 알려주는 텍스트로 자동 스크롤 되도록 구현
 
 - 이용할 수 있는 영수증이라면 적립가능하도록 하였고, 만약 조건에 맞지않는 영수증 (영수증 상단 이름, 발급일이 7일이상 지난 날짜) 이라면 적립버튼을 활성화 되지 않음 
 
@@ -364,7 +364,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 1. **_사용자( Owner )_** 가 client 와 연결
    - client는 내가 개발하는 web, app 
-2. 플랫폼 로그인 진행시 **_Client_** 의 화면에서 사용자에게 Resorce Server 로 요청하기 위한 **계정 동의** 를 구한다. -> 동의 버튼은 **_Resorce Server_** 로 연결되어 있어 바로 3번이 진행됨. 
+2. 플랫폼 로그인 진행시 **_Client_** 의 화면에서 사용자에게 Resorce Server 로 요청하기 위한 **계정 동의** 를 구한다. -> 동의 버튼은 **_Resorce Server_** 로 연결되어 있어 바로 3번이 진행됨
    - Resorce Server 는 신뢰할 수 있는 기업인 google, naver, Kakao 같은 server 를 뜻함
    - 계정 동의는 해당 플랫폼의 id, password로 로그인하는것을 뜻함
 3. 동의를 구하면 Resorce Server 로 계정 인증 내용을 보냄 
