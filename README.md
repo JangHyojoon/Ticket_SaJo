@@ -635,7 +635,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd52
 타인이 좌석을 선택하면 실시간으로 최신 예매된 좌석 정보를 불러와 표시
 
 웹소켓으로 좌석 정보를 불러오는 시점은 타인이 결제페이지에서 결제하기를 누르고 결제가 성공하는 시점
-
+https://github.com/JangHyojoon/Ticket_SaJo/blob/fefaa1048b5c1cd9136341d18439abf1dd5a0c77/Ticket_SaJo/src/main/java/com/multi/controller/BookController.java#L268-L284
 
 
 ### 3. [결제](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book3.html)
