@@ -62,17 +62,14 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 ## 프로젝트 결과 
 ### 1. 회원가입 화면
 
+<img src= https://user-images.githubusercontent.com/103159709/185320035-abd3713f-1465-4fb8-b6a8-3441bc83c208.gif>
 * 어느 한 칸이라도 빈칸일 시 '필수황목입니다.' 메세지 띄우기
-<p align="center"><img src= https://user-images.githubusercontent.com/103159709/184588880-29ea09d4-cfc3-466e-848f-b8bc7b8feef8.png></p>
 
 * Ajax를 이용해 데이터베이스에 동일한 아이디가 존재하는지 비교
-<p align="center"><img src= https://user-images.githubusercontent.com/103159709/184589002-c80c26bd-6c9c-4dc3-a74f-1ee2141f0560.png></p>
 
 * 비밀번호 조건 미충족 시 '보안에 취약합니다. 5자리 이상이어야 합니다.' 메세지 띄우기
-<p align="center"><img src= https://user-images.githubusercontent.com/103159709/184589156-f0efc88c-cc86-4211-a7d9-1932b155fffa.png></p>
 
 * 비밀번호 확인: 위 비밀번호와 일치하지 않을 시 '일치하지 않습니다. 비밀번호를 다시 입력해주세요.' 메세지 띄우기
- <p align="center"><img src= https://user-images.githubusercontent.com/103159709/184589362-0eacb31c-ea22-45c7-b38c-cb2f8c03ad15.png></p>
 
 * 어느 한 조건이라도 미충족 시 회원가입 불가
 <img src= https://user-images.githubusercontent.com/103159709/185042614-e94fe022-7868-4350-81a3-13fadf2cceb3.gif>
