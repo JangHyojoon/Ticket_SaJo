@@ -630,7 +630,7 @@ https://github.com/JangHyojoon/Ticket_SaJo/blob/f4ab88841021c9cfb1246d5d236abd52
 ![book2-websocket](https://user-images.githubusercontent.com/103174607/185021155-2f3dfeee-dadf-42ca-b061-0cb6bf7ac6fd.gif)
 
 
-페이지 로딩 시 웹소켓이 연결되어 사용자가 좌석 선택 페이지에 있는 도중 
+페이지  시 웹소켓이 연결되어 사용자가 좌석 선택 페이지에 있는 도중 
 
 타인이 좌석을 선택하면 실시간으로 최신 예매된 좌석 정보를 불러와 표시
 
