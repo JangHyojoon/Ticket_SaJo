@@ -558,7 +558,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 1. 스케줄 선택
 
-코드 보러가기(https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book1.html)
+[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book1.html)
+내용 요약
 
 현재 상영중인 영화의 목록을 보여주고 영화와 날짜 시간을 선택하면 해당 날짜의 상영시간 표시
 
@@ -596,7 +597,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 2. 좌석 선택
 
-(요약)
+[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book2.html)
+내용 요약
 
 선택한 스케줄의 좌석정보를 표시 
 
@@ -635,7 +637,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 ### 3. 결제
 
-(요약)
+[코드 보러가기](https://github.com/JangHyojoon/Ticket_SaJo/blob/master/Ticket_SaJo/src/main/resources/templates/book/book3.html)
+내용 요약
 
 사용자가 선택한 스케줄과 좌석의 정보가 출력
 
@@ -679,7 +682,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 좌석선점은 데이터베이스에 '예매된 좌석' 테이블을 만들어 스케줄번호,상영회차번호,좌석번호 3가지의 정보를 기본키로 설정하여 구현
 
-특정 스케줄의 특정 상영회차의 좌석번호는 기본키로 중복이 불가하여 다시 입력된 경우 입력이 실패하는 방법
+좌석 선점 방식은 특정 스케줄의 특정 상영회차의 좌석번호는 기본키로 중복이 불가하여 다시 입력된 경우 입력이 실패하는 방법으로 
 
 ![book3-error](https://user-images.githubusercontent.com/103174607/185021282-b2c733d4-8326-4822-b1d9-6c08dd102091.png)
 
