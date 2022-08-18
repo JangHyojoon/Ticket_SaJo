@@ -140,11 +140,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 * 회원탈퇴 성공 시 'used'필드 값 변경(완전 삭제 ×/ 0: 탈퇴한 계정, 1: 사용 중인 계정) 
 <p align="center"><img src= https://user-images.githubusercontent.com/103159709/184588283-c7794aaf-8c7e-4fde-a7ba-b9c5cd2fda95.png></p>
 
+---
 
+### 1. 메인 Page
 
-## 메인 Page
-
-### 상단 슬라이드
+#### 상단 슬라이드
 
 - 영화관에서 필요한 규칙이나 현재 상영하고 있는 인기있는 영화들의 포스터와 영상을 이용해 손쉽게 흥미를 가질 수 있도록 구현했습니다. 
 
@@ -152,7 +152,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <p align="center"><img src= https://user-images.githubusercontent.com/103159709/185009103-b6e67171-0fcd-4be8-b4b9-ed19a16fb38d.png></p>
 
-### 평점 높은영화 순 정렬 6개. 
+#### 평점 높은영화 순 정렬 6개. 
 
 - 평점순으로 영화를 정렬하여 상위 6개의 영화를 추려 보여줍니다. 
 
@@ -168,7 +168,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185009173-30cd1730-0780-4459-a88a-dd09f58e4bb8.png width="400" height="600">
 
-### 영화 검색기능
+#### 영화 검색기능
 
 - 장르, 배우, 감독, 국가 별 검색기능을 제공
 
@@ -191,7 +191,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185009610-cb92f866-259f-45c1-ac3c-138150d6376e.png>
 
-### 오늘의 상영작
+#### 오늘의 상영작
 
 - 해당 요일에 상영되는 영화정보를 가져와 출력
 
@@ -220,7 +220,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185009661-94da6b13-3c1e-4ee1-bd48-1020fe252df5.png>
 
-### 영화에 대해 궁금한 것 검색
+#### 영화에 대해 궁금한 것 검색
 
 - google search를 통해 movie에 대한 정보를 검색
 
@@ -232,9 +232,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-## 영화  - 평점 랭킹 Page
+### 2. 영화  - 평점 랭킹 Page
 
-### 영화 순위 정렬
+#### 영화 순위 정렬
 
 - sql 문을 이용해 평점 랭킹 순으로 모든 영화를 정렬하여 정보를 가져옴
 
@@ -242,7 +242,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185009891-57a65569-6905-44b8-9c8e-115b2de3f1c0.png>
 
-### 페이징 기법 사용
+#### 페이징 기법 사용
 
 - sql문의 limit을이용한 paging 기법을 통해 평점순으로 5개씩 나눠서 보여짐
 
@@ -254,9 +254,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-## 이벤트 - 쿠폰발급 Page
+### 3. 이벤트 - 쿠폰발급 Page
 
-### 로그인 전
+#### 로그인 전
 
 - 현재 날짜를 기준으로 진행중인 쿠폰만 볼 수 있도록 만듦
 
@@ -275,7 +275,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185010025-bbaa007f-0e56-410d-83ea-9d8fd9d4cb62.png>
 
-### 로그인 후 
+#### 로그인 후 
 
 - 로그인이 완료되면 "보유중 or 발급가능" 문구를 통해 로그인한 아이디에서 발급받을 수 있는 쿠폰을 직관적으로 구분할 수 있도록 제작 
 
@@ -293,9 +293,9 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   
 
-## 이벤트 - 포인트 적립 Page
+### 3. 이벤트 - 포인트 적립 Page
 
-### NCP OCR 
+#### NCP OCR 
 
 - 표를 현장발권했을 경우 추가적으로 적립할 수 있도록 영수증 적립 이벤트를 구현 
 
@@ -309,7 +309,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src= https://user-images.githubusercontent.com/103159709/185010553-f1bb103c-4d89-44c6-9054-6fc1bd0eb913.png width="200px" hight="500">
 
-### 영수증 검사
+#### 영수증 검사
 
 - 영수증 검사 버튼을 눌러 OCR 기능을 이용해 업로드된 사진의 영수증 텍스트들을 인식하여 이용할 수 있는 영수증인지 판별 
 
@@ -328,7 +328,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   <img src= https://user-images.githubusercontent.com/103159709/185010273-53fa136e-f9e1-4eab-b86f-f29b7da17c6e.png>
 
 
-### 포인트 지급 
+#### 포인트 지급 
 
 - 만약 조건에 만족하는 영수증이라면 영수증 금액의 5% 를 포인트로 지급 
 
@@ -340,11 +340,11 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
   <img src = https://user-images.githubusercontent.com/103159709/185036996-00e3264a-081c-4afc-8af4-b32c916348a9.gif>
 
-## 로그인 - 플랫폼 로그인 Page
+### 4. 로그인 - 플랫폼 로그인 Page
 
 > [Spring boot OAuth 2 모든 내용 정리](https://github.com/wonyoung0207/Spring-boot-Security-OAuth-2.0)
 
-### 참고 강의 
+#### 참고 강의 
 
 1. [Spring boot Security 구현 강의](https://www.inflearn.com/course/스프링부트-시큐리티/dashboard)
    - [깃허브 자료](https://github.com/codingspecialist/-Springboot-Security-OAuth2.0-V3)
@@ -358,7 +358,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 - OAuth 를 이용하면서 가장 어려움이 컸던것은 보안문제 였다. 보안으로 인해 8번의 과정을 거처 사용자 정보들을 받아올 수 있음
 - 자세한 내용은 [Spring boot OAuth 2.0 정리](https://github.com/wonyoung0207/Spring-boot-Security-OAuth-2.0) 이곳에서 볼 수 있음 
 
-### Spring boot Security 구조
+#### Spring boot Security 구조
 
 <img src= https://user-images.githubusercontent.com/103159709/185010683-078b8b8a-c0f4-4594-9427-b80bb8a0147c.png>
 
@@ -378,7 +378,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
    - Access Token을 가지고 Client는 해당 사용자가 허락한 범위 내에서 정보를 열람할 수 있음 
 8. Client 는 Access Token을 가지고 API를 사용할 수 있음
 
-### 결과화면 
+#### 결과화면 
 
 - 로그인은 **"google 로그인 버튼 클릭 -> 계정 선택 -> 데이터 정보 요구 동의 -> 로그인"**  순서로 진행 
 
@@ -405,6 +405,8 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
   getAttributes : {sub=xxx, name=안원영, given_name=원영, family_name=안, picture=https://xxx, email=xxx@gmail.com, email_verified=true, locale=ko}
   principalDetails : CustVO(id=xxx@gmail.com, pwd=0000, name=안원영, birth=Wed Feb 07 00:00:00 KST 1996, point=0, sex=men, used=true, usepoint=0)
   ```
+
+---
 
 ### 1. 영화 목록 페이지
 
@@ -547,14 +549,14 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 - 테마의 CSS 변경 (버튼 컬러, 폰트 컬러 및 크기,  백그라운드 이미지 재설정 등)
 
-
+---
 
 # 예매 시스템
 
 ## 페이지 구성: 스케줄 선택 --> 좌석 선택 --> 결제 --> 발권
 
 
-#### 1. 스케줄 선택
+### 1. 스케줄 선택
 
 (요약)
 
@@ -566,7 +568,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-1) 스케줄 선택 개요
+#### 1) 스케줄 선택 개요
 
 ![book1-1](https://user-images.githubusercontent.com/103174607/185021063-8ccbf8a7-8238-4d81-bbcf-52654db1a49f.gif)
 
@@ -584,7 +586,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-2) 로그인 확인
+#### 2) 로그인 확인
 
 ![book1-2](https://user-images.githubusercontent.com/103174607/185021083-1ccda56e-0d43-49c2-ab6e-fd64e1c3e376.gif)
 
@@ -592,7 +594,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-#### 2. 좌석 선택
+### 2. 좌석 선택
 
 (요약)
 
@@ -606,7 +608,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-1) 좌석선택 페이지 개요
+#### 1) 좌석선택 페이지 개요
 
 ![book2](https://user-images.githubusercontent.com/103174607/185021107-10012565-a684-4285-99f8-afffff5f08ee.gif)
 
@@ -618,7 +620,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 좌석 칸을 클릭하여 좌석을 선택하며 좌측에 선택한 좌석 정보와 가격이 나타남
 
 
-2) 실시간 좌석 예매 현황 표시
+#### 2) 실시간 좌석 예매 현황 표시
 
 ![book2-websocket](https://user-images.githubusercontent.com/103174607/185021155-2f3dfeee-dadf-42ca-b061-0cb6bf7ac6fd.gif)
 
@@ -631,7 +633,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-#### 3. 결제
+### 3. 결제
 
 (요약)
 
@@ -645,7 +647,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-1) 결제 페이지 개요
+#### 1) 결제 페이지 개요
  ![book3-2](https://user-images.githubusercontent.com/103174607/185022532-90d855c0-505a-4d3b-81c8-79996d2e350e.gif)
 ![book3-1](https://user-images.githubusercontent.com/103174607/185022469-30373bc1-0677-4f23-bded-bbf16ce03b85.gif)
 
@@ -669,7 +671,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 결제 시스템은 아임포트(import) 테스트로 카드 결제를 구현
 
 
-2) 좌석선점
+#### 2) 좌석선점
 
 ![book3-back](https://user-images.githubusercontent.com/103174607/185021200-38a9b6e4-f735-45e7-91a6-a19cb41612e5.gif)
 
@@ -684,7 +686,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 예매 실패시 콘솔에 나타나는 에러 메시지
 
 
-3) 트랜잭션 
+#### 3) 트랜잭션 
 
 다수의 좌석 예매를 시도 했을 때 좌석중 한 좌석이 선점되어있을 경우의 처리
 
@@ -699,7 +701,7 @@ ERD: [티켓사조](https://www.erdcloud.com/d/Gb6vzq6LdsJjFpduL)
 
 
 
-#### 4. 결제완료 및 티켓
+### 4. 결제완료 및 티켓
 
 결제 완료시 결제정보가 출력되고 버튼을 클릭시 티켓이 표시
 
