@@ -49,7 +49,7 @@ function inputYMDNumber(obj) {
 			url = url.substr(urlcheck+1)
 			$('#exampleInputBirth').val(url);
 		}
-		
+
 		
 		$('#btn').click(function(){
 			 
@@ -65,6 +65,7 @@ function inputYMDNumber(obj) {
 		});
 		 
 	});
+
 	function Back() {
 		window.history.back()
 	}
@@ -104,7 +105,7 @@ function inputYMDNumber(obj) {
                       <input type="text" onKeyup="inputYMDNumber(this);" maxlength="10" class="form-control" name="sdate" id="exampleInputBirth" placeholder="yyyy-mm-dd">
                     </div>
                     <button id="btn" type="submit" class="btn btn-primary mr-2">다음</button>
-                    <button class="btn btn-light" id="cancel" onclick="Back()">Cancel</button>
+                    <a class="btn btn-light" id="cancel" onclick="Back()">Cancel</a>
                   </form>
                 </div>
               </div>

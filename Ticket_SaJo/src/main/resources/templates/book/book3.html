@@ -55,7 +55,7 @@
 			$("#hiddentotal").text(price - Number(coupon));
 			var totalprice = 0;
 			totalprice = price - Number(coupon);		
-			$("#totalPrice").text(totalprice);// 쿠폰 적용 금액을 text() 에 표시 
+			$("#totalPrice").text(totalprice+'원');// 쿠폰 적용 금액을 text() 에 표시 
 			$("#totalprice").val(totalprice);// form-input 에 있는 totalprice 
 			$("#selectcid").val(coupon_cid[1]);// form-input 에 있는 cid - 쿠폰의 id를 넘겨서 결제시 mycoupon에 있는 해당 쿠폰의 used필드를 false로, udate를 현재시간으로 설정  
 	    }
@@ -112,44 +112,49 @@
 	}
 
 	//import
-	/*
+	
 	 function requestPay() {
-		var IMP = window.IMP; // 생략 가능
-	    IMP.init("imp74887828"); // 예: imp00000000
-	    var count = ($('#price').val())/10000;
-    	var title = $('#titletext').text()
-    	var seatlist = $('#seatlist').val();
-    	var total = $('#totalprice').val();
-    	var sdate = $('#sdate').val();
-    	var tid = $('#tidtext').text();
-    	var username=[[${session.user.name}]];
- // IMP.request_pay(param, callback) 결제창 호출
-     IMP.request_pay({ // param
-         pg: "html5_inicis",
-         pay_method: "card",
-         merchant_uid: 'merchant_' + new Date().getTime(),
-         name: title,
-         amount: total,
-         buyer_email: "test@test.com",
-         buyer_name: username,
-         buyer_tel: "010-0000-0000",     
-     }, function (rsp) { // callback
-         if (rsp.success) {
+		var total = $('#totalprice').val();
+		if(total > 0) {
+			var IMP = window.IMP; // 생략 가능
+		    IMP.init("imp74887828"); // 예: imp00000000
+		    var count = ($('#price').val())/10000;
+	    	var title = $('#titletext').text()
+	    	var seatlist = $('#seatlist').val();
+	    	
+	    	var sdate = $('#sdate').val();
+	    	var tid = $('#tidtext').text();
+	    	var username=[[${session.user.name}]];
 
- 			$('.book3').submit();
-             
-         } else {
-		        var msg = '결제에 실패하였습니다.';
-		        msg += '에러내용 : ' + rsp.error_msg;
-             	alert(msg);
-             
-	          }
-	      });
-	    }
-		*/
-		 function requestPay() {
- 			$('.book3').submit();
+	    	 // IMP.request_pay(param, callback) 결제창 호출
+	    	     IMP.request_pay({ // param
+	    	         pg: "html5_inicis",
+	    	         pay_method: "card",
+	    	         merchant_uid: 'merchant_' + new Date().getTime(),
+	    	         name: title,
+	    	         amount: total,
+	    	         buyer_email: "test@test.com",
+	    	         buyer_name: username,
+	    	         buyer_tel: "010-0000-0000",     
+	    	     }, function (rsp) { // callback
+	    	         if (rsp.success) {
+
+	    	 			$('.book3').submit();
+	    	             
+	    	         } else {
+	    			        var msg = '결제에 실패하였습니다.';
+	    			        msg += '에러내용 : ' + rsp.error_msg;
+	    	             	alert(msg);
+	    	             
+	    		          }
+	    		      });
+		}else if (total == 0){
+			$('.book3').submit();
 		}
+		
+	    }
+		
+
 		
     
     
