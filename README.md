@@ -1,4 +1,6 @@
-# Spring boot를 활용한 클래식 영화관 티켓팅 서비스 및 NCP AI플랫폼을 활용한 고객편의기능 구현
+# 티켓사조
+### Spring boot를 활용한 클래식 영화관 티켓팅 웹 서비스 및 NCP AI플랫폼을 활용한 고객편의기능 구현
+
 
 
 ![바탕화면](https://user-images.githubusercontent.com/103159709/184810334-a816ed71-3eb4-4f15-bc84-ca7898fe1de0.png)
