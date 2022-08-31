@@ -17,7 +17,7 @@
 팀원: 안원영, 장효준, 정세연
 
 
-<img src = "[Your Image Addr](https://user-images.githubusercontent.com/103174607/187638507-ad44317e-2eaf-476d-81c1-cdb3a2b8277d.jpg)" width="50%" height="50%">
+<img src = "https://user-images.githubusercontent.com/103174607/187638507-ad44317e-2eaf-476d-81c1-cdb3a2b8277d.jpg" width="50%" height="50%">
 
 
 
