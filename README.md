@@ -1,5 +1,5 @@
 # 티켓사조
-### Spring boot를 활용한 클래식 영화관 티켓팅 웹 서비스 및 NCP AI플랫폼을 활용한 고객편의기능 구현
+
 
 
 
@@ -16,6 +16,7 @@
 
 팀원: 안원영, 장효준, 정세연
 
+![KDT  상장(프로젝트)_AI 플랫폼을 활용한 웹 서비스 개발_14회차_4조_pages-to-jpg-0001](https://user-images.githubusercontent.com/103174607/187638507-ad44317e-2eaf-476d-81c1-cdb3a2b8277d.jpg)
 
 
 
